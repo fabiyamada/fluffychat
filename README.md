@@ -10,6 +10,8 @@ Planned features for the far future:
 
 Download from the Open Store: https://open-store.io/app/fluffychat.christianpauly
 
+Chatroom for FluffyChat: #fluffychat:matrix.org
+
 ### How to build
 
 1. Install clickable as described here: https://github.com/bhdouglass/clickable
