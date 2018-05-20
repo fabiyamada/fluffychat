@@ -29,31 +29,19 @@ ListItem {
         }
         Component.onCompleted: {
             // Get the room name
-            roomnames.getById ( room.id, function (displayname) {
-                var name = displayname
-                if ( room.type === "invite" ) name = "+ " + displayname
-                title.text = name
+            if ( room.topic !== "" ) title.text = room.topic
+            else roomnames.getById ( room.id, function (displayname) {
+                title.text = displayname
             })
 
             // Get the last message
-            if ( room.type === "invite" ) {
+            if ( room.membership === "invite" ) {
                 subtitle.text = i18n.tr("You have been invited to this chat")
             }
-            else {
-                storage.transaction ("SELECT * FROM Roomevents " +
-                " WHERE roomsid='" + room.id + "' " +
-                " AND type='m.room.message' " +
-                " ORDER BY origin_server_ts DESC "
-                , function (res) {
-                    if ( res.rows.length > 0 ) {
-                        var eventElem = res.rows[0]
-                        var lastMessage = eventElem.content_body
-                        if ( eventElem.sender === matrix.matrixid ) lastMessage = i18n.tr("You: ") + lastMessage
-                        subtitle.text = lastMessage
-                        stampLabel.text = stamp.getChatTime ( eventElem.origin_server_ts )
-                        timeorder = eventElem.origin_server_ts
-                    }
-                })
+            else if ( room.content_body ){
+                var lastMessage = room.content_body
+                if ( room.sender === matrix.matrixid ) lastMessage = i18n.tr("You: ") + lastMessage
+                subtitle.text = lastMessage
             }
         }
     }
@@ -64,7 +52,7 @@ ListItem {
         anchors.right: parent.right
         anchors.bottom: parent.bottom
         anchors.margins: units.gu(2)
-        text: ""
+        text: stamp.getChatTime ( room.origin_server_ts )
         textSize: Label.Small
         visible: text != ""
     }

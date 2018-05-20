@@ -1,6 +1,6 @@
 {
     "name": "fluffychat.christianpauly",
-    "description": "Simple XMPP Messenger for Ubuntu Touch",
+    "description": "Simple Messenger for Ubuntu Touch",
     "architecture": "@CLICK_ARCH@",
     "title": "FluffyChat",
     "hooks": {

@@ -16,7 +16,12 @@ Page {
         chatListColumn.children = ""
 
         // On the top are the rooms, which the user is invited to
-        storage.transaction ("SELECT * FROM Rooms WHERE membership!='leave' ORDER BY prev_batch DESC ", function(res) {
+        storage.transaction ("SELECT rooms.id, rooms.topic, rooms.membership, rooms.notification_count, events.origin_server_ts, events.content_body, events.sender FROM Rooms rooms LEFT JOIN Roomevents events " +
+        " WHERE rooms.membership!='leave' " +
+        " AND (rooms.id=events.roomsid OR rooms.membership='invite') " +
+        " GROUP BY rooms.id " +
+        " ORDER BY events.origin_server_ts DESC "
+        , function(res) {
             // We now write the rooms in the column
             for ( var i = 0; i < res.rows.length; i++ ) {
                 var room = res.rows.item(i)
