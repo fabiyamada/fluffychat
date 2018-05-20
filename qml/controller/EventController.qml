@@ -112,6 +112,7 @@ Item {
             (room.unead_notifications ? room.unread_notifications.notification_count : 0),
             (room.timeline ? (room.timeline.limited ? 1 : 0) : 0)])
             if ( room.state ) handleJoinedStateRoomEvents ( id, room.state.events )
+            if ( room.invite_state ) handleJoinedStateRoomEvents ( id, room.invite_state.events )
             if ( room.timeline ) handleJoinedRoomTimelineEvents ( id, room.timeline.events )
         }
     }

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: fluffychat.christianpauly\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-05-20 14:35+0000\n"
+"POT-Creation-Date: 2018-05-20 15:20+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,97 +17,97 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: ../qml/controller/DisplayEventController.qml:15
+#: ../qml/controller/DisplayEventController.qml:14
 msgid "Someone"
 msgstr ""
 
-#: ../qml/controller/DisplayEventController.qml:18
+#: ../qml/controller/DisplayEventController.qml:17
 msgid " has entered the chat"
 msgstr ""
 
-#: ../qml/controller/DisplayEventController.qml:21
+#: ../qml/controller/DisplayEventController.qml:20
 msgid " has invited "
 msgstr ""
 
-#: ../qml/controller/DisplayEventController.qml:24
+#: ../qml/controller/DisplayEventController.qml:23
 msgid " has left the chat"
 msgstr ""
 
-#: ../qml/controller/DisplayEventController.qml:27
+#: ../qml/controller/DisplayEventController.qml:26
 msgid " has been banned from the chat"
 msgstr ""
 
-#: ../qml/controller/DisplayEventController.qml:31
+#: ../qml/controller/DisplayEventController.qml:30
 msgid "The chat has been created"
 msgstr ""
 
-#: ../qml/controller/DisplayEventController.qml:34
+#: ../qml/controller/DisplayEventController.qml:33
 msgid " has set the chat history visible to: "
 msgstr ""
 
-#: ../qml/controller/DisplayEventController.qml:36
+#: ../qml/controller/DisplayEventController.qml:35
 msgid "All chat participants"
 msgstr ""
 
-#: ../qml/controller/DisplayEventController.qml:39
+#: ../qml/controller/DisplayEventController.qml:38
 msgid "All joined chat participants"
 msgstr ""
 
-#: ../qml/controller/DisplayEventController.qml:42
+#: ../qml/controller/DisplayEventController.qml:41
 msgid "All invited chat participants"
 msgstr ""
 
-#: ../qml/controller/DisplayEventController.qml:45
+#: ../qml/controller/DisplayEventController.qml:44
 msgid "Everyone"
 msgstr ""
 
-#: ../qml/controller/DisplayEventController.qml:49
+#: ../qml/controller/DisplayEventController.qml:48
 msgid " has set the join rules to: "
 msgstr ""
 
-#: ../qml/controller/DisplayEventController.qml:51
+#: ../qml/controller/DisplayEventController.qml:50
 msgid "Only invited users"
 msgstr ""
 
-#: ../qml/controller/DisplayEventController.qml:54
+#: ../qml/controller/DisplayEventController.qml:53
 msgid "Public"
 msgstr ""
 
-#: ../qml/controller/DisplayEventController.qml:57
+#: ../qml/controller/DisplayEventController.qml:56
 msgid "Private"
 msgstr ""
 
-#: ../qml/controller/DisplayEventController.qml:60
+#: ../qml/controller/DisplayEventController.qml:59
 msgid "Knock"
 msgstr ""
 
-#: ../qml/controller/DisplayEventController.qml:64
+#: ../qml/controller/DisplayEventController.qml:63
 msgid " has set the guest access to: "
 msgstr ""
 
-#: ../qml/controller/DisplayEventController.qml:66
+#: ../qml/controller/DisplayEventController.qml:65
 msgid "Can join"
 msgstr ""
 
-#: ../qml/controller/DisplayEventController.qml:69
+#: ../qml/controller/DisplayEventController.qml:68
 msgid "Forbidden"
 msgstr ""
 
-#: ../qml/controller/DisplayEventController.qml:73
+#: ../qml/controller/DisplayEventController.qml:72
 msgid "The chat aliases have been changed to: "
 msgstr ""
 
-#: ../qml/controller/DisplayEventController.qml:79
+#: ../qml/controller/DisplayEventController.qml:78
 msgid "The canonical chat alias has been changed to: "
 msgstr ""
 
-#: ../qml/controller/DisplayEventController.qml:82
+#: ../qml/controller/DisplayEventController.qml:81
 msgid "The chat permissions have been changed"
 msgstr ""
 
 #: ../qml/controller/RoomNameController.qml:13
 #: ../qml/controller/RoomNameController.qml:21
-#: ../qml/controller/RoomNameController.qml:28
+#: ../qml/controller/RoomNameController.qml:30
 msgid "Empty chat"
 msgstr ""
 

@@ -25,7 +25,7 @@ Item {
                             if ( rs.rows[i].state_key !== matrix.matrixid ) displayname += rs.rows[i].displayname + ", "
                         }
                         displayname = displayname.substr(0, displayname.length-2)
-                        if ( displayname === "" ) displayname = i18n.tr('Empty chat')
+                        if ( displayname === "" || displayname === null ) displayname = i18n.tr('Empty chat')
                     }
                     callback ( displayname )
                     // Else, use the default: "Empty chat"
