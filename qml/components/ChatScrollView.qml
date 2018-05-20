@@ -92,31 +92,27 @@ ScrollView {
     flickableItem {
         onContentYChanged: {
             if ( !enteredMinusConent && updated && flickableItem.contentY < -50 ) {
-                console.log("Scrolling up")
                 updated = false
                 enteredMinusConent = true
                 historyPosition++
                 update ()
             }
-            else if ( flickableItem.contentY > flickableItem.contentHeight-height+50 ) {
-                console.log("Scrolling down")
-                if ( historyPosition > 0 ) {
-                    updated = false
-                    enteredMinusConent = true
-                    historyPosition--
-                    update ()
-                }
+            else if ( flickableItem.contentY > flickableItem.contentHeight-height+50 && historyPosition > 0 ) {
+                updated = false
+                enteredMinusConent = true
+                historyPosition--
+                update ()
             }
             else if ( flickableItem.contentY >= 0 ||
                 flickableItem.contentY <= flickableItem.contentHeight-height ){
                     enteredMinusConent = false
                 }
+            }
+        }
+
+        contentItem: Column {
+            id: messagesList
+            width: root.width
+            anchors.top: parent.top
         }
     }
-
-    contentItem: Column {
-        id: messagesList
-        width: root.width
-        anchors.top: parent.top
-    }
-}
