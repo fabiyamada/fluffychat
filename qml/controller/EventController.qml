@@ -110,8 +110,8 @@ Item {
             storage.query ("INSERT OR REPLACE INTO Rooms VALUES(?, ?, COALESCE((SELECT topic FROM Rooms WHERE id='" + id + "'), ''), ?, ?, ?, COALESCE((SELECT prev_batch FROM Rooms WHERE id='" + id + "'), ''))",
             [id,
             membership,
-            (room.unead_notifications ? room.unread_notifications.highlight_count : 0),
-            (room.unead_notifications ? room.unread_notifications.notification_count : 0),
+            (room.unread_notifications ? room.unread_notifications.highlight_count : 0),
+            (room.unread_notifications ? room.unread_notifications.notification_count : 0),
             (room.timeline ? (room.timeline.limited ? 1 : 0) : 0)])
             if ( room.state ) handleJoinedStateRoomEvents ( id, room.state.events )
             if ( room.invite_state ) handleJoinedStateRoomEvents ( id, room.invite_state.events )
@@ -129,7 +129,7 @@ Item {
     }
 
 
-    function handleJoinedRoomTimelineEvents ( roomid, events, withSignals ) {
+    function handleJoinedRoomTisendermelineEvents ( roomid, events, withSignals ) {
         if ( withSignals == null ) withSignals = true
         for ( var i = 0; i < events.length; i++ ) {
             var event = events[i]
