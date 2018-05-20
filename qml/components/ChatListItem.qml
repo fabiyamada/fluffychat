@@ -43,6 +43,9 @@ ListItem {
                 if ( room.sender === matrix.matrixid ) lastMessage = i18n.tr("You: ") + lastMessage
                 subtitle.text = lastMessage
             }
+            else if ( room.content_json ) {
+                subtitle.text = displayEvents.getDisplay ( room )
+            }
         }
     }
 

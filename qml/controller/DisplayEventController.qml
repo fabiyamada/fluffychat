@@ -9,10 +9,10 @@ is NOT a message. Currently, only invitations and member changes are displayed.
 
 Item {
     function getDisplay ( event ) {
+        console.log(event.content_json)
         event.content = JSON.parse (event.content_json)
         var body = event.type
         var displayname =  event.content.displayname || event.displayname || event.sender || i18n.tr("Someone")
-        //i18n.tr("Invalid username or password")
         if ( event.type === "m.room.member" ) {
             if ( event.content.membership === "join" ) {
                 body = displayname + i18n.tr(" has entered the chat")
