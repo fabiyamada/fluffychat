@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: fluffychat.christianpauly\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-05-20 13:17+0000\n"
+"POT-Creation-Date: 2018-05-20 13:20+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -259,11 +259,11 @@ msgstr ""
 msgid "No previous messages"
 msgstr ""
 
-#: ../qml/components/ChatListItem.qml:40
+#: ../qml/components/ChatListItem.qml:39
 msgid "You have been invited to this chat"
 msgstr ""
 
-#: ../qml/components/ChatListItem.qml:58
+#: ../qml/components/ChatListItem.qml:43
 msgid "You: "
 msgstr ""
 

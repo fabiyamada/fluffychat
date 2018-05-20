@@ -51,7 +51,6 @@ ScrollView {
             }
             matrix.get( "/client/r0/rooms/" + activeChat + "/messages", data, function ( result ) {
                 if ( result.chunk.length > 0 ) {
-                    scrollToBottom ()
                     events.handleJoinedRoomTimelineEvents( activeChat, result.chunk, false )
                     storage.transaction ( "UPDATE Rooms SET prev_batch='" + result.end + "' WHERE id='" + activeChat + "'", function () {
                         if ( historyPosition > 0 ) historyPosition++
@@ -83,14 +82,6 @@ ScrollView {
     function handleNewEvent ( event ) {
         if ( historyPosition === 0 ) update ()
         else toast.show (i18n.tr("New message at the bottom of the chat"))
-    }
-
-
-    function scrollToBottom () {
-        if ( flickableItem.contentHeight > height ) {
-            flickableItem.contentY = flickableItem.contentHeight - height
-        }
-        else flickableItem.contentY = 0
     }
 
 
