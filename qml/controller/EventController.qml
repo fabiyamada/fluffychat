@@ -114,19 +114,20 @@ Item {
             (room.unread_notifications ? room.unread_notifications.highlight_count : 0),
             (room.unread_notifications ? room.unread_notifications.notification_count : 0),
             (room.timeline ? (room.timeline.limited ? 1 : 0) : 0)])
-            if ( room.state ) handleJoinedStateRoomEvents ( id, room.state.events )
+
+            /*if ( room.state ) handleJoinedStateRoomEvents ( id, room.state.events )
             if ( room.invite_state ) handleJoinedStateRoomEvents ( id, room.invite_state.events )
-            if ( room.timeline ) handleJoinedRoomTimelineEvents ( id, room.timeline.events )
-            /*if ( room.state ) handleRoomEvents ( id, room.state.events, "state" )
+            if ( room.timeline ) handleJoinedRoomTimelineEvents ( id, room.timeline.events )*/
+
+            if ( room.state ) handleRoomEvents ( id, room.state.events, "state" )
             if ( room.invite_state ) handleRoomEvents ( id, room.invite_state.events, "invite_state" )
-            if ( room.timeline ) handleRoomEvents ( id, room.timeline.events, "timeline" )*/
+            if ( room.timeline ) handleRoomEvents ( id, room.timeline.events, "timeline" )
         }
     }
 
 
     // Events are all changes in a room
-    function handleRoomEvents ( roomid, event, type ) {
-        console.log("HANDLEROOMEVENTS!!!", roomid, JSON.stringify(event))
+    function handleRoomEvents ( roomid, events, type ) {
         // We go through the events array
         for ( var i = 0; i < events.length; i++ ) {
 
@@ -165,7 +166,7 @@ Item {
         }
     }
 
-
+/*
     function handleJoinedStateRoomEvents ( roomid, events ) {
         for ( var i = 0; i < events.length; i++ ) {
             var event = events[i]
@@ -198,5 +199,5 @@ Item {
             storage.query( "INSERT OR REPLACE INTO Roommembers VALUES(?, ?, ?, ?, ?)",
             [ roomid, event.state_key, event.content.membership, event.content.displayname, event.content.avatar_url ])
         }
-    }
+    }*/
 }
