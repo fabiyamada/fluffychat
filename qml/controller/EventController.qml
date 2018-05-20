@@ -86,6 +86,8 @@ Item {
     }
 
 
+    // This function starts handling the events, saving new data in the storage,
+    // deleting data, updating data and call signals
     function handleEvents ( response ) {
         //console.log ( "===============New events========", JSON.stringify ( response ) )
         since = response.next_batch
@@ -148,7 +150,7 @@ Item {
         }
         if ( event.type === "m.room.member") {
             storage.query( "INSERT OR REPLACE INTO Roommembers VALUES(?, ?, ?, ?, ?)",
-            [ roomid, event.sender, event.content.membership, event.content.displayname, event.content.avatar_url ])
+            [ roomid, event.state_key, event.content.membership, event.content.displayname, event.content.avatar_url ])
         }
     }
 }
