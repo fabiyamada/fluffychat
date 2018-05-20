@@ -103,6 +103,7 @@ Item {
     }
 
 
+    // Handling the synchronization events starts with the rooms
     function handleRooms ( rooms, membership ) {
         for ( var id in rooms ) {
             var room = rooms[id]
@@ -116,6 +117,51 @@ Item {
             if ( room.state ) handleJoinedStateRoomEvents ( id, room.state.events )
             if ( room.invite_state ) handleJoinedStateRoomEvents ( id, room.invite_state.events )
             if ( room.timeline ) handleJoinedRoomTimelineEvents ( id, room.timeline.events )
+            /*if ( room.state ) handleRoomEvents ( id, room.state.events, "state" )
+            if ( room.invite_state ) handleRoomEvents ( id, room.invite_state.events, "invite_state" )
+            if ( room.timeline ) handleRoomEvents ( id, room.timeline.events, "timeline" )*/
+        }
+    }
+
+
+    // Events are all changes in a room
+    function handleRoomEvents ( roomid, event, type ) {
+        console.log("HANDLEROOMEVENTS!!!", roomid, JSON.stringify(event))
+        // We go through the events array
+        for ( var i = 0; i < events.length; i++ ) {
+
+            // messages from the timeline will be saved, for display in the chat.
+            // Only this events will call the notification signal or change the
+            // current displayed chat!
+            if ( type === "timeline" ) {
+                var event = events[i]
+                storage.query ( "INSERT OR IGNORE INTO Roomevents VALUES(?, ?, ?, ?, ?, ?, ?, ?)",
+                [ event.event_id, roomid, event.origin_server_ts, event.sender, event.content.body || null, event.content.msgtype || null, event.type, JSON.stringify(event.content) ])
+                if ( roomid === activeChat ) chatTimelineEvent ( roomid, event )
+                else chatNotificationEvent ( roomid, event )
+            }
+
+            // This event means, that the topic of a room has been changed, so
+            // it has to be changed in the database
+            if ( event.type === "m.room.name" ) {
+                storage.query( "UPDATE Rooms SET topic=? WHERE id=?",
+                [ event.content.name, roomid ])
+                // If the affected room is the currently used room, then the
+                // name has to be updated in the GUI:
+                if ( activeChat === roomid ) {
+                    roomnames.getById ( roomid, function ( displayname ) {
+                        activeChatDisplayName = displayname
+                    })
+                }
+            }
+
+            // This event means, that someone joined the room, has left the room
+            // or has changed his nickname
+            else if ( event.type === "m.room.member") {
+                storage.query( "INSERT OR REPLACE INTO Roommembers VALUES(?, ?, ?, ?, ?)",
+                [ roomid, event.state_key, event.content.membership,
+                event.content.displayname, event.content.avatar_url ])
+            }
         }
     }
 
@@ -129,7 +175,7 @@ Item {
     }
 
 
-    function handleJoinedRoomTisendermelineEvents ( roomid, events, withSignals ) {
+    function handleJoinedRoomTimelineEvents ( roomid, events, withSignals ) {
         if ( withSignals == null ) withSignals = true
         for ( var i = 0; i < events.length; i++ ) {
             var event = events[i]

@@ -70,11 +70,11 @@ ListItem {
         Label {
             id: unreadLabel
             anchors.centerIn: parent
-            text: room.notification_count
+            text: room.notification_count || "0"
             textSize: Label.Small
             color: UbuntuColors.porcelain
         }
-        visible: room.notification_count != 0
+        visible: unreadLabel.text != "0"
     }
     // Delete Button
     leadingActions: ListItemActions {
