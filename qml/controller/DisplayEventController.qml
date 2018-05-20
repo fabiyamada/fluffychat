@@ -27,7 +27,10 @@ Item {
             }
         }
         else if ( event.type === "m.room.create" ) {
-            i18n.tr("The chat has been created")
+            body = i18n.tr("The chat has been created")
+        }
+        else if ( event.type === "m.room.name" ) {
+            body = displayname + i18n.tr(" has changed the topic")
         }
         else if ( event.type === "m.room.history_visibility" ) {
             body = displayname + i18n.tr(" has set the chat history visible to: ")
