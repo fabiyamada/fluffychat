@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: fluffychat.christianpauly\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-05-20 13:20+0000\n"
+"POT-Creation-Date: 2018-05-20 13:27+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -267,6 +267,6 @@ msgstr ""
 msgid "You: "
 msgstr ""
 
-#: ../qml/components/ChatScrollView.qml:85
+#: ../qml/components/ChatScrollView.qml:84
 msgid "New message at the bottom of the chat"
 msgstr ""
