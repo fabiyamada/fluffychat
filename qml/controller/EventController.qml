@@ -109,15 +109,11 @@ Item {
             var room = rooms[id]
 
             storage.query ("INSERT OR REPLACE INTO Rooms VALUES(?, ?, COALESCE((SELECT topic FROM Rooms WHERE id='" + id + "'), ''), ?, ?, ?, COALESCE((SELECT prev_batch FROM Rooms WHERE id='" + id + "'), ''))",
-            [id,
+            [ id,
             membership,
             (room.unread_notifications ? room.unread_notifications.highlight_count : 0),
             (room.unread_notifications ? room.unread_notifications.notification_count : 0),
-            (room.timeline ? (room.timeline.limited ? 1 : 0) : 0)])
-
-            /*if ( room.state ) handleJoinedStateRoomEvents ( id, room.state.events )
-            if ( room.invite_state ) handleJoinedStateRoomEvents ( id, room.invite_state.events )
-            if ( room.timeline ) handleJoinedRoomTimelineEvents ( id, room.timeline.events )*/
+            (room.timeline ? (room.timeline.limited ? 1 : 0) : 0) ])
 
             if ( room.state ) handleRoomEvents ( id, room.state.events, "state" )
             if ( room.invite_state ) handleRoomEvents ( id, room.invite_state.events, "invite_state" )
@@ -137,7 +133,14 @@ Item {
             // current displayed chat!
             if ( type === "timeline" || type === "history" ) {
                 storage.query ( "INSERT OR IGNORE INTO Roomevents VALUES(?, ?, ?, ?, ?, ?, ?, ?)",
-                [ event.event_id, roomid, event.origin_server_ts, event.sender, event.content.body || null, event.content.msgtype || null, event.type, JSON.stringify(event.content) ])
+                [ event.event_id,
+                roomid,
+                event.origin_server_ts,
+                event.sender,
+                event.content.body || null,
+                event.content.msgtype || null,
+                event.type,
+                JSON.stringify(event.content) ])
                 if ( type === "timeline" && roomid === activeChat ) chatTimelineEvent ( roomid, event )
                 else if ( type === "timeline" ) chatNotificationEvent ( roomid, event )
             }
@@ -146,7 +149,8 @@ Item {
             // it has to be changed in the database
             if ( event.type === "m.room.name" ) {
                 storage.query( "UPDATE Rooms SET topic=? WHERE id=?",
-                [ event.content.name, roomid ])
+                [ event.content.name,
+                roomid ])
                 // If the affected room is the currently used room, then the
                 // name has to be updated in the GUI:
                 if ( activeChat === roomid ) {
@@ -160,44 +164,12 @@ Item {
             // or has changed his nickname
             else if ( event.type === "m.room.member") {
                 storage.query( "INSERT OR REPLACE INTO Roommembers VALUES(?, ?, ?, ?, ?)",
-                [ roomid, event.state_key, event.content.membership,
-                event.content.displayname, event.content.avatar_url ])
+                [ roomid,
+                event.state_key,
+                event.content.membership,
+                event.content.displayname,
+                event.content.avatar_url ])
             }
         }
     }
-
-/*
-    function handleJoinedStateRoomEvents ( roomid, events ) {
-        for ( var i = 0; i < events.length; i++ ) {
-            var event = events[i]
-            handleStateChanges (roomid, event )
-            chatStateEvent ( roomid, event )
-        }
-    }
-
-
-    function handleJoinedRoomTimelineEvents ( roomid, events, withSignals ) {
-        if ( withSignals == null ) withSignals = true
-        for ( var i = 0; i < events.length; i++ ) {
-            var event = events[i]
-            storage.query ( "INSERT OR IGNORE INTO Roomevents VALUES(?, ?, ?, ?, ?, ?, ?, ?)",
-            [ event.event_id, roomid, event.origin_server_ts, event.sender, event.content.body || null, event.content.msgtype || null, event.type, JSON.stringify(event.content) ])
-            // Someone changed the topic of a chat
-            if ( withSignals ) {
-                handleStateChanges (roomid, event )
-                if ( roomid === activeChat ) chatTimelineEvent ( roomid, event )
-                else chatNotificationEvent ( roomid, event )
-            }
-        }
-    }
-
-    function handleStateChanges ( roomid, event ) {
-        if ( event.type === "m.room.name" ) {
-            storage.query( "UPDATE Rooms SET topic=? WHERE id=?", [ event.content.name, roomid ])
-        }
-        if ( event.type === "m.room.member") {
-            storage.query( "INSERT OR REPLACE INTO Roommembers VALUES(?, ?, ?, ?, ?)",
-            [ roomid, event.state_key, event.content.membership, event.content.displayname, event.content.avatar_url ])
-        }
-    }*/
 }
