@@ -20,7 +20,7 @@ ScrollView {
         " WHERE events.roomsid='" + activeChat +
         "' AND members.roomsid=events.roomsid " +
         " AND members.state_key=events.sender " +
-        " AND events.type IN ('m.room.member','m.room.message','m.room.invite') " +
+        " AND events.type IN ('m.room.create','m.room.member','m.room.message','m.room.invite') " +
         " ORDER BY events.origin_server_ts DESC" +
         " LIMIT " + (historyCount+1) + " OFFSET " + (historyCount*historyPosition) + " "
         , function (res) {

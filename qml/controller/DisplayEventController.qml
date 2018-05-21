@@ -4,7 +4,7 @@ import Ubuntu.Components 1.3
 /*============================= STORAGE CONTROLLER =============================
 
 This is a little helper controller to get a display text from a room event, which
-is NOT a message. Currently, only invitations and member changes are displayed.
+is NOT a message. Currently, only invitations, creat and member changes are displayed.
 */
 
 Item {

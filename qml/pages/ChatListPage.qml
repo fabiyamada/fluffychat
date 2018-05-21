@@ -19,6 +19,7 @@ Page {
         storage.transaction ("SELECT rooms.id, rooms.topic, rooms.membership, rooms.notification_count, events.origin_server_ts, events.content_body, events.sender, events.content_json, events.type FROM Rooms rooms LEFT JOIN Roomevents events " +
         " WHERE rooms.membership!='leave' " +
         " AND (rooms.id=events.roomsid OR rooms.membership='invite') " +
+        " AND events.type IN ('m.room.create','m.room.member','m.room.message','m.room.invite') " +
         " GROUP BY rooms.id " +
         " ORDER BY events.origin_server_ts DESC "
         , function(res) {
