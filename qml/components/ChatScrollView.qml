@@ -51,7 +51,7 @@ ScrollView {
             }
             matrix.get( "/client/r0/rooms/" + activeChat + "/messages", data, function ( result ) {
                 if ( result.chunk.length > 0 ) {
-                    events.handleJoinedRoomTimelineEvents( activeChat, result.chunk, false )
+                    events.handleRoomEvents ( activeChat, result.chunk, "history" )
                     storage.transaction ( "UPDATE Rooms SET prev_batch='" + result.end + "' WHERE id='" + activeChat + "'", function () {
                         if ( historyPosition > 0 ) historyPosition++
                         update ()

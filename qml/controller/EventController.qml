@@ -90,13 +90,13 @@ Item {
     // deleting data, updating data and call signals
     function handleEvents ( response ) {
         //console.log ( "===============New events========", JSON.stringify ( response ) )
-        since = response.next_batch
-        storage.setConfig ( "next_batch", since )
         var changed = false
         try {
             handleRooms ( response.rooms.join, "join" )
             handleRooms ( response.rooms.leave, "leave" )
             handleRooms ( response.rooms.invite, "invite" )
+            since = response.next_batch
+            storage.setConfig ( "next_batch", since )
         }
         catch ( e ) { console.log ( e ) }
         chatListUpdated ()
@@ -130,16 +130,16 @@ Item {
     function handleRoomEvents ( roomid, events, type ) {
         // We go through the events array
         for ( var i = 0; i < events.length; i++ ) {
+            var event = events[i]
 
             // messages from the timeline will be saved, for display in the chat.
             // Only this events will call the notification signal or change the
             // current displayed chat!
-            if ( type === "timeline" ) {
-                var event = events[i]
+            if ( type === "timeline" || type === "history" ) {
                 storage.query ( "INSERT OR IGNORE INTO Roomevents VALUES(?, ?, ?, ?, ?, ?, ?, ?)",
                 [ event.event_id, roomid, event.origin_server_ts, event.sender, event.content.body || null, event.content.msgtype || null, event.type, JSON.stringify(event.content) ])
-                if ( roomid === activeChat ) chatTimelineEvent ( roomid, event )
-                else chatNotificationEvent ( roomid, event )
+                if ( type === "timeline" && roomid === activeChat ) chatTimelineEvent ( roomid, event )
+                else if ( type === "timeline" ) chatNotificationEvent ( roomid, event )
             }
 
             // This event means, that the topic of a room has been changed, so

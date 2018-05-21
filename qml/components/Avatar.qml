@@ -28,7 +28,7 @@ Rectangle {
         // Download the icon:
         if ( false && mxc !== null ) {
             var mxcID = mxc.replace("mxc://","")
-            matrix.get ( "/media/r0/download/" + mxcID, null, function (blob){
+            matrix.get ( "/media/r0/download/" + mxcID + "/avatar", null, function (blob){
                 avatar.source = "image://" + blob
             } )
         }
