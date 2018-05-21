@@ -1,0 +1,284 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: fluffychat.christianpauly\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2018-05-21 11:49+0000\n"
+"PO-Revision-Date: 2018-05-21 18:05+0000\n"
+"Last-Translator: advocatux <advocatux@airpost.net>\n"
+"Language-Team: UBports Spanish Team\n"
+"Language: es\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../qml/controller/DisplayEventController.qml:13
+msgid "Unknown Event: "
+msgstr "Evento desconocido: "
+
+#: ../qml/controller/DisplayEventController.qml:14
+msgid "Someone"
+msgstr "Alguien"
+
+#: ../qml/controller/DisplayEventController.qml:17
+msgid " has entered the chat"
+msgstr " ha entrado en el chat"
+
+#: ../qml/controller/DisplayEventController.qml:20
+msgid " has invited "
+msgstr " ha invitado"
+
+#: ../qml/controller/DisplayEventController.qml:23
+msgid " has left the chat"
+msgstr " ha abandonado el chat"
+
+#: ../qml/controller/DisplayEventController.qml:26
+msgid " has been banned from the chat"
+msgstr " ha sido expulsado del chat"
+
+#: ../qml/controller/DisplayEventController.qml:30
+msgid "The chat has been created"
+msgstr "Se ha creado el chat"
+
+#: ../qml/controller/DisplayEventController.qml:33
+msgid " has changed the chat name"
+msgstr " ha cambiado el nombre del chat"
+
+#: ../qml/controller/DisplayEventController.qml:36
+msgid " has changed the chat topic"
+msgstr " ha cambiado el tema del chat"
+
+#: ../qml/controller/DisplayEventController.qml:39
+msgid " has set the chat history visible to: "
+msgstr " ha hecho visible el historial del chat para: "
+
+#: ../qml/controller/DisplayEventController.qml:41
+msgid "All chat participants"
+msgstr "Todos los participantes del chat"
+
+#: ../qml/controller/DisplayEventController.qml:44
+msgid "All joined chat participants"
+msgstr "Todos los participantes unidos al chat"
+
+#: ../qml/controller/DisplayEventController.qml:47
+msgid "All invited chat participants"
+msgstr "Todos los participantes invitados al chat"
+
+#: ../qml/controller/DisplayEventController.qml:50
+msgid "Everyone"
+msgstr "Todos"
+
+#: ../qml/controller/DisplayEventController.qml:54
+msgid " has set the join rules to: "
+msgstr " ha establecido las normas de unión para: "
+
+#: ../qml/controller/DisplayEventController.qml:56
+msgid "Only invited users"
+msgstr "Solo usuarios invitados"
+
+#: ../qml/controller/DisplayEventController.qml:59
+msgid "Public"
+msgstr "Público"
+
+#: ../qml/controller/DisplayEventController.qml:62
+msgid "Private"
+msgstr "Privado"
+
+#: ../qml/controller/DisplayEventController.qml:65
+msgid "Knock"
+msgstr "Llamar a la puerta"
+
+#: ../qml/controller/DisplayEventController.qml:69
+msgid " has set the guest access to: "
+msgstr " ha establecido el acceso de invitados como: "
+
+#: ../qml/controller/DisplayEventController.qml:71
+msgid "Can join"
+msgstr "Pueden unirse"
+
+#: ../qml/controller/DisplayEventController.qml:74
+msgid "Forbidden"
+msgstr "Prohibido"
+
+#: ../qml/controller/DisplayEventController.qml:78
+msgid "The chat aliases have been changed to: "
+msgstr "Los alias del chat han sido cambiados a: "
+
+#: ../qml/controller/DisplayEventController.qml:84
+msgid "The canonical chat alias has been changed to: "
+msgstr "El alias canónico del chat ha sido cambiado a: "
+
+#: ../qml/controller/DisplayEventController.qml:87
+msgid "The chat permissions have been changed"
+msgstr "Los permisos del chat han sido cambiados"
+
+#: ../qml/controller/RoomNameController.qml:13
+#: ../qml/controller/RoomNameController.qml:21
+#: ../qml/controller/RoomNameController.qml:28
+msgid "Empty chat"
+msgstr "Chat vacío"
+
+#: ../qml/controller/MatrixController.qml:145
+msgid "It seems that you are offline 😕"
+msgstr "Parece que está desconectado 😕"
+
+#: ../qml/pages/InfoPage.qml:10 ../qml/pages/ChatPage.qml:58
+msgid "Info"
+msgstr "Información"
+
+#: ../qml/pages/InfoPage.qml:31
+msgid "Buy me a coffee"
+msgstr "Invíteme a un café"
+
+#: ../qml/pages/InfoPage.qml:40
+msgid "FluffyChat by Christian Pauly"
+msgstr "FluffyChat por Christian Pauly"
+
+#: ../qml/pages/InfoPage.qml:40
+msgid "Email: "
+msgstr "Correo: "
+
+#: ../qml/pages/LoginPage.qml:19
+msgid "Please fill all textfields"
+msgstr "Cumplimente todos los campos de texto"
+
+#: ../qml/pages/LoginPage.qml:44
+msgid "Invalid username or password"
+msgstr "Nombre de usuario o contraseña no válida"
+
+#: ../qml/pages/LoginPage.qml:47
+msgid "No connection to "
+msgstr "Sin conexión a "
+
+#: ../qml/pages/LoginPage.qml:57
+msgid "Welcome to FluffyChat"
+msgstr "Bienvenido/a a FluffyChat"
+
+#: ../qml/pages/LoginPage.qml:73
+msgid "Choose your homeserver"
+msgstr "Elija su servidor"
+
+#: ../qml/pages/LoginPage.qml:96
+msgid "What's your name?"
+msgstr "¿Cuál es su nombre?"
+
+#: ../qml/pages/LoginPage.qml:103
+msgid "Username"
+msgstr "Nombre de usuario/a"
+
+#: ../qml/pages/LoginPage.qml:109
+msgid "Password"
+msgstr "Contraseña"
+
+#: ../qml/pages/LoginPage.qml:119
+msgid "Sign in"
+msgstr "Iniciar sesión"
+
+#: ../qml/pages/LoginPage.qml:125
+msgid "Sign up"
+msgstr "Registrarse"
+
+#: ../qml/pages/LoginPage.qml:134
+msgid "Using the homeserver: "
+msgstr "Usando el servidor: "
+
+#: ../qml/pages/ChatListPage.qml:75
+msgid "Swipe from the bottom to start a new chat"
+msgstr "Deslizar desde abajo para comenzar un chat nuevo"
+
+#: ../qml/pages/MainSettingsPage.qml:11
+msgid "Settings"
+msgstr "Configuración"
+
+#: ../qml/pages/MainSettingsPage.qml:32
+msgid "About FluffyChat"
+msgstr "Acerca de FluffyChat"
+
+#: ../qml/pages/MainSettingsPage.qml:38
+msgid "Logout"
+msgstr "Cerrar la sesión"
+
+#: ../qml/pages/MainSettingsPage.qml:57
+msgid "Set status"
+msgstr "Establecer el estado"
+
+#: ../qml/pages/MainSettingsPage.qml:59
+msgid "Enter your status"
+msgstr "Introduzca su estado"
+
+#: ../qml/pages/MainSettingsPage.qml:62
+msgid "Cancel"
+msgstr "Cancelar"
+
+#: ../qml/pages/MainSettingsPage.qml:66
+msgid "Save"
+msgstr "Guardar"
+
+#: ../qml/pages/ChatPage.qml:63 ../qml/pages/ChatSettingsPage.qml:43
+msgid "Leave chat"
+msgstr "Salir del chat"
+
+#: ../qml/pages/ChatPage.qml:90
+msgid "No messages in this chat ..."
+msgstr "No hay mensajes en este chat ..."
+
+#: ../qml/pages/ChatPage.qml:108
+msgid "Accept invatiation"
+msgstr "Aceptar la invitación"
+
+#: ../qml/pages/ChatPage.qml:127
+msgid "Type something ..."
+msgstr "Escriba algo ..."
+
+#: ../qml/pages/ChatPage.qml:160
+msgid "Scroll down"
+msgstr "Desplazar hacia abajo"
+
+#: ../qml/pages/ChatSettingsPage.qml:34
+msgid "Join this chat"
+msgstr "Unirse a este chat"
+
+#: ../qml/pages/ChatSettingsPage.qml:78
+msgid "Users in this chat:"
+msgstr "Usuarios en este chat:"
+
+#: ../qml/pages/AddChatPage.qml:70
+msgid "Room was not found 😟"
+msgstr "No se encontró la habitación 😟"
+
+#: ../qml/pages/AddChatPage.qml:81
+msgid "Start a new chat"
+msgstr "Iniciar un chat nuevo"
+
+#: ../qml/pages/AddChatPage.qml:99
+msgid "Enter room id or alias"
+msgstr "Introduzca el id o alias de la habitación"
+
+#: ../qml/components/FcPageHeader.qml:7 fluffychat.desktop.in.h:1
+msgid "FluffyChat"
+msgstr "FluffyChat"
+
+#: ../qml/components/ChatListItem.qml:24
+msgid "Unknown chat"
+msgstr "Chat desconocido"
+
+#: ../qml/components/ChatListItem.qml:26
+msgid "No previous messages"
+msgstr "No hay mensajes anteriores"
+
+#: ../qml/components/ChatListItem.qml:40
+msgid "You have been invited to this chat"
+msgstr "Ha sido invitado/a a este chat"
+
+#: ../qml/components/ChatListItem.qml:44
+msgid "You: "
+msgstr "Tú: "
+
+#: ../qml/components/ChatScrollView.qml:86
+msgid "New message at the bottom of the chat"
+msgstr "Nuevo mensaje en la parte inferior del chat" 
