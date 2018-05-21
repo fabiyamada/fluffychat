@@ -11,7 +11,7 @@ ScrollView {
     property var historyPosition: 0
     property var historyCount: 50
     property var updated: false
-    property var enteredMinusConent: false
+    property var enteredMinusContent: false
     property var count: messagesList.children.length
 
     function update () {
@@ -20,7 +20,6 @@ ScrollView {
         " WHERE events.roomsid='" + activeChat +
         "' AND members.roomsid=events.roomsid " +
         " AND members.state_key=events.sender " +
-        " AND events.type IN ('m.room.create','m.room.member','m.room.message','m.room.invite') " +
         " ORDER BY events.origin_server_ts DESC" +
         " LIMIT " + (historyCount+1) + " OFFSET " + (historyCount*historyPosition) + " "
         , function (res) {
@@ -91,21 +90,23 @@ ScrollView {
     flickableItem.contentY: flickableItem.contentHeight>height ? flickableItem.contentHeight - height : 0
     flickableItem {
         onContentYChanged: {
-            if ( !enteredMinusConent && updated && flickableItem.contentY < -50 ) {
+            if ( !enteredMinusContent && updated && flickableItem.contentY < -50 ) {
+                console.log("up")
                 updated = false
-                enteredMinusConent = true
+                enteredMinusContent = true
                 historyPosition++
                 update ()
             }
             else if ( flickableItem.contentY > flickableItem.contentHeight-height+50 && historyPosition > 0 ) {
+                console.log("down")
                 updated = false
-                enteredMinusConent = true
+                enteredMinusContent = true
                 historyPosition--
                 update ()
             }
-            else if ( flickableItem.contentY >= 0 ||
+            else if ( flickableItem.contentY >= 0 &&
                 flickableItem.contentY <= flickableItem.contentHeight-height ){
-                    enteredMinusConent = false
+                    enteredMinusContent = false
                 }
             }
         }

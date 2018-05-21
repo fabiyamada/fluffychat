@@ -4,7 +4,7 @@ import Ubuntu.Components 1.3
 /*============================= STORAGE CONTROLLER =============================
 
 This is a little helper controller to get a display text from a room event, which
-is NOT a message. Currently, only invitations, creat and member changes are displayed.
+is NOT a message. Currently, only invitations, create and member changes are displayed.
 */
 
 Item {
@@ -30,6 +30,9 @@ Item {
             body = i18n.tr("The chat has been created")
         }
         else if ( event.type === "m.room.name" ) {
+            body = displayname + i18n.tr(" has changed the name")
+        }
+        else if ( event.type === "m.room.topic" ) {
             body = displayname + i18n.tr(" has changed the topic")
         }
         else if ( event.type === "m.room.history_visibility" ) {
