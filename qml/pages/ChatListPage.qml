@@ -16,7 +16,7 @@ Page {
         chatListColumn.children = ""
 
         // On the top are the rooms, which the user is invited to
-        storage.transaction ("SELECT rooms.id, rooms.topic, rooms.membership, rooms.notification_count, events.origin_server_ts, events.content_body, events.sender, events.content_json, events.type, members.displayname FROM Rooms rooms LEFT JOIN Roomevents events JOIN Roommembers members " +
+        storage.transaction ("SELECT rooms.id, rooms.topic, rooms.membership, rooms.notification_count, events.id AS eventsid, events.origin_server_ts, events.content_body, events.sender, events.content_json, events.type, members.displayname FROM Rooms rooms LEFT JOIN Roomevents events JOIN Roommembers members " +
         " WHERE rooms.membership!='leave' " +
         " AND (rooms.id=events.roomsid OR rooms.membership='invite') " +
         " AND (members.roomsid=events.roomsid OR rooms.membership='invite') " +

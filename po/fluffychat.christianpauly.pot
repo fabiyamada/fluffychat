@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: fluffychat.christianpauly\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-05-21 11:11+0000\n"
+"POT-Creation-Date: 2018-05-21 11:34+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -263,22 +263,22 @@ msgstr ""
 msgid "FluffyChat"
 msgstr ""
 
-#: ../qml/components/ChatListItem.qml:23
+#: ../qml/components/ChatListItem.qml:24
 msgid "Unknown chat"
 msgstr ""
 
-#: ../qml/components/ChatListItem.qml:25
+#: ../qml/components/ChatListItem.qml:26
 msgid "No previous messages"
 msgstr ""
 
-#: ../qml/components/ChatListItem.qml:39
+#: ../qml/components/ChatListItem.qml:40
 msgid "You have been invited to this chat"
 msgstr ""
 
-#: ../qml/components/ChatListItem.qml:43
+#: ../qml/components/ChatListItem.qml:44
 msgid "You: "
 msgstr ""
 
-#: ../qml/components/ChatScrollView.qml:83
+#: ../qml/components/ChatScrollView.qml:86
 msgid "New message at the bottom of the chat"
 msgstr ""

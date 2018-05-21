@@ -79,7 +79,10 @@ ScrollView {
     // This function handles new events, based on the signal from the event
     // controller. It just has to format the event to the database format
     function handleNewEvent ( event ) {
-        if ( historyPosition === 0 ) update ()
+        if ( historyPosition === 0 ) {
+            update ()
+            matrix.post( "/client/r0/rooms/" + activeChat + "/receipt/m.read/" + event.id, null )
+        }
         else toast.show (i18n.tr("New message at the bottom of the chat"))
     }
 

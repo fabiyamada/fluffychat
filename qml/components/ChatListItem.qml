@@ -15,6 +15,7 @@ ListItem {
     onClicked: {
         activeChat = room.id
         mainStack.push (Qt.resolvedUrl("../pages/ChatPage.qml"))
+        if ( room.notification_count > 0 ) matrix.post( "/client/r0/rooms/" + activeChat + "/receipt/m.read/" + room.eventsid, null )
     }
 
     ListItemLayout {
