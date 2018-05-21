@@ -10,7 +10,7 @@ is NOT a message. Currently, only invitations, create and member changes are dis
 Item {
     function getDisplay ( event ) {
         event.content = JSON.parse (event.content_json)
-        var body = event.type
+        var body = i18n.tr("Unknown Event: ") + event.type
         var displayname =  event.content.displayname || event.displayname || event.sender || i18n.tr("Someone")
         if ( event.type === "m.room.member" ) {
             if ( event.content.membership === "join" ) {
@@ -30,10 +30,10 @@ Item {
             body = i18n.tr("The chat has been created")
         }
         else if ( event.type === "m.room.name" ) {
-            body = displayname + i18n.tr(" has changed the name")
+            body = displayname + i18n.tr(" has changed the chat name")
         }
         else if ( event.type === "m.room.topic" ) {
-            body = displayname + i18n.tr(" has changed the topic")
+            body = displayname + i18n.tr(" has changed the chat topic")
         }
         else if ( event.type === "m.room.history_visibility" ) {
             body = displayname + i18n.tr(" has set the chat history visible to: ")

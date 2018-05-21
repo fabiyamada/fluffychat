@@ -26,11 +26,11 @@ Rectangle {
             anchors.left: parent.left
             anchors.margins: units.gu(1)
             Component.onCompleted: {
-                var maxWidth = root.width - units.gu(2)
+                var maxWidth = root.width - units.gu(4)
                 if ( width > maxWidth ) width = maxWidth
             }
             wrapMode: Text.Wrap
-            text: stamp.getChatTime ( event.origin_server_ts ) + " - " + displayEvents.getDisplay ( event )
+            text: displayEvents.getDisplay ( event ) + " <font color='" + UbuntuColors.silk + "'>" + stamp.getChatTime ( event.origin_server_ts ) + "</font>"
             textSize: Label.Small
             font.italic: true
         }

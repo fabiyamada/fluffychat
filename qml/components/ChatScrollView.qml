@@ -91,14 +91,12 @@ ScrollView {
     flickableItem {
         onContentYChanged: {
             if ( !enteredMinusContent && updated && flickableItem.contentY < -50 ) {
-                console.log("up")
                 updated = false
                 enteredMinusContent = true
                 historyPosition++
                 update ()
             }
             else if ( flickableItem.contentY > flickableItem.contentHeight-height+50 && historyPosition > 0 ) {
-                console.log("down")
                 updated = false
                 enteredMinusContent = true
                 historyPosition--
