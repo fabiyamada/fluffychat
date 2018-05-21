@@ -11,7 +11,7 @@ Item {
     function getDisplay ( event ) {
         event.content = JSON.parse (event.content_json)
         var body = i18n.tr("Unknown Event: ") + event.type
-        var displayname =  event.content.displayname || event.displayname || event.sender || i18n.tr("Someone")
+        var displayname = event.content.displayname || event.displayname || event.sender || i18n.tr("Someone")
         if ( event.type === "m.room.member" ) {
             if ( event.content.membership === "join" ) {
                 body = displayname + i18n.tr(" has entered the chat")
