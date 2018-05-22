@@ -38,13 +38,13 @@ Item {
         if ( matrix.onlineStatus ) timeout = longPollingTimeout
         syncRequest = matrix.get ("/client/r0/sync", { "since": since, "timeout": timeout }, function ( response ) {
             if ( waitingForSync ) progressBarRequests--
-            if ( matrix.token ) {
+            if ( matrix.token !== undefined ) {
                 matrix.onlineStatus = true
                 handleEvents ( response )
                 sync ()
             }
         }, function ( error ) {
-            if ( matrix.token ) {
+            if ( matrix.token !== undefined ) {
                 matrix.onlineStatus = false
                 console.log ( "You are offline!! Try to reconnect in a few seconds!" )
                 if ( error.errcode === "M_INVALID" ) {
