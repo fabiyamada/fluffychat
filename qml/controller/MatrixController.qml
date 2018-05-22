@@ -60,7 +60,6 @@ Item {
         }
 
         var onLogged = function ( response ) {
-            console.log(JSON.stringify(response))
             storage.setConfig ( "username", username )
             storage.setConfig ( "domain", server )
             storage.setConfig ( "token", response.access_token )
@@ -77,18 +76,24 @@ Item {
     function logout ( callback ) {
         remove ( "/client/ro/devices/" + deviceID, {}, function () {
             post ( "/client/r0/logout", {}, function () {
-                storage.unsetConfig ( "username")
-                storage.unsetConfig ( "token")
-                storage.unsetConfig ( "domain")
-                storage.unsetConfig ( "next_batch")
-                storage.unsetConfig ( "deviceid")
-                storage.drop ()
-                onlineStatus = false
-                username = server = token = events.since = undefined
+                reset ()
                 if ( callback ) callback ()
             } )
         } )
+    }
 
+
+    function reset () {
+        storage.unsetConfig ( "username")
+        storage.unsetConfig ( "token")
+        storage.unsetConfig ( "domain")
+        storage.unsetConfig ( "next_batch")
+        storage.unsetConfig ( "deviceid")
+        storage.drop ()
+        onlineStatus = false
+        username = server = token = events.since = undefined
+        mainStack.clear ()
+        mainStack.push(Qt.resolvedUrl("../pages/LoginPage.qml"))
     }
 
     function get ( action, data, callback, error_callback, status_callback ) {
@@ -152,6 +157,7 @@ Item {
                         toast.show (i18n.tr("It seems that you are offline 😕"))
                     }
                     if ( typeof error === "string" ) error = {"errcode": "ERROR", "error": error}
+                    if ( error.errcode === "M_UNKNOWN_TOKEN" ) reset ()
                     if ( error_callback ) error_callback ( error )
                     else toast.show ( error.error )
                 }

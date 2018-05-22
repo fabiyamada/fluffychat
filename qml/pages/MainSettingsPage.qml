@@ -37,15 +37,8 @@ Page {
             SettingsListItem {
                 name: i18n.tr("Logout")
                 icon: "close"
-                onClicked: {
-                    var callback = function () {
-                        mainStack.clear ()
-                        mainStack.push(Qt.resolvedUrl("../pages/LoginPage.qml"))
-                    }
-                    matrix.logout ( callback )
-                }
+                onClicked: matrix.logout ()
             }
-
         }
     }
 
