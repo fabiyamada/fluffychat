@@ -13,6 +13,7 @@ Item {
     // The username and the device name at the current server
     property var username
     property var deviceName
+    property var deviceID
     property var matrixid: "@" + username + ":" + server
     property var displayname
 
@@ -32,6 +33,7 @@ Item {
         storage.getConfig("token", function(res) { token = res })
         storage.getConfig("username", function(res) { username = res })
         storage.getConfig("domain", function(res) { server = res })
+        storage.getConfig("deviceid", function(res) { deviceID = res })
 
         if ( username != null && token != null && server != null ) {
             mainStack.push(Qt.resolvedUrl("../pages/ChatListPage.qml"))
@@ -58,10 +60,13 @@ Item {
         }
 
         var onLogged = function ( response ) {
+            console.log(JSON.stringify(response))
             storage.setConfig ( "username", username )
             storage.setConfig ( "domain", server )
             storage.setConfig ( "token", response.access_token )
+            storage.setConfig ( "deviceid", response.device_id )
             token = response.access_token
+            deviceID = response.device_id
             onlineStatus = true
             events.init ()
             if ( callback ) callback ( response )
@@ -69,19 +74,21 @@ Item {
         xmlRequest ( "POST", data, "/client/r0/login", onLogged, error_callback, status_callback )
     }
 
-    function logout ( callback, error_callback, status_callback ) {
-        storage.unsetConfig ( "username")
-        storage.unsetConfig ( "token")
-        storage.unsetConfig ( "domain")
-        storage.unsetConfig ( "next_batch")
-        storage.drop ()
-        onlineStatus = false
-        username = server = token = events.since = undefined
-        if ( !onlineStatus ) {
-            if ( error_callback ) error_callback ( "Error! You are offline!" )
-            return
-        }
-        xmlRequest ( "POST", {}, "/client/r0/logout", callback, error_callback, status_callback )
+    function logout ( callback ) {
+        remove ( "/client/ro/devices/" + deviceID, {}, function () {
+            post ( "/client/r0/logout", {}, function () {
+                storage.unsetConfig ( "username")
+                storage.unsetConfig ( "token")
+                storage.unsetConfig ( "domain")
+                storage.unsetConfig ( "next_batch")
+                storage.unsetConfig ( "deviceid")
+                storage.drop ()
+                onlineStatus = false
+                username = server = token = events.since = undefined
+                if ( callback ) callback ()
+            } )
+        } )
+
     }
 
     function get ( action, data, callback, error_callback, status_callback ) {

@@ -42,7 +42,7 @@ Page {
                         mainStack.clear ()
                         mainStack.push(Qt.resolvedUrl("../pages/LoginPage.qml"))
                     }
-                    matrix.logout ( callback, callback )
+                    matrix.logout ( callback )
                 }
             }
 

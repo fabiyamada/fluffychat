@@ -89,7 +89,7 @@ Item {
     // This function starts handling the events, saving new data in the storage,
     // deleting data, updating data and call signals
     function handleEvents ( response ) {
-        console.log ( "===============New events========", JSON.stringify ( response ) )
+        //console.log ( "===============New events========", JSON.stringify ( response ) )
         var changed = false
         try {
             handleRooms ( response.rooms.join, "join" )
