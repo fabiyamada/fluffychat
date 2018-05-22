@@ -39,6 +39,7 @@ MainView {
     UserNameController { id: usernames }
     DisplayEventController { id: displayEvents }
     Toast { id: toast }
+    LoadingModal { id: loadingModal }
 
     onActiveChatChanged: {
         roomnames.getById ( activeChat, function (name) {
@@ -50,6 +51,6 @@ MainView {
     Component.onCompleted: {
         storage.init ()
         matrix.init ()
-        
+
     }
 }

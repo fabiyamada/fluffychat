@@ -85,18 +85,24 @@ Item {
         progressBarRequests--
     }
 
+    property var transaction
+
 
     // This function starts handling the events, saving new data in the storage,
     // deleting data, updating data and call signals
     function handleEvents ( response ) {
-        //console.log ( "===============New events========", JSON.stringify ( response ) )
         var changed = false
         try {
-            handleRooms ( response.rooms.join, "join" )
-            handleRooms ( response.rooms.leave, "leave" )
-            handleRooms ( response.rooms.invite, "invite" )
-            since = response.next_batch
-            storage.setConfig ( "next_batch", since )
+            storage.db.transaction(
+                function(tx) {
+                    transaction = tx
+                    handleRooms ( response.rooms.join, "join" )
+                    handleRooms ( response.rooms.leave, "leave" )
+                    handleRooms ( response.rooms.invite, "invite" )
+                    since = response.next_batch
+                    storage.setConfig ( "next_batch", since )
+                }
+            )
         }
         catch ( e ) { console.log ( e ) }
         chatListUpdated ()
@@ -108,7 +114,7 @@ Item {
         for ( var id in rooms ) {
             var room = rooms[id]
 
-            storage.query ("INSERT OR REPLACE INTO Rooms VALUES(?, ?, COALESCE((SELECT topic FROM Rooms WHERE id='" + id + "'), ''), ?, ?, ?, COALESCE((SELECT prev_batch FROM Rooms WHERE id='" + id + "'), ''))",
+            transaction.executeSql ("INSERT OR REPLACE INTO Rooms VALUES(?, ?, COALESCE((SELECT topic FROM Rooms WHERE id='" + id + "'), ''), ?, ?, ?, COALESCE((SELECT prev_batch FROM Rooms WHERE id='" + id + "'), ''))",
             [ id,
             membership,
             (room.unread_notifications ? room.unread_notifications.highlight_count : 0),
@@ -132,7 +138,7 @@ Item {
             // Only this events will call the notification signal or change the
             // current displayed chat!
             if ( type === "timeline" || type === "history" ) {
-                storage.query ( "INSERT OR IGNORE INTO Roomevents VALUES(?, ?, ?, ?, ?, ?, ?, ?)",
+                transaction.executeSql ( "INSERT OR IGNORE INTO Roomevents VALUES(?, ?, ?, ?, ?, ?, ?, ?)",
                 [ event.event_id,
                 roomid,
                 event.origin_server_ts,
@@ -148,7 +154,7 @@ Item {
             // This event means, that the topic of a room has been changed, so
             // it has to be changed in the database
             if ( event.type === "m.room.name" ) {
-                storage.query( "UPDATE Rooms SET topic=? WHERE id=?",
+                transaction.executeSql( "UPDATE Rooms SET topic=? WHERE id=?",
                 [ event.content.name,
                 roomid ])
                 // If the affected room is the currently used room, then the
@@ -163,7 +169,7 @@ Item {
             // This event means, that someone joined the room, has left the room
             // or has changed his nickname
             else if ( event.type === "m.room.member") {
-                storage.query( "INSERT OR REPLACE INTO Roommembers VALUES(?, ?, ?, ?, ?)",
+                transaction.executeSql( "INSERT OR REPLACE INTO Roommembers VALUES(?, ?, ?, ?, ?)",
                 [ roomid,
                 event.state_key,
                 event.content.membership,

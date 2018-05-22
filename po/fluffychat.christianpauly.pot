@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: fluffychat.christianpauly\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-05-22 12:45+0000\n"
+"POT-Creation-Date: 2018-05-22 14:10+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -123,7 +123,7 @@ msgstr ""
 msgid "Empty chat"
 msgstr ""
 
-#: ../qml/controller/MatrixController.qml:152
+#: ../qml/controller/MatrixController.qml:157
 msgid "It seems that you are offline 😕"
 msgstr ""
 
@@ -203,19 +203,19 @@ msgstr ""
 msgid "Logout"
 msgstr ""
 
-#: ../qml/pages/MainSettingsPage.qml:57
+#: ../qml/pages/MainSettingsPage.qml:50
 msgid "Set status"
 msgstr ""
 
-#: ../qml/pages/MainSettingsPage.qml:59
+#: ../qml/pages/MainSettingsPage.qml:52
 msgid "Enter your status"
 msgstr ""
 
-#: ../qml/pages/MainSettingsPage.qml:62
+#: ../qml/pages/MainSettingsPage.qml:55
 msgid "Cancel"
 msgstr ""
 
-#: ../qml/pages/MainSettingsPage.qml:66
+#: ../qml/pages/MainSettingsPage.qml:59
 msgid "Save"
 msgstr ""
 
@@ -261,6 +261,10 @@ msgstr ""
 
 #: ../qml/components/FcPageHeader.qml:7 fluffychat.desktop.in.h:1
 msgid "FluffyChat"
+msgstr ""
+
+#: ../qml/components/LoadingModal.qml:18
+msgid "Synchronizing ... Please wait!"
 msgstr ""
 
 #: ../qml/components/ChatListItem.qml:24
