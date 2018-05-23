@@ -58,6 +58,7 @@ Page {
         if ( newChatId === "" ) searchTextField.focus = true
         else {
             var success_callback = function ( response ) {
+                toast.show ( i18n.tr("Synchronizing \n This can take a few minutes ...") )
                 searchTextField.text = ""
                 activeChat = response.room_id
                 if ( mainStack.depth === 1 ) bottomEdge.collapse()

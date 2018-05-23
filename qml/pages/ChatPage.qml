@@ -116,6 +116,7 @@ Page {
             visible: membership === "invite"
             onClicked: {
                 var success_callback = function () {
+                    toast.show ( i18n.tr("Synchronizing \n This can take a few minutes ...") )
                     events.waitForSync ()
                     membership = "join"
                 }

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: fluffychat.christianpauly\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-05-23 14:22+0000\n"
+"POT-Creation-Date: 2018-05-23 16:04+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -117,13 +117,20 @@ msgstr ""
 msgid "The chat permissions have been changed"
 msgstr ""
 
+#: ../qml/controller/EventController.qml:33 ../qml/pages/ChatPage.qml:119
+#: ../qml/pages/AddChatPage.qml:61
+msgid ""
+"Synchronizing \n"
+" This can take a few minutes ..."
+msgstr ""
+
 #: ../qml/controller/RoomNameController.qml:13
 #: ../qml/controller/RoomNameController.qml:21
 #: ../qml/controller/RoomNameController.qml:28
 msgid "Empty chat"
 msgstr ""
 
-#: ../qml/controller/MatrixController.qml:170
+#: ../qml/controller/MatrixController.qml:172
 msgid "No connection to the homeserver 😕"
 msgstr ""
 
@@ -231,11 +238,11 @@ msgstr ""
 msgid "Accept invatiation"
 msgstr ""
 
-#: ../qml/pages/ChatPage.qml:133
+#: ../qml/pages/ChatPage.qml:134
 msgid "Type something ..."
 msgstr ""
 
-#: ../qml/pages/ChatPage.qml:166
+#: ../qml/pages/ChatPage.qml:167
 msgid "Scroll down"
 msgstr ""
 
@@ -251,15 +258,15 @@ msgstr ""
 msgid "Users in this chat:"
 msgstr ""
 
-#: ../qml/pages/AddChatPage.qml:69
+#: ../qml/pages/AddChatPage.qml:70
 msgid "Room was not found 😟"
 msgstr ""
 
-#: ../qml/pages/AddChatPage.qml:80
+#: ../qml/pages/AddChatPage.qml:81
 msgid "Start a new chat"
 msgstr ""
 
-#: ../qml/pages/AddChatPage.qml:98
+#: ../qml/pages/AddChatPage.qml:99
 msgid "Enter room id or alias"
 msgstr ""
 

@@ -30,6 +30,7 @@ Item {
             since = res
             initialized = true
             if ( since != null )  return sync ()
+            toast.show ( i18n.tr("Synchronizing \n This can take a few minutes ...") )
             matrix.get ("/client/r0/sync", null,function ( response ) {
                 if ( waitingForSync ) progressBarRequests--
                 matrix.onlineStatus = true
