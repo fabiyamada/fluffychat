@@ -126,6 +126,7 @@ Item {
     }
 
     function xmlRequest ( type, data, action, callback, error_callback, status_callback ) {
+
         var http = new XMLHttpRequest();
         var postData = {}
         var getData = ""
@@ -184,10 +185,9 @@ Item {
                 return Qt.createQmlObject("import QtQuick 2.0; Timer {}", root)
             }
             var timer = new Timer()
-            timer.interval = longPolling ? data.timeout : defaultTimeout
+            timer.interval = longPolling ? data.timeout + defaultTimeout : defaultTimeout
             timer.repeat = false
             timer.triggered.connect(function () {
-                console.log("Timeout!")
                 if (http.readyState !== XMLHttpRequest.DONE) http.abort ()
             })
             timer.start();
