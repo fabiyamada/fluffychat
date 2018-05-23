@@ -57,10 +57,9 @@ Page {
         errorReport.text = ""
         if ( newChatId === "" ) searchTextField.focus = true
         else {
-
-            var success_callback = function () {
+            var success_callback = function ( response ) {
                 searchTextField.text = ""
-                activeChat = newChatId
+                activeChat = response.room_id
                 if ( mainStack.depth === 1 ) bottomEdge.collapse()
                 else mainStack.pop ()
                 mainStack.push (Qt.resolvedUrl("./ChatPage.qml"))

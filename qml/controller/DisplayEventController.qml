@@ -11,32 +11,33 @@ Item {
     function getDisplay ( event ) {
         event.content = JSON.parse (event.content_json)
         var body = i18n.tr("Unknown Event: ") + event.type
-        var displayname = event.content.displayname || event.displayname || event.sender || i18n.tr("Someone")
+        var sendername = (event.displayname || usernames.transformFromId(event.sender))
+        var displayname = event.content.displayname || event.displayname || usernames.transformFromId(event.sender) || i18n.tr("Someone")
         if ( event.type === "m.room.member" ) {
             if ( event.content.membership === "join" ) {
-                body = displayname + i18n.tr(" has entered the chat")
+                body = i18n.tr("%1 has entered the chat").arg(displayname)
             }
             else if ( event.content.membership === "invite" ) {
-                body = displayname + i18n.tr(" has invited ") + event.sender
+                body = i18n.tr("%1 has invited %2").arg(sendername).arg(event.content.displayname)
             }
             else if ( event.content.membership === "leave" ) {
-                body = displayname + i18n.tr(" has left the chat")
+                body = i18n.tr("%1 has left the chat").arg(displayname)
             }
             else if ( event.content.membership === "ban" ) {
-                body = displayname + i18n.tr(" has been banned from the chat")
+                body = i18n.tr("%1 has been banned from the chat").arg(displayname)
             }
         }
         else if ( event.type === "m.room.create" ) {
             body = i18n.tr("The chat has been created")
         }
         else if ( event.type === "m.room.name" ) {
-            body = displayname + i18n.tr(" has changed the chat name")
+            body = i18n.tr("%1 has changed the chat name").arg(displayname)
         }
         else if ( event.type === "m.room.topic" ) {
-            body = displayname + i18n.tr(" has changed the chat topic")
+            body = i18n.tr("%1 has changed the chat topic").arg(displayname)
         }
         else if ( event.type === "m.room.history_visibility" ) {
-            body = displayname + i18n.tr(" has set the chat history visible to: ")
+            body = i18n.tr("%1 has set the chat history visible to: ").arg(displayname)
             if ( event.content.history_visibility === "shared" ) {
                 body += i18n.tr("All chat participants")
             }
@@ -51,7 +52,7 @@ Item {
             }
         }
         else if ( event.type === "m.room.join_rules" ) {
-            body = displayname + i18n.tr(" has set the join rules to: ")
+            body = i18n.tr("%1 has set the join rules to: ").arg(displayname)
             if ( event.content.join_rule === "invite" ) {
                 body += i18n.tr("Only invited users")
             }
@@ -66,7 +67,7 @@ Item {
             }
         }
         else if ( event.type === "m.room.guest_access" ) {
-            body = displayname + i18n.tr(" has set the guest access to: ")
+            body = i18n.tr("%1 has set the guest access to: ").arg(displayname)
             if ( event.content.guest_access === "can_join" ) {
                 body += i18n.tr("Can join")
             }
@@ -75,7 +76,7 @@ Item {
             }
         }
         else if ( event.type === "m.room.aliases" ) {
-            body = i18n.tr("The chat aliases have been changed to: ")
+            body = i18n.tr("The chat aliases have been changed.")
             for ( var i = 0; i < event.content.aliases; i++ ) {
                 body += event.content.aliases[i] + " "
             }

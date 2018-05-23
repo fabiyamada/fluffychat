@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: fluffychat.christianpauly\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-05-23 08:55+0000\n"
+"POT-Creation-Date: 2018-05-23 09:13+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -21,99 +21,99 @@ msgstr ""
 msgid "Unknown Event: "
 msgstr ""
 
-#: ../qml/controller/DisplayEventController.qml:14
+#: ../qml/controller/DisplayEventController.qml:15
 msgid "Someone"
 msgstr ""
 
-#: ../qml/controller/DisplayEventController.qml:17
-msgid " has entered the chat"
+#: ../qml/controller/DisplayEventController.qml:18
+msgid "%1 has entered the chat"
 msgstr ""
 
-#: ../qml/controller/DisplayEventController.qml:20
-msgid " has invited "
+#: ../qml/controller/DisplayEventController.qml:21
+msgid "%1 has invited %2"
 msgstr ""
 
-#: ../qml/controller/DisplayEventController.qml:23
-msgid " has left the chat"
+#: ../qml/controller/DisplayEventController.qml:24
+msgid "%1 has left the chat"
 msgstr ""
 
-#: ../qml/controller/DisplayEventController.qml:26
-msgid " has been banned from the chat"
+#: ../qml/controller/DisplayEventController.qml:27
+msgid "%1 has been banned from the chat"
 msgstr ""
 
-#: ../qml/controller/DisplayEventController.qml:30
+#: ../qml/controller/DisplayEventController.qml:31
 msgid "The chat has been created"
 msgstr ""
 
-#: ../qml/controller/DisplayEventController.qml:33
-msgid " has changed the chat name"
+#: ../qml/controller/DisplayEventController.qml:34
+msgid "%1 has changed the chat name"
 msgstr ""
 
-#: ../qml/controller/DisplayEventController.qml:36
-msgid " has changed the chat topic"
+#: ../qml/controller/DisplayEventController.qml:37
+msgid "%1 has changed the chat topic"
 msgstr ""
 
-#: ../qml/controller/DisplayEventController.qml:39
-msgid " has set the chat history visible to: "
+#: ../qml/controller/DisplayEventController.qml:40
+msgid "%1 has set the chat history visible to: "
 msgstr ""
 
-#: ../qml/controller/DisplayEventController.qml:41
+#: ../qml/controller/DisplayEventController.qml:42
 msgid "All chat participants"
 msgstr ""
 
-#: ../qml/controller/DisplayEventController.qml:44
+#: ../qml/controller/DisplayEventController.qml:45
 msgid "All joined chat participants"
 msgstr ""
 
-#: ../qml/controller/DisplayEventController.qml:47
+#: ../qml/controller/DisplayEventController.qml:48
 msgid "All invited chat participants"
 msgstr ""
 
-#: ../qml/controller/DisplayEventController.qml:50
+#: ../qml/controller/DisplayEventController.qml:51
 msgid "Everyone"
 msgstr ""
 
-#: ../qml/controller/DisplayEventController.qml:54
-msgid " has set the join rules to: "
+#: ../qml/controller/DisplayEventController.qml:55
+msgid "%1 has set the join rules to: "
 msgstr ""
 
-#: ../qml/controller/DisplayEventController.qml:56
+#: ../qml/controller/DisplayEventController.qml:57
 msgid "Only invited users"
 msgstr ""
 
-#: ../qml/controller/DisplayEventController.qml:59
+#: ../qml/controller/DisplayEventController.qml:60
 msgid "Public"
 msgstr ""
 
-#: ../qml/controller/DisplayEventController.qml:62
+#: ../qml/controller/DisplayEventController.qml:63
 msgid "Private"
 msgstr ""
 
-#: ../qml/controller/DisplayEventController.qml:65
+#: ../qml/controller/DisplayEventController.qml:66
 msgid "Knock"
 msgstr ""
 
-#: ../qml/controller/DisplayEventController.qml:69
-msgid " has set the guest access to: "
+#: ../qml/controller/DisplayEventController.qml:70
+msgid "%1 has set the guest access to: "
 msgstr ""
 
-#: ../qml/controller/DisplayEventController.qml:71
+#: ../qml/controller/DisplayEventController.qml:72
 msgid "Can join"
 msgstr ""
 
-#: ../qml/controller/DisplayEventController.qml:74
+#: ../qml/controller/DisplayEventController.qml:75
 msgid "Forbidden"
 msgstr ""
 
-#: ../qml/controller/DisplayEventController.qml:78
-msgid "The chat aliases have been changed to: "
+#: ../qml/controller/DisplayEventController.qml:79
+msgid "The chat aliases have been changed."
 msgstr ""
 
-#: ../qml/controller/DisplayEventController.qml:84
+#: ../qml/controller/DisplayEventController.qml:85
 msgid "The canonical chat alias has been changed to: "
 msgstr ""
 
-#: ../qml/controller/DisplayEventController.qml:87
+#: ../qml/controller/DisplayEventController.qml:88
 msgid "The chat permissions have been changed"
 msgstr ""
 
@@ -247,15 +247,15 @@ msgstr ""
 msgid "Users in this chat:"
 msgstr ""
 
-#: ../qml/pages/AddChatPage.qml:70
+#: ../qml/pages/AddChatPage.qml:69
 msgid "Room was not found 😟"
 msgstr ""
 
-#: ../qml/pages/AddChatPage.qml:81
+#: ../qml/pages/AddChatPage.qml:80
 msgid "Start a new chat"
 msgstr ""
 
-#: ../qml/pages/AddChatPage.qml:99
+#: ../qml/pages/AddChatPage.qml:98
 msgid "Enter room id or alias"
 msgstr ""
 
