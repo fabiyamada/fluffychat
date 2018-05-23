@@ -12,26 +12,26 @@ Page {
 
     function send () {
         if ( sending || messageTextField.displayText === "" ) return
-        sending = true
-        events.waitForSync ()
         var messageID = Math.floor((Math.random() * 1000000) + 1);
         var data = {
             msgtype: "m.text",
             body: messageTextField.displayText
         }
-
-        var success_callback = function () {
-            sending = false
-            messageTextField.focus = false
-            messageTextField.text = ""
-            messageTextField.focus = true
+        var fakeEvent = {
+            type: "m.room.message",
+            sender: matrix.matrixid,
+            content_body: messageTextField.displayText,
+            displayname: matrix.username,
+            sending: true,
+            origin_server_ts: new Date().getTime()
         }
+        chatScrollView.addEventToList ( fakeEvent )
 
-        var error_callback = function ( error ) {
-            sending = false
-            events.stopWaitForSync ()
-        }
-        matrix.put( "/client/r0/rooms/" + activeChat + "/send/m.room.message/" + messageID, data, success_callback, error_callback )
+        matrix.put( "/client/r0/rooms/" + activeChat + "/send/m.room.message/" + messageID, data, null, toast.show )
+
+        messageTextField.focus = false
+        messageTextField.text = ""
+        messageTextField.focus = true
     }
 
 

@@ -5,11 +5,13 @@ import "../components"
 
 Rectangle {
     property var event
+    property var sending: event.sending || false
     property var sent: event.sender.toLowerCase() === matrix.matrixid.toLowerCase()
 
     width: root.width
     height: messageBubble.height + units.gu(1)
     color: "transparent"
+    opacity: sending ? 0.5 : 1
 
     Avatar {
         id: avatar
@@ -20,8 +22,6 @@ Rectangle {
         anchors.top: parent.top
         anchors.leftMargin: units.gu(1)
         anchors.rightMargin: units.gu(1)
-
-        //Component.onCompleted: if ( event.avatar_url ) source = event.avatar_url
     }
 
     Rectangle {
@@ -38,7 +38,7 @@ Rectangle {
         color: sent ? "#FFFFFF" : "#5625BA"
         radius: 50
         height: messageLabel.height + metaLabel.height + units.gu(2)
-        width: Math.max( messageLabel.width, metaLabel.width ) + units.gu(2)
+        width: Math.max( messageLabel.width, metaLabel.width ) + units.gu(3)
 
         Text {
             id: messageLabel
@@ -61,6 +61,16 @@ Rectangle {
             anchors.leftMargin: units.gu(1)
             color: UbuntuColors.silk
             textSize: Label.Small
+        }
+
+        ActivityIndicator {
+            id: activity
+            visible: sending
+            running: visible
+            anchors.left: metaLabel.right
+            anchors.top: messageLabel.bottom
+            width: units.gu(1.5)
+            height: width
         }
     }
 
