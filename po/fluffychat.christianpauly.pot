@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: fluffychat.christianpauly\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-05-23 09:58+0000\n"
+"POT-Creation-Date: 2018-05-23 10:36+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -219,7 +219,7 @@ msgstr ""
 msgid "Save"
 msgstr ""
 
-#: ../qml/pages/ChatPage.qml:69 ../qml/pages/ChatSettingsPage.qml:43
+#: ../qml/pages/ChatPage.qml:69 ../qml/pages/ChatSettingsPage.qml:53
 msgid "Leave chat"
 msgstr ""
 
@@ -239,11 +239,15 @@ msgstr ""
 msgid "Scroll down"
 msgstr ""
 
-#: ../qml/pages/ChatSettingsPage.qml:34
+#: ../qml/pages/ChatSettingsPage.qml:27
+msgid "And %1 more ..."
+msgstr ""
+
+#: ../qml/pages/ChatSettingsPage.qml:44
 msgid "Join this chat"
 msgstr ""
 
-#: ../qml/pages/ChatSettingsPage.qml:78
+#: ../qml/pages/ChatSettingsPage.qml:88
 msgid "Users in this chat:"
 msgstr ""
 
@@ -257,6 +261,26 @@ msgstr ""
 
 #: ../qml/pages/AddChatPage.qml:98
 msgid "Enter room id or alias"
+msgstr ""
+
+#: ../qml/components/MemberListItem.qml:12
+msgid "Member"
+msgstr ""
+
+#: ../qml/components/MemberListItem.qml:13
+msgid "Was invited"
+msgstr ""
+
+#: ../qml/components/MemberListItem.qml:14
+msgid "Has left the chat"
+msgstr ""
+
+#: ../qml/components/MemberListItem.qml:15
+msgid "Has knocked"
+msgstr ""
+
+#: ../qml/components/MemberListItem.qml:16
+msgid "Was banned from the chat"
 msgstr ""
 
 #: ../qml/components/FcPageHeader.qml:7 fluffychat.desktop.in.h:1

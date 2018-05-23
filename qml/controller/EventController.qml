@@ -133,7 +133,6 @@ Item {
                 if ( room.timeline ) handleRoomEvents ( id, room.timeline.events, "timeline" )
             }
             else {
-                console.log( "Leaving room", id )
                 transaction.executeSql ( "DELETE FROM Rooms WHERE id='" + id + "'")
                 transaction.executeSql ( "DELETE FROM Roommembers WHERE roomsid='" + id + "'")
                 transaction.executeSql ( "DELETE FROM Roomevents WHERE roomsid='" + id + "'")

@@ -7,15 +7,25 @@ Page {
     anchors.fill: parent
 
     property var membership: "unknown"
+    property var max: 40
 
     function init () {
         storage.transaction ( "SELECT membership FROM Rooms WHERE id='" + activeChat + "'", function (res) {
             membership = res.rows.length > 0 ? res.rows[0].membership : "unknown"
         })
         storage.transaction ( "SELECT * FROM Roommembers WHERE roomsid='" + activeChat + "'", function (res) {
-            for ( var i = 0; i < res.rows.length; i++ ) {
+            for ( var i = 0; i < Math.min(res.rows.length, max); i++ ) {
+                var member = res.rows[i]
                 var newMemberListItem = Qt.createComponent("../components/MemberListItem.qml")
-                newMemberListItem.createObject(memberList, { name: res.rows[i].displayname || usernames.transformFromId(res.rows[i].state_key) })
+                newMemberListItem.createObject(memberList, {
+                    name: member.displayname || usernames.transformFromId( member.state_key ),
+                    membership: member.membership
+                } )
+            }
+            if ( res.rows.length > max ) {
+                newMemberListItem.createObject(memberList, {
+                    name: i18n.tr("And %1 more ...").arg(res.rows.length - max),
+                } )
             }
         })
     }
