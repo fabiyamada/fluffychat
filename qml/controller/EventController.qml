@@ -119,16 +119,25 @@ Item {
     function handleRooms ( rooms, membership ) {
         for ( var id in rooms ) {
             var room = rooms[id]
-            transaction.executeSql ("INSERT OR REPLACE INTO Rooms VALUES(?, ?, COALESCE((SELECT topic FROM Rooms WHERE id='" + id + "'), ''), ?, ?, ?, COALESCE((SELECT prev_batch FROM Rooms WHERE id='" + id + "'), ''))",
-            [ id,
-            membership,
-            (room.unread_notifications ? room.unread_notifications.highlight_count : 0),
-            (room.unread_notifications ? room.unread_notifications.notification_count : 0),
-            (room.timeline ? (room.timeline.limited ? 1 : 0) : 0) ])
 
-            if ( room.state ) handleRoomEvents ( id, room.state.events, "state" )
-            if ( room.invite_state ) handleRoomEvents ( id, room.invite_state.events, "invite_state" )
-            if ( room.timeline ) handleRoomEvents ( id, room.timeline.events, "timeline" )
+            if ( membership !== "leave" ) {
+                transaction.executeSql ("INSERT OR REPLACE INTO Rooms VALUES(?, ?, COALESCE((SELECT topic FROM Rooms WHERE id='" + id + "'), ''), ?, ?, ?, COALESCE((SELECT prev_batch FROM Rooms WHERE id='" + id + "'), ''))",
+                [ id,
+                membership,
+                (room.unread_notifications ? room.unread_notifications.highlight_count : 0),
+                (room.unread_notifications ? room.unread_notifications.notification_count : 0),
+                (room.timeline ? (room.timeline.limited ? 1 : 0) : 0) ])
+
+                if ( room.state ) handleRoomEvents ( id, room.state.events, "state" )
+                if ( room.invite_state ) handleRoomEvents ( id, room.invite_state.events, "invite_state" )
+                if ( room.timeline ) handleRoomEvents ( id, room.timeline.events, "timeline" )
+            }
+            else {
+                console.log( "Leaving room", id )
+                transaction.executeSql ( "DELETE FROM Rooms WHERE id='" + id + "'")
+                transaction.executeSql ( "DELETE FROM Roommembers WHERE roomsid='" + id + "'")
+                transaction.executeSql ( "DELETE FROM Roomevents WHERE roomsid='" + id + "'")
+            }
         }
     }
 
@@ -182,6 +191,7 @@ Item {
                 if ( event.state_key === matrix.matrixid) {
                     matrix.avatar_url = event.content.avatar_url
                     matrix.displayname = event.content.displayname
+                    matrix.saveConfigs()
                 }
             }
         }

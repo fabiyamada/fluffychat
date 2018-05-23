@@ -10,7 +10,7 @@ Page {
 
     function init () {
         storage.transaction ( "SELECT membership FROM Rooms WHERE id='" + activeChat + "'", function (res) {
-            membership = res.rows[0].membership
+            membership = res.rows.length > 0 ? res.rows[0].membership : "unknown"
         })
         storage.transaction ( "SELECT * FROM Roommembers WHERE roomsid='" + activeChat + "'", function (res) {
             for ( var i = 0; i < res.rows.length; i++ ) {

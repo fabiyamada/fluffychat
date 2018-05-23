@@ -44,6 +44,7 @@ ScrollView {
 
     function requestHistory () {
         storage.transaction ( "SELECT prev_batch FROM Rooms WHERE id='" + activeChat + "'", function (rs) {
+            if ( rs.rows.length === 0 ) return
             var data = {
                 from: rs.rows[0].prev_batch,
                 dir: "b",

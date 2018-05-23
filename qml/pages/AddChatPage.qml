@@ -70,7 +70,7 @@ Page {
                 }
                 errorReport.text = error.errcode in errcodes ? errcodes[error.errcode] : error.error
             }
-
+            events.waitForSync ()
             matrix.post("/client/r0/join/" + encodeURIComponent(newChatId), null, success_callback, error_callback)
         }
 
