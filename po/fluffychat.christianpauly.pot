@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: fluffychat.christianpauly\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-05-23 07:33+0000\n"
+"POT-Creation-Date: 2018-05-23 07:52+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -127,7 +127,7 @@ msgstr ""
 msgid "No connection to the homeserver 😕"
 msgstr ""
 
-#: ../qml/pages/InfoPage.qml:10 ../qml/pages/ChatPage.qml:59
+#: ../qml/pages/InfoPage.qml:10 ../qml/pages/ChatPage.qml:64
 msgid "Info"
 msgstr ""
 
@@ -219,23 +219,23 @@ msgstr ""
 msgid "Save"
 msgstr ""
 
-#: ../qml/pages/ChatPage.qml:64 ../qml/pages/ChatSettingsPage.qml:43
+#: ../qml/pages/ChatPage.qml:69 ../qml/pages/ChatSettingsPage.qml:43
 msgid "Leave chat"
 msgstr ""
 
-#: ../qml/pages/ChatPage.qml:91
+#: ../qml/pages/ChatPage.qml:96
 msgid "No messages in this chat ..."
 msgstr ""
 
-#: ../qml/pages/ChatPage.qml:109
+#: ../qml/pages/ChatPage.qml:114
 msgid "Accept invatiation"
 msgstr ""
 
-#: ../qml/pages/ChatPage.qml:128
+#: ../qml/pages/ChatPage.qml:133
 msgid "Type something ..."
 msgstr ""
 
-#: ../qml/pages/ChatPage.qml:161
+#: ../qml/pages/ChatPage.qml:166
 msgid "Scroll down"
 msgstr ""
 

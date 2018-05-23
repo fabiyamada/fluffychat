@@ -28,7 +28,12 @@ Page {
         }
         chatScrollView.addEventToList ( fakeEvent )
 
-        matrix.put( "/client/r0/rooms/" + activeChat + "/send/m.room.message/" + messageID, data, null, toast.show )
+        var error_callback = function ( error ) {
+            if ( error.error !== "offline" ) toast.show ( error.errcode + ": " + error.error )
+            chatScrollView.update ()
+        }
+
+        matrix.put( "/client/r0/rooms/" + activeChat + "/send/m.room.message/" + messageID, data, null, error_callback )
 
         messageTextField.focus = false
         messageTextField.text = ""

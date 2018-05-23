@@ -171,7 +171,7 @@ Item {
                     if ( typeof error === "string" ) error = {"errcode": "ERROR", "error": error}
                     if ( error.errcode === "M_UNKNOWN_TOKEN" ) reset ()
                     if ( error_callback ) error_callback ( error )
-                    else toast.show ( error.error )
+                    else toast.show ( error.errcode + ": " + error.error )
                 }
             }
         }
