@@ -53,18 +53,17 @@ Item {
         }, function ( error ) {
             if ( matrix.token !== undefined ) {
                 matrix.onlineStatus = false
-                console.log ( "You are offline!! Try to reconnect in a few seconds!" )
+                console.log ( "Synchronization timeout!" )
                 if ( error.errcode === "M_INVALID" ) {
                     mainStack.clear ()
                     mainStack.push(Qt.resolvedUrl("../pages/LoginPage.qml"))
                 }
                 else {
-                    if ( matrix.onlineStatus ) return
                     function Timer() {
                         return Qt.createQmlObject("import QtQuick 2.0; Timer {}", root);
                     }
                     var timer = new Timer();
-                    timer.interval = defaultTimeout;
+                    timer.interval = miniTimeout;
                     timer.repeat = false;
                     timer.triggered.connect(sync)
                     timer.start();
@@ -76,6 +75,14 @@ Item {
 
     function restartSync () {
         syncRequest.abort ()
+        function Timer() {
+            return Qt.createQmlObject("import QtQuick 2.0; Timer {}", root);
+        }
+        var timer = new Timer();
+        timer.interval = miniTimeout;
+        timer.repeat = false;
+        timer.triggered.connect(sync)
+        timer.start();
     }
 
 

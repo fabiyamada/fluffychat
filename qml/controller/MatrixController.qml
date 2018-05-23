@@ -164,14 +164,14 @@ Item {
                     }
                 }
                 catch ( error ) {
-                    console.error("There was an error: When calling ", requestUrl, " With data: ", JSON.stringify(data), " Error-Report: ", error, http.responseText)
-                    if ( error === "offline" && token ) {
+                    //console.error("There was an error: When calling ", requestUrl, " With data: ", JSON.stringify(data), " Error-Report: ", error, http.responseText)
+                    if ( typeof error === "string" ) error = {"errcode": "ERROR", "error": error}
+                    if ( error.errcode === "M_UNKNOWN_TOKEN" ) reset ()
+                    if ( !error_callback && error === "offline" && token ) {
                         onlineStatus = false
                         toast.show (i18n.tr("No connection to the homeserver 😕"))
                     }
-                    if ( typeof error === "string" ) error = {"errcode": "ERROR", "error": error}
-                    if ( error.errcode === "M_UNKNOWN_TOKEN" ) reset ()
-                    if ( error_callback ) error_callback ( error )
+                    else if ( error_callback ) error_callback ( error )
                     else toast.show ( error.errcode + ": " + error.error )
                 }
             }
