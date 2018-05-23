@@ -21,7 +21,8 @@ Page {
             type: "m.room.message",
             sender: matrix.matrixid,
             content_body: messageTextField.displayText,
-            displayname: matrix.username,
+            displayname: matrix.displayname,
+            avatar_url: matrix.avatar_url,
             sending: true,
             origin_server_ts: new Date().getTime()
         }

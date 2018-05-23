@@ -16,6 +16,7 @@ Item {
     property var deviceID
     property var matrixid: "@" + username + ":" + server
     property var displayname
+    property var avatar_url
 
     // The token to identify
     property var token
@@ -30,10 +31,7 @@ Item {
     // Check if there are username, password and domain saved from a previous
     // session and autoconnect with them. If not, then just go to the login Page.
     function init () {
-        storage.getConfig("token", function(res) { token = res })
-        storage.getConfig("username", function(res) { username = res })
-        storage.getConfig("domain", function(res) { server = res })
-        storage.getConfig("deviceid", function(res) { deviceID = res })
+        loadConfigs ()
 
         if ( username != null && token != null && server != null ) {
             mainStack.push(Qt.resolvedUrl("../pages/ChatListPage.qml"))
@@ -60,12 +58,9 @@ Item {
         }
 
         var onLogged = function ( response ) {
-            storage.setConfig ( "username", username )
-            storage.setConfig ( "domain", server )
-            storage.setConfig ( "token", response.access_token )
-            storage.setConfig ( "deviceid", response.device_id )
             token = response.access_token
             deviceID = response.device_id
+            saveConfigs ()
             onlineStatus = true
             events.init ()
             if ( callback ) callback ( response )
@@ -83,15 +78,32 @@ Item {
     }
 
 
+    function saveConfigs () {
+        storage.setConfig ( "username", username )
+        storage.setConfig ( "domain", server )
+        storage.setConfig ( "token", token )
+        storage.setConfig ( "deviceid", deviceID )
+        storage.setConfig ( "devicename", deviceName )
+        storage.setConfig ( "displayname", displayname )
+        storage.setConfig ( "avatar_url", avatar_url )
+    }
+
+
+    function loadConfigs () {
+        storage.getConfig ( "username", function(res) { username = res })
+        storage.getConfig ( "domain", function(res) { server = res })
+        storage.getConfig ( "token", function(res) { token = res })
+        storage.getConfig ( "deviceid", function(res) { deviceID = res })
+        storage.getConfig ( "devicename", function(res) { deviceName = res })
+        storage.getConfig ( "displayname", function(res) { displayname = res })
+        storage.getConfig ( "avatar_url", function(res) { avatar_url = res })
+    }
+
+
     function reset () {
-        storage.unsetConfig ( "username")
-        storage.unsetConfig ( "token")
-        storage.unsetConfig ( "domain")
-        storage.unsetConfig ( "next_batch")
-        storage.unsetConfig ( "deviceid")
         storage.drop ()
         onlineStatus = false
-        username = server = token = events.since = undefined
+        username = server = token = displayname = avatar_url = events.since = undefined
         mainStack.clear ()
         mainStack.push(Qt.resolvedUrl("../pages/LoginPage.qml"))
     }
@@ -154,7 +166,7 @@ Item {
                     console.error("There was an error: When calling ", requestUrl, " With data: ", JSON.stringify(data), " Error-Report: ", error, http.responseText)
                     if ( error === "offline" && token ) {
                         onlineStatus = false
-                        toast.show (i18n.tr("It seems that you are offline 😕"))
+                        toast.show (i18n.tr("No connection to the homeserver 😕"))
                     }
                     if ( typeof error === "string" ) error = {"errcode": "ERROR", "error": error}
                     if ( error.errcode === "M_UNKNOWN_TOKEN" ) reset ()

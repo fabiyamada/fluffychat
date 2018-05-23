@@ -38,7 +38,7 @@ Rectangle {
         color: sent ? "#FFFFFF" : "#5625BA"
         radius: 50
         height: messageLabel.height + metaLabel.height + units.gu(2)
-        width: Math.max( messageLabel.width, metaLabel.width ) + units.gu(3)
+        width: Math.max( messageLabel.width, metaLabel.width ) + units.gu(2) + (event.sending ? units.gu(2) : 0)
 
         Text {
             id: messageLabel
@@ -69,6 +69,7 @@ Rectangle {
             running: visible
             anchors.left: metaLabel.right
             anchors.top: messageLabel.bottom
+            anchors.leftMargin: units.gu(0.5)
             width: units.gu(1.5)
             height: width
         }

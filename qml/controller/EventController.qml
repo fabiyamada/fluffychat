@@ -175,6 +175,10 @@ Item {
                 event.content.membership,
                 event.content.displayname,
                 event.content.avatar_url ])
+                if ( event.state_key === matrix.matrixid) {
+                    matrix.avatar_url = event.content.avatar_url
+                    matrix.displayname = event.content.displayname
+                }
             }
         }
     }

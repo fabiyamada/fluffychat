@@ -15,7 +15,7 @@ are changes to the database model, the version-property MUST be increaded!
 Item {
     id: storage
 
-    property var version: "0.1.10"
+    property var version: "0.1.11"
     property var db: LocalStorage.openDatabaseSync("FLuffyChat", "1.0", "FluffyChat Database", 1000000)
 
 
@@ -68,6 +68,8 @@ Item {
         transaction('DROP TABLE IF EXISTS Rooms')
         transaction('DROP TABLE IF EXISTS Roomevents')
         transaction('DROP TABLE IF EXISTS Roommembers')
+        transaction('DROP TABLE IF EXISTS Config')
+        transaction('CREATE TABLE Config(key TEXT PRIMARY KEY, value TEXT)')
         transaction('CREATE TABLE Rooms(id TEXT PRIMARY KEY, membership TEXT, topic TEXT, highlight_count INTEGER, notification_count INTEGER, limitedTimeline INTEGER, prev_batch TEXT, UNIQUE(id))')
         transaction('CREATE TABLE Roomevents(id TEXT PRIMARY KEY, roomsid TEXT, origin_server_ts INTEGER, sender TEXT, content_body TEXT, content_msgtype STRING, type TEXT, content_json TEXT, UNIQUE(id))')
         transaction('CREATE TABLE Roommembers(roomsid TEXT, state_key TEXT, membership TEXT, displayname TEXT, avatar_url TEXT, UNIQUE(roomsid, state_key))')

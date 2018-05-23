@@ -20,7 +20,7 @@ MainView {
     property var activeChatDisplayName: null
     property var defaultDomain: "matrix.org"
     property var defaultDeviceName: "UbuntuPhone"
-    property var defaultTimeout: 10000
+    property var defaultTimeout: 30000
     property var longPollingTimeout: 60000
     property var progressBarRequests: 0
     property var waitingForSync: false

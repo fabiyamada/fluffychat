@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: fluffychat.christianpauly\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-05-23 07:13+0000\n"
+"POT-Creation-Date: 2018-05-23 07:33+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -123,11 +123,11 @@ msgstr ""
 msgid "Empty chat"
 msgstr ""
 
-#: ../qml/controller/MatrixController.qml:157
-msgid "It seems that you are offline 😕"
+#: ../qml/controller/MatrixController.qml:169
+msgid "No connection to the homeserver 😕"
 msgstr ""
 
-#: ../qml/pages/InfoPage.qml:10 ../qml/pages/ChatPage.qml:58
+#: ../qml/pages/InfoPage.qml:10 ../qml/pages/ChatPage.qml:59
 msgid "Info"
 msgstr ""
 
@@ -219,23 +219,23 @@ msgstr ""
 msgid "Save"
 msgstr ""
 
-#: ../qml/pages/ChatPage.qml:63 ../qml/pages/ChatSettingsPage.qml:43
+#: ../qml/pages/ChatPage.qml:64 ../qml/pages/ChatSettingsPage.qml:43
 msgid "Leave chat"
 msgstr ""
 
-#: ../qml/pages/ChatPage.qml:90
+#: ../qml/pages/ChatPage.qml:91
 msgid "No messages in this chat ..."
 msgstr ""
 
-#: ../qml/pages/ChatPage.qml:108
+#: ../qml/pages/ChatPage.qml:109
 msgid "Accept invatiation"
 msgstr ""
 
-#: ../qml/pages/ChatPage.qml:127
+#: ../qml/pages/ChatPage.qml:128
 msgid "Type something ..."
 msgstr ""
 
-#: ../qml/pages/ChatPage.qml:160
+#: ../qml/pages/ChatPage.qml:161
 msgid "Scroll down"
 msgstr ""
 
