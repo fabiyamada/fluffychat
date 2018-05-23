@@ -50,7 +50,7 @@ Page {
 
     Connections {
         target: events
-        onChatTimelineEvent: chatScrollView.handleNewEvent ( event )
+        onChatTimelineEvent: chatScrollView.handleNewEvent ()
     }
 
     header: FcPageHeader {

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: fluffychat.christianpauly\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-05-23 07:52+0000\n"
+"POT-Creation-Date: 2018-05-23 08:55+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -187,7 +187,7 @@ msgstr ""
 msgid "Using the homeserver: "
 msgstr ""
 
-#: ../qml/pages/ChatListPage.qml:75
+#: ../qml/pages/ChatListPage.qml:76
 msgid "Swipe from the bottom to start a new chat"
 msgstr ""
 
@@ -283,6 +283,6 @@ msgstr ""
 msgid "You: "
 msgstr ""
 
-#: ../qml/components/ChatScrollView.qml:91
+#: ../qml/components/ChatScrollView.qml:92
 msgid "New message at the bottom of the chat"
 msgstr ""

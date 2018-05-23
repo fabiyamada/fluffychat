@@ -10,9 +10,7 @@ with the matrix homeserver via a long polling http request
 Item {
 
     signal chatListUpdated
-    signal chatStateEvent ( var chat, var event )
-    signal chatTimelineEvent ( var chat, var event )
-    signal chatNotificationEvent ( var chat, var event )
+    signal chatTimelineEvent
 
     property var syncRequest: null
     property var since: ""
@@ -101,11 +99,20 @@ Item {
                     handleRooms ( response.rooms.invite, "invite" )
                     since = response.next_batch
                     storage.setConfig ( "next_batch", since )
+                    chatListUpdated ()
+                    triggerSignals ( response )
                 }
             )
         }
         catch ( e ) { console.log ( e ) }
-        chatListUpdated ()
+
+    }
+
+
+    function triggerSignals ( response ) {
+        var activeRoom = response.rooms.join[activeChat]
+        if ( activeRoom !== undefined && activeRoom.timeline.events.length > 0 ) chatTimelineEvent ()
+
     }
 
 
@@ -113,7 +120,6 @@ Item {
     function handleRooms ( rooms, membership ) {
         for ( var id in rooms ) {
             var room = rooms[id]
-
             transaction.executeSql ("INSERT OR REPLACE INTO Rooms VALUES(?, ?, COALESCE((SELECT topic FROM Rooms WHERE id='" + id + "'), ''), ?, ?, ?, COALESCE((SELECT prev_batch FROM Rooms WHERE id='" + id + "'), ''))",
             [ id,
             membership,
@@ -147,8 +153,7 @@ Item {
                 event.content.msgtype || null,
                 event.type,
                 JSON.stringify(event.content) ])
-                if ( type === "timeline" && roomid === activeChat ) chatTimelineEvent ( roomid, event )
-                else if ( type === "timeline" ) chatNotificationEvent ( roomid, event )
+                //if ( roomid === activeChat ) chatTimelineEvent ()
             }
 
             // This event means, that the topic of a room has been changed, so

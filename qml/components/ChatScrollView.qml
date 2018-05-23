@@ -10,6 +10,7 @@ ScrollView {
     // If this property is not 1, then the user is not in the chat, but is reading the history
     property var historyPosition: 0
     property var historyCount: 50
+    property var historyEnd: messagesList.children.length > 0 && messagesList.children[0].event.type === "m.room.create" || false
     property var updated: false
     property var enteredMinusContent: false
     property var count: messagesList.children.length
@@ -83,10 +84,10 @@ ScrollView {
 
     // This function handles new events, based on the signal from the event
     // controller. It just has to format the event to the database format
-    function handleNewEvent ( event ) {
+    function handleNewEvent () {
         if ( historyPosition === 0 ) {
             update ()
-            matrix.post( "/client/r0/rooms/" + activeChat + "/receipt/m.read/" + event.id, null )
+            // matrix.post( "/client/r0/rooms/" + activeChat + "/receipt/m.read/" + event.id, null )
         }
         else toast.show (i18n.tr("New message at the bottom of the chat"))
     }
