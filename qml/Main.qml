@@ -21,7 +21,7 @@ MainView {
     property var defaultDomain: "matrix.org"
     property var defaultDeviceName: "UbuntuPhone"
     property var defaultTimeout: 30000
-    property var longPollingTimeout: 60000
+    property var longPollingTimeout: 30000
     property var progressBarRequests: 0
     property var waitingForSync: false
     property var appstatus: 4

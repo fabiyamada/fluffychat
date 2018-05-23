@@ -20,7 +20,7 @@ Item {
         storage.getConfig("next_batch", function( res ) {
             since = res
             initialized = true
-            if ( since != null ) return sync ()
+            if ( since != null )  return sync ()
             matrix.get ("/client/r0/sync", null,function ( response ) {
                 if ( waitingForSync ) progressBarRequests--
                 matrix.onlineStatus = true
@@ -89,6 +89,7 @@ Item {
     // This function starts handling the events, saving new data in the storage,
     // deleting data, updating data and call signals
     function handleEvents ( response ) {
+        console.log( "============= SYNCHRONIZATION EVENT RECEIVED =============")
         var changed = false
         try {
             storage.db.transaction(

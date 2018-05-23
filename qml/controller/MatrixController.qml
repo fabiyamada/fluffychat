@@ -180,18 +180,17 @@ Item {
         http.send( JSON.stringify( postData ) );
 
         // Make timeout working in qml
-        if ( !longPolling ) {
             function Timer() {
-                return Qt.createQmlObject("import QtQuick 2.0; Timer {}", root);
+                return Qt.createQmlObject("import QtQuick 2.0; Timer {}", root)
             }
-            var timer = new Timer();
-            timer.interval = defaultTimeout;
-            timer.repeat = false;
+            var timer = new Timer()
+            timer.interval = longPolling ? data.timeout : defaultTimeout
+            timer.repeat = false
             timer.triggered.connect(function () {
+                console.log("Timeout!")
                 if (http.readyState !== XMLHttpRequest.DONE) http.abort ()
             })
             timer.start();
-        }
 
         return http
     }
