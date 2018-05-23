@@ -1,5 +1,6 @@
 import QtQuick 2.4
 import Ubuntu.Components 1.3
+import Ubuntu.Connectivity 1.0
 
 
 /* =============================== EVENT CONTROLLER ===============================
@@ -9,6 +10,13 @@ with the matrix homeserver via a long polling http request
 */
 Item {
 
+    Connections {
+        target: Connectivity
+        // full status can be retrieved from the base C++ class
+        // status property
+        onOnlineChanged: if ( Connectivity.online ) restartSync ()
+    }
+
     signal chatListUpdated
     signal chatTimelineEvent
 
@@ -17,6 +25,7 @@ Item {
     property var initialized: false
 
     function init () {
+        console.log("LimitedBandwith: " + Connectivity.limitedBandwith)
         storage.getConfig("next_batch", function( res ) {
             since = res
             initialized = true
