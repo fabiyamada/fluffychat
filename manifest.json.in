@@ -7,9 +7,13 @@
         "fluffychat": {
             "apparmor": "fluffychat.apparmor",
             "desktop":  "fluffychat.desktop"
+        },
+        "helloHelper": {
+            "apparmor": "pushhelper/helloHelper-apparmor.json",
+            "push-helper": "pushhelper/helloHelper.json"
         }
     },
-    "version": "0.1.2",
+    "version": "0.2.0",
     "maintainer": "Christian Pauly <christian-pauly@posteo.de>",
     "framework" : "ubuntu-sdk-15.04.5"
 }

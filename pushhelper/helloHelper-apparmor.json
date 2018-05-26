@@ -1,7 +1,6 @@
 {
+    "template": "ubuntu-push-helper",
     "policy_groups": [
-        "networking",
-        "connectivity",
         "push-notification-client"
     ],
     "policy_version": 1.3

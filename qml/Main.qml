@@ -26,6 +26,7 @@ MainView {
     property var progressBarRequests: 0
     property var waitingForSync: false
     property var appstatus: 4
+    property var pushtoken: pushclient.token
 
 
     PageStack {
@@ -39,6 +40,7 @@ MainView {
     RoomNameController { id: roomnames }
     UserNameController { id: usernames }
     DisplayEventController { id: displayEvents }
+    PushController { id: pushclient }
     Toast { id: toast }
     LoadingModal { id: loadingModal }
 
