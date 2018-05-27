@@ -2,8 +2,6 @@
 
 import sys
 
-print("Hellohelper active now")
 f1, f2 = sys.argv[1:3]
-print(f1)
-print(f2)
+
 open(f2, "w").write(open(f1).read())

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: fluffychat.christianpauly\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-05-26 12:31+0000\n"
+"POT-Creation-Date: 2018-05-26 14:12+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -198,35 +198,35 @@ msgstr ""
 msgid "Swipe from the bottom to start a new chat"
 msgstr ""
 
-#: ../qml/pages/MainSettingsPage.qml:28
+#: ../qml/pages/MainSettingsPage.qml:27
 msgid "Settings"
 msgstr ""
 
-#: ../qml/pages/MainSettingsPage.qml:49
+#: ../qml/pages/MainSettingsPage.qml:48
 msgid "Notifications"
 msgstr ""
 
-#: ../qml/pages/MainSettingsPage.qml:73
+#: ../qml/pages/MainSettingsPage.qml:72
 msgid "About FluffyChat"
 msgstr ""
 
-#: ../qml/pages/MainSettingsPage.qml:79
+#: ../qml/pages/MainSettingsPage.qml:78
 msgid "Logout"
 msgstr ""
 
-#: ../qml/pages/MainSettingsPage.qml:91
+#: ../qml/pages/MainSettingsPage.qml:90
 msgid "Set status"
 msgstr ""
 
-#: ../qml/pages/MainSettingsPage.qml:93
+#: ../qml/pages/MainSettingsPage.qml:92
 msgid "Enter your status"
 msgstr ""
 
-#: ../qml/pages/MainSettingsPage.qml:96
+#: ../qml/pages/MainSettingsPage.qml:95
 msgid "Cancel"
 msgstr ""
 
-#: ../qml/pages/MainSettingsPage.qml:100
+#: ../qml/pages/MainSettingsPage.qml:99
 msgid "Save"
 msgstr ""
 

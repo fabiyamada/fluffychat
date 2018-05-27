@@ -69,12 +69,10 @@ Item {
     }
 
     function logout ( callback ) {
-        remove ( "/client/ro/devices/" + deviceID, {}, function () {
-            post ( "/client/r0/logout", {}, function () {
-                reset ()
-                if ( callback ) callback ()
-            } )
-        } )
+        remove ( "/client/ro/devices/" + deviceID, {} )
+        post ( "/client/r0/logout", {} )
+        if ( callback ) callback ()
+        reset ()
     }
 
 
