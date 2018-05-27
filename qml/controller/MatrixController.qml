@@ -14,7 +14,7 @@ Item {
     property var username
     property var deviceName
     property var deviceID
-    property var matrixid: "@" + username + ":" + server
+    property var matrixid: "@" + username + ":" + server.split(":")[0]
     property var displayname
     property var avatar_url
 
