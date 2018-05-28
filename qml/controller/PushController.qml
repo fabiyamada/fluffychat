@@ -13,7 +13,7 @@ PushClient {
     function setPusher ( intent, callback, error_callback ) {
         var data = {
             "app_display_name": "FluffyChat",
-            "app_id": "fluffychat.christianpauly_fluffychat",
+            "app_id": appId,
             "append": false,
             "data": {
                 "url": "http://janian.de:7000"

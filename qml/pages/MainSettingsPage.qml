@@ -53,7 +53,7 @@ Page {
                     anchors.right: parent.right
                     anchors.verticalCenter: parent.verticalCenter
                     anchors.margins: units.gu(2)
-                    checked: false
+                    checked: true
                     onCheckedChanged: {
                         if ( enabled ) {
                             enabled = false

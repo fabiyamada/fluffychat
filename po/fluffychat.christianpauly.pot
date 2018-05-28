@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: fluffychat.christianpauly\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-05-26 12:31+0000\n"
+"POT-Creation-Date: 2018-05-28 11:48+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -294,7 +294,7 @@ msgstr ""
 msgid "Was banned from the chat"
 msgstr ""
 
-#: ../qml/components/FcPageHeader.qml:7 fluffychat.desktop.in.h:1
+#: ../qml/components/FcPageHeader.qml:7
 msgid "FluffyChat"
 msgstr ""
 
