@@ -14,7 +14,7 @@ Item {
     property var username
     property var deviceName
     property var deviceID
-    property var matrixid: "@" + username + ":" + server
+    property var matrixid: "@" + username + ":" + server.split(":")[0]
     property var displayname
     property var avatar_url
 
@@ -69,12 +69,10 @@ Item {
     }
 
     function logout ( callback ) {
-        remove ( "/client/ro/devices/" + deviceID, {}, function () {
-            post ( "/client/r0/logout", {}, function () {
-                reset ()
-                if ( callback ) callback ()
-            } )
-        } )
+        remove ( "/client/ro/devices/" + deviceID, {} )
+        post ( "/client/r0/logout", {} )
+        if ( callback ) callback ()
+        reset ()
     }
 
 

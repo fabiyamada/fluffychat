@@ -13,7 +13,6 @@ Page {
             var issettoken = false
             for( var i = 0; i < res.pushers.length; i++ ) {
                 var pusher = res.pushers[i]
-                console.log(JSON.stringify(pusher))
                 if ( pusher.pushkey === pushtoken ) {
                     issettoken = true
                     break;
