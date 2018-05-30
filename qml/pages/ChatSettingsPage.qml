@@ -1,6 +1,7 @@
 import QtQuick 2.4
 import QtQuick.Layouts 1.1
 import Ubuntu.Components 1.3
+import Ubuntu.Components.Popups 1.3
 import "../components"
 
 Page {
@@ -32,13 +33,27 @@ Page {
 
     Component.onCompleted: init ()
 
+    InviteDialog { id: inviteDialog }
+
+    ChangeChatnameDialog { id: changeChatnameDialog }
+
     header: FcPageHeader {
         id: header
         title: activeChatDisplayName
 
         trailingActionBar {
-            numberOfSlots: 2
+            numberOfSlots: 1
             actions: [
+            Action {
+                iconName: "contact-new"
+                text: i18n.tr("Invite a friend")
+                onTriggered: PopupUtils.open(inviteDialog)
+            },
+            Action {
+                iconName: "compose"
+                text: i18n.tr("Edit chat name")
+                onTriggered: PopupUtils.open(changeChatnameDialog)
+            },
             Action {
                 iconName: "message-new"
                 text: i18n.tr("Join this chat")
