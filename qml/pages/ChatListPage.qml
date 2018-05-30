@@ -32,7 +32,7 @@ Page {
                 // We request the room name, before we continue
                 var newChatListItem = Qt.createComponent("../components/ChatListItem.qml")
                 newChatListItem.createObject(chatListColumn,{ "room": room,})
-                if ( activeChat === room.id && room.notification_count > 0 ) matrix.post( "/client/r0/rooms/" + activeChat + "/receipt/m.read/" + room.eventsid, null )
+                if ( mainStack.depth > 1 && activeChat === room.id && room.notification_count > 0 ) matrix.post( "/client/r0/rooms/" + activeChat + "/receipt/m.read/" + room.eventsid, null )
             }
         })
 
