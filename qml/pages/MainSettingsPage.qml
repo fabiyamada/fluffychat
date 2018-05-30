@@ -69,6 +69,12 @@ Page {
             }
 
             SettingsListItem {
+                name: i18n.tr("Change nickname")
+                icon: "account"
+                onClicked: PopupUtils.open(dialog)
+            }
+
+            SettingsListItem {
                 name: i18n.tr("About FluffyChat")
                 icon: "info"
                 onClicked: mainStack.push(Qt.resolvedUrl("../pages/InfoPage.qml"))
@@ -83,24 +89,45 @@ Page {
     }
 
 
-    Component {
+    ChangeDisplaynameDialog { id: dialog }
+
+    /*Component {
         id: dialog
+
         Dialog {
             id: dialogue
-            title: i18n.tr("Set status")
+            title: i18n.tr("Change nickname")
             TextField {
-                placeholderText: i18n.tr("Enter your status")
+                id: displaynameTextField
+                placeholderText: i18n.tr("Enter your new nickname")
+                Component.onCompleted: {
+                    storage.transaction ( "SELECT displayname FROM Roommembers WHERE state_key='%1'".arg(matrix.matrixid), function ( res ) {
+                        if ( res.rows.length > 1 ) {
+                            displaynameTextField.text = res.rows[0].displayname
+                        }
+                    })
+                }
             }
-            Button {
-                text: i18n.tr("Cancel")
-                onClicked: PopupUtils.close(dialogue)
-            }
-            Button {
-                text: i18n.tr("Save")
-                color: UbuntuColors.orange
-                onClicked: PopupUtils.close(dialogue)
+            Row {
+                width: parent.width
+                spacing: units.gu(1)
+                Button {
+                    width: (parent.width - units.gu(1)) / 2
+                    text: i18n.tr("Cancel")
+                    onClicked: PopupUtils.close(dialogue)
+                }
+                Button {
+                    width: (parent.width - units.gu(1)) / 2
+                    text: i18n.tr("Save")
+                    color: UbuntuColors.green
+                    onClicked: {
+                        matrix.put ( "/client/r0/profile/%1/displayname".arg(matrix.matrixid),
+                        { displayname: displaynameTextField.displayText} )
+                        PopupUtils.close(dialogue)
+                    }
+                }
             }
         }
-    }
+    }*/
 
 }
