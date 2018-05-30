@@ -8,17 +8,10 @@ Component {
 
     Dialog {
         id: dialogue
-        title: i18n.tr("Change nickname")
+        title: i18n.tr("Invite a friend")
         TextField {
-            id: displaynameTextField
-            placeholderText: i18n.tr("Enter your new nickname")
-            Component.onCompleted: {
-                storage.transaction ( "SELECT displayname FROM Roommembers WHERE state_key='%1'".arg(matrix.matrixid), function ( res ) {
-                    if ( res.rows.length > 0 ) {
-                        displaynameTextField.text = res.rows[0].displayname
-                    }
-                })
-            }
+            id: matrixidTextField
+            placeholderText: i18n.tr("@yourfriend:%1").arg(defaultDomain)
         }
         Row {
             width: parent.width
@@ -33,8 +26,9 @@ Component {
                 text: i18n.tr("Save")
                 color: UbuntuColors.green
                 onClicked: {
-                    matrix.put ( "/client/r0/profile/%1/displayname".arg(matrix.matrixid),
-                    { displayname: displaynameTextField.displayText} )
+                    console.log( matrixidTextField.displayText)
+                    matrix.post ( "/client/r0/rooms/%1/invite".arg(activeChat),
+                    { user_id: matrixidTextField.displayText} )
                     PopupUtils.close(dialogue)
                 }
             }

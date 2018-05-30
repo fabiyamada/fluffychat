@@ -1,6 +1,7 @@
 import QtQuick 2.4
 import QtQuick.Layouts 1.1
 import Ubuntu.Components 1.3
+import Ubuntu.Components.Popups 1.3
 import "../components"
 
 Page {
@@ -53,12 +54,27 @@ Page {
         onChatTimelineEvent: chatScrollView.handleNewEvent ()
     }
 
+
+    InviteDialog { id: inviteDialog }
+
+    ChangeChatnameDialog { id: changeChatnameDialog }
+
     header: FcPageHeader {
         title: activeChatDisplayName
 
         trailingActionBar {
             numberOfSlots: 1
             actions: [
+            Action {
+                iconName: "contact-new"
+                text: i18n.tr("Invite a friend")
+                onTriggered: PopupUtils.open(inviteDialog)
+            },
+            Action {
+                iconName: "compose"
+                text: i18n.tr("Edit chat name")
+                onTriggered: PopupUtils.open(changeChatnameDialog)
+            },
             Action {
                 iconName: "info"
                 text: i18n.tr("Info")
