@@ -23,13 +23,17 @@ Item {
     property var syncRequest: null
     property var since: ""
     property var initialized: false
+    property var abortSync: false
 
     function init () {
         console.log("LimitedBandwith: " + Connectivity.limitedBandwith)
         storage.getConfig("next_batch", function( res ) {
             since = res
             initialized = true
-            if ( since != null )  return sync ()
+            if ( since != null ) {
+                waitForSync ()
+                return sync ( 1 )
+            }
             toast.show ( i18n.tr("Synchronizing \n This can take a few minutes ...") )
             matrix.get ("/client/r0/sync", null,function ( response ) {
                 if ( waitingForSync ) progressBarRequests--
@@ -40,19 +44,19 @@ Item {
         })
     }
 
-    function sync () {
+    function sync ( timeout) {
         if (matrix.token === null || matrix.token === undefined) return
-        var timeout = defaultTimeout
-        if ( matrix.onlineStatus ) timeout = longPollingTimeout
+        if ( !timeout ) timeout = longPollingTimeout
         syncRequest = matrix.get ("/client/r0/sync", { "since": since, "timeout": timeout }, function ( response ) {
             if ( waitingForSync ) progressBarRequests--
+            waitingForSync = false
             if ( matrix.token !== undefined ) {
                 matrix.onlineStatus = true
                 handleEvents ( response )
                 sync ()
             }
         }, function ( error ) {
-            if ( matrix.token !== undefined ) {
+            if ( !abortSync && matrix.token !== undefined ) {
                 matrix.onlineStatus = false
                 console.log ( "Synchronization timeout!" )
                 if ( error.errcode === "M_INVALID" ) {
@@ -75,15 +79,11 @@ Item {
 
 
     function restartSync () {
+        abortSync = true
         syncRequest.abort ()
-        function Timer() {
-            return Qt.createQmlObject("import QtQuick 2.0; Timer {}", root);
-        }
-        var timer = new Timer();
-        timer.interval = miniTimeout;
-        timer.repeat = false;
-        timer.triggered.connect(sync)
-        timer.start();
+        abortSync = false
+        waitForSync ()
+        sync ( 1 )
     }
 
 
@@ -106,7 +106,7 @@ Item {
     // This function starts handling the events, saving new data in the storage,
     // deleting data, updating data and call signals
     function handleEvents ( response ) {
-        //console.log( "============= SYNCHRONIZATION EVENT RECEIVED =============")
+        console.log( "============= SYNCHRONIZATION EVENT RECEIVED =============")
         var changed = false
         try {
             storage.db.transaction(

@@ -20,7 +20,7 @@ MainView {
     property var activeChatDisplayName: null
     property var defaultDomain: "matrix.org"
     property var defaultDeviceName: "UbuntuPhone"
-    property var miniTimeout: 30000
+    property var miniTimeout: 3000
     property var defaultTimeout: 30000
     property var longPollingTimeout: 30000
     property var progressBarRequests: 0
@@ -43,6 +43,12 @@ MainView {
     PushController { id: pushclient }
     Toast { id: toast }
     LoadingModal { id: loadingModal }
+
+    Connections {
+        target: Qt.application
+        onStateChanged:
+        if(Qt.application.state === Qt.ApplicationActive) events.restartSync ()
+    }
 
     onActiveChatChanged: {
         roomnames.getById ( activeChat, function (name) {
