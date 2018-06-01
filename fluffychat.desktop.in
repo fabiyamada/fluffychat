@@ -6,3 +6,4 @@ Terminal=false
 Type=Application
 X-Ubuntu-Touch=true
 X-Ubuntu-Splash-Color=White
+Name[de_DE]=fluffychat.desktop.in
