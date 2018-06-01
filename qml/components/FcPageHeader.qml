@@ -6,7 +6,9 @@ PageHeader {
     id: header
     title: i18n.tr('FluffyChat')
 
-    StyleHints { foregroundColor: mainColor }
+    StyleHints {
+        foregroundColor: mainColor
+    }
 
     extension: ProgressBar {
         id: requestProgressBar

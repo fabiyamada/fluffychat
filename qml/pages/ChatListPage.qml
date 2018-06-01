@@ -84,6 +84,7 @@ Page {
     BottomEdge {
         id: bottomEdge
         height: parent.height
+
         contentComponent: Rectangle {
             width: root.width
             height: root.height
