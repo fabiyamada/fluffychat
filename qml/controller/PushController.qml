@@ -16,7 +16,7 @@ PushClient {
             "app_id": appId,
             "append": false,
             "data": {
-                "url": "http://janian.de:7000"
+                "url": "https://janian.de:7000"
             },
             "device_display_name": "UbuntuPhone",
             "lang": "en",
