@@ -24,6 +24,7 @@ ListItem {
         title.text: i18n.tr("Unknown chat")
         title.font.bold: true
         subtitle.text: i18n.tr("No previous messages")
+        title.color: room.membership === "invite" ? mainColor : "#000000"
         Avatar {
             source: "../../assets/background.svg"
             SlotsLayout.position: SlotsLayout.Leading

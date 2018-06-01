@@ -27,6 +27,7 @@ MainView {
     property var waitingForSync: false
     property var appstatus: 4
     property var pushtoken: pushclient.token
+    property var mainColor: "#5625BA"
 
 
     PageStack {

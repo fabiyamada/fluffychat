@@ -35,7 +35,7 @@ Rectangle {
         border.width: 1
         border.color: UbuntuColors.silk
         anchors.margins: 5
-        color: sent ? "#FFFFFF" : "#5625BA"
+        color: sent ? "#FFFFFF" : mainColor
         radius: 50
         height: messageLabel.height + metaLabel.height + units.gu(2)
         width: Math.max( messageLabel.width, metaLabel.width ) + units.gu(2) + (event.sending ? units.gu(2) : 0)
