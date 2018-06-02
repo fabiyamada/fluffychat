@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: fluffychat.christianpauly\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-05-28 11:48+0000\n"
+"POT-Creation-Date: 2018-06-02 11:46+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -26,7 +26,7 @@ msgid "Someone"
 msgstr ""
 
 #: ../qml/controller/DisplayEventController.qml:18
-msgid "%1 has entered the chat"
+msgid "%1 is now participating the chat as <b>%2</b>"
 msgstr ""
 
 #: ../qml/controller/DisplayEventController.qml:21
@@ -117,8 +117,8 @@ msgstr ""
 msgid "The chat permissions have been changed"
 msgstr ""
 
-#: ../qml/controller/EventController.qml:33 ../qml/pages/ChatPage.qml:119
-#: ../qml/pages/AddChatPage.qml:61
+#: ../qml/controller/EventController.qml:37 ../qml/pages/ChatPage.qml:135
+#: ../qml/pages/AddChatPage.qml:24
 msgid ""
 "Synchronizing \n"
 " This can take a few minutes ..."
@@ -134,7 +134,7 @@ msgstr ""
 msgid "No connection to the homeserver 😕"
 msgstr ""
 
-#: ../qml/pages/InfoPage.qml:10 ../qml/pages/ChatPage.qml:64
+#: ../qml/pages/InfoPage.qml:10 ../qml/pages/ChatPage.qml:80
 msgid "Info"
 msgstr ""
 
@@ -198,80 +198,87 @@ msgstr ""
 msgid "Swipe from the bottom to start a new chat"
 msgstr ""
 
-#: ../qml/pages/MainSettingsPage.qml:27
+#: ../qml/pages/MainSettingsPage.qml:28
 msgid "Settings"
 msgstr ""
 
-#: ../qml/pages/MainSettingsPage.qml:48
+#: ../qml/pages/MainSettingsPage.qml:49
 msgid "Notifications"
 msgstr ""
 
-#: ../qml/pages/MainSettingsPage.qml:72
+#: ../qml/pages/MainSettingsPage.qml:73
+#: ../qml/components/ChangeDisplaynameDialog.qml:11
+msgid "Change nickname"
+msgstr ""
+
+#: ../qml/pages/MainSettingsPage.qml:79
 msgid "About FluffyChat"
 msgstr ""
 
-#: ../qml/pages/MainSettingsPage.qml:78
+#: ../qml/pages/MainSettingsPage.qml:85
 msgid "Logout"
 msgstr ""
 
-#: ../qml/pages/MainSettingsPage.qml:90
-msgid "Set status"
+#: ../qml/pages/ChatPage.qml:70 ../qml/pages/ChatSettingsPage.qml:49
+#: ../qml/components/InviteDialog.qml:11
+msgid "Invite a friend"
 msgstr ""
 
-#: ../qml/pages/MainSettingsPage.qml:92
-msgid "Enter your status"
+#: ../qml/pages/ChatPage.qml:75 ../qml/pages/ChatSettingsPage.qml:54
+#: ../qml/components/ChangeChatnameDialog.qml:11
+msgid "Edit chat name"
 msgstr ""
 
-#: ../qml/pages/MainSettingsPage.qml:95
-msgid "Cancel"
-msgstr ""
-
-#: ../qml/pages/MainSettingsPage.qml:99
-msgid "Save"
-msgstr ""
-
-#: ../qml/pages/ChatPage.qml:69 ../qml/pages/ChatSettingsPage.qml:53
+#: ../qml/pages/ChatPage.qml:85 ../qml/pages/ChatSettingsPage.qml:68
 msgid "Leave chat"
 msgstr ""
 
-#: ../qml/pages/ChatPage.qml:96
+#: ../qml/pages/ChatPage.qml:112
 msgid "No messages in this chat ..."
 msgstr ""
 
-#: ../qml/pages/ChatPage.qml:114
+#: ../qml/pages/ChatPage.qml:130
 msgid "Accept invatiation"
 msgstr ""
 
-#: ../qml/pages/ChatPage.qml:134
+#: ../qml/pages/ChatPage.qml:150
 msgid "Type something ..."
 msgstr ""
 
-#: ../qml/pages/ChatPage.qml:167
+#: ../qml/pages/ChatPage.qml:183
 msgid "Scroll down"
 msgstr ""
 
-#: ../qml/pages/ChatSettingsPage.qml:27
+#: ../qml/pages/ChatSettingsPage.qml:28
 msgid "And %1 more ..."
 msgstr ""
 
-#: ../qml/pages/ChatSettingsPage.qml:44
+#: ../qml/pages/ChatSettingsPage.qml:59
 msgid "Join this chat"
 msgstr ""
 
-#: ../qml/pages/ChatSettingsPage.qml:88
+#: ../qml/pages/ChatSettingsPage.qml:103
 msgid "Users in this chat:"
 msgstr ""
 
-#: ../qml/pages/AddChatPage.qml:70
+#: ../qml/pages/AddChatPage.qml:33
 msgid "Room was not found 😟"
 msgstr ""
 
-#: ../qml/pages/AddChatPage.qml:81
+#: ../qml/pages/AddChatPage.qml:44
 msgid "Start a new chat"
 msgstr ""
 
-#: ../qml/pages/AddChatPage.qml:99
-msgid "Enter room id or alias"
+#: ../qml/pages/AddChatPage.qml:57 ../qml/components/NewContactDialog.qml:11
+msgid "New contact"
+msgstr ""
+
+#: ../qml/pages/AddChatPage.qml:63 ../qml/components/NewGroupDialog.qml:11
+msgid "New group"
+msgstr ""
+
+#: ../qml/pages/AddChatPage.qml:69 ../qml/components/JoinGroupDialog.qml:11
+msgid "Join group"
 msgstr ""
 
 #: ../qml/components/MemberListItem.qml:12
@@ -294,6 +301,25 @@ msgstr ""
 msgid "Was banned from the chat"
 msgstr ""
 
+#: ../qml/components/NewGroupDialog.qml:14
+msgid "Group name"
+msgstr ""
+
+#: ../qml/components/NewGroupDialog.qml:21
+#: ../qml/components/JoinGroupDialog.qml:21
+#: ../qml/components/InviteDialog.qml:21
+#: ../qml/components/NewContactDialog.qml:21
+#: ../qml/components/ChangeDisplaynameDialog.qml:28
+#: ../qml/components/ChangeChatnameDialog.qml:28
+msgid "Cancel"
+msgstr ""
+
+#: ../qml/components/NewGroupDialog.qml:26
+#: ../qml/components/JoinGroupDialog.qml:26
+#: ../qml/components/NewContactDialog.qml:26
+msgid "Continue"
+msgstr ""
+
 #: ../qml/components/FcPageHeader.qml:7
 msgid "FluffyChat"
 msgstr ""
@@ -310,14 +336,40 @@ msgstr ""
 msgid "No previous messages"
 msgstr ""
 
-#: ../qml/components/ChatListItem.qml:40
+#: ../qml/components/ChatListItem.qml:41
 msgid "You have been invited to this chat"
 msgstr ""
 
-#: ../qml/components/ChatListItem.qml:44
+#: ../qml/components/ChatListItem.qml:45
 msgid "You: "
+msgstr ""
+
+#: ../qml/components/JoinGroupDialog.qml:14
+msgid "#groupname:"
+msgstr ""
+
+#: ../qml/components/InviteDialog.qml:14
+msgid "@yourfriend:%1"
+msgstr ""
+
+#: ../qml/components/InviteDialog.qml:26
+#: ../qml/components/ChangeDisplaynameDialog.qml:33
+#: ../qml/components/ChangeChatnameDialog.qml:33
+msgid "Save"
 msgstr ""
 
 #: ../qml/components/ChatScrollView.qml:93
 msgid "New message at the bottom of the chat"
+msgstr ""
+
+#: ../qml/components/NewContactDialog.qml:14
+msgid "@yourfriend:"
+msgstr ""
+
+#: ../qml/components/ChangeDisplaynameDialog.qml:14
+msgid "Enter your new nickname"
+msgstr ""
+
+#: ../qml/components/ChangeChatnameDialog.qml:14
+msgid "Enter a name for the chat"
 msgstr ""
