@@ -15,7 +15,7 @@ Item {
         var displayname = event.content.displayname || event.displayname || usernames.transformFromId(event.sender) || i18n.tr("Someone")
         if ( event.type === "m.room.member" ) {
             if ( event.content.membership === "join" ) {
-                body = i18n.tr("%1 has entered the chat").arg(displayname)
+                body = i18n.tr("%1 is now participating the chat as <b>%2</b>").arg(event.sender).arg(displayname)
             }
             else if ( event.content.membership === "invite" ) {
                 body = i18n.tr("%1 has invited %2").arg(sendername).arg(event.content.displayname)
