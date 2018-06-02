@@ -106,7 +106,7 @@ Item {
     // This function starts handling the events, saving new data in the storage,
     // deleting data, updating data and call signals
     function handleEvents ( response ) {
-        //console.log( "============= SYNCHRONIZATION EVENT RECEIVED =============")
+        //console.log( "============= SYNCHRONIZATION EVENT RECEIVED =============", JSON.stringify(response))
         var changed = false
         try {
             storage.db.transaction(
