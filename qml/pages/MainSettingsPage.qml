@@ -46,7 +46,7 @@ Page {
             width: root.width
 
             SettingsListItem {
-                name: i18n.tr("Notifications")
+                name: i18n.tr("Notifications (Beta)")
                 icon: "notification"
                 Switch {
                     id: switchPush
