@@ -26,8 +26,8 @@ msgid "Someone"
 msgstr "Jemand"
 
 #: ../qml/controller/DisplayEventController.qml:18
-msgid "%1 has entered the chat"
-msgstr "%1 hat den Chat betreten"
+msgid "%1 is now participating the chat as <b>%2</b>"
+msgstr "%1 nimmt jetzt als %2 am Chat teil"
 
 #: ../qml/controller/DisplayEventController.qml:21
 msgid "%1 has invited %2"
@@ -39,7 +39,7 @@ msgstr "%1 hat den Chat verlassen"
 
 #: ../qml/controller/DisplayEventController.qml:27
 msgid "%1 has been banned from the chat"
-msgstr "%1 wurde aus dem Chat verbannt"
+msgstr "%1 wurde aus dem Chat gebannt"
 
 #: ../qml/controller/DisplayEventController.qml:31
 msgid "The chat has been created"
@@ -47,15 +47,15 @@ msgstr "Der Chat wurde erstellt"
 
 #: ../qml/controller/DisplayEventController.qml:34
 msgid "%1 has changed the chat name"
-msgstr "%1 hat den Chat-Namen geändert"
+msgstr "%1 hat den Chat Namen geändert"
 
 #: ../qml/controller/DisplayEventController.qml:37
 msgid "%1 has changed the chat topic"
-msgstr "%1 hat das Thema geändert"
+msgstr "%1 hat das Chat Thema geändert"
 
 #: ../qml/controller/DisplayEventController.qml:40
 msgid "%1 has set the chat history visible to: "
-msgstr "%1 hat die Sichtbarkeit des Verlaufs geändert zu: "
+msgstr "%1 hat die Sichtbarkeit des Chat Verlaufs geändert zu: "
 
 #: ../qml/controller/DisplayEventController.qml:42
 msgid "All chat participants"
@@ -63,19 +63,19 @@ msgstr "Alle Mitglieder"
 
 #: ../qml/controller/DisplayEventController.qml:45
 msgid "All joined chat participants"
-msgstr "Alle verbundenen Mitglieder"
+msgstr "Alle Chat Mitglieder"
 
 #: ../qml/controller/DisplayEventController.qml:48
 msgid "All invited chat participants"
-msgstr "Alle eingeladenen Mitglieder"
+msgstr "Alle eingeladene Chat Mitglieder"
 
 #: ../qml/controller/DisplayEventController.qml:51
 msgid "Everyone"
-msgstr "Alle"
+msgstr "Jeder"
 
 #: ../qml/controller/DisplayEventController.qml:55
 msgid "%1 has set the join rules to: "
-msgstr "%1 hat die Zugangsregeln geändert zu: "
+msgstr "%1 hat die Zugangsregeln gesetzt zu: "
 
 #: ../qml/controller/DisplayEventController.qml:57
 msgid "Only invited users"
@@ -107,18 +107,18 @@ msgstr "Verboten"
 
 #: ../qml/controller/DisplayEventController.qml:79
 msgid "The chat aliases have been changed."
-msgstr "Die Chat-Aliase wurden geändert"
+msgstr "Die Chat Aliase wurden geändert"
 
 #: ../qml/controller/DisplayEventController.qml:85
 msgid "The canonical chat alias has been changed to: "
-msgstr "Der standardmäßige Chat-Alias wurde geändert in: "
+msgstr "Der kanonische Chat Alias wurde geändert zu: "
 
 #: ../qml/controller/DisplayEventController.qml:88
 msgid "The chat permissions have been changed"
-msgstr "Die Chat-Berechtigungen wurden geändert"
+msgstr "Die Chat Berechtigungen wurden geändert"
 
-#: ../qml/controller/EventController.qml:33 ../qml/pages/ChatPage.qml:119
-#: ../qml/pages/AddChatPage.qml:61
+#: ../qml/controller/EventController.qml:37 ../qml/pages/ChatPage.qml:135
+#: ../qml/pages/AddChatPage.qml:24
 msgid ""
 "Synchronizing \n"
 " This can take a few minutes ..."
@@ -132,11 +132,11 @@ msgstr ""
 msgid "Empty chat"
 msgstr "Leerer Chat"
 
-#: ../qml/controller/MatrixController.qml:172
+#: ../qml/controller/MatrixController.qml:170
 msgid "No connection to the homeserver 😕"
 msgstr "Keine Verbindung zum Homeserver 😕"
 
-#: ../qml/pages/InfoPage.qml:10 ../qml/pages/ChatPage.qml:64
+#: ../qml/pages/InfoPage.qml:10 ../qml/pages/ChatPage.qml:80
 msgid "Info"
 msgstr "Info"
 
@@ -158,7 +158,7 @@ msgstr "Bitte alle Felder ausfüllen"
 
 #: ../qml/pages/LoginPage.qml:44
 msgid "Invalid username or password"
-msgstr "Nutzername oder Passwort ungültig"
+msgstr "Ungültiger Benutzername oder Passwort"
 
 #: ../qml/pages/LoginPage.qml:47
 msgid "No connection to "
@@ -166,7 +166,7 @@ msgstr "Keine Verbindung zu "
 
 #: ../qml/pages/LoginPage.qml:57
 msgid "Welcome to FluffyChat"
-msgstr "Willkommen zu FluffyChat"
+msgstr "Willkommen bei FluffyChat"
 
 #: ../qml/pages/LoginPage.qml:73
 msgid "Choose your homeserver"
@@ -198,79 +198,90 @@ msgstr "Benutze den Homeserver: "
 
 #: ../qml/pages/ChatListPage.qml:78
 msgid "Swipe from the bottom to start a new chat"
-msgstr "Wische von unten herein, um einen neuen Chat zu starten"
+msgstr "Von unten herein wischen, um neuen Chat zu starten"
 
-#: ../qml/pages/MainSettingsPage.qml:11
+#: ../qml/pages/MainSettingsPage.qml:28
 msgid "Settings"
 msgstr "Einstellungen"
 
-#: ../qml/pages/MainSettingsPage.qml:32
+#: ../qml/pages/MainSettingsPage.qml:49
+msgid "Notifications (Beta)"
+msgstr "Benachrichtigungen (Beta)"
+
+#: ../qml/pages/MainSettingsPage.qml:73
+#: ../qml/components/ChangeDisplaynameDialog.qml:11
+msgid "Change nickname"
+msgstr "Spitznamen ändern"
+
+#: ../qml/pages/MainSettingsPage.qml:79
 msgid "About FluffyChat"
 msgstr "Über FluffyChat"
 
-#: ../qml/pages/MainSettingsPage.qml:38
+#: ../qml/pages/MainSettingsPage.qml:85
 msgid "Logout"
 msgstr "Abmelden"
 
-#: ../qml/pages/MainSettingsPage.qml:50
-msgid "Set status"
-msgstr "Status setzen"
+#: ../qml/pages/ChatPage.qml:70 ../qml/pages/ChatSettingsPage.qml:49
+#: ../qml/components/InviteDialog.qml:11
+msgid "Invite a friend"
+msgstr "Freund einladen"
 
-#: ../qml/pages/MainSettingsPage.qml:52
-msgid "Enter your status"
-msgstr ""
+#: ../qml/pages/ChatPage.qml:75 ../qml/pages/ChatSettingsPage.qml:54
+#: ../qml/components/ChangeChatnameDialog.qml:11
+msgid "Edit chat name"
+msgstr "Chat Namen ändern"
 
-#: ../qml/pages/MainSettingsPage.qml:55
-msgid "Cancel"
-msgstr ""
-
-#: ../qml/pages/MainSettingsPage.qml:59
-msgid "Save"
-msgstr ""
-
-#: ../qml/pages/ChatPage.qml:69 ../qml/pages/ChatSettingsPage.qml:53
+#: ../qml/pages/ChatPage.qml:85 ../qml/pages/ChatSettingsPage.qml:68
 msgid "Leave chat"
 msgstr "Chat verlassen"
 
-#: ../qml/pages/ChatPage.qml:96
+#: ../qml/pages/ChatPage.qml:112
 msgid "No messages in this chat ..."
 msgstr "Keine Nachrichten in diesem Chat ..."
 
-#: ../qml/pages/ChatPage.qml:114
+#: ../qml/pages/ChatPage.qml:130
 msgid "Accept invatiation"
 msgstr "Einladung annehmen"
 
-#: ../qml/pages/ChatPage.qml:134
+#: ../qml/pages/ChatPage.qml:150
 msgid "Type something ..."
 msgstr "Schreibe etwas ..."
 
-#: ../qml/pages/ChatPage.qml:167
+#: ../qml/pages/ChatPage.qml:183
 msgid "Scroll down"
 msgstr "Nach unten"
 
-#: ../qml/pages/ChatSettingsPage.qml:27
+#: ../qml/pages/ChatSettingsPage.qml:28
 msgid "And %1 more ..."
 msgstr "Und %1 mehr ..."
 
-#: ../qml/pages/ChatSettingsPage.qml:44
+#: ../qml/pages/ChatSettingsPage.qml:59
 msgid "Join this chat"
-msgstr "Diesem Chat beitreten"
+msgstr "Den Chat betreten"
 
-#: ../qml/pages/ChatSettingsPage.qml:88
+#: ../qml/pages/ChatSettingsPage.qml:103
 msgid "Users in this chat:"
 msgstr "Benutzer in diesem Chat:"
 
-#: ../qml/pages/AddChatPage.qml:70
+#: ../qml/pages/AddChatPage.qml:33
 msgid "Room was not found 😟"
 msgstr "Chat wurde nicht gefunden 😟"
 
-#: ../qml/pages/AddChatPage.qml:81
+#: ../qml/pages/AddChatPage.qml:44
 msgid "Start a new chat"
-msgstr "Starte einen neuen Chat"
+msgstr "Neuen Chat starten"
 
-#: ../qml/pages/AddChatPage.qml:99
-msgid "Enter room id or alias"
-msgstr "Gib eine ID oder einen Alias ein"
+#: ../qml/pages/AddChatPage.qml:57 ../qml/components/NewContactDialog.qml:11
+msgid "New contact"
+msgstr "Neuer Kontakt"
+
+#: ../qml/pages/AddChatPage.qml:63 ../qml/components/NewGroupDialog.qml:11
+msgid "New group"
+msgstr "Neue Gruppe"
+
+#: ../qml/pages/AddChatPage.qml:69 ../qml/components/JoinGroupDialog.qml:11
+msgid "Join group"
+msgstr "Gruppe beitreten"
 
 #: ../qml/components/MemberListItem.qml:12
 msgid "Member"
@@ -292,7 +303,26 @@ msgstr "Hat angeklopft"
 msgid "Was banned from the chat"
 msgstr "Wurde aus dem Chat gebannt"
 
-#: ../qml/components/FcPageHeader.qml:7 fluffychat.desktop.in.h:1
+#: ../qml/components/NewGroupDialog.qml:14
+msgid "Group name"
+msgstr "Gruppenname"
+
+#: ../qml/components/NewGroupDialog.qml:21
+#: ../qml/components/JoinGroupDialog.qml:21
+#: ../qml/components/InviteDialog.qml:21
+#: ../qml/components/NewContactDialog.qml:21
+#: ../qml/components/ChangeDisplaynameDialog.qml:28
+#: ../qml/components/ChangeChatnameDialog.qml:28
+msgid "Cancel"
+msgstr "Abbrechen"
+
+#: ../qml/components/NewGroupDialog.qml:26
+#: ../qml/components/JoinGroupDialog.qml:26
+#: ../qml/components/NewContactDialog.qml:26
+msgid "Continue"
+msgstr "Weiter"
+
+#: ../qml/components/FcPageHeader.qml:7
 msgid "FluffyChat"
 msgstr "FluffyChat"
 
@@ -308,14 +338,40 @@ msgstr "Unbekannter Chat"
 msgid "No previous messages"
 msgstr "Keine vorhergehenden Nachrichten"
 
-#: ../qml/components/ChatListItem.qml:40
+#: ../qml/components/ChatListItem.qml:41
 msgid "You have been invited to this chat"
 msgstr "Du wurdest in diesen Chat eingeladen"
 
-#: ../qml/components/ChatListItem.qml:44
+#: ../qml/components/ChatListItem.qml:45
 msgid "You: "
 msgstr "Du: "
 
+#: ../qml/components/JoinGroupDialog.qml:14
+msgid "#groupname:"
+msgstr "#gruppenname:"
+
+#: ../qml/components/InviteDialog.qml:14
+msgid "@yourfriend:%1"
+msgstr "@deinfreund:%1"
+
+#: ../qml/components/InviteDialog.qml:26
+#: ../qml/components/ChangeDisplaynameDialog.qml:33
+#: ../qml/components/ChangeChatnameDialog.qml:33
+msgid "Save"
+msgstr "Speichern"
+
 #: ../qml/components/ChatScrollView.qml:93
 msgid "New message at the bottom of the chat"
-msgstr "Neue Nachrichten sind unten im Chat"
+msgstr "Neue Nachricht unten im Chat"
+
+#: ../qml/components/NewContactDialog.qml:14
+msgid "@yourfriend:"
+msgstr "@deinfreund:"
+
+#: ../qml/components/ChangeDisplaynameDialog.qml:14
+msgid "Enter your new nickname"
+msgstr "Gib deinen neuen Spitznamen ein"
+
+#: ../qml/components/ChangeChatnameDialog.qml:14
+msgid "Enter a name for the chat"
+msgstr "Gib einen Namen für den Chat ein"
