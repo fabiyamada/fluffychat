@@ -28,6 +28,6 @@ PushClient {
         matrix.post ( "/client/r0/pushers/set", data, callback, error_callback )
     }
 
-    appId: "fluffychat.christianpauly_hello"
+    appId: "fluffychat.christianpauly_fluffychat"
 
 }
