@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: fluffychat.christianpauly\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-06-05 11:31+0000\n"
+"POT-Creation-Date: 2018-06-05 13:18+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -134,7 +134,7 @@ msgstr ""
 msgid "Please login to Ubuntu One to receive push notifications!"
 msgstr ""
 
-#: ../qml/controller/MatrixController.qml:179
+#: ../qml/controller/MatrixController.qml:177
 msgid "No connection to the homeserver 😕"
 msgstr ""
 
@@ -362,7 +362,7 @@ msgstr ""
 msgid "Save"
 msgstr ""
 
-#: ../qml/components/ChatScrollView.qml:93
+#: ../qml/components/ChatScrollView.qml:120
 msgid "New message at the bottom of the chat"
 msgstr ""
 

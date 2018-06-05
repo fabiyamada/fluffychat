@@ -120,7 +120,7 @@ Item {
                     storage.setConfig ( "next_batch", since )
                     chatListUpdated ()
                     triggerSignals ( response )
-                    //console.log("===> SYNCHRONIZATION performance: ", new Date().getTime() - timecount )
+                    console.log("===> SYNCHRONIZATION performance: ", new Date().getTime() - timecount )
                 }
             )
         }
@@ -166,6 +166,8 @@ Item {
 
     // Events are all changes in a room
     function handleRoomEvents ( roomid, events, type, room ) {
+
+        //if ( events.length > 1000 ) throw ("To much events!")
         // We go through the events array
         for ( var i = 0; i < events.length; i++ ) {
             var event = events[i]
@@ -209,7 +211,6 @@ Item {
                     for ( var t = 0; t < room.timeline.events.length; t++ ) {
                         if ( room.timeline.events[t].sender === event.state_key ) {
                             found = true
-                            console.log("Found member that I will save")
                             break
                         }
                     }

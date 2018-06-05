@@ -9,6 +9,10 @@ Rectangle {
     height: bubble.height + units.gu(1)
     color: "transparent"
 
+    function update () {
+        eventLabel.text = displayEvents.getDisplay ( event ) + " <font color='" + UbuntuColors.silk + "'>" + stamp.getChatTime ( event.origin_server_ts ) + "</font>"
+    }
+
     Rectangle {
         id: bubble
         z: 2

@@ -35,10 +35,37 @@ ScrollView {
                 for ( var i = res.rows.length-1; i >= 0; i-- ) {
                     var event = res.rows.item(i)
                     addEventToList ( event )
+                    if ( event.state_key === null ) requestRoomMember ( event.sender )
                 }
                 updated = true
             }
         })
+    }
+
+
+    function requestRoomMember ( matrixid ) {
+        var localActiveChat = activeChat
+        matrix.get("/client/r0/rooms/%1/state/m.room.member/%3".arg(activeChat).arg(matrixid), null, function ( res ) {
+
+            // Save the new roommember event in the database
+            storage.query( "INSERT OR REPLACE INTO Roommembers VALUES(?, ?, ?, ?, ?)",
+            [ localActiveChat,
+            matrixid,
+            res.membership,
+            res.displayname,
+            res.avatar_url ])
+
+            // Update the current view
+            for ( var i = 0; i < messagesList.children.length; i++ ) {
+                var elem = messagesList.children[i]
+                if ( messagesList.children[i].event.sender === matrixid ) {
+                    messagesList.children[i].event.state_key = matrixid
+                    messagesList.children[i].event.displayname = res.displayname
+                    messagesList.children[i].event.avatar_url = res.avatar_url
+                    messagesList.children[i].update()
+                }
+            }
+        } )
     }
 
 

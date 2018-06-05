@@ -13,10 +13,9 @@ Rectangle {
     color: "transparent"
     opacity: sending ? 0.5 : 1
 
-    Component.onCompleted: {
-        if ( event.state_key === null ) {
-            console.log("Need username and avatar from ", event.sender)
-        }
+    function update () {
+        metaLabel.text = (event.displayname || event.sender) + " " + stamp.getChatTime ( event.origin_server_ts )
+        avatar.mxc = event.avatar_url
     }
 
     Avatar {
