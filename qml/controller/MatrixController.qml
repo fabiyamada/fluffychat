@@ -68,11 +68,9 @@ Item {
         xmlRequest ( "POST", data, "/client/r0/login", onLogged, error_callback, status_callback )
     }
 
-    function logout ( callback ) {
-        remove ( "/client/ro/devices/" + deviceID, {} )
-        post ( "/client/r0/logout", {} )
-        if ( callback ) callback ()
-        reset ()
+    function logout () {
+        var callback = function () { post ( "/client/r0/logout", {}, reset, reset ) }
+        pushclient.setPusher ( false, callback, callback )
     }
 
 
