@@ -46,7 +46,7 @@ Item {
     function sync ( timeout) {
         if (matrix.token === null || matrix.token === undefined) return
         if ( !timeout ) timeout = longPollingTimeout
-        var data = { "since": since }
+        var data = { "since": since, "timeout": timeout }
         syncRequest = matrix.get ("/client/r0/sync", data, function ( response ) {
             if ( waitingForSync ) progressBarRequests--
             waitingForSync = false
@@ -120,7 +120,7 @@ Item {
                     storage.setConfig ( "next_batch", since )
                     chatListUpdated ()
                     triggerSignals ( response )
-                    //console.log("===> SYNCHRONIZATION performance: ", new Date().getTime() - timecount )
+                    console.log("===> SYNCHRONIZATION performance: ", new Date().getTime() - timecount )
                 }
             )
         }
