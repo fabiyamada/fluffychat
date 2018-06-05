@@ -26,7 +26,6 @@ Item {
     property var abortSync: false
 
     function init () {
-        console.log("LimitedBandwith: " + Connectivity.limitedBandwith)
         storage.getConfig("next_batch", function( res ) {
             since = res
             initialized = true
@@ -47,10 +46,11 @@ Item {
     function sync ( timeout) {
         if (matrix.token === null || matrix.token === undefined) return
         if ( !timeout ) timeout = longPollingTimeout
-        syncRequest = matrix.get ("/client/r0/sync", { "since": since, "timeout": timeout }, function ( response ) {
+        var data = { "since": since }
+        syncRequest = matrix.get ("/client/r0/sync", data, function ( response ) {
             if ( waitingForSync ) progressBarRequests--
             waitingForSync = false
-            if ( matrix.token !== undefined ) {
+            if ( matrix.token !== undefined && matrix.token !== null ) {
                 matrix.onlineStatus = true
                 handleEvents ( response )
                 sync ()

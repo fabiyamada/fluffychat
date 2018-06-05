@@ -35,7 +35,7 @@ Item {
     function init () {
         loadConfigs ()
 
-        if ( username != null && token != null && server != null ) {
+        if ( token !== null ) {
             mainStack.push(Qt.resolvedUrl("../pages/ChatListPage.qml"))
             onlineStatus = true
             usernames.getById(matrix.matrixid, "", function (name) { displayname = name } )
