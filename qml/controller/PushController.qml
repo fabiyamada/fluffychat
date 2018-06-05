@@ -9,10 +9,11 @@ PushClient {
     property var errorReport: null
 
     function pusherror ( reason ) {
-        console.log("PUSHERROR",reason)
+        console.warn("PUSHERROR",reason)
         if ( reason === "bad auth" ) {
             errorReport = i18n.tr("Please login to Ubuntu One to receive push notifications!")
         }
+        else errorReport = reason
     }
 
     Component.onCompleted: {
