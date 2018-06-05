@@ -27,6 +27,8 @@ Item {
     // The online status (bool)
     property var onlineStatus: false
 
+    // The list of the current active requests, to prevent multiple same requests
+    property var activeRequests: []
 
     // Check if there are username, password and domain saved from a previous
     // session and autoconnect with them. If not, then just go to the login Page.
@@ -123,6 +125,11 @@ Item {
 
     function xmlRequest ( type, data, action, callback, error_callback, status_callback ) {
 
+        // Check if the same request is actual sent
+        var checksum = type + JSON.stringify(data) + action
+        if ( activeRequests.indexOf(checksum) !== -1 ) return console.warn( "multiple request detected!" )
+        else activeRequests.push ( checksum )
+
         var http = new XMLHttpRequest();
         var postData = {}
         var getData = ""
@@ -145,6 +152,8 @@ Item {
         http.onreadystatechange = function() {
             if ( status_callback ) status_callback ( http.readyState )
             if (http.readyState === XMLHttpRequest.DONE) {
+                var index = activeRequests.indexOf(checksum);
+                activeRequests.splice( index, 1 )
                 if ( !longPolling ) progressBarRequests--
                 if ( progressBarRequests < 0 ) progressBarRequests = 0
                 try {

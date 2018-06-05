@@ -107,8 +107,8 @@ Item {
     // This function starts handling the events, saving new data in the storage,
     // deleting data, updating data and call signals
     function handleEvents ( response ) {
-        //console.log( "============= SYNCHRONIZATION EVENT RECEIVED =============", JSON.stringify(response))
         var changed = false
+        var timecount = new Date().getTime()
         try {
             storage.db.transaction(
                 function(tx) {
@@ -120,10 +120,14 @@ Item {
                     storage.setConfig ( "next_batch", since )
                     chatListUpdated ()
                     triggerSignals ( response )
+                    //console.log("===> SYNCHRONIZATION performance: ", new Date().getTime() - timecount )
                 }
             )
         }
-        catch ( e ) { console.log ( e ) }
+        catch ( e ) {
+            toast.show ( "CRITICAL ERROR:", e )
+            console.log ( e )
+        }
     }
 
 
@@ -147,9 +151,9 @@ Item {
                 (room.unread_notifications ? room.unread_notifications.notification_count : 0),
                 (room.timeline ? (room.timeline.limited ? 1 : 0) : 0) ])
 
-                if ( room.state ) handleRoomEvents ( id, room.state.events, "state" )
-                if ( room.invite_state ) handleRoomEvents ( id, room.invite_state.events, "invite_state" )
-                if ( room.timeline ) handleRoomEvents ( id, room.timeline.events, "timeline" )
+                if ( room.state ) handleRoomEvents ( id, room.state.events, "state", room )
+                if ( room.invite_state ) handleRoomEvents ( id, room.invite_state.events, "invite_state", room )
+                if ( room.timeline ) handleRoomEvents ( id, room.timeline.events, "timeline", room )
             }
             else {
                 transaction.executeSql ( "DELETE FROM Rooms WHERE id='" + id + "'")
@@ -161,7 +165,7 @@ Item {
 
 
     // Events are all changes in a room
-    function handleRoomEvents ( roomid, events, type ) {
+    function handleRoomEvents ( roomid, events, type, room ) {
         // We go through the events array
         for ( var i = 0; i < events.length; i++ ) {
             var event = events[i]
@@ -179,7 +183,6 @@ Item {
                 event.content.msgtype || null,
                 event.type,
                 JSON.stringify(event.content) ])
-                //if ( roomid === activeChat ) chatTimelineEvent ()
             }
 
             // This event means, that the topic of a room has been changed, so
@@ -199,7 +202,19 @@ Item {
 
             // This event means, that someone joined the room, has left the room
             // or has changed his nickname
-            else if ( event.type === "m.room.member") {
+            else if ( event.type === "m.room.member" ) {
+                if ( type === "state" ) {
+                    if ( !room.timeline ) continue
+                    var found = false
+                    for ( var t = 0; t < room.timeline.events.length; t++ ) {
+                        if ( room.timeline.events[t].sender === event.state_key ) {
+                            found = true
+                            console.log("Found member that I will save")
+                            break
+                        }
+                    }
+                    if ( !found ) continue
+                }
                 transaction.executeSql( "INSERT OR REPLACE INTO Roommembers VALUES(?, ?, ?, ?, ?)",
                 [ roomid,
                 event.state_key,

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: fluffychat.christianpauly\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-06-05 06:47+0000\n"
+"POT-Creation-Date: 2018-06-05 11:31+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -134,7 +134,7 @@ msgstr ""
 msgid "Please login to Ubuntu One to receive push notifications!"
 msgstr ""
 
-#: ../qml/controller/MatrixController.qml:168
+#: ../qml/controller/MatrixController.qml:179
 msgid "No connection to the homeserver 😕"
 msgstr ""
 
@@ -202,24 +202,24 @@ msgstr ""
 msgid "Swipe from the bottom to start a new chat"
 msgstr ""
 
-#: ../qml/pages/MainSettingsPage.qml:28
+#: ../qml/pages/MainSettingsPage.qml:27
 msgid "Settings"
 msgstr ""
 
-#: ../qml/pages/MainSettingsPage.qml:49
+#: ../qml/pages/MainSettingsPage.qml:48
 msgid "Notifications (Beta)"
 msgstr ""
 
-#: ../qml/pages/MainSettingsPage.qml:75
+#: ../qml/pages/MainSettingsPage.qml:74
 #: ../qml/components/ChangeDisplaynameDialog.qml:11
 msgid "Change nickname"
 msgstr ""
 
-#: ../qml/pages/MainSettingsPage.qml:81
+#: ../qml/pages/MainSettingsPage.qml:80
 msgid "About FluffyChat"
 msgstr ""
 
-#: ../qml/pages/MainSettingsPage.qml:87
+#: ../qml/pages/MainSettingsPage.qml:86
 msgid "Logout"
 msgstr ""
 

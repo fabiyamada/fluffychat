@@ -15,7 +15,7 @@ are changes to the database model, the version-property MUST be increaded!
 Item {
     id: storage
 
-    property var version: "0.1.11"
+    property var version: "0.1.11a"
     property var db: LocalStorage.openDatabaseSync("FLuffyChat", "1.0", "FluffyChat Database", 1000000)
 
 

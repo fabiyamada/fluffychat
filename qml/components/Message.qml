@@ -13,6 +13,12 @@ Rectangle {
     color: "transparent"
     opacity: sending ? 0.5 : 1
 
+    Component.onCompleted: {
+        if ( event.state_key === null ) {
+            console.log("Need username and avatar from ", event.sender)
+        }
+    }
+
     Avatar {
         id: avatar
         name: "contact"
