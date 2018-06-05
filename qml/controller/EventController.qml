@@ -79,6 +79,7 @@ Item {
 
 
     function restartSync () {
+        if ( syncRequest === null ) return
         abortSync = true
         syncRequest.abort ()
         abortSync = false
