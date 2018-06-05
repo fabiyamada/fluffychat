@@ -56,7 +56,6 @@ Item {
                     unsetConfig ("next_batch")
                     // Drop all databases and recreate them
                     drop ()
-                    setConfig ( "dbversion", version )
                     unsetConfig ( "next_batch" )
                 }
             })
@@ -73,6 +72,7 @@ Item {
         transaction('CREATE TABLE Rooms(id TEXT PRIMARY KEY, membership TEXT, topic TEXT, highlight_count INTEGER, notification_count INTEGER, limitedTimeline INTEGER, prev_batch TEXT, UNIQUE(id))')
         transaction('CREATE TABLE Roomevents(id TEXT PRIMARY KEY, roomsid TEXT, origin_server_ts INTEGER, sender TEXT, content_body TEXT, content_msgtype STRING, type TEXT, content_json TEXT, UNIQUE(id))')
         transaction('CREATE TABLE Roommembers(roomsid TEXT, state_key TEXT, membership TEXT, displayname TEXT, avatar_url TEXT, UNIQUE(roomsid, state_key))')
+        setConfig ( "dbversion", version )
     }
 
 

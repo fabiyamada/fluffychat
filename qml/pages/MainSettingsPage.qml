@@ -58,9 +58,11 @@ Page {
                         if ( enabled ) {
                             enabled = false
                             pushclient.setPusher ( checked, getPushers, function ( error ) {
-                                toast.show ( error.errcode + ": " + error.error )
-                                getPushers ()
-                            } )
+                                if ( error.errcode === "NO_UBUNTUONE" ) toast.show ( error.error )
+                                else toast.show ( error.errcode + ": " + error.error )
+                                checked = !checked
+                                enabled = true
+                            })
                         }
                     }
                     enabled: false
