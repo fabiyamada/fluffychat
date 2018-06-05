@@ -120,7 +120,7 @@ Item {
                     storage.setConfig ( "next_batch", since )
                     chatListUpdated ()
                     triggerSignals ( response )
-                    console.log("===> SYNCHRONIZATION performance: ", new Date().getTime() - timecount )
+                    //console.log("===> SYNCHRONIZATION performance: ", new Date().getTime() - timecount )
                 }
             )
         }
