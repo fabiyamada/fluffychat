@@ -151,7 +151,7 @@ Item {
                 if ( progressBarRequests < 0 ) progressBarRequests = 0
                 try {
                     var responseType = http.getResponseHeader("Content-Type")
-                    if ( http.responseText === "" ) throw( "offline" )
+                    if ( http.responseText === "" ) throw( "No connection to the homeserver 😕" )
                     if ( responseType === "application/json" ) {
                         var response = JSON.parse(http.responseText)
                         if ( "errcode" in response ) throw response
