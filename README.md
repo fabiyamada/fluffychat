@@ -45,3 +45,10 @@ You don't like the colors? In the next versions, you will be able to change the 
 #### How are push notifications working?
 The notifications are sent from the matrix homeserver to the fluffychat push-gateway at: https://github.com/ChristianPauly/fluffychat-push-gateway
 This gateway just beams the push to https://push.ubports.com/notify via https. The push-gateway is currently on my own server! I am NOT saving any data! It is just forwarding! However you can just host your own gateway if you want. There is currently no end-to-end encryption in fluffychat so you should not send any message-content from your homeserver, if you don't trust fluffychat or ubports!
+
+#### I can not connect to my homeserver with port 8448
+Sorry! 😕 On port 8448 the most homeservers use a different ssl certificate, which causes an error. Currently the xmlhttprequest in QML
+does not allow those certificates.
+
+#### I can not connect to my homeserver (self signed certificate)
+The same problem ... I recommend you to use a letsencrypt certificate.
