@@ -56,6 +56,7 @@ Rectangle {
 
     Label {
         id: label
+        elide: Text.ElideMiddle
         anchors.centerIn: parent
         text: ""
         color: "#FFFFFF"
