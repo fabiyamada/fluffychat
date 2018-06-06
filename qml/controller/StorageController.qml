@@ -59,6 +59,11 @@ Item {
                     unsetConfig ( "next_batch" )
                 }
             })
+            transaction ( 'PRAGMA foreign_keys = OFF')
+            transaction ( 'PRAGMA synchronous = OFF')
+            //transaction ( 'PRAGMA journal_mode = OFF')
+            transaction ( 'PRAGMA locking_mode = EXCLUSIVE')
+            transaction ( 'PRAGMA temp_store = MEMORY')
         })
     }
 

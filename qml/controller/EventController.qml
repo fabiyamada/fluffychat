@@ -134,7 +134,6 @@ Item {
     function triggerSignals ( response ) {
         var activeRoom = response.rooms.join[activeChat]
         if ( activeRoom !== undefined && activeRoom.timeline.events.length > 0 ) chatTimelineEvent ()
-
     }
 
 
@@ -167,7 +166,6 @@ Item {
     // Events are all changes in a room
     function handleRoomEvents ( roomid, events, type, room ) {
 
-        //if ( events.length > 1000 ) throw ("To much events!")
         // We go through the events array
         for ( var i = 0; i < events.length; i++ ) {
             var event = events[i]

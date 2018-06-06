@@ -64,7 +64,7 @@ Page {
     ChangeChatnameDialog { id: changeChatnameDialog }
 
     header: FcPageHeader {
-        title: activeChatDisplayName
+        title: activeChatDisplayName || i18n.tr("Unknown chat")
 
         trailingActionBar {
             numberOfSlots: 1
