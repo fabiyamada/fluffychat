@@ -32,6 +32,10 @@ Rectangle {
             Component.onCompleted: {
                 var maxWidth = root.width - units.gu(4)
                 if ( width > maxWidth ) width = maxWidth
+                var urlRegex = /(https?:\/\/[^\s]+)/g;
+                text = text.replace(urlRegex, function(url) {
+                    return '<a href="%1"><font color="black">%1</font></a>'.arg(url)
+                })
             }
             wrapMode: Text.Wrap
             text: displayEvents.getDisplay ( event ) + " <font color='" + UbuntuColors.silk + "'>" + stamp.getChatTime ( event.origin_server_ts ) + "</font>"

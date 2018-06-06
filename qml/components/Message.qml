@@ -53,9 +53,14 @@ Rectangle {
             anchors.top: parent.top
             anchors.left: parent.left
             anchors.margins: units.gu(1)
+            onLinkActivated: Qt.openUrlExternally(link)
             Component.onCompleted: {
                 var maxWidth = root.width - avatar.width - units.gu(8)
                 if ( width > maxWidth ) width = maxWidth
+                var urlRegex = /(https?:\/\/[^\s]+)/g;
+                text = text.replace(urlRegex, function(url) {
+                    return '<a href="%1"><font color="%2">%1</font></a>'.arg(url).arg(messageLabel.color)
+                })
             }
         }
         Label {
