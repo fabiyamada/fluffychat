@@ -16,8 +16,14 @@ PushClient {
         else errorReport = reason
     }
 
+    function newNotification ( message ) {
+        var message = JSON.parse ( message )
+        var room = message.room_name || message.sender_display_name || message.sender
+        if ( room === activeChatDisplayName ) pushclient.clearPersistent ( room )
+    }
+
     Component.onCompleted: {
-        notificationsChanged.connect(console.log)
+        notificationsChanged.connect(newNotification)
         error.connect(pusherror)
     }
 
