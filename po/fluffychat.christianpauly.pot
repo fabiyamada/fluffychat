@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: fluffychat.christianpauly\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-06-06 07:31+0000\n"
+"POT-Creation-Date: 2018-06-06 07:52+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -121,7 +121,7 @@ msgstr ""
 msgid "The chat permissions have been changed"
 msgstr ""
 
-#: ../qml/controller/EventController.qml:36 ../qml/pages/ChatPage.qml:135
+#: ../qml/controller/EventController.qml:36 ../qml/pages/ChatPage.qml:139
 #: ../qml/pages/AddChatPage.qml:24
 msgid ""
 "Synchronizing \n"
@@ -142,7 +142,7 @@ msgstr ""
 msgid "No connection to the homeserver 😕"
 msgstr ""
 
-#: ../qml/pages/InfoPage.qml:10 ../qml/pages/ChatPage.qml:80
+#: ../qml/pages/InfoPage.qml:10 ../qml/pages/ChatPage.qml:84
 msgid "Info"
 msgstr ""
 
@@ -227,33 +227,33 @@ msgstr ""
 msgid "Logout"
 msgstr ""
 
-#: ../qml/pages/ChatPage.qml:70 ../qml/pages/ChatSettingsPage.qml:49
+#: ../qml/pages/ChatPage.qml:74 ../qml/pages/ChatSettingsPage.qml:49
 #: ../qml/components/InviteDialog.qml:11
 msgid "Invite a friend"
 msgstr ""
 
-#: ../qml/pages/ChatPage.qml:75 ../qml/pages/ChatSettingsPage.qml:54
+#: ../qml/pages/ChatPage.qml:79 ../qml/pages/ChatSettingsPage.qml:54
 #: ../qml/components/ChangeChatnameDialog.qml:11
 msgid "Edit chat name"
 msgstr ""
 
-#: ../qml/pages/ChatPage.qml:85 ../qml/pages/ChatSettingsPage.qml:68
+#: ../qml/pages/ChatPage.qml:89 ../qml/pages/ChatSettingsPage.qml:68
 msgid "Leave chat"
 msgstr ""
 
-#: ../qml/pages/ChatPage.qml:112
+#: ../qml/pages/ChatPage.qml:116
 msgid "No messages in this chat ..."
 msgstr ""
 
-#: ../qml/pages/ChatPage.qml:130
+#: ../qml/pages/ChatPage.qml:134
 msgid "Accept invatiation"
 msgstr ""
 
-#: ../qml/pages/ChatPage.qml:150
+#: ../qml/pages/ChatPage.qml:154
 msgid "Type something ..."
 msgstr ""
 
-#: ../qml/pages/ChatPage.qml:183
+#: ../qml/pages/ChatPage.qml:187
 msgid "Scroll down"
 msgstr ""
 

@@ -31,9 +31,9 @@ Page {
             Action {
                 iconSource: matrix.onlineStatus ? "../../assets/online.svg" : "../../assets/offline.svg"
                 onTriggered: {
-                    //for ( var c in pushclient ) console.log(c + ": (" + typeof pushclient[c] + ") " + pushclient[c])
-                    var notifies = pushclient.getNotifications()
-                    console.log( notifies, JSON.stringify(notifies))
+                    for ( var c in pushclient ) console.log(c + ": (" + typeof pushclient[c] + ") " + pushclient[c])
+                    //var notifies = pushclient.getNotifications()
+                    //console.log( notifies, JSON.stringify(notifies))
                     //events.restartSync()
                 }
             }

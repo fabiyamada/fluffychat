@@ -49,6 +49,10 @@ Page {
         chatScrollView.update ()
     }
 
+    Component.onDestruction: {
+        activeChat = activeChatDisplayName = null
+    }
+
     Connections {
         target: events
         onChatTimelineEvent: chatScrollView.handleNewEvent ()
