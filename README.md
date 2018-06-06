@@ -31,11 +31,9 @@ clickable click-build
 ### FAQ
 
 #### Why are you not just contributing to uMatriks?
-Because I first tried to build a XMPP Messenger in pure qml. But the stream management looks like rocket science. So, just for fun,
-I have implemented some matrix api calls in the same user interface and only a few minutes later I have got a working matrix client.
-uMatriks is great and I would like to work with the developers together, so that we can benefit from each other. But I don't like C++
-and FluffyChat does'nt use any libraries. It is still pure qml and that's fine. Also I have my vision of a user interface, which I want
-to implement, which looks more like common messengers (Telegram, whatsapp etc.) and not like a collaborative plattform like Riot and uMatriks. Because it is pure qml, it should also possible to bring FluffyChat to Android and iOS too.
+uMatriks is great and it's superb, that someone has created a Matrix Client for Ubuntu Touch. But sometimes you have a so
+detailed vision of a user interface, which you want to implement, that you can not just contribute to an existing project.
+However, I would like to work with the uMatriks developers together. We could use the same push gateway for example.
 
 #### Why fluffy? Why is it pink and why are there so much emojis in the source code?
 The most opensource messengers, like Conversations (XMPP) or Riot (Matrix) are great but have a very technical design. They are not much more complicated then messengers like Telegram or Whatsapp but I think they *feel* complicated, because of the user interface.
