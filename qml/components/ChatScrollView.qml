@@ -9,7 +9,7 @@ ScrollView {
 
     // If this property is not 1, then the user is not in the chat, but is reading the history
     property var historyPosition: 0
-    property var historyCount: 50
+    property var historyCount: 30
     property var historyEnd: messagesList.children.length > 0 && messagesList.children[0].event.type === "m.room.create" || false
     property var updated: false
     property var enteredMinusContent: false

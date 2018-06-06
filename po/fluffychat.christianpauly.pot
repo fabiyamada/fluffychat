@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: fluffychat.christianpauly\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-06-06 12:44+0000\n"
+"POT-Creation-Date: 2018-06-06 12:47+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -227,6 +227,10 @@ msgstr ""
 msgid "Logout"
 msgstr ""
 
+#: ../qml/pages/ChatPage.qml:67 ../qml/components/ChatListItem.qml:24
+msgid "Unknown chat"
+msgstr ""
+
 #: ../qml/pages/ChatPage.qml:74 ../qml/pages/ChatSettingsPage.qml:49
 #: ../qml/components/InviteDialog.qml:11
 msgid "Invite a friend"
@@ -334,10 +338,6 @@ msgstr ""
 
 #: ../qml/components/LoadingModal.qml:18
 msgid "Synchronizing ... Please wait!"
-msgstr ""
-
-#: ../qml/components/ChatListItem.qml:24
-msgid "Unknown chat"
 msgstr ""
 
 #: ../qml/components/ChatListItem.qml:26
