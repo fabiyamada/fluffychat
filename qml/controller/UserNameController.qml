@@ -18,6 +18,10 @@ Item {
     }
 
     function transformFromId ( matrixid ) {
-        return (matrixid.substr(1)).split(":")[0]
+        return capitalizeFirstLetter ( (matrixid.substr(1)).split(":")[0] )
+    }
+
+    function capitalizeFirstLetter(string) {
+        return string.charAt(0).toUpperCase() + string.slice(1);
     }
 }
