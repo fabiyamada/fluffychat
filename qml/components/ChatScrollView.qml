@@ -101,6 +101,9 @@ ScrollView {
     // of a database entry, described in the storage controller
     function addEventToList ( event ) {
         if ( event.type === "m.room.message" ) {
+            event.sameSender = messagesList.children.length > 0 &&
+            messagesList.children[messagesList.children.length - 1].event.type === "m.room.message" &&
+            messagesList.children[messagesList.children.length - 1].event.sender === event.sender
             var newMessageListItem = Qt.createComponent("../components/Message.qml")
             newMessageListItem.createObject(messagesList, { "event": event })
         }

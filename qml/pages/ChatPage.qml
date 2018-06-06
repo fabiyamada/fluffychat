@@ -100,14 +100,23 @@ Page {
 
     Rectangle {
         anchors.fill: parent
-        color: UbuntuColors.porcelain
+        opacity: 0.1
+        //color: mainColor
+        gradient: Gradient {
+            GradientStop { position: 0.0; color:  "#FFFFFF" }
+            GradientStop { position: 0.2; color:  UbuntuColors.blue }
+            GradientStop { position: 0.5; color:  UbuntuColors.orange }
+            GradientStop { position: 0.8; color:  UbuntuColors.purple }
+            GradientStop { position: 1.0; color:  "#FFFFFF" }
+        }
         z: 0
     }
 
-    Avatar {
+    Icon {
         source: "../../assets/background.svg"
         anchors.centerIn: parent
         width: parent.width / 1.25
+        height: width
         opacity: 0.15
         z: 0
     }

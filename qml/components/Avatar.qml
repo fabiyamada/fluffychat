@@ -8,7 +8,7 @@ Rectangle {
     // rounded corners for img
     width: units.gu(6)
     height: width
-    color: "transparent"
+    color: "white"
     border.width: 1
     border.color: UbuntuColors.silk
     radius: 20

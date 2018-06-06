@@ -27,6 +27,7 @@ Rectangle {
         anchors.top: parent.top
         anchors.leftMargin: units.gu(1)
         anchors.rightMargin: units.gu(1)
+        opacity: event.sameSender ? 0 : 1
     }
 
     Rectangle {
