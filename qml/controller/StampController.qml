@@ -6,23 +6,18 @@ Item {
     function getChatTime ( stamp ) {
         var date = new Date ( stamp )
         var now = new Date ()
+        var locale = Qt.locale()
+        var fullTimeString = date.toLocaleTimeString(locale, Locale.ShortFormat)
 
-        var minutes = date.getMinutes () < 10 ? "0" + date.getMinutes () : date.getMinutes ()
-        var hours = date.getHours () < 10 ? "0" + date.getHours () : date.getHours ()
 
         if ( date.getDate()  === now.getDate()  &&
         date.getMonth() === now.getMonth() &&
         date.getFullYear() === now.getFullYear() ) {
-            return hours + ":" + minutes
+            return fullTimeString
         }
 
-        var mdate = date.getDate () < 10 ? "0" + date.getDate () : date.getDate ()
-
-        var month = date.getMonth() < 9 ? "0" + (date.getMonth()+1) : (date.getMonth()+1)
-
-        var years = date.getFullYear() === now.getFullYear() ? "" : "." + date.getFullYear()
-
-        return mdate + "." + month + years + ", " + hours + ":" + minutes
+        var fullDateString =  date.toLocaleDateString(locale, Locale.ShortFormat)
+        return fullDateString + i18n.tr(" - ") + fullTimeString
     }
 
 }
