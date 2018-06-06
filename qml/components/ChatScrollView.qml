@@ -25,6 +25,7 @@ ScrollView {
         " LIMIT " + (historyCount+1) + " OFFSET " + (historyCount*historyPosition) + " "
         , function (res) {
             // We now write the rooms in the column
+            if ( historyPosition === 0 ) pushclient.clearPersistent ( activeChatDisplayName )
             if ( historyPosition > 0 && res.rows.length === 0 ) {
                 historyPosition--
                 requestHistory ()

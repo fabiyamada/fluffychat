@@ -30,7 +30,12 @@ Page {
             actions: [
             Action {
                 iconSource: matrix.onlineStatus ? "../../assets/online.svg" : "../../assets/offline.svg"
-                onTriggered: events.restartSync()
+                onTriggered: {
+                    for ( var c in pushclient ) console.log(c + ": (" + typeof pushclient[c] + ") " + pushclient[c])
+
+                    pushclient.clearPersistent ("Ein Testraum :-)")
+                    //events.restartSync()
+                }
             }
             ]
         }

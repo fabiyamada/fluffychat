@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: fluffychat.christianpauly\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-06-06 06:19+0000\n"
+"POT-Creation-Date: 2018-06-06 07:16+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -210,20 +210,20 @@ msgstr ""
 msgid "Settings"
 msgstr ""
 
-#: ../qml/pages/MainSettingsPage.qml:48
+#: ../qml/pages/MainSettingsPage.qml:53
 msgid "Notifications (Beta)"
 msgstr ""
 
-#: ../qml/pages/MainSettingsPage.qml:74
+#: ../qml/pages/MainSettingsPage.qml:79
 #: ../qml/components/ChangeDisplaynameDialog.qml:11
 msgid "Change nickname"
 msgstr ""
 
-#: ../qml/pages/MainSettingsPage.qml:80
+#: ../qml/pages/MainSettingsPage.qml:85
 msgid "About FluffyChat"
 msgstr ""
 
-#: ../qml/pages/MainSettingsPage.qml:86
+#: ../qml/pages/MainSettingsPage.qml:91
 msgid "Logout"
 msgstr ""
 
@@ -366,7 +366,7 @@ msgstr ""
 msgid "Save"
 msgstr ""
 
-#: ../qml/components/ChatScrollView.qml:120
+#: ../qml/components/ChatScrollView.qml:122
 msgid "New message at the bottom of the chat"
 msgstr ""
 
