@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: fluffychat.christianpauly\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-06-06 12:47+0000\n"
+"POT-Creation-Date: 2018-06-06 13:50+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -231,17 +231,17 @@ msgstr ""
 msgid "Unknown chat"
 msgstr ""
 
-#: ../qml/pages/ChatPage.qml:74 ../qml/pages/ChatSettingsPage.qml:49
+#: ../qml/pages/ChatPage.qml:74 ../qml/pages/ChatSettingsPage.qml:55
 #: ../qml/components/InviteDialog.qml:11
 msgid "Invite a friend"
 msgstr ""
 
-#: ../qml/pages/ChatPage.qml:79 ../qml/pages/ChatSettingsPage.qml:54
+#: ../qml/pages/ChatPage.qml:79 ../qml/pages/ChatSettingsPage.qml:60
 #: ../qml/components/ChangeChatnameDialog.qml:11
 msgid "Edit chat name"
 msgstr ""
 
-#: ../qml/pages/ChatPage.qml:89 ../qml/pages/ChatSettingsPage.qml:68
+#: ../qml/pages/ChatPage.qml:89 ../qml/pages/ChatSettingsPage.qml:74
 msgid "Leave chat"
 msgstr ""
 
@@ -261,16 +261,20 @@ msgstr ""
 msgid "Scroll down"
 msgstr ""
 
-#: ../qml/pages/ChatSettingsPage.qml:28
+#: ../qml/pages/ChatSettingsPage.qml:34
 msgid "And %1 more ..."
 msgstr ""
 
-#: ../qml/pages/ChatSettingsPage.qml:59
+#: ../qml/pages/ChatSettingsPage.qml:65
 msgid "Join this chat"
 msgstr ""
 
-#: ../qml/pages/ChatSettingsPage.qml:103
+#: ../qml/pages/ChatSettingsPage.qml:109
 msgid "Users in this chat:"
+msgstr ""
+
+#: ../qml/pages/ChatSettingsPage.qml:109
+msgid "Loading users ..."
 msgstr ""
 
 #: ../qml/pages/AddChatPage.qml:33

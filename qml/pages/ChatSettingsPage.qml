@@ -9,23 +9,29 @@ Page {
 
     property var membership: "unknown"
     property var max: 40
+    property var memberlist
 
     function init () {
+
+        // Get the member status of the user himself
         storage.transaction ( "SELECT membership FROM Rooms WHERE id='" + activeChat + "'", function (res) {
             membership = res.rows.length > 0 ? res.rows[0].membership : "unknown"
         })
-        storage.transaction ( "SELECT * FROM Roommembers WHERE roomsid='" + activeChat + "'", function (res) {
-            for ( var i = 0; i < Math.min(res.rows.length, max); i++ ) {
-                var member = res.rows[i]
+
+        // Request the full memberlist, from the server
+        matrix.get ( "/client/r0/rooms/%1/members".arg(activeChat), null, function (response) {
+            memberlist = response.chunk
+            for ( var i = 0; i < Math.min(response.chunk.length, max); i++ ) {
+                var member = response.chunk[i]
                 var newMemberListItem = Qt.createComponent("../components/MemberListItem.qml")
                 newMemberListItem.createObject(memberList, {
-                    name: member.displayname || usernames.transformFromId( member.state_key ),
-                    membership: member.membership
+                    name: member.content.displayname || usernames.transformFromId( member.state_key ),
+                    membership: member.content.membership
                 } )
             }
-            if ( res.rows.length > max ) {
+            if ( response.chunk.length > max ) {
                 newMemberListItem.createObject(memberList, {
-                    name: i18n.tr("And %1 more ...").arg(res.rows.length - max),
+                    name: i18n.tr("And %1 more ...").arg(response.chunk.length - max),
                 } )
             }
         })
@@ -100,7 +106,7 @@ Page {
                 height: units.gu(2)
                 anchors.left: parent.left
                 anchors.leftMargin: units.gu(2)
-                text: i18n.tr("Users in this chat:")
+                text: memberList.children.length > 0 ? i18n.tr("Users in this chat:") : i18n.tr("Loading users ...")
                 font.bold: true
             }
 
@@ -108,7 +114,6 @@ Page {
                 id: memberList
                 width: parent.width
             }
-
         }
     }
 }
