@@ -77,6 +77,8 @@ Page {
                         "topic": "",
                         "membership": type
                     }
+                    // Put new invitations to the top
+                    if ( type === "invite" ) roomItem.origin_server_ts = new Date().getTime()
                     var newChatListItem = Qt.createComponent("../components/ChatListItem.qml")
                     newChatListItem.createObject(chatListColumn,{ "room": roomItem,})
                 }
@@ -89,7 +91,8 @@ Page {
 
                 // Check the timeline events and add the latest event to the chat list
                 // as the latest message of the chat
-                if ( room.timeline.events.length > 0 ) {
+                var newTimelineEvents = room.timeline && room.timeline.events.length > 0
+                if ( newTimelineEvents ) {
                     var lastEvent = room.timeline.events[ room.timeline.events.length - 1 ]
                     items[j].room.eventsid = lastEvent.event_id
                     items[j].room.origin_server_ts = lastEvent.origin_server_ts
@@ -97,7 +100,10 @@ Page {
                     items[j].room.sender = lastEvent.sender
                     items[j].room.content_json = JSON.stringify( lastEvent.content )
                     items[j].room.type = lastEvent.type
-                    // Now reorder this item
+                }
+
+                // Now reorder this item
+                if ( newTimelineEvents || !roomExists ) {
                     while ( j > 0 && items[j].room.origin_server_ts > items[j-1].room.origin_server_ts ) {
                         console.log("move up")
                         var tempRoom = JSON.parse(JSON.stringify(items[j-1].room))
