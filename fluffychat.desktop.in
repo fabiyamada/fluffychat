@@ -1,6 +1,6 @@
 [Desktop Entry]
-Name=FluffyChat
-Exec=qmlscene $@ qml/Main.qml
+_Name=FluffyChat
+Exec=qmlscene qml/Main.qml
 Icon=assets/logo.svg
 Terminal=false
 Type=Application
