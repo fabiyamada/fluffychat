@@ -15,7 +15,7 @@ ScrollView {
     property var enteredMinusContent: false
     property var count: messagesList.children.length
 
-    function update () {
+    function update ( sync ) {
         storage.transaction ( "SELECT events.id, events.type, events.content_json, events.content_body, events.origin_server_ts, events.sender, members.state_key, members.displayname, members.avatar_url " +
         " FROM Roomevents events LEFT JOIN Roommembers members " +
         " ON members.roomsid=events.roomsid " +

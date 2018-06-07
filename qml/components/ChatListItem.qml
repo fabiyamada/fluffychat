@@ -10,6 +10,32 @@ ListItem {
     property var room
     property var timeorder: 0
 
+    function updateAll () {
+        // Get the room name
+        if ( room.topic !== "" ) layout.title.text = room.topic
+        else roomnames.getById ( room.id, function (displayname) {
+            layout.title.text = displayname
+        })
+
+        // Get the last message
+        if ( room.membership === "invite" ) {
+            layout.subtitle.text = i18n.tr("You have been invited to this chat")
+        }
+        else if ( room.content_body ){
+            var lastMessage = room.content_body
+            if ( room.sender === matrix.matrixid ) lastMessage = i18n.tr("You: ") + lastMessage
+            layout.subtitle.text = lastMessage
+        }
+        else if ( room.content_json ) {
+            layout.subtitle.text = displayEvents.getDisplay ( room )
+        }
+
+        // Update the labels
+        stampLabel.text = stamp.getChatTime ( room.origin_server_ts )
+        unreadLabel.text = room.notification_count || "0"
+        layout.title.color = room.membership === "invite" ? mainColor : "#000000"
+    }
+
     height: layout.height
 
     onClicked: {
@@ -29,26 +55,7 @@ ListItem {
             source: "../../assets/background.svg"
             SlotsLayout.position: SlotsLayout.Leading
         }
-        Component.onCompleted: {
-            // Get the room name
-            if ( room.topic !== "" ) title.text = room.topic
-            else roomnames.getById ( room.id, function (displayname) {
-                title.text = displayname
-            })
-
-            // Get the last message
-            if ( room.membership === "invite" ) {
-                subtitle.text = i18n.tr("You have been invited to this chat")
-            }
-            else if ( room.content_body ){
-                var lastMessage = room.content_body
-                if ( room.sender === matrix.matrixid ) lastMessage = i18n.tr("You: ") + lastMessage
-                subtitle.text = lastMessage
-            }
-            else if ( room.content_json ) {
-                subtitle.text = displayEvents.getDisplay ( room )
-            }
-        }
+        Component.onCompleted: updateAll()
     }
 
 

@@ -64,6 +64,8 @@ Item {
             //transaction ( 'PRAGMA journal_mode = OFF')
             transaction ( 'PRAGMA locking_mode = EXCLUSIVE')
             transaction ( 'PRAGMA temp_store = MEMORY')
+            transaction ( 'PRAGMA cache_size')
+            transaction ( 'PRAGMA cache_size = 10000')
         })
     }
 

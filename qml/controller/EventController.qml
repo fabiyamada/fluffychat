@@ -17,8 +17,8 @@ Item {
         onOnlineChanged: if ( Connectivity.online ) restartSync ()
     }
 
-    signal chatListUpdated
-    signal chatTimelineEvent
+    signal chatListUpdated ( var response )
+    signal chatTimelineEvent ( var response )
 
     property var syncRequest: null
     property var since: ""
@@ -118,7 +118,7 @@ Item {
                     handleRooms ( response.rooms.invite, "invite" )
                     since = response.next_batch
                     storage.setConfig ( "next_batch", since )
-                    chatListUpdated ()
+                    chatListUpdated ( response )
                     triggerSignals ( response )
                     console.log("===> SYNCHRONIZATION performance: ", new Date().getTime() - timecount )
                 }
@@ -133,7 +133,7 @@ Item {
 
     function triggerSignals ( response ) {
         var activeRoom = response.rooms.join[activeChat]
-        if ( activeRoom !== undefined && activeRoom.timeline.events.length > 0 ) chatTimelineEvent ()
+        if ( activeRoom !== undefined && activeRoom.timeline.events.length > 0 ) chatTimelineEvent ( response )
     }
 
 
