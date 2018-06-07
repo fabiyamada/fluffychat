@@ -146,8 +146,8 @@ Item {
                 transaction.executeSql ("INSERT OR REPLACE INTO Rooms VALUES(?, ?, COALESCE((SELECT topic FROM Rooms WHERE id='" + id + "'), ''), ?, ?, ?, COALESCE((SELECT prev_batch FROM Rooms WHERE id='" + id + "'), ''))",
                 [ id,
                 membership,
-                (room.unread_notifications ? room.unread_notifications.highlight_count : 0),
-                (room.unread_notifications ? room.unread_notifications.notification_count : 0),
+                (room.unread_notifications && room.unread_notifications.highlight_count || 0),
+                (room.unread_notifications && room.unread_notifications.notification_count || 0),
                 (room.timeline ? (room.timeline.limited ? 1 : 0) : 0) ])
 
                 if ( room.state ) handleRoomEvents ( id, room.state.events, "state", room )

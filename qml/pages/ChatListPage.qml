@@ -32,7 +32,6 @@ Page {
                 // We request the room name, before we continue
                 var newChatListItem = Qt.createComponent("../components/ChatListItem.qml")
                 newChatListItem.createObject(chatListColumn,{ "room": room,})
-                if ( activeChat === room.id && room.notification_count > 0 ) matrix.post( "/client/r0/rooms/" + activeChat + "/receipt/m.read/" + room.eventsid, null )
             }
         })
     }
@@ -87,7 +86,7 @@ Page {
                 items[j].room.membership = type
 
                 // Update the notification count
-                items[j].room.notification_count = room.unread_notifications ? room.unread_notifications.notification_count : 0
+                items[j].room.notification_count = room.unread_notifications && room.unread_notifications.notification_count || 0
 
                 // Check the timeline events and add the latest event to the chat list
                 // as the latest message of the chat
@@ -114,6 +113,9 @@ Page {
                     }
                 }
                 items[j].updateAll()
+
+                // Send message receipt
+                if ( activeChat === room.id && room.notification_count > 0 ) matrix.post( "/client/r0/rooms/" + activeChat + "/receipt/m.read/" + room.eventsid, null )
             }
         }
 
