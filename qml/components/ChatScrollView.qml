@@ -100,14 +100,19 @@ ScrollView {
     // This function writes the event in the chat. The event MUST have the format
     // of a database entry, described in the storage controller
     function addEventToList ( event ) {
+        var items = messagesList.children
         if ( event.type === "m.room.message" ) {
-            event.sameSender = messagesList.children.length > 0 &&
-            messagesList.children[messagesList.children.length - 1].event.type === "m.room.message" &&
-            messagesList.children[messagesList.children.length - 1].event.sender === event.sender
+            event.sameSender = items.length > 0 &&
+            items[items.length - 1].event.type === "m.room.message" &&
+            items[items.length - 1].event.sender === event.sender
             var newMessageListItem = Qt.createComponent("../components/Message.qml")
             newMessageListItem.createObject(messagesList, { "event": event })
         }
         else {
+            // Hide the state events after the m.room.create event
+            if ( items[ items.length - 1 ] !== undefined &&
+                items[ items.length - 1 ].event &&
+                items[ items.length - 1 ].event.type === "m.room.create" ) return
             var newMessageListItem = Qt.createComponent("../components/Event.qml")
             newMessageListItem.createObject(messagesList, { "event": event })
         }
