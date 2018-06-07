@@ -10,7 +10,7 @@ Page {
 
     // This is the most importent function of this page! It updates all rooms, based
     // on the informations in the sqlite database!
-    function updateList () {
+    Component.onCompleted: {
 
         // First step is obviously clearing the column
         chatListColumn.children = ""
@@ -62,9 +62,7 @@ Page {
                 for ( var j = 0; j < items.length; j++ ) {
                     if ( items[j].room.id === id ) {
                         roomExists = true
-                        if ( type === "leave" ) {
-                            items[j].destroy ()
-                        }
+                        if ( type === "leave" ) items[j].destroy ()
                         break
                     }
                 }
@@ -73,8 +71,8 @@ Page {
                 if ( type === "leave" ) return
 
                 // Add the room to the list, if it does not exist
-                if ( !roomExists) {
-                    roomItem = {
+                if ( !roomExists ) {
+                    var roomItem = {
                         "id": id,
                         "topic": "",
                         "membership": type
@@ -116,8 +114,6 @@ Page {
         // Now we call the helper function with three different types:
     }
 
-
-    Component.onCompleted: updateList ()
 
     Connections {
         target: events
