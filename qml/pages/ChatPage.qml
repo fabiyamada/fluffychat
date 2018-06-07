@@ -100,7 +100,7 @@ Page {
 
     Rectangle {
         anchors.fill: parent
-        opacity: 0.1
+        opacity: 0.15
         //color: mainColor
         gradient: Gradient {
             GradientStop { position: 0.0; color:  "#FFFFFF" }

@@ -19,10 +19,11 @@ Rectangle {
         anchors.centerIn: parent
         border.width: 1
         border.color: UbuntuColors.silk
-        color: "#FFFFFF"
+        color: UbuntuColors.porcelain
         radius: 50
         height: eventLabel.height + units.gu(2)
         width: eventLabel.width + units.gu(2)
+        opacity: 0.75
 
         Label {
             id: eventLabel
@@ -39,8 +40,8 @@ Rectangle {
             }
             wrapMode: Text.Wrap
             text: displayEvents.getDisplay ( event ) + " <font color='" + UbuntuColors.silk + "'>" + stamp.getChatTime ( event.origin_server_ts ) + "</font>"
-            textSize: Label.Small
-            font.italic: true
+            textSize: Label.XSmall
+            //font.italic: true
         }
     }
 }
