@@ -20,7 +20,7 @@ Rectangle {
 
     Avatar {
         id: avatar
-        name: "contact"
+        //name: "contact"
         mxc: event.avatar_url
         anchors.left: sent ? undefined : parent.left
         anchors.right: sent ? parent.right : undefined

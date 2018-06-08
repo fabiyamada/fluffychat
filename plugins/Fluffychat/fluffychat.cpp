@@ -1,5 +1,8 @@
 #include <QDebug>
 #include <QFile>
+#include <QByteArray>
+#include <QBitArray>
+#include <QString>
 
 #include "fluffychat.h"
 
@@ -18,4 +21,9 @@ QByteArray Fluffychat::read(const QString &filename)
         return QByteArray();
 
     return file.readAll();
+}
+
+QString Fluffychat::toBase64(const QByteArray &file)
+{
+    return file.toBase64();
 }

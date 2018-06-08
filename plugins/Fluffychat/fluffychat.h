@@ -12,6 +12,7 @@ public:
 
     Q_INVOKABLE void speak();
     Q_INVOKABLE QByteArray read(const QString &filename);
+    Q_INVOKABLE QString toBase64(const QByteArray &file);
 };
 
 #endif

@@ -58,7 +58,8 @@ Page {
 
                 // Check if the user is already in this chat
                 var roomExists = false
-                for ( var j = 0; j < items.length; j++ ) {
+                var j = 0
+                for ( j = 0; j < items.length; j++ ) {
                     if ( items[j].room.id === id ) {
                         roomExists = true
                         if ( type === "leave" ) items[j].destroy ()
@@ -74,13 +75,16 @@ Page {
                     var roomItem = {
                         "id": id,
                         "topic": "",
-                        "membership": type
+                        "membership": type,
+                        "notification_count": room.unread_notifications && room.unread_notifications.notification_count || 0
                     }
                     // Put new invitations to the top
                     if ( type === "invite" ) roomItem.origin_server_ts = new Date().getTime()
                     var newChatListItem = Qt.createComponent("../components/ChatListItem.qml")
                     newChatListItem.createObject(chatListColumn,{ "room": roomItem,})
+                    j = items.length - 1
                 }
+                console.log("J:", j)
 
                 // Update the type
                 items[j].room.membership = type
