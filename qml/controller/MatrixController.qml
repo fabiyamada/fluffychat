@@ -201,5 +201,13 @@ Item {
     }
 
 
+    function getAvatarFromMxc ( mxc ) {
+        var mxcID = mxc.replace("mxc://","")
+        return "https://" + server + "/_matrix/media/r0/download/" + mxcID + "/avatar"
+    }
+
+
+
+
 
 }

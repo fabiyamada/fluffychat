@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: fluffychat.christianpauly\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-06-09 12:46+0000\n"
+"POT-Creation-Date: 2018-06-09 13:33+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -202,28 +202,28 @@ msgstr ""
 msgid "Using the homeserver: "
 msgstr ""
 
-#: ../qml/pages/ChatListPage.qml:165
+#: ../qml/pages/ChatListPage.qml:164
 msgid "Swipe from the bottom to start a new chat"
 msgstr ""
 
-#: ../qml/pages/MainSettingsPage.qml:27
+#: ../qml/pages/MainSettingsPage.qml:28
 msgid "Settings"
 msgstr ""
 
-#: ../qml/pages/MainSettingsPage.qml:53
+#: ../qml/pages/MainSettingsPage.qml:54
 msgid "Notifications (Beta)"
 msgstr ""
 
-#: ../qml/pages/MainSettingsPage.qml:79
+#: ../qml/pages/MainSettingsPage.qml:80
 #: ../qml/components/ChangeDisplaynameDialog.qml:11
 msgid "Change nickname"
 msgstr ""
 
-#: ../qml/pages/MainSettingsPage.qml:85
+#: ../qml/pages/MainSettingsPage.qml:86
 msgid "About FluffyChat"
 msgstr ""
 
-#: ../qml/pages/MainSettingsPage.qml:91
+#: ../qml/pages/MainSettingsPage.qml:92
 msgid "Logout"
 msgstr ""
 

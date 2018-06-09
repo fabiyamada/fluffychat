@@ -6,6 +6,7 @@ import Fluffychat 1.0
 
 
 Rectangle {
+    id: avatarRect
     // rounded corners for img
     width: units.gu(6)
     height: width
@@ -14,27 +15,54 @@ Rectangle {
     border.color: UbuntuColors.silk
     radius: 20
     z:1
+    clip: true
 
     //property alias name: avatar.name
     property alias source: avatar.source
-    property var mxc: null
+    property var mxc: ""
 
-    Icon {
+    /*Icon {
         id: avatar
         name: "contact"
-        anchors.fill: parent
-    }
+        anchors.centerIn: parent
+        source: mxc !== "" ? matrix.getAvatarFromMxc ( mxc ) : undefined
+        width: parent.width
+        height: parent.height
 
-    Component.onCompleted: {
-        // Download the icon:
-        if ( false && mxc !== null ) {
-            var mxcID = mxc.replace("mxc://","")
-            matrix.get ( "/media/r0/download/" + mxcID + "/avatar", null, function (blobString){
-                console.log ( "Got blob" )
-                avatar.source = blobString
-            } )
+        property bool rounded: true
+        property bool adapt: true
+
+        layer.enabled: rounded
+        layer.effect: OpacityMask {
+            maskSource: Item {
+                width: avatarRect.width
+                height: avatarRect.height
+                Rectangle {
+                    anchors.centerIn: parent
+                    width: avatar.adapt ? avatar.width : Math.min(avatar.width, avatar.height)
+                    height: avatar.adapt ? avatar.height : width
+                    radius: avatarRect.radius
+                }
+            }
+        }
+    }*/
+
+    Image {
+        id: avatar
+        source:  mxc !== "" ? matrix.getAvatarFromMxc ( mxc ) : "../../assets/contact.svg"
+        anchors.fill: parent
+        fillMode: Image.PreserveAspectCrop
+        layer.enabled: true
+        layer.effect: OpacityMask {
+            maskSource: mask
         }
     }
 
+    Rectangle {
+        id: mask
+        anchors.fill: parent
+        radius: parent.radius
+        visible: false
+    }
 
 }
