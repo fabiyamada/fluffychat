@@ -21,31 +21,6 @@ Rectangle {
     property alias source: avatar.source
     property var mxc: ""
 
-    /*Icon {
-        id: avatar
-        name: "contact"
-        anchors.centerIn: parent
-        source: mxc !== "" ? matrix.getAvatarFromMxc ( mxc ) : undefined
-        width: parent.width
-        height: parent.height
-
-        property bool rounded: true
-        property bool adapt: true
-
-        layer.enabled: rounded
-        layer.effect: OpacityMask {
-            maskSource: Item {
-                width: avatarRect.width
-                height: avatarRect.height
-                Rectangle {
-                    anchors.centerIn: parent
-                    width: avatar.adapt ? avatar.width : Math.min(avatar.width, avatar.height)
-                    height: avatar.adapt ? avatar.height : width
-                    radius: avatarRect.radius
-                }
-            }
-        }
-    }*/
 
     Image {
         id: avatar
@@ -56,7 +31,22 @@ Rectangle {
         layer.effect: OpacityMask {
             maskSource: mask
         }
+        visible: status == Image.Ready
     }
+
+
+    Image {
+        id: tempAvatar
+        visible: !avatar.visible
+        source: "../../assets/contact.svg"
+        anchors.fill: parent
+        fillMode: Image.PreserveAspectCrop
+        layer.enabled: true
+        layer.effect: OpacityMask {
+            maskSource: mask
+        }
+    }
+
 
     Rectangle {
         id: mask
