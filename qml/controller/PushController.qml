@@ -28,6 +28,11 @@ PushClient {
         error.connect(pusherror)
     }
 
+
+    // This function will toggle the push notifications. It will set or kill a
+    // pusher with the pushkey of this device. Also it will reset one push rule,
+    // to provide full functionality of notifications. Sometimes, other clients
+    // like Riot web set push rules, which disables all notifications.
     function setPusher ( intent, callback, error_callback ) {
         if ( intent && errorReport !== null ) {
             if ( error_callback ) error_callback ( {errcode: "NO_UBUNTUONE", error: errorReport} )
@@ -46,7 +51,11 @@ PushClient {
                 "profile_tag": "xxyyzz",
                 "pushkey": pushtoken
             }
-            matrix.post ( "/client/r0/pushers/set", data, callback, error_callback )
+            matrix.post ( "/client/r0/pushers/set", data, function() {
+                // This is a workaround for the problem with the riot web client, who disables the push notifications sometimes
+                if ( intent ) matrix.put ( "/client/r0/pushrules/global/content/.m.rule.contains_user_name/enabled", { "enabled": true }, console.log, console.warn )
+                callback ()
+            }, error_callback )
         }
     }
 
