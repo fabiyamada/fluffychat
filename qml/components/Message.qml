@@ -60,6 +60,11 @@ Rectangle {
                 anchors.left: parent.left
                 anchors.margins: units.gu(1)
                 fillMode: Image.PreserveAspectFit
+                onStatusChanged: {
+                    if ( status === Image.Error ) {
+                        source = "../../assets/network-cellular-none.svg"
+                    }
+                }
             }
             onClicked: Qt.openUrlExternally(matrix.getImageLinkFromMxc ( event.content.url ) )
         }
