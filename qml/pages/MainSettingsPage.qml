@@ -13,7 +13,6 @@ Page {
             var issettoken = false
             for( var i = 0; i < res.pushers.length; i++ ) {
                 var pusher = res.pushers[i]
-                    console.log(JSON.stringify(pusher))
                 if ( pusher.pushkey === pushtoken ) {
                     issettoken = true
                     //break
@@ -32,10 +31,7 @@ Page {
             Action {
                 iconSource: matrix.onlineStatus ? "../../assets/online.svg" : "../../assets/offline.svg"
                 onTriggered: {
-                    for ( var c in pushclient ) console.log(c + ": (" + typeof pushclient[c] + ") " + pushclient[c])
-                    //var notifies = pushclient.getNotifications()
-                    //console.log( notifies, JSON.stringify(notifies))
-                    //events.restartSync()
+                    matrix.get("/client/r0/pushrules/", null, function (m) { console.log(JSON.stringify(m))})
                 }
             }
             ]

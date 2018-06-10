@@ -93,6 +93,7 @@ Page {
     }
 
     Component.onDestruction: {
+    matrix.remove ( "/client/r0/pushrules/global/room/%1".arg(activeChat), null, console.log, console.error )
         activeChat = activeChatDisplayName = null
     }
 
