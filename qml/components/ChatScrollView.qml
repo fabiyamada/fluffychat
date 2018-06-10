@@ -110,10 +110,6 @@ ScrollView {
             newMessageListItem.createObject(messagesList, { "event": event })
         }
         else {
-            // Hide the state events after the m.room.create event
-            if ( items[ items.length - 1 ] !== undefined &&
-                items[ items.length - 1 ].event &&
-                items[ items.length - 1 ].event.type === "m.room.create" ) return
             var newMessageListItem = Qt.createComponent("../components/Event.qml")
             newMessageListItem.createObject(messagesList, { "event": event })
         }
