@@ -20,11 +20,18 @@ Rectangle {
     //property alias name: avatar.name
     property alias source: avatar.source
     property var mxc: ""
+    property var onClickFunction: null
+
+
+    MouseArea {
+        anchors.fill: parent
+        onClicked: onClickFunction !== null ? onClickFunction () : undefined
+    }
 
 
     Image {
         id: avatar
-        source:  mxc !== "" ? matrix.getAvatarFromMxc ( mxc ) : "../../assets/contact.svg"
+        source:  mxc !== "" ? media.getThumbnailFromMxc ( mxc, width, height ) : "../../assets/contact.svg"
         anchors.fill: parent
         fillMode: Image.PreserveAspectCrop
         layer.enabled: true

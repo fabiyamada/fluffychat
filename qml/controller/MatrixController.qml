@@ -186,26 +186,56 @@ Item {
         http.send( JSON.stringify( postData ) );
 
         // Make timeout working in qml
-            function Timer() {
-                return Qt.createQmlObject("import QtQuick 2.0; Timer {}", root)
-            }
-            var timer = new Timer()
-            timer.interval = longPolling ? data.timeout + defaultTimeout : defaultTimeout
-            timer.repeat = false
-            timer.triggered.connect(function () {
-                if (http.readyState !== XMLHttpRequest.DONE) http.abort ()
-            })
-            timer.start();
+        function Timer() {
+            return Qt.createQmlObject("import QtQuick 2.0; Timer {}", root)
+        }
+        var timer = new Timer()
+        timer.interval = longPolling ? data.timeout + defaultTimeout : defaultTimeout
+        timer.repeat = false
+        timer.triggered.connect(function () {
+            if (http.readyState !== XMLHttpRequest.DONE) http.abort ()
+        })
+        timer.start();
 
         return http
     }
 
 
-    function getAvatarFromMxc ( mxc ) {
-        var mxcID = mxc.replace("mxc://","")
-        return "https://" + server + "/_matrix/media/r0/download/" + mxcID + "/avatar"
+    function upload ( path, callback, error_callback ) {
+        try {
+            // Send the blob to the server
+            var requestUrl = "https://" + server + "/_matrix/media/r0/upload"
+            var http = new XMLHttpRequest();
+            http.open( "POST", requestUrl, true);
+            http.setRequestHeader('Content-type', 'application/json; charset=utf-8')
+            http.timeout = defaultTimeout
+            if ( token ) http.setRequestHeader('Authorization', 'Bearer ' + token);
+            http.onreadystatechange = function() {
+                if ( http.readyState === XMLHttpRequest.DONE ) {
+                    console.log("File is sent to the server")
+                    callback ( JSON.parse(http.responseText) )
+                }
+            }
+            http.send ( path )
+        }
+        catch ( e ) { error_callback ( e ) }
     }
 
+
+    function getThumbnailFromMxc ( mxc, width, height ) {
+        if ( mxc === undefined ) return ""
+
+        var mxcID = mxc.replace("mxc://","")
+        return "https://" + server + "/_matrix/media/r0/thumbnail/" + mxcID + "/?width=" + width + "&height=" + height + "&method=crop"
+    }
+
+
+
+    function getImageLinkFromMxc ( mxc ) {
+        if ( mxc === undefined ) return ""
+        var mxcID = mxc.replace("mxc://","")
+        return "https://" + server + "/_matrix/media/r0/download/" + mxcID + "/download.jpg"
+    }
 
 
 

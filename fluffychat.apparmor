@@ -2,6 +2,7 @@
     "policy_groups": [
         "networking",
         "connectivity",
+        "content_exchange",
         "push-notification-client"
     ],
     "policy_version": 1.3

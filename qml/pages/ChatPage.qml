@@ -1,5 +1,6 @@
 import QtQuick 2.4
 import QtQuick.Layouts 1.1
+import Ubuntu.Content 1.3
 import Ubuntu.Components 1.3
 import Ubuntu.Components.Popups 1.3
 import "../components"
@@ -25,7 +26,8 @@ Page {
             displayname: matrix.displayname,
             avatar_url: matrix.avatar_url,
             sending: true,
-            origin_server_ts: new Date().getTime()
+            origin_server_ts: new Date().getTime(),
+            content: {}
         }
         chatScrollView.addEventToList ( fakeEvent )
 
@@ -42,6 +44,47 @@ Page {
     }
 
 
+    function sendAttachement ( mediaUrl ) {
+
+        // Start the upload
+        matrix.upload ( mediaUrl, function ( response ) {
+            // Uploading was successfull, send now the file event
+            console.log( JSON.stringify(response) )
+            var messageID = Math.floor((Math.random() * 1000000) + 1);
+            var data = {
+                msgtype: "m.image",
+                body: "Image",
+                url: response.content_uri
+            }
+            var error_callback = function ( error ) {
+                if ( error.error !== "offline" ) toast.show ( error.errcode + ": " + error.error )
+                chatScrollView.update ()
+            }
+
+            matrix.put( "/client/r0/rooms/" + activeChat + "/send/m.room.message/" + messageID, data, null, error_callback )
+        }, console.error )
+
+        // Set the fake event while the file is uploading
+        var fakeEvent = {
+            type: "m.room.message",
+            sender: matrix.matrixid,
+            content_body: "Datei wird gesendet ...",
+            displayname: matrix.displayname,
+            avatar_url: matrix.avatar_url,
+            sending: true,
+            origin_server_ts: new Date().getTime(),
+            content: {}
+        }
+        chatScrollView.addEventToList ( fakeEvent )
+        messageTextField.focus = false
+        messageTextField.text = ""
+        messageTextField.focus = true
+    }
+
+
+    MediaImport { id: mediaImport }
+
+
     Component.onCompleted: {
         storage.transaction ( "SELECT membership FROM Rooms WHERE id='" + activeChat + "'", function (res) {
             membership = res.rows.length > 0 ? res.rows[0].membership : "join"
@@ -56,6 +99,11 @@ Page {
     Connections {
         target: events
         onChatTimelineEvent: chatScrollView.handleNewEvent ()
+    }
+
+    Connections {
+        target: mediaImport
+        onMediaReceived: sendAttachement ( mediaUrl )
     }
 
 
@@ -153,13 +201,28 @@ Page {
             }
         }
 
+        ActionBar {
+            id: chatAttachementActionBar
+            visible: membership === "join"
+            anchors.verticalCenter: parent.verticalCenter
+            anchors.left: parent.left
+            actions: [
+            Action {
+                id: attachementButton
+                iconName: "camera-photo-symbolic"
+                onTriggered: mediaImport.requestMedia ()
+                enabled: !sending
+            }
+            ]
+        }
+
         TextField {
             id: messageTextField
             anchors.bottom: parent.bottom
-            anchors.left: parent.left
+            anchors.horizontalCenter: parent.horizontalCenter
             anchors.margins: units.gu(1)
             anchors.verticalCenter: parent.verticalCenter
-            width: parent.width - chatInputActionBar.width - units.gu(1)
+            width: parent.width - chatInputActionBar.width - chatAttachementActionBar.width - units.gu(1)
             placeholderText: i18n.tr("Type something ...")
             Keys.onReturnPressed: sendButton.trigger ()
             visible: membership === "join"

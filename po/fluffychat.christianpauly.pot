@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: fluffychat.christianpauly\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-06-09 13:48+0000\n"
+"POT-Creation-Date: 2018-06-10 09:09+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -121,7 +121,7 @@ msgstr ""
 msgid "The chat permissions have been changed"
 msgstr ""
 
-#: ../qml/controller/EventController.qml:36 ../qml/pages/ChatPage.qml:148
+#: ../qml/controller/EventController.qml:36 ../qml/pages/ChatPage.qml:196
 #: ../qml/pages/AddChatPage.qml:24
 msgid ""
 "Synchronizing \n"
@@ -142,7 +142,7 @@ msgstr ""
 msgid "No connection to the homeserver 😕"
 msgstr ""
 
-#: ../qml/pages/InfoPage.qml:10 ../qml/pages/ChatPage.qml:84
+#: ../qml/pages/InfoPage.qml:10 ../qml/pages/ChatPage.qml:132
 msgid "Info"
 msgstr ""
 
@@ -227,37 +227,37 @@ msgstr ""
 msgid "Logout"
 msgstr ""
 
-#: ../qml/pages/ChatPage.qml:67 ../qml/components/ChatListItem.qml:50
+#: ../qml/pages/ChatPage.qml:115 ../qml/components/ChatListItem.qml:50
 msgid "Unknown chat"
 msgstr ""
 
-#: ../qml/pages/ChatPage.qml:74 ../qml/pages/ChatSettingsPage.qml:55
+#: ../qml/pages/ChatPage.qml:122 ../qml/pages/ChatSettingsPage.qml:55
 #: ../qml/components/InviteDialog.qml:11
 msgid "Invite a friend"
 msgstr ""
 
-#: ../qml/pages/ChatPage.qml:79 ../qml/pages/ChatSettingsPage.qml:60
+#: ../qml/pages/ChatPage.qml:127 ../qml/pages/ChatSettingsPage.qml:60
 #: ../qml/components/ChangeChatnameDialog.qml:11
 msgid "Edit chat name"
 msgstr ""
 
-#: ../qml/pages/ChatPage.qml:89 ../qml/pages/ChatSettingsPage.qml:74
+#: ../qml/pages/ChatPage.qml:137 ../qml/pages/ChatSettingsPage.qml:74
 msgid "Leave chat"
 msgstr ""
 
-#: ../qml/pages/ChatPage.qml:125
+#: ../qml/pages/ChatPage.qml:173
 msgid "No messages in this chat ..."
 msgstr ""
 
-#: ../qml/pages/ChatPage.qml:143
+#: ../qml/pages/ChatPage.qml:191
 msgid "Accept invatiation"
 msgstr ""
 
-#: ../qml/pages/ChatPage.qml:163
+#: ../qml/pages/ChatPage.qml:226
 msgid "Type something ..."
 msgstr ""
 
-#: ../qml/pages/ChatPage.qml:196
+#: ../qml/pages/ChatPage.qml:259
 msgid "Scroll down"
 msgstr ""
 
@@ -370,7 +370,7 @@ msgstr ""
 msgid "Save"
 msgstr ""
 
-#: ../qml/components/ChatScrollView.qml:128
+#: ../qml/components/ChatScrollView.qml:129
 msgid "New message at the bottom of the chat"
 msgstr ""
 

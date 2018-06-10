@@ -42,6 +42,7 @@ MainView {
     UserNameController { id: usernames }
     DisplayEventController { id: displayEvents }
     PushController { id: pushclient }
+    MediaController { id: media }
     Toast { id: toast }
     LoadingModal { id: loadingModal }
 

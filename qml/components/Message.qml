@@ -30,6 +30,7 @@ Rectangle {
         opacity: event.sameSender ? 0 : 1
     }
 
+
     Rectangle {
         id: messageBubble
         z: 2
@@ -43,17 +44,48 @@ Rectangle {
         anchors.margins: 5
         color: sent ? "#FFFFFF" : mainColor
         radius: 50
-        height: messageLabel.height + metaLabel.height + units.gu(2)
-        width: Math.max( messageLabel.width, metaLabel.width ) + units.gu(2) + (event.sending ? units.gu(2) : 0)
+        height: messageLabel.height + metaLabel.height + downloadButton.height + thumbnail.height + units.gu(2)
+        width: Math.max( messageLabel.width, metaLabel.width, thumbnail.width ) + units.gu(2) + (event.sending ? units.gu(2) : 0)
+
+        MouseArea {
+            width: thumbnail.width
+            height: thumbnail.height
+            Image {
+                id: thumbnail
+                visible: event.content.msgtype === "m.image"
+                width: visible ? root.width - 2 * avatar.width - units.gu(6) : 0
+                height: width
+                source: event.content.url ? matrix.getThumbnailFromMxc ( event.content.url, width, width ) : ""
+                anchors.top: parent.top
+                anchors.left: parent.left
+                anchors.margins: units.gu(1)
+                fillMode: Image.PreserveAspectFit
+            }
+            onClicked: Qt.openUrlExternally(matrix.getImageLinkFromMxc ( event.content.url ) )
+        }
+
+
+        Button {
+            id: downloadButton
+            text: "Download"
+            onClicked: Qt.openUrlExternally(matrix.getImageLinkFromMxc ( event.content.url ) )
+            visible: event.content.msgtype === "m.file"
+            height: visible ? units.gu(4) : 0
+            anchors.top: parent.top
+            anchors.left: parent.left
+            anchors.margins: units.gu(1)
+        }
+
 
         Text {
             id: messageLabel
             text: event.content_body
             color: sent ? "black" : "white"
             wrapMode: Text.Wrap
-            anchors.top: parent.top
+            anchors.bottom: metaLabel.top
             anchors.left: parent.left
-            anchors.margins: units.gu(1)
+            anchors.topMargin: units.gu(1)
+            anchors.leftMargin: units.gu(1)
             onLinkActivated: Qt.openUrlExternally(link)
             Component.onCompleted: {
                 var maxWidth = root.width - avatar.width - units.gu(8)
@@ -67,9 +99,9 @@ Rectangle {
         Label {
             id: metaLabel
             text: (event.displayname || event.sender) + " " + stamp.getChatTime ( event.origin_server_ts )
-            anchors.top: messageLabel.bottom
+            anchors.bottom: parent.bottom
             anchors.left: parent.left
-            anchors.leftMargin: units.gu(1)
+            anchors.margins: units.gu(1)
             color: UbuntuColors.silk
             textSize: Label.Small
         }

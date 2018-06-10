@@ -35,6 +35,7 @@ ScrollView {
                 messagesList.children = ""
                 for ( var i = res.rows.length-1; i >= 0; i-- ) {
                     var event = res.rows.item(i)
+                    event.content = JSON.parse( event.content_json )
                     addEventToList ( event )
                     if ( event.state_key === null ) requestRoomMember ( event.sender )
                 }
