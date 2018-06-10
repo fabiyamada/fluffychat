@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: fluffychat.christianpauly\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-06-10 09:17+0000\n"
+"POT-Creation-Date: 2018-06-10 10:12+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -334,6 +334,10 @@ msgstr ""
 #: ../qml/components/JoinGroupDialog.qml:26
 #: ../qml/components/NewContactDialog.qml:26
 msgid "Continue"
+msgstr ""
+
+#: ../qml/components/Message.qml:81
+msgid "Download"
 msgstr ""
 
 #: ../qml/components/FcPageHeader.qml:7 fluffychat.desktop.in.h:1

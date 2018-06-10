@@ -4,6 +4,7 @@ import Ubuntu.Components 1.3
 import "../components"
 
 Rectangle {
+    id: message
     property var event
     property var sending: event.sending || false
     property var sent: event.sender.toLowerCase() === matrix.matrixid.toLowerCase()
@@ -13,6 +14,18 @@ Rectangle {
     color: "transparent"
     opacity: sending ? 0.5 : 1
 
+    // When the width of the "window" changes (rotation for example) then the maxWidth
+    // of the message label must be calculated new. There is currently no "maxwidth"
+    // property in qml.
+    onWidthChanged: {
+        var maxWidth = message.width - avatar.width - units.gu(8)
+        if ( messageLabel.width > maxWidth ) messageLabel.width = maxWidth
+        else messageLabel.width = undefined
+    }
+
+
+    // When there something changes inside this message component, then this function
+    // must be triggered.
     function update () {
         metaLabel.text = (event.displayname || event.sender) + " " + stamp.getChatTime ( event.origin_server_ts )
         avatar.mxc = event.avatar_url
@@ -20,7 +33,6 @@ Rectangle {
 
     Avatar {
         id: avatar
-        //name: "contact"
         mxc: event.avatar_url
         anchors.left: sent ? undefined : parent.left
         anchors.right: sent ? parent.right : undefined
@@ -72,7 +84,7 @@ Rectangle {
 
         Button {
             id: downloadButton
-            text: "Download"
+            text: i18n.tr("Download")
             onClicked: Qt.openUrlExternally(matrix.getImageLinkFromMxc ( event.content.url ) )
             visible: event.content.msgtype === "m.file"
             height: visible ? units.gu(4) : 0
@@ -82,6 +94,8 @@ Rectangle {
         }
 
 
+        // In this label, the body of the matrix message is displayed. This label
+        // is main responsible for the width of the message bubble.
         Text {
             id: messageLabel
             text: event.content_body
@@ -92,8 +106,9 @@ Rectangle {
             anchors.topMargin: units.gu(1)
             anchors.leftMargin: units.gu(1)
             onLinkActivated: Qt.openUrlExternally(link)
+            // Intital calculation of the max width and display URL's
             Component.onCompleted: {
-                var maxWidth = root.width - avatar.width - units.gu(8)
+                var maxWidth = message.width - avatar.width - units.gu(8)
                 if ( width > maxWidth ) width = maxWidth
                 var urlRegex = /(https?:\/\/[^\s]+)/g;
                 text = text.replace(urlRegex, function(url) {
@@ -101,6 +116,10 @@ Rectangle {
                 })
             }
         }
+
+
+        // This label is for the meta-informations, which means it displays the
+        // display name of the sender of this message and the time.
         Label {
             id: metaLabel
             text: (event.displayname || event.sender) + " " + stamp.getChatTime ( event.origin_server_ts )
@@ -110,7 +129,7 @@ Rectangle {
             color: UbuntuColors.silk
             textSize: Label.Small
         }
-
+        // When the message is just sending, then this activity indicator is visible
         ActivityIndicator {
             id: activity
             visible: sending
@@ -121,6 +140,7 @@ Rectangle {
             width: units.gu(1.5)
             height: width
         }
+
     }
 
 
