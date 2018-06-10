@@ -203,20 +203,34 @@ Item {
 
     function upload ( path, callback, error_callback ) {
         try {
-            // Send the blob to the server
-            var requestUrl = "https://" + server + "/_matrix/media/r0/upload"
-            var http = new XMLHttpRequest();
-            http.open( "POST", requestUrl, true);
-            http.setRequestHeader('Content-type', 'application/json; charset=utf-8')
-            http.timeout = defaultTimeout
-            if ( token ) http.setRequestHeader('Authorization', 'Bearer ' + token);
-            http.onreadystatechange = function() {
-                if ( http.readyState === XMLHttpRequest.DONE ) {
-                    console.log("File is sent to the server")
-                    callback ( JSON.parse(http.responseText) )
+            var pathparts = path.split("/")
+            var filename = pathparts [ pathparts.length - 1 ]
+            var type = filename.split(".")[1]
+            var request = new XMLHttpRequest()
+            request.open( "GET", path, true)
+            request.setRequestHeader('Content-type', 'application/json; charset=utf-8')
+            request.onreadystatechange = function() {
+                if ( request.readyState === XMLHttpRequest.DONE ) {
+                    console.log("got file:", filename, http.responseText )
+                    // Send the blob to the server
+                    var requestUrl = "https://" + server + "/_matrix/media/r0/upload?filename=" + filename
+                    var http = new XMLHttpRequest()
+                    http.open( "POST", requestUrl, true)
+                    http.setRequestHeader('Content-Type', request.getResponseHeader("Content-Type"))
+                    http.timeout = defaultTimeout
+                    if ( token ) http.setRequestHeader('Authorization', 'Bearer ' + token);
+                    http.onreadystatechange = function() {
+                        if ( http.readyState === XMLHttpRequest.DONE ) {
+                            console.log("File is sent to the server")
+                            callback ( JSON.parse(http.responseText) )
+                        }
+                    }
+                    http.send ( request.responseText )
+
                 }
+
             }
-            http.send ( path )
+            request.send ()
         }
         catch ( e ) { error_callback ( e ) }
     }
