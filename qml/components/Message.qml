@@ -57,7 +57,7 @@ Rectangle {
         color: sent ? "#FFFFFF" : mainColor
         radius: 50
         height: messageLabel.height + metaLabel.height + downloadButton.height + thumbnail.height + units.gu(2)
-        width: Math.max( messageLabel.width, metaLabel.width, thumbnail.width ) + units.gu(2) + (event.sending ? units.gu(2) : 0)
+        width: Math.max( messageLabel.width, (metaLabel.width + (event.sending ? units.gu(2) : 0)), thumbnail.width ) + units.gu(2)
 
         MouseArea {
             width: thumbnail.width
