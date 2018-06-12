@@ -18,7 +18,8 @@ Rectangle {
     // of the message label must be calculated new. There is currently no "maxwidth"
     // property in qml.
     onWidthChanged: {
-        var maxWidth = message.width - avatar.width - units.gu(8)
+        messageLabel.width = undefined
+        var maxWidth = width - avatar.width - units.gu(5)
         if ( messageLabel.width > maxWidth ) messageLabel.width = maxWidth
         else messageLabel.width = undefined
     }
@@ -108,7 +109,7 @@ Rectangle {
             onLinkActivated: Qt.openUrlExternally(link)
             // Intital calculation of the max width and display URL's
             Component.onCompleted: {
-                var maxWidth = message.width - avatar.width - units.gu(8)
+                var maxWidth = message.width - avatar.width - units.gu(5)
                 if ( width > maxWidth ) width = maxWidth
                 var urlRegex = /(https?:\/\/[^\s]+)/g;
                 text = text.replace(urlRegex, function(url) {
