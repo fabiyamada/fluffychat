@@ -17,10 +17,18 @@ void Fluffychat::speak() {
 QByteArray Fluffychat::read(const QString &filename)
 {
     QFile file(filename);
-    if (!file.open(QIODevice::ReadOnly))
-        return QByteArray();
+    char* temp;
+    if (!file.open(QIODevice::ReadOnly)) {
+        QByteArray blob(temp);
+        return blob;
+    }
+    temp = new char [file.size()];
+    file.read(temp,file.size());
 
-    return file.readAll();
+    file.close();
+    QByteArray blob(temp);
+
+    return blob;
 }
 
 QString Fluffychat::toBase64(const QByteArray &file)

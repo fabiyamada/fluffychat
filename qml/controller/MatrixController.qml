@@ -1,5 +1,6 @@
 import QtQuick 2.4
 import Ubuntu.Components 1.3
+import Fluffychat 1.0
 
 /* =============================== MATRIX CONTROLLER ===============================
 
@@ -211,12 +212,14 @@ Item {
             request.setRequestHeader('Content-type', 'application/json; charset=utf-8')
             request.onreadystatechange = function() {
                 if ( request.readyState === XMLHttpRequest.DONE ) {
-                    console.log("got file:", filename, http.responseText )
+                    var fileString = request.responseText
+                    console.log("got file:", filename )
                     // Send the blob to the server
                     var requestUrl = "https://" + server + "/_matrix/media/r0/upload?filename=" + filename
                     var http = new XMLHttpRequest()
                     http.open( "POST", requestUrl, true)
-                    http.setRequestHeader('Content-Type', request.getResponseHeader("Content-Type"))
+                    http.setRequestHeader('Content-Type', 'image/jpeg')
+                    http.setRequestHeader('Content-Disposition', 'form-data; name="image"; filename="%1"'.arg(filename))
                     http.timeout = defaultTimeout
                     if ( token ) http.setRequestHeader('Authorization', 'Bearer ' + token);
                     http.onreadystatechange = function() {
@@ -225,7 +228,7 @@ Item {
                             callback ( JSON.parse(http.responseText) )
                         }
                     }
-                    http.send ( request.responseText )
+                    http.send ( fileString )
 
                 }
 
@@ -236,20 +239,47 @@ Item {
     }
 
 
-    function getThumbnailFromMxc ( mxc, width, height ) {
-        if ( mxc === undefined ) return ""
+    /*
+    function upload ( path, callback, error_callback ) {
+    try {
+    var pathparts = path.split("/")
+    var filename = pathparts [ pathparts.length - 1 ]
+    var type = filename.split(".")[1]
 
-        var mxcID = mxc.replace("mxc://","")
-        return "https://" + server + "/_matrix/media/r0/thumbnail/" + mxcID + "/?width=" + width + "&height=" + height + "&method=crop"
-    }
+    // Send the blob to the server
+    var requestUrl = "https://" + server + "/_matrix/media/r0/upload?filename=" + filename
+    var http = new XMLHttpRequest()
+    http.open( "POST", requestUrl, true)
+    http.setRequestHeader('Content-Type', "image/jpeg")
+    http.timeout = defaultTimeout
+    if ( token ) http.setRequestHeader('Authorization', 'Bearer ' + token);
+    http.onreadystatechange = function() {
+    if ( http.readyState === XMLHttpRequest.DONE ) {
+    console.log("File is sent to the server")
+    callback ( JSON.parse(http.responseText) )
+}
+}
+http.send ( Fluffychat.read ( path ) )
+
+}
+catch ( e ) { error_callback ( e ) }
+}*/
+
+
+function getThumbnailFromMxc ( mxc, width, height ) {
+    if ( mxc === undefined ) return ""
+
+    var mxcID = mxc.replace("mxc://","")
+    return "https://" + server + "/_matrix/media/r0/thumbnail/" + mxcID + "/?width=" + width + "&height=" + height + "&method=crop"
+}
 
 
 
-    function getImageLinkFromMxc ( mxc ) {
-        if ( mxc === undefined ) return ""
-        var mxcID = mxc.replace("mxc://","")
-        return "https://" + server + "/_matrix/media/r0/download/" + mxcID + "/download.jpg"
-    }
+function getImageLinkFromMxc ( mxc ) {
+    if ( mxc === undefined ) return ""
+    var mxcID = mxc.replace("mxc://","")
+    return "https://" + server + "/_matrix/media/r0/download/" + mxcID + "/download.jpg"
+}
 
 
 

@@ -201,11 +201,12 @@ Page {
             }
         }
 
-        ActionBar {
+        /*ActionBar {
             id: chatAttachementActionBar
             visible: membership === "join"
             anchors.verticalCenter: parent.verticalCenter
             anchors.left: parent.left
+            anchors.leftMargin: units.gu(0.5)
             actions: [
             Action {
                 id: attachementButton
@@ -214,15 +215,16 @@ Page {
                 enabled: !sending
             }
             ]
-        }
+        }*/
 
         TextField {
             id: messageTextField
             anchors.bottom: parent.bottom
-            anchors.horizontalCenter: parent.horizontalCenter
+            //anchors.horizontalCenter: parent.horizontalCenter
             anchors.margins: units.gu(1)
+            anchors.left: parent.left
             anchors.verticalCenter: parent.verticalCenter
-            width: parent.width - chatInputActionBar.width - chatAttachementActionBar.width - units.gu(1)
+            width: parent.width - chatInputActionBar.width - units.gu(2) /*- chatAttachementActionBar.width */
             placeholderText: i18n.tr("Type something ...")
             Keys.onReturnPressed: sendButton.trigger ()
             visible: membership === "join"
@@ -232,6 +234,7 @@ Page {
             visible: membership === "join"
             anchors.verticalCenter: parent.verticalCenter
             anchors.right: parent.right
+            anchors.rightMargin: units.gu(0.5)
             actions: [
             Action {
                 id: sendButton

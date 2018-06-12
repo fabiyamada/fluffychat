@@ -354,11 +354,14 @@ msgstr "#gruppenname:"
 msgid "@yourfriend:%1"
 msgstr "@deinfreund:%1"
 
-#: ../qml/components/InviteDialog.qml:26
 #: ../qml/components/ChangeDisplaynameDialog.qml:33
 #: ../qml/components/ChangeChatnameDialog.qml:33
 msgid "Save"
 msgstr "Speichern"
+
+#: ../qml/components/InviteDialog.qml:26
+msgid "Invite"
+msgstr "Einladen"
 
 #: ../qml/components/ChatScrollView.qml:93
 msgid "New message at the bottom of the chat"

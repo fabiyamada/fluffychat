@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: fluffychat.christianpauly\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-06-10 15:22+0000\n"
+"POT-Creation-Date: 2018-06-12 07:04+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -121,7 +121,7 @@ msgstr ""
 msgid "The chat permissions have been changed"
 msgstr ""
 
-#: ../qml/controller/EventController.qml:36 ../qml/pages/ChatPage.qml:197
+#: ../qml/controller/EventController.qml:36 ../qml/pages/ChatPage.qml:196
 #: ../qml/pages/AddChatPage.qml:24
 msgid ""
 "Synchronizing \n"
@@ -138,11 +138,11 @@ msgstr ""
 msgid "Please login to Ubuntu One to receive push notifications!"
 msgstr ""
 
-#: ../qml/controller/MatrixController.qml:177
+#: ../qml/controller/MatrixController.qml:178
 msgid "No connection to the homeserver 😕"
 msgstr ""
 
-#: ../qml/pages/InfoPage.qml:10 ../qml/pages/ChatPage.qml:133
+#: ../qml/pages/InfoPage.qml:10 ../qml/pages/ChatPage.qml:132
 msgid "Info"
 msgstr ""
 
@@ -227,37 +227,37 @@ msgstr ""
 msgid "Logout"
 msgstr ""
 
-#: ../qml/pages/ChatPage.qml:116 ../qml/components/ChatListItem.qml:50
+#: ../qml/pages/ChatPage.qml:115 ../qml/components/ChatListItem.qml:50
 msgid "Unknown chat"
 msgstr ""
 
-#: ../qml/pages/ChatPage.qml:123 ../qml/pages/ChatSettingsPage.qml:55
+#: ../qml/pages/ChatPage.qml:122 ../qml/pages/ChatSettingsPage.qml:55
 #: ../qml/components/InviteDialog.qml:11
 msgid "Invite a friend"
 msgstr ""
 
-#: ../qml/pages/ChatPage.qml:128 ../qml/pages/ChatSettingsPage.qml:60
+#: ../qml/pages/ChatPage.qml:127 ../qml/pages/ChatSettingsPage.qml:60
 #: ../qml/components/ChangeChatnameDialog.qml:11
 msgid "Edit chat name"
 msgstr ""
 
-#: ../qml/pages/ChatPage.qml:138 ../qml/pages/ChatSettingsPage.qml:74
+#: ../qml/pages/ChatPage.qml:137 ../qml/pages/ChatSettingsPage.qml:74
 msgid "Leave chat"
 msgstr ""
 
-#: ../qml/pages/ChatPage.qml:174
+#: ../qml/pages/ChatPage.qml:173
 msgid "No messages in this chat ..."
 msgstr ""
 
-#: ../qml/pages/ChatPage.qml:192
+#: ../qml/pages/ChatPage.qml:191
 msgid "Accept invatiation"
 msgstr ""
 
-#: ../qml/pages/ChatPage.qml:227
+#: ../qml/pages/ChatPage.qml:228
 msgid "Type something ..."
 msgstr ""
 
-#: ../qml/pages/ChatPage.qml:260
+#: ../qml/pages/ChatPage.qml:262
 msgid "Scroll down"
 msgstr ""
 
@@ -369,9 +369,7 @@ msgid "@yourfriend:%1"
 msgstr ""
 
 #: ../qml/components/InviteDialog.qml:26
-#: ../qml/components/ChangeDisplaynameDialog.qml:33
-#: ../qml/components/ChangeChatnameDialog.qml:33
-msgid "Save"
+msgid "Invite"
 msgstr ""
 
 #: ../qml/components/ChatScrollView.qml:125
@@ -384,6 +382,11 @@ msgstr ""
 
 #: ../qml/components/ChangeDisplaynameDialog.qml:14
 msgid "Enter your new nickname"
+msgstr ""
+
+#: ../qml/components/ChangeDisplaynameDialog.qml:33
+#: ../qml/components/ChangeChatnameDialog.qml:33
+msgid "Save"
 msgstr ""
 
 #: ../qml/components/ChangeChatnameDialog.qml:14

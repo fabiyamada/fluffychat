@@ -23,7 +23,7 @@ Component {
             }
             Button {
                 width: (parent.width - units.gu(1)) / 2
-                text: i18n.tr("Save")
+                text: i18n.tr("Invite")
                 color: UbuntuColors.green
                 onClicked: {
                     console.log( matrixidTextField.displayText)
