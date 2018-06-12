@@ -23,8 +23,8 @@ Page {
             type: "m.room.message",
             sender: matrix.matrixid,
             content_body: messageTextField.displayText,
-            displayname: matrix.displayname,
-            avatar_url: matrix.avatar_url,
+            displayname: settings.displayname,
+            avatar_url: settings.avatar_url,
             sending: true,
             origin_server_ts: new Date().getTime(),
             content: {}

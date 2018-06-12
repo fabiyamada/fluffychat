@@ -11,7 +11,7 @@ Component {
         title: i18n.tr("New contact")
         TextField {
             id: contactTextField
-            placeholderText: i18n.tr("@yourfriend:" + matrix.server)
+            placeholderText: i18n.tr("@yourfriend:" + settings.server)
         }
         Row {
             width: parent.width

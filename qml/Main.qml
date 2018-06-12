@@ -43,6 +43,8 @@ MainView {
     DisplayEventController { id: displayEvents }
     PushController { id: pushclient }
     MediaController { id: media }
+    SettingsController { id: settings }
+
     Toast { id: toast }
     LoadingModal { id: loadingModal }
 

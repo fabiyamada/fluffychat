@@ -11,19 +11,7 @@ credentials
 
 Item {
 
-    // The username and the device name at the current server
-    property var username
-    property var deviceName
-    property var deviceID
-    property var matrixid: server ? "@" + username + ":" + server.split(":")[0] : null
-    property var displayname
-    property var avatar_url
-
-    // The token to identify
-    property var token
-
-    // The server of the user WITHOUT "/" at the end!
-    property var server
+    property var matrixid: settings.server ? "@" + settings.username + ":" + settings.server.split(":")[0] : null
 
     // The online status (bool)
     property var onlineStatus: false
@@ -34,12 +22,11 @@ Item {
     // Check if there are username, password and domain saved from a previous
     // session and autoconnect with them. If not, then just go to the login Page.
     function init () {
-        loadConfigs ()
 
-        if ( token !== null ) {
+        if ( settings.token ) {
             mainStack.push(Qt.resolvedUrl("../pages/ChatListPage.qml"))
             onlineStatus = true
-            usernames.getById(matrix.matrixid, "", function (name) { displayname = name } )
+            usernames.getById(matrix.matrixid, "", function (name) { settings.displayname = name } )
             events.init ()
         }
         else {
@@ -50,9 +37,11 @@ Item {
 
     // Login and set username, token and server! Needs to be done, before anything else
     function login ( newUsername, newPassword, newServer, newDeviceName, callback, error_callback, status_callback ) {
-        server = newServer.toLowerCase()
-        username = newUsername.toLowerCase()
-        deviceName = newDeviceName
+
+        settings.username = newUsername.toLowerCase()
+        settings.server = newServer.toLowerCase()
+        settings.deviceName = newDeviceName
+
         var data = {
             "initial_device_display_name": newDeviceName,
             "user": newUsername,
@@ -61,12 +50,20 @@ Item {
         }
 
         var onLogged = function ( response ) {
-            token = response.access_token
-            deviceID = response.device_id
-            saveConfigs ()
+            settings.token = response.access_token
+            settings.deviceID = response.device_id
+            settings.username = newUsername.toLowerCase()
+            settings.server = newServer.toLowerCase()
+            settings.deviceName = newDeviceName
+            settings.dbversion = version
             onlineStatus = true
             events.init ()
             if ( callback ) callback ( response )
+        }
+
+        var onError = function ( response ) {
+            settings.username = settings.server = settings.deviceName = undefined
+            if ( error_callback ) error_callback ( response )
         }
         xmlRequest ( "POST", data, "/client/r0/login", onLogged, error_callback, status_callback )
     }
@@ -77,32 +74,10 @@ Item {
     }
 
 
-    function saveConfigs () {
-        storage.setConfig ( "username", username )
-        storage.setConfig ( "domain", server )
-        storage.setConfig ( "token", token )
-        storage.setConfig ( "deviceid", deviceID )
-        storage.setConfig ( "devicename", deviceName )
-        storage.setConfig ( "displayname", displayname )
-        storage.setConfig ( "avatar_url", avatar_url )
-    }
-
-
-    function loadConfigs () {
-        storage.getConfig ( "username", function(res) { username = res })
-        storage.getConfig ( "domain", function(res) { server = res })
-        storage.getConfig ( "token", function(res) { token = res })
-        storage.getConfig ( "deviceid", function(res) { deviceID = res })
-        storage.getConfig ( "devicename", function(res) { deviceName = res })
-        storage.getConfig ( "displayname", function(res) { displayname = res })
-        storage.getConfig ( "avatar_url", function(res) { avatar_url = res })
-    }
-
-
     function reset () {
         storage.drop ()
         onlineStatus = false
-        username = server = token = displayname = avatar_url = events.since = undefined
+        settings.username = settings.server = settings.token = settings.deviceID = settings.deviceName = settings.since = undefined
         mainStack.clear ()
         mainStack.push(Qt.resolvedUrl("../pages/LoginPage.qml"))
     }
@@ -144,12 +119,12 @@ Item {
         }
         else if ( data != null ) postData = data
 
-        var requestUrl = "https://" + server + "/_matrix" + action + getData
+        var requestUrl = "https://" + settings.server + "/_matrix" + action + getData
         var longPolling = (data != null && data.timeout)
         http.open( type, requestUrl, true);
         http.setRequestHeader('Content-type', 'application/json; charset=utf-8')
         http.timeout = defaultTimeout
-        if ( token ) http.setRequestHeader('Authorization', 'Bearer ' + token);
+        if ( settings.token ) http.setRequestHeader('Authorization', 'Bearer ' + settings.token);
         http.onreadystatechange = function() {
             if ( status_callback ) status_callback ( http.readyState )
             if (http.readyState === XMLHttpRequest.DONE) {
@@ -173,7 +148,7 @@ Item {
                     console.error("There was an error: When calling ", requestUrl, " With data: ", JSON.stringify(data), " Error-Report: ", error, http.responseText)
                     if ( typeof error === "string" ) error = {"errcode": "ERROR", "error": error}
                     if ( error.errcode === "M_UNKNOWN_TOKEN" ) reset ()
-                    if ( !error_callback && error === "offline" && token ) {
+                    if ( !error_callback && error === "offline" && settings.token ) {
                         onlineStatus = false
                         toast.show (i18n.tr("No connection to the homeserver 😕"))
                     }
@@ -215,13 +190,13 @@ Item {
                     var fileString = request.responseText
                     console.log("got file:", filename )
                     // Send the blob to the server
-                    var requestUrl = "https://" + server + "/_matrix/media/r0/upload?filename=" + filename
+                    var requestUrl = "https://" + settings.server + "/_matrix/media/r0/upload?filename=" + filename
                     var http = new XMLHttpRequest()
                     http.open( "POST", requestUrl, true)
                     http.setRequestHeader('Content-Type', 'image/jpeg')
                     http.setRequestHeader('Content-Disposition', 'form-data; name="image"; filename="%1"'.arg(filename))
                     http.timeout = defaultTimeout
-                    if ( token ) http.setRequestHeader('Authorization', 'Bearer ' + token);
+                    if ( settings.token ) http.setRequestHeader('Authorization', 'Bearer ' + settings.token);
                     http.onreadystatechange = function() {
                         if ( http.readyState === XMLHttpRequest.DONE ) {
                             console.log("File is sent to the server")
@@ -270,7 +245,7 @@ function getThumbnailFromMxc ( mxc, width, height ) {
     if ( mxc === undefined ) return ""
 
     var mxcID = mxc.replace("mxc://","")
-    return "https://" + server + "/_matrix/media/r0/thumbnail/" + mxcID + "/?width=" + width + "&height=" + height + "&method=crop"
+    return "https://" + settings.server + "/_matrix/media/r0/thumbnail/" + mxcID + "/?width=" + width + "&height=" + height + "&method=crop"
 }
 
 
@@ -278,7 +253,7 @@ function getThumbnailFromMxc ( mxc, width, height ) {
 function getImageLinkFromMxc ( mxc ) {
     if ( mxc === undefined ) return ""
     var mxcID = mxc.replace("mxc://","")
-    return "https://" + server + "/_matrix/media/r0/download/" + mxcID + "/download.jpg"
+    return "https://" + settings.server + "/_matrix/media/r0/download/" + mxcID + "/download.jpg"
 }
 
 

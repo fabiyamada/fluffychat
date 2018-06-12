@@ -9,7 +9,7 @@ Little helper controller for downloading thumbnails and all content via mxc uris
 
 Item {
 
-    property var callback: console.log("Download finished:", path)
+    property var callback: console.log("Download finished")
 
 
     function getThumbnailFromMxc ( mxc, width, height ) {
@@ -17,7 +17,7 @@ Item {
 
         var mxcID = mxc.replace("mxc://","")
 
-        return "https://" + matrix.server + "/_matrix/media/r0/thumbnail/" + mxcID + "/?width=" + width + "&height=" + height + "&method=crop"
+        return "https://" + settings.server + "/_matrix/media/r0/thumbnail/" + mxcID + "/?width=" + width + "&height=" + height + "&method=crop"
     }
 
 

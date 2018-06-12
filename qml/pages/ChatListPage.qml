@@ -108,7 +108,6 @@ Page {
                 // Now reorder this item
                 if ( newTimelineEvents || !roomExists ) {
                     while ( j > 0 && items[j].room.origin_server_ts > items[j-1].room.origin_server_ts ) {
-                        console.log("move up")
                         var tempRoom = JSON.parse(JSON.stringify(items[j-1].room))
                         items[j-1].room = JSON.parse(JSON.stringify(items[j].room))
                         items[j].room = tempRoom

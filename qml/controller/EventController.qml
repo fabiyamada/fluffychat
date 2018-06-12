@@ -21,15 +21,12 @@ Item {
     signal chatTimelineEvent ( var response )
 
     property var syncRequest: null
-    property var since: ""
     property var initialized: false
     property var abortSync: false
 
     function init () {
-        storage.getConfig("next_batch", function( res ) {
-            since = res
             initialized = true
-            if ( since != null ) {
+            if ( settings.since ) {
                 waitForSync ()
                 return sync ( 1 )
             }
@@ -38,25 +35,24 @@ Item {
                 if ( waitingForSync ) progressBarRequests--
                 matrix.onlineStatus = true
                 handleEvents ( response )
-                sync ()
+                //sync ()
             }, null, null, longPollingTimeout )
-        })
     }
 
     function sync ( timeout) {
-        if (matrix.token === null || matrix.token === undefined) return
+        if (settings.token === null || settings.token === undefined) return
         if ( !timeout ) timeout = longPollingTimeout
-        var data = { "since": since, "timeout": timeout }
+        var data = { "since": settings.since, "timeout": timeout }
         syncRequest = matrix.get ("/client/r0/sync", data, function ( response ) {
             if ( waitingForSync ) progressBarRequests--
             waitingForSync = false
-            if ( matrix.token !== undefined && matrix.token !== null ) {
+            if ( settings.token ) {
                 matrix.onlineStatus = true
                 handleEvents ( response )
                 sync ()
             }
         }, function ( error ) {
-            if ( !abortSync && matrix.token !== undefined ) {
+            if ( !abortSync && settings.token !== undefined ) {
                 matrix.onlineStatus = false
                 console.log ( "Synchronization timeout!" )
                 if ( error.errcode === "M_INVALID" ) {
@@ -116,8 +112,7 @@ Item {
                     handleRooms ( response.rooms.join, "join" )
                     handleRooms ( response.rooms.leave, "leave" )
                     handleRooms ( response.rooms.invite, "invite" )
-                    since = response.next_batch
-                    storage.setConfig ( "next_batch", since )
+                    settings.since = response.next_batch
                     chatListUpdated ( response )
                     triggerSignals ( response )
                     console.log("===> SYNCHRONIZATION performance: ", new Date().getTime() - timecount )
@@ -221,9 +216,8 @@ Item {
                 event.content.displayname,
                 event.content.avatar_url ])
                 if ( event.state_key === matrix.matrixid) {
-                    matrix.avatar_url = event.content.avatar_url
-                    matrix.displayname = event.content.displayname
-                    matrix.saveConfigs()
+                    settings.avatar_url = event.content.avatar_url
+                    settings.displayname = event.content.displayname
                 }
             }
         }

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: fluffychat.christianpauly\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-06-12 07:04+0000\n"
+"POT-Creation-Date: 2018-06-12 12:18+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -121,7 +121,7 @@ msgstr ""
 msgid "The chat permissions have been changed"
 msgstr ""
 
-#: ../qml/controller/EventController.qml:36 ../qml/pages/ChatPage.qml:196
+#: ../qml/controller/EventController.qml:33 ../qml/pages/ChatPage.qml:196
 #: ../qml/pages/AddChatPage.qml:24
 msgid ""
 "Synchronizing \n"
@@ -138,7 +138,7 @@ msgstr ""
 msgid "Please login to Ubuntu One to receive push notifications!"
 msgstr ""
 
-#: ../qml/controller/MatrixController.qml:178
+#: ../qml/controller/MatrixController.qml:153
 msgid "No connection to the homeserver 😕"
 msgstr ""
 
@@ -202,7 +202,7 @@ msgstr ""
 msgid "Using the homeserver: "
 msgstr ""
 
-#: ../qml/pages/ChatListPage.qml:164
+#: ../qml/pages/ChatListPage.qml:163
 msgid "Swipe from the bottom to start a new chat"
 msgstr ""
 
@@ -336,7 +336,7 @@ msgstr ""
 msgid "Continue"
 msgstr ""
 
-#: ../qml/components/Message.qml:87
+#: ../qml/components/Message.qml:88
 msgid "Download"
 msgstr ""
 

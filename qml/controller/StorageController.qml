@@ -15,7 +15,7 @@ are changes to the database model, the version-property MUST be increaded!
 Item {
     id: storage
 
-    property var version: "0.1.11a"
+    property var version: "0.1.12"
     property var db: LocalStorage.openDatabaseSync("FLuffyChat", "1.0", "FluffyChat Database", 1000000)
 
 
@@ -48,25 +48,19 @@ Item {
 
     // Initializing the database
     function init () {
-        // Init the config table and get the database version number
-        transaction('CREATE TABLE IF NOT EXISTS Config(key TEXT PRIMARY KEY, value TEXT)', function () {
-            getConfig ( "dbversion", function (rsVersion) {
-                if ( rsVersion !== version ) {
-                    console.log ("Drop database cause old version")
-                    unsetConfig ("next_batch")
-                    // Drop all databases and recreate them
-                    drop ()
-                    unsetConfig ( "next_batch" )
-                }
-            })
-            transaction ( 'PRAGMA foreign_keys = OFF')
-            transaction ( 'PRAGMA synchronous = OFF')
-            //transaction ( 'PRAGMA journal_mode = OFF')
-            transaction ( 'PRAGMA locking_mode = EXCLUSIVE')
-            transaction ( 'PRAGMA temp_store = MEMORY')
-            transaction ( 'PRAGMA cache_size')
-            transaction ( 'PRAGMA cache_size = 10000')
-        })
+        // Check the database version number
+        if ( settings.dbversion !== version ) {
+            console.log ("Drop database cause old version")
+            settings.since = undefined
+            // Drop all databases and recreate them
+            drop ()
+            settings.dbversion = version
+        }
+        transaction ( 'PRAGMA foreign_keys = OFF')
+        transaction ( 'PRAGMA locking_mode = EXCLUSIVE')
+        transaction ( 'PRAGMA temp_store = MEMORY')
+        transaction ( 'PRAGMA cache_size')
+        transaction ( 'PRAGMA cache_size = 10000')
     }
 
 
@@ -81,32 +75,4 @@ Item {
         transaction('CREATE TABLE Roommembers(roomsid TEXT, state_key TEXT, membership TEXT, displayname TEXT, avatar_url TEXT, UNIQUE(roomsid, state_key))')
         setConfig ( "dbversion", version )
     }
-
-
-
-    function getConfig ( key, callback ) {
-        transaction('SELECT value FROM Config WHERE key = "' + key + '"', function (rs) {
-            if ( rs.rows.length > 0 ) callback (rs.rows[0].value)
-            else callback (null)
-        })
-    }
-
-
-
-    function setConfig ( key, value ) {
-        getConfig ( key, function (currentValue) {
-            if ( currentValue == null ) {
-                transaction('INSERT INTO Config VALUES("' + key + '", "' + value + '")')
-            }
-            else {
-                transaction('UPDATE Config set value="' + value + '" WHERE key="' + key + '"')
-            }
-        } )
-    }
-
-    function unsetConfig ( key ) {
-        transaction('DELETE FROM Config WHERE key="' + key + '"')
-    }
-
-
 }

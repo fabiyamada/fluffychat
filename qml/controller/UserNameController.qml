@@ -17,10 +17,13 @@ Item {
         })
     }
 
+
+    // This returns the local part of a matrix id
     function transformFromId ( matrixid ) {
         return capitalizeFirstLetter ( (matrixid.substr(1)).split(":")[0] )
     }
 
+    // Just capitalize the first letter of a string
     function capitalizeFirstLetter(string) {
         return string.charAt(0).toUpperCase() + string.slice(1);
     }

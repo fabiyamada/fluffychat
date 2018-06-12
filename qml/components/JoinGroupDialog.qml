@@ -11,7 +11,7 @@ Component {
         title: i18n.tr("Join group")
         TextField {
             id: groupTextField
-            placeholderText: i18n.tr("#groupname:" + matrix.server)
+            placeholderText: i18n.tr("#groupname:" + settings.server)
         }
         Row {
             width: parent.width
