@@ -33,6 +33,8 @@ Rectangle {
         id: avatar
         source:  mxc !== "" ? media.getThumbnailFromMxc ( mxc, width, height ) : "../../assets/contact.svg"
         anchors.fill: parent
+        sourceSize.width: width
+        sourceSize.height: height
         fillMode: Image.PreserveAspectCrop
         layer.enabled: true
         layer.effect: OpacityMask {
