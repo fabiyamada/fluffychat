@@ -98,7 +98,7 @@ Page {
 
     Connections {
         target: events
-        onChatTimelineEvent: chatScrollView.handleNewEvent ()
+        onChatTimelineEvent: chatScrollView.handleNewEvent ( response )
     }
 
     Connections {

@@ -129,7 +129,7 @@ Item {
 
     function triggerSignals ( response ) {
         var activeRoom = response.rooms.join[activeChat]
-        if ( activeRoom !== undefined && activeRoom.timeline.events.length > 0 ) chatTimelineEvent ( response )
+        if ( activeRoom !== undefined && activeRoom.timeline.events.length > 0 ) chatTimelineEvent ( activeRoom.timeline.events )
     }
 
 

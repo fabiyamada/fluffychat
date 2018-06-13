@@ -100,7 +100,7 @@ Rectangle {
         // is main responsible for the width of the message bubble.
         Text {
             id: messageLabel
-            text: event.content_body
+            text: event.content_body || event.content.body
             color: sent ? "black" : "white"
             wrapMode: Text.Wrap
             anchors.bottom: metaLabel.top
@@ -110,6 +110,7 @@ Rectangle {
             onLinkActivated: Qt.openUrlExternally(link)
             // Intital calculation of the max width and display URL's
             Component.onCompleted: {
+                if ( !event.content_body ) event.content_body = event.content.body
                 var maxWidth = message.width - avatar.width - units.gu(5)
                 if ( width > maxWidth ) width = maxWidth
                 var urlRegex = /(https?:\/\/[^\s]+)/g;
