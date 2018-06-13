@@ -19,7 +19,7 @@ Rectangle {
 
     //property alias name: avatar.name
     property alias source: avatar.source
-    property var mxc: ""
+    property var mxc: null
     property var onClickFunction: null
 
 
@@ -31,8 +31,9 @@ Rectangle {
 
     Image {
         id: avatar
-        source:  mxc !== "" ? media.getThumbnailFromMxc ( mxc, width, height ) : "../../assets/contact.svg"
+        source:  mxc !== null ? media.getThumbnailLinkFromMxc ( mxc, width, height ) : "../../assets/contact.svg"
         anchors.fill: parent
+        cache: true
         sourceSize.width: width
         sourceSize.height: height
         fillMode: Image.PreserveAspectCrop

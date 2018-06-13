@@ -10,14 +10,27 @@ Little helper controller for downloading thumbnails and all content via mxc uris
 Item {
 
     property var callback: console.log("Download finished")
+    property var isDownloading: false
 
 
     function getThumbnailFromMxc ( mxc, width, height ) {
-        if ( mxc === undefined ) return ""
+        if ( mxc === undefined || mxc === null ) return ""
 
         var mxcID = mxc.replace("mxc://","")
+        //Qt.resolvedUrl()
 
-        return "https://" + settings.server + "/_matrix/media/r0/thumbnail/" + mxcID + "/?width=" + width + "&height=" + height + "&method=crop"
+        if ( !isDownloading ) {
+            isDownloading = true
+            //downloader.download ( getThumbnailLinkFromMxc ( mxc, width, height ) )
+        }
+
+
+        return getThumbnailLinkFromMxc ( mxc, width, height )
+    }
+
+
+    function getThumbnailLinkFromMxc ( mxc, width, height ) {
+        return "https://" + settings.server + "/_matrix/media/r0/thumbnail/" + mxc.replace("mxc://","") + "?width=" + width + "&height=" + height + "&method=crop"
     }
 
 
@@ -31,7 +44,7 @@ Item {
 
     function downloadThumbnailFromMxc ( mxc, width, height, cb ) {
         callback = cb
-        downloader.download ( getThumbnailFromMxc ( mxc, width, height ) )
+        downloader.download ( getThumbnailLinkFromMxc ( mxc, width, height ) )
     }
 
 
@@ -44,8 +57,11 @@ Item {
 
     SingleDownload {
         id: downloader
-        onProgressChanged: console.log("Progress:", progress)
-        onFinished: callback ( path )
+        //onProgressChanged: console.log("Progress:", progress)
+        onFinished: {
+            console.log ( "Downloaded: ", path )
+            isDownloading = false
+        }
     }
 
 }
