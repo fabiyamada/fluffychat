@@ -30,6 +30,7 @@ Item {
 
 
     function getThumbnailLinkFromMxc ( mxc, width, height ) {
+        if ( mxc === undefined || mxc === "" ) return ""
         return "https://" + settings.server + "/_matrix/media/r0/thumbnail/" + mxc.replace("mxc://","") + "?width=" + width + "&height=" + height + "&method=scale"
     }
 

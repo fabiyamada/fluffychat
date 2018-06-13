@@ -11,6 +11,7 @@ Component {
         title: i18n.tr("New contact")
         TextField {
             id: contactTextField
+            text: newContactMatrixID || ""
             placeholderText: i18n.tr("@yourfriend:" + settings.server)
         }
         Row {

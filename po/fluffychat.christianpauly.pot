@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: fluffychat.christianpauly\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-06-13 08:43+0000\n"
+"POT-Creation-Date: 2018-06-13 10:34+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -231,17 +231,17 @@ msgstr ""
 msgid "Unknown chat"
 msgstr ""
 
-#: ../qml/pages/ChatPage.qml:122 ../qml/pages/ChatSettingsPage.qml:55
+#: ../qml/pages/ChatPage.qml:122 ../qml/pages/ChatSettingsPage.qml:59
 #: ../qml/components/InviteDialog.qml:11
 msgid "Invite a friend"
 msgstr ""
 
-#: ../qml/pages/ChatPage.qml:127 ../qml/pages/ChatSettingsPage.qml:60
+#: ../qml/pages/ChatPage.qml:127 ../qml/pages/ChatSettingsPage.qml:64
 #: ../qml/components/ChangeChatnameDialog.qml:11
 msgid "Edit chat name"
 msgstr ""
 
-#: ../qml/pages/ChatPage.qml:137 ../qml/pages/ChatSettingsPage.qml:74
+#: ../qml/pages/ChatPage.qml:137 ../qml/pages/ChatSettingsPage.qml:78
 msgid "Leave chat"
 msgstr ""
 
@@ -261,19 +261,15 @@ msgstr ""
 msgid "Scroll down"
 msgstr ""
 
-#: ../qml/pages/ChatSettingsPage.qml:34
-msgid "And %1 more ..."
-msgstr ""
-
-#: ../qml/pages/ChatSettingsPage.qml:65
+#: ../qml/pages/ChatSettingsPage.qml:69
 msgid "Join this chat"
 msgstr ""
 
-#: ../qml/pages/ChatSettingsPage.qml:109
-msgid "Users in this chat:"
+#: ../qml/pages/ChatSettingsPage.qml:113
+msgid "Users in this chat (%1):"
 msgstr ""
 
-#: ../qml/pages/ChatSettingsPage.qml:109
+#: ../qml/pages/ChatSettingsPage.qml:113
 msgid "Loading users ..."
 msgstr ""
 
@@ -297,23 +293,23 @@ msgstr ""
 msgid "Join group"
 msgstr ""
 
-#: ../qml/components/MemberListItem.qml:12
+#: ../qml/components/MemberListItem.qml:15
 msgid "Member"
 msgstr ""
 
-#: ../qml/components/MemberListItem.qml:13
+#: ../qml/components/MemberListItem.qml:16
 msgid "Was invited"
 msgstr ""
 
-#: ../qml/components/MemberListItem.qml:14
+#: ../qml/components/MemberListItem.qml:17
 msgid "Has left the chat"
 msgstr ""
 
-#: ../qml/components/MemberListItem.qml:15
+#: ../qml/components/MemberListItem.qml:18
 msgid "Has knocked"
 msgstr ""
 
-#: ../qml/components/MemberListItem.qml:16
+#: ../qml/components/MemberListItem.qml:19
 msgid "Was banned from the chat"
 msgstr ""
 
@@ -324,7 +320,7 @@ msgstr ""
 #: ../qml/components/NewGroupDialog.qml:21
 #: ../qml/components/JoinGroupDialog.qml:21
 #: ../qml/components/InviteDialog.qml:21
-#: ../qml/components/NewContactDialog.qml:21
+#: ../qml/components/NewContactDialog.qml:22
 #: ../qml/components/ChangeDisplaynameDialog.qml:28
 #: ../qml/components/ChangeChatnameDialog.qml:28
 msgid "Cancel"
@@ -332,7 +328,7 @@ msgstr ""
 
 #: ../qml/components/NewGroupDialog.qml:26
 #: ../qml/components/JoinGroupDialog.qml:26
-#: ../qml/components/NewContactDialog.qml:26
+#: ../qml/components/NewContactDialog.qml:27
 msgid "Continue"
 msgstr ""
 
@@ -376,7 +372,7 @@ msgstr ""
 msgid "New message at the bottom of the chat"
 msgstr ""
 
-#: ../qml/components/NewContactDialog.qml:14
+#: ../qml/components/NewContactDialog.qml:15
 msgid "@yourfriend:"
 msgstr ""
 

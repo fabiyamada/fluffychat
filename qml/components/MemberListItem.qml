@@ -1,11 +1,14 @@
 import QtQuick 2.4
 import QtQuick.Layouts 1.1
 import Ubuntu.Components 1.3
+import Ubuntu.Components.Popups 1.3
 import "../components"
 
 ListItem {
     property var name: ""
     property var membership: ""
+    property var avatar_url: null
+    property var id: ""
     height: layout.height
 
     Component.onCompleted: {
@@ -16,6 +19,11 @@ ListItem {
         else if ( membership === "ban" ) layout.subtitle.text = i18n.tr("Was banned from the chat")
     }
 
+    onClicked: {
+        newContactMatrixID = id
+        PopupUtils.open( newContactDialog )
+    }
+
     opacity: membership === "leave" ? 0.5 : 1
 
     ListItemLayout {
@@ -24,6 +32,7 @@ ListItem {
         subtitle.text: membership
         Avatar {
             SlotsLayout.position: SlotsLayout.Leading
+            mxc: avatar_url
         }
     }
 }

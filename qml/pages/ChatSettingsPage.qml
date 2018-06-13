@@ -8,8 +8,11 @@ Page {
     anchors.fill: parent
 
     property var membership: "unknown"
-    property var max: 40
+    property var max: 20
+    property var position: 0
     property var memberlist
+    property var blocked: false
+    property var newContactMatrixID
 
     function init () {
 
@@ -21,25 +24,26 @@ Page {
         // Request the full memberlist, from the server
         matrix.get ( "/client/r0/rooms/%1/members".arg(activeChat), null, function (response) {
             memberlist = response.chunk
-            for ( var i = 0; i < Math.min(response.chunk.length, max); i++ ) {
-                var member = response.chunk[i]
+            //for ( i = 0; i < memberlist.length; i++ ) memberlist[i].content.displayname = "User " + (i+1)
+            for ( var i = 0; i < Math.min(memberlist.length, max); i++ ) {
+                var member =memberlist[i]
                 var newMemberListItem = Qt.createComponent("../components/MemberListItem.qml")
                 newMemberListItem.createObject(memberList, {
                     name: member.content.displayname || usernames.transformFromId( member.state_key ),
-                    membership: member.content.membership
-                } )
-            }
-            if ( response.chunk.length > max ) {
-                newMemberListItem.createObject(memberList, {
-                    name: i18n.tr("And %1 more ...").arg(response.chunk.length - max),
+                    id: member.state_key,
+                    membership: member.content.membership,
+                    avatar_url: member.content.avatar_url
                 } )
             }
         })
     }
 
+
     Component.onCompleted: init ()
 
     InviteDialog { id: inviteDialog }
+
+    NewContactDialog { id: newContactDialog }
 
     ChangeChatnameDialog { id: changeChatnameDialog }
 
@@ -106,13 +110,33 @@ Page {
                 height: units.gu(2)
                 anchors.left: parent.left
                 anchors.leftMargin: units.gu(2)
-                text: memberList.children.length > 0 ? i18n.tr("Users in this chat:") : i18n.tr("Loading users ...")
+                text: memberList.children.length > 0 ? i18n.tr("Users in this chat (%1):").arg(memberlist.length) : i18n.tr("Loading users ...")
                 font.bold: true
             }
 
             Column {
                 id: memberList
                 width: parent.width
+            }
+        }
+
+        // On scrolling, the view should display another part of the list
+        flickableItem {
+            onContentYChanged: {
+                // User has scrolled to the bottom
+                if ( flickableItem.contentY > flickableItem.contentHeight - height*2 ) {
+                    if ( position+1+max < memberlist.length ) {
+                        // Put one more item at the end of the list
+                        var member = memberlist[ position++ + max ]
+                        var newMemberListItem = Qt.createComponent("../components/MemberListItem.qml")
+                        newMemberListItem.createObject(memberList, {
+                            name: member.content.displayname || usernames.transformFromId( member.state_key ),
+                            id: member.state_key,
+                            membership: member.content.membership,
+                            avatar_url: member.content.avatar_url
+                        } )
+                    }
+                }
             }
         }
     }
