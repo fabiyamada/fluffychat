@@ -31,7 +31,7 @@ Rectangle {
 
     Image {
         id: avatar
-        source:  mxc !== null ? media.getThumbnailLinkFromMxc ( mxc, width, height ) : "../../assets/contact.svg"
+        source:  mxc !== null && mxc !== "" ? media.getThumbnailLinkFromMxc ( mxc, width, height ) : "../../assets/contact.svg"
         anchors.fill: parent
         cache: true
         sourceSize.width: width

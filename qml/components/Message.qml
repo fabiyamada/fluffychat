@@ -110,7 +110,6 @@ Rectangle {
             onLinkActivated: Qt.openUrlExternally(link)
             // Intital calculation of the max width and display URL's
             Component.onCompleted: {
-                console.log(event.content.msgtype)
                 var maxWidth = message.width - avatar.width - units.gu(5)
                 if ( width > maxWidth ) width = maxWidth
                 var urlRegex = /(https?:\/\/[^\s]+)/g;
