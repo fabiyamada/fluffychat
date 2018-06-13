@@ -56,7 +56,7 @@ Rectangle {
         border.color: UbuntuColors.silk
         anchors.margins: 5
         color: sent ? "#FFFFFF" : mainColor
-        radius: 50
+        radius: units.gu(2)
         height: messageLabel.height + metaLabel.height + downloadButton.height + thumbnail.height + units.gu(2)
         width: Math.max( messageLabel.width, (metaLabel.width + (event.sending ? units.gu(2) : 0)), thumbnail.width ) + units.gu(2)
 

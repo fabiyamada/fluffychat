@@ -20,7 +20,7 @@ Rectangle {
         border.width: 1
         border.color: UbuntuColors.silk
         color: UbuntuColors.porcelain
-        radius: 50
+        radius: units.gu(2)
         height: eventLabel.height + units.gu(2)
         width: eventLabel.width + units.gu(2)
         opacity: 0.75

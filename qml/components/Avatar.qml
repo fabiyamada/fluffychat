@@ -13,7 +13,7 @@ Rectangle {
     color: "white"
     border.width: 1
     border.color: UbuntuColors.silk
-    radius: 20
+    radius: units.gu(1)
     z:1
     clip: true
 
