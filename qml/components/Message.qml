@@ -68,11 +68,9 @@ Rectangle {
                 id: thumbnail
                 visible: event.content.msgtype === "m.image"
                 width: visible ? Math.max( units.gu(24), messageLabel.width + units.gu(2) ) : 0
-                //height: width
-                source: event.content.url ? media.getThumbnailLinkFromMxc ( event.content.url, width, width ) : ""
+                source: event.content.url ? media.getThumbnailLinkFromMxc ( event.content.url, Math.round (width), Math.round (width) ) : ""
                 anchors.top: parent.top
                 anchors.left: parent.left
-                //anchors.margins: units.gu(1)
                 fillMode: Image.PreserveAspectCrop
                 onStatusChanged: {
                     if ( status === Image.Error ) {
@@ -80,14 +78,14 @@ Rectangle {
                     }
                 }
             }
-            onClicked: Qt.openUrlExternally(matrix.getImageLinkFromMxc ( event.content.url ) )
+            onClicked: Qt.openUrlExternally( media.getLinkFromMxc ( event.content.url ) )
         }
 
 
         Button {
             id: downloadButton
             text: i18n.tr("Download")
-            onClicked: Qt.openUrlExternally(matrix.getImageLinkFromMxc ( event.content.url ) )
+            onClicked: Qt.openUrlExternally( media.getLinkFromMxc ( event.content.url ) )
             visible: [ "m.file", "m.audio", "m.video" ].indexOf( event.content.msgtype ) !== -1
             height: visible ? units.gu(4) : 0
             anchors.top: parent.top

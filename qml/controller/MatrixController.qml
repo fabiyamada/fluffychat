@@ -253,7 +253,7 @@ function getThumbnailFromMxc ( mxc, width, height ) {
 function getImageLinkFromMxc ( mxc ) {
     if ( mxc === undefined ) return ""
     var mxcID = mxc.replace("mxc://","")
-    return "https://" + settings.server + "/_matrix/media/r0/download/" + mxcID + "/download.jpg"
+    return "https://" + settings.server + "/_matrix/media/r0/download/" + mxcID + "/"
 }
 
 
