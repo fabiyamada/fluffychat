@@ -11,6 +11,10 @@
         "helloHelper": {
             "apparmor": "helloHelper-apparmor.json",
             "push-helper": "helloHelper.json"
+        },
+        "matrix": {
+            "desktop": "fluffychat.desktop",
+            "urls": "matrix.url-dispatcher"
         }
     },
     "version": "0.2.2",
