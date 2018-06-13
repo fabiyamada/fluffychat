@@ -30,7 +30,7 @@ Item {
 
 
     function getThumbnailLinkFromMxc ( mxc, width, height ) {
-        return "https://" + settings.server + "/_matrix/media/r0/thumbnail/" + mxc.replace("mxc://","") + "?width=" + width + "&height=" + height + "&method=crop"
+        return "https://" + settings.server + "/_matrix/media/r0/thumbnail/" + mxc.replace("mxc://","") + "?width=" + width + "&height=" + height + "&method=scale"
     }
 
 

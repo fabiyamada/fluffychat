@@ -58,7 +58,7 @@ Rectangle {
         color: sent ? "#FFFFFF" : mainColor
         radius: units.gu(2)
         height: messageLabel.height + metaLabel.height + downloadButton.height + thumbnail.height + units.gu(2)
-        width: Math.max( messageLabel.width, (metaLabel.width + (event.sending ? units.gu(2) : 0)), thumbnail.width ) + units.gu(2)
+        width: Math.max( messageLabel.width + units.gu(2), (metaLabel.width + (event.sending ? units.gu(2) : 0)) + units.gu(2), thumbnail.width )
 
         MouseArea {
             width: thumbnail.width
@@ -66,13 +66,13 @@ Rectangle {
             Image {
                 id: thumbnail
                 visible: event.content.msgtype === "m.image"
-                width: visible ? root.width - 2 * avatar.width - units.gu(6) : 0
-                height: width
-                source: event.content.url ? matrix.getThumbnailFromMxc ( event.content.url, width, width ) : ""
+                width: visible ? Math.max( units.gu(24), messageLabel.width + units.gu(2) ) : 0
+                //height: width
+                source: event.content.url ? media.getThumbnailLinkFromMxc ( event.content.url, width, width ) : ""
                 anchors.top: parent.top
                 anchors.left: parent.left
-                anchors.margins: units.gu(1)
-                fillMode: Image.PreserveAspectFit
+                //anchors.margins: units.gu(1)
+                fillMode: Image.PreserveAspectCrop
                 onStatusChanged: {
                     if ( status === Image.Error ) {
                         source = "../../assets/network-cellular-none.svg"
