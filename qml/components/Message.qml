@@ -14,6 +14,7 @@ Rectangle {
     color: "transparent"
     opacity: sending ? 0.5 : 1
 
+
     // When the width of the "window" changes (rotation for example) then the maxWidth
     // of the message label must be calculated new. There is currently no "maxwidth"
     // property in qml.
@@ -57,7 +58,7 @@ Rectangle {
         anchors.margins: 5
         color: sent ? "#FFFFFF" : mainColor
         radius: units.gu(2)
-        height: messageLabel.height + metaLabel.height + downloadButton.height + thumbnail.height + units.gu(2)
+        height: messageLabel.height + metaLabel.height + thumbnail.height + units.gu(2)
         width: Math.max( messageLabel.width + units.gu(2), (metaLabel.width + (event.sending ? units.gu(2) : 0)) + units.gu(2), thumbnail.width )
 
         MouseArea {
@@ -87,7 +88,7 @@ Rectangle {
             id: downloadButton
             text: i18n.tr("Download")
             onClicked: Qt.openUrlExternally(matrix.getImageLinkFromMxc ( event.content.url ) )
-            visible: event.content.msgtype === "m.file"
+            visible: [ "m.file", "m.audio", "m.video" ].indexOf( event.content.msgtype ) !== -1
             height: visible ? units.gu(4) : 0
             anchors.top: parent.top
             anchors.left: parent.left
@@ -109,6 +110,7 @@ Rectangle {
             onLinkActivated: Qt.openUrlExternally(link)
             // Intital calculation of the max width and display URL's
             Component.onCompleted: {
+                console.log(event.content.msgtype)
                 var maxWidth = message.width - avatar.width - units.gu(5)
                 if ( width > maxWidth ) width = maxWidth
                 var urlRegex = /(https?:\/\/[^\s]+)/g;
