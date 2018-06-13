@@ -55,7 +55,7 @@ Item {
             settings.username = newUsername.toLowerCase()
             settings.server = newServer.toLowerCase()
             settings.deviceName = newDeviceName
-            settings.dbversion = version
+            settings.dbversion = storage.version
             onlineStatus = true
             events.init ()
             if ( callback ) callback ( response )
