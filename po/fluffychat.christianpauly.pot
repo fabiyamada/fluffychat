@@ -250,7 +250,7 @@ msgid "No messages in this chat ..."
 msgstr ""
 
 #: ../qml/pages/ChatPage.qml:181
-msgid "Accept invatiation"
+msgid "Accept invitation"
 msgstr ""
 
 #: ../qml/pages/ChatPage.qml:218
