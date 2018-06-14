@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: fluffychat.christianpauly\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-06-14 11:55+0000\n"
+"POT-Creation-Date: 2018-06-14 13:01+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -121,7 +121,7 @@ msgstr ""
 msgid "The chat permissions have been changed"
 msgstr ""
 
-#: ../qml/controller/EventController.qml:33 ../qml/pages/ChatPage.qml:196
+#: ../qml/controller/EventController.qml:33 ../qml/pages/ChatPage.qml:181
 #: ../qml/pages/AddChatPage.qml:24
 msgid ""
 "Synchronizing \n"
@@ -142,7 +142,7 @@ msgstr ""
 msgid "No connection to the homeserver 😕"
 msgstr ""
 
-#: ../qml/pages/InfoPage.qml:10 ../qml/pages/ChatPage.qml:132
+#: ../qml/pages/InfoPage.qml:10
 msgid "Info"
 msgstr ""
 
@@ -231,45 +231,65 @@ msgstr ""
 msgid "Unknown chat"
 msgstr ""
 
-#: ../qml/pages/ChatPage.qml:122 ../qml/pages/ChatSettingsPage.qml:59
-#: ../qml/components/InviteDialog.qml:11
+#: ../qml/pages/ChatPage.qml:122
+msgid "Chat info"
+msgstr ""
+
+#: ../qml/pages/ChatPage.qml:127 ../qml/components/InviteDialog.qml:11
 msgid "Invite a friend"
 msgstr ""
 
-#: ../qml/pages/ChatPage.qml:127 ../qml/pages/ChatSettingsPage.qml:64
+#: ../qml/pages/ChatPage.qml:158
+msgid "No messages in this chat ..."
+msgstr ""
+
+#: ../qml/pages/ChatPage.qml:176
+msgid "Accept invatiation"
+msgstr ""
+
+#: ../qml/pages/ChatPage.qml:213
+msgid "Type something ..."
+msgstr ""
+
+#: ../qml/pages/ChatPage.qml:247
+msgid "Scroll down"
+msgstr ""
+
+#: ../qml/pages/NotificationChatSettingsPage.qml:30
+#: ../qml/pages/ChatSettingsPage.qml:105
+msgid "Notifications"
+msgstr ""
+
+#: ../qml/pages/NotificationChatSettingsPage.qml:43
+msgid "Notify"
+msgstr ""
+
+#: ../qml/pages/NotificationChatSettingsPage.qml:58
+msgid "Don't notify"
+msgstr ""
+
+#: ../qml/pages/ChatSettingsPage.qml:61
 #: ../qml/components/ChangeChatnameDialog.qml:11
 msgid "Edit chat name"
 msgstr ""
 
-#: ../qml/pages/ChatPage.qml:137 ../qml/pages/ChatSettingsPage.qml:78
-msgid "Leave chat"
+#: ../qml/pages/ChatSettingsPage.qml:94
+msgid "Chat Settings:"
 msgstr ""
 
-#: ../qml/pages/ChatPage.qml:173
-msgid "No messages in this chat ..."
+#: ../qml/pages/ChatSettingsPage.qml:100
+msgid "Invite friend"
 msgstr ""
 
-#: ../qml/pages/ChatPage.qml:191
-msgid "Accept invatiation"
+#: ../qml/pages/ChatSettingsPage.qml:118
+msgid "Leave Chat"
 msgstr ""
 
-#: ../qml/pages/ChatPage.qml:228
-msgid "Type something ..."
-msgstr ""
-
-#: ../qml/pages/ChatPage.qml:262
-msgid "Scroll down"
-msgstr ""
-
-#: ../qml/pages/ChatSettingsPage.qml:69
-msgid "Join this chat"
-msgstr ""
-
-#: ../qml/pages/ChatSettingsPage.qml:113
+#: ../qml/pages/ChatSettingsPage.qml:132
 msgid "Users in this chat (%1):"
 msgstr ""
 
-#: ../qml/pages/ChatSettingsPage.qml:113
+#: ../qml/pages/ChatSettingsPage.qml:132
 msgid "Loading users ..."
 msgstr ""
 
@@ -313,10 +333,15 @@ msgstr ""
 msgid "Was banned from the chat"
 msgstr ""
 
-#: ../qml/components/NewGroupDialog.qml:14
-msgid "Group name"
+#: ../qml/components/LeaveChatDialog.qml:11
+msgid "Leave chat"
 msgstr ""
 
+#: ../qml/components/LeaveChatDialog.qml:14
+msgid "Are you sure you want to leave the chat?"
+msgstr ""
+
+#: ../qml/components/LeaveChatDialog.qml:21
 #: ../qml/components/NewGroupDialog.qml:21
 #: ../qml/components/JoinGroupDialog.qml:21
 #: ../qml/components/InviteDialog.qml:21
@@ -324,6 +349,14 @@ msgstr ""
 #: ../qml/components/ChangeDisplaynameDialog.qml:28
 #: ../qml/components/ChangeChatnameDialog.qml:28
 msgid "Cancel"
+msgstr ""
+
+#: ../qml/components/LeaveChatDialog.qml:26
+msgid "Leave"
+msgstr ""
+
+#: ../qml/components/NewGroupDialog.qml:14
+msgid "Group name"
 msgstr ""
 
 #: ../qml/components/NewGroupDialog.qml:26

@@ -47,6 +47,8 @@ Page {
 
     ChangeChatnameDialog { id: changeChatnameDialog }
 
+    LeaveChatDialog { id: leaveChatDialog }
+
     header: FcPageHeader {
         id: header
         title: activeChatDisplayName
@@ -55,29 +57,9 @@ Page {
             numberOfSlots: 1
             actions: [
             Action {
-                iconName: "contact-new"
-                text: i18n.tr("Invite a friend")
-                onTriggered: PopupUtils.open(inviteDialog)
-            },
-            Action {
                 iconName: "compose"
                 text: i18n.tr("Edit chat name")
                 onTriggered: PopupUtils.open(changeChatnameDialog)
-            },
-            Action {
-                iconName: "message-new"
-                text: i18n.tr("Join this chat")
-                onTriggered: {
-                    var success_callback = function () { membership = "join" }
-                    matrix.post("/client/r0/join/" + encodeURIComponent(activeChat), null, success_callback)
-                }
-                visible: membership !== "join"
-            },
-            Action {
-                iconName: "delete"
-                text: i18n.tr("Leave chat")
-                onTriggered: matrix.post("/client/r0/rooms/" + activeChat + "/leave", null, mainStack.toStart)
-                visible: membership in ["join","invite"]
             }
             ]
         }
@@ -100,6 +82,43 @@ Page {
                 width: parent.width / 2
                 radius: 100
                 anchors.horizontalCenter: parent.horizontalCenter
+            }
+            Rectangle {
+                width: parent.width
+                height: units.gu(2)
+            }
+            Label {
+                height: units.gu(2)
+                anchors.left: parent.left
+                anchors.leftMargin: units.gu(2)
+                text: i18n.tr("Chat Settings:")
+                font.bold: true
+            }
+            Column {
+                width: parent.width
+                SettingsListItem {
+                    name: i18n.tr("Invite friend")
+                    icon: "contact-new"
+                    onClicked: PopupUtils.open(inviteDialog)
+                }
+                SettingsListItem {
+                    name: i18n.tr("Notifications")
+                    icon: "notification"
+                    Icon {
+                        name: "toolkit_chevron-ltr_1gu"
+                        width: units.gu(3)
+                        height: width
+                        anchors.right: parent.right
+                        anchors.verticalCenter: parent.verticalCenter
+                        anchors.margins: units.gu(2)
+                    }
+                    onClicked: mainStack.push(Qt.resolvedUrl("./NotificationChatSettingsPage.qml"))
+                }
+                SettingsListItem {
+                    name: i18n.tr("Leave Chat")
+                    icon: "delete"
+                    onClicked: PopupUtils.open(leaveChatDialog)
+                }
             }
             Rectangle {
                 width: parent.width

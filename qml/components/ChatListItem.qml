@@ -89,14 +89,6 @@ ListItem {
     leadingActions: ListItemActions {
         actions: [
         Action {
-            iconName: "delete"
-            onTriggered: {
-                matrix.post("/client/r0/rooms/" + room.id + "/leave", null, function () {
-                    chatListItem.destroy ()
-                })
-            }
-        },
-        Action {
             iconName: "info"
             onTriggered: {
                 activeChat = room.id

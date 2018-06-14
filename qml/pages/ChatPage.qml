@@ -118,29 +118,14 @@ Page {
             numberOfSlots: 1
             actions: [
             Action {
-                iconName: "contact-new"
-                text: i18n.tr("Invite a friend")
-                onTriggered: PopupUtils.open(inviteDialog)
-            },
-            Action {
-                iconName: "compose"
-                text: i18n.tr("Edit chat name")
-                onTriggered: PopupUtils.open(changeChatnameDialog)
-            },
-            Action {
                 iconName: "info"
-                text: i18n.tr("Info")
+                text: i18n.tr("Chat info")
                 onTriggered: mainStack.push(Qt.resolvedUrl("./ChatSettingsPage.qml"))
             },
             Action {
-                iconName: "delete"
-                text: i18n.tr("Leave chat")
-                onTriggered: {
-                    matrix.post("/client/r0/rooms/" + activeChat + "/leave", null, function () {
-                        events.waitForSync ()
-                        mainStack.pop()
-                    })
-                }
+                iconName: "contact-new"
+                text: i18n.tr("Invite a friend")
+                onTriggered: PopupUtils.open(inviteDialog)
             }
             ]
         }
