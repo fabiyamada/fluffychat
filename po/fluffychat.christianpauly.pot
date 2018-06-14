@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: fluffychat.christianpauly\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-06-14 13:01+0000\n"
+"POT-Creation-Date: 2018-06-14 13:53+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -121,7 +121,7 @@ msgstr ""
 msgid "The chat permissions have been changed"
 msgstr ""
 
-#: ../qml/controller/EventController.qml:33 ../qml/pages/ChatPage.qml:181
+#: ../qml/controller/EventController.qml:33 ../qml/pages/ChatPage.qml:186
 #: ../qml/pages/AddChatPage.qml:24
 msgid ""
 "Synchronizing \n"
@@ -235,36 +235,41 @@ msgstr ""
 msgid "Chat info"
 msgstr ""
 
-#: ../qml/pages/ChatPage.qml:127 ../qml/components/InviteDialog.qml:11
-msgid "Invite a friend"
-msgstr ""
-
-#: ../qml/pages/ChatPage.qml:158
-msgid "No messages in this chat ..."
-msgstr ""
-
-#: ../qml/pages/ChatPage.qml:176
-msgid "Accept invatiation"
-msgstr ""
-
-#: ../qml/pages/ChatPage.qml:213
-msgid "Type something ..."
-msgstr ""
-
-#: ../qml/pages/ChatPage.qml:247
-msgid "Scroll down"
-msgstr ""
-
-#: ../qml/pages/NotificationChatSettingsPage.qml:30
+#: ../qml/pages/ChatPage.qml:127
+#: ../qml/pages/NotificationChatSettingsPage.qml:52
 #: ../qml/pages/ChatSettingsPage.qml:105
 msgid "Notifications"
 msgstr ""
 
-#: ../qml/pages/NotificationChatSettingsPage.qml:43
+#: ../qml/pages/ChatPage.qml:132 ../qml/components/InviteDialog.qml:11
+msgid "Invite a friend"
+msgstr ""
+
+#: ../qml/pages/ChatPage.qml:163
+msgid "No messages in this chat ..."
+msgstr ""
+
+#: ../qml/pages/ChatPage.qml:181
+msgid "Accept invatiation"
+msgstr ""
+
+#: ../qml/pages/ChatPage.qml:218
+msgid "Type something ..."
+msgstr ""
+
+#: ../qml/pages/ChatPage.qml:252
+msgid "Scroll down"
+msgstr ""
+
+#: ../qml/pages/NotificationChatSettingsPage.qml:65
 msgid "Notify"
 msgstr ""
 
-#: ../qml/pages/NotificationChatSettingsPage.qml:58
+#: ../qml/pages/NotificationChatSettingsPage.qml:84
+msgid "Only if mentioned"
+msgstr ""
+
+#: ../qml/pages/NotificationChatSettingsPage.qml:107
 msgid "Don't notify"
 msgstr ""
 
@@ -301,7 +306,7 @@ msgstr ""
 msgid "Start a new chat"
 msgstr ""
 
-#: ../qml/pages/AddChatPage.qml:57 ../qml/components/NewContactDialog.qml:11
+#: ../qml/pages/AddChatPage.qml:57
 msgid "New contact"
 msgstr ""
 
@@ -403,6 +408,10 @@ msgstr ""
 
 #: ../qml/components/ChatScrollView.qml:125
 msgid "New message at the bottom of the chat"
+msgstr ""
+
+#: ../qml/components/NewContactDialog.qml:11
+msgid "New single chat"
 msgstr ""
 
 #: ../qml/components/NewContactDialog.qml:15

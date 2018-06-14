@@ -8,7 +8,7 @@ Component {
 
     Dialog {
         id: dialogue
-        title: i18n.tr("New contact")
+        title: i18n.tr("New single chat")
         TextField {
             id: contactTextField
             text: newContactMatrixID || ""

@@ -123,6 +123,11 @@ Page {
                 onTriggered: mainStack.push(Qt.resolvedUrl("./ChatSettingsPage.qml"))
             },
             Action {
+                iconName: "notification"
+                text: i18n.tr("Notifications")
+                onTriggered: mainStack.push(Qt.resolvedUrl("./NotificationChatSettingsPage.qml"))
+            },
+            Action {
                 iconName: "contact-new"
                 text: i18n.tr("Invite a friend")
                 onTriggered: PopupUtils.open(inviteDialog)
