@@ -11,8 +11,11 @@ public:
     ~Fluffychat() = default;
 
     Q_INVOKABLE void speak();
-    Q_INVOKABLE QByteArray read(const QString &filename);
-    Q_INVOKABLE QString toBase64(const QByteArray &file);
+    Q_INVOKABLE QString read( const QString &filename );
+    Q_INVOKABLE void upload( const QString &path, const QString &url, const QString &token );
+
+public slots:
+    void replyFinished ();
 };
 
 #endif

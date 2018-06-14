@@ -18,9 +18,14 @@ PushClient {
 
     function newNotification ( message ) {
         if ( message == "" ) return
-        var message = JSON.parse ( message )
-        var room = message.room_name || message.sender_display_name || message.sender
-        if ( room === activeChatDisplayName ) pushclient.clearPersistent ( room )
+        try {
+            message = JSON.parse ( message )
+            var room = message.room_name || message.sender_display_name || message.sender
+            if ( room === activeChatDisplayName ) pushclient.clearPersistent ( room )
+        }
+        catch ( e ) {
+            console.error ( message, e )
+        }
     }
 
     Component.onCompleted: {

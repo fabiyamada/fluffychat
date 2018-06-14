@@ -178,83 +178,32 @@ Item {
 
 
     function upload ( path, callback, error_callback ) {
-        try {
-            var pathparts = path.split("/")
-            var filename = pathparts [ pathparts.length - 1 ]
-            var type = filename.split(".")[1]
-            var request = new XMLHttpRequest()
-            request.open( "GET", path, true)
-            request.setRequestHeader('Content-type', 'application/json; charset=utf-8')
-            request.onreadystatechange = function() {
-                if ( request.readyState === XMLHttpRequest.DONE ) {
-                    var fileString = request.responseText
-                    console.log("got file:", filename )
-                    // Send the blob to the server
-                    var requestUrl = "https://" + settings.server + "/_matrix/media/r0/upload?filename=" + filename
-                    var http = new XMLHttpRequest()
-                    http.open( "POST", requestUrl, true)
-                    http.setRequestHeader('Content-Type', 'image/jpeg')
-                    http.setRequestHeader('Content-Disposition', 'form-data; name="image"; filename="%1"'.arg(filename))
-                    http.timeout = defaultTimeout
-                    if ( settings.token ) http.setRequestHeader('Authorization', 'Bearer ' + settings.token);
-                    http.onreadystatechange = function() {
-                        if ( http.readyState === XMLHttpRequest.DONE ) {
-                            console.log("File is sent to the server")
-                            callback ( JSON.parse(http.responseText) )
-                        }
-                    }
-                    http.send ( fileString )
+        console.log("Uploading ...", path)
+        var pathparts = path.split("/")
+        var filename = pathparts [ pathparts.length - 1 ]
+        var type = filename.split(".")[1]
 
-                }
-
-            }
-            request.send ()
-        }
-        catch ( e ) { error_callback ( e ) }
+        // Send the blob to the server
+        var requestUrl = "https://" + settings.server + "/_matrix/media/r0/upload?filename=" + filename
+        Fluffychat.upload ( path, requestUrl, 'Bearer ' + settings.token )
+        callback ( "Ready ..." )
     }
 
 
-    /*
-    function upload ( path, callback, error_callback ) {
-    try {
-    var pathparts = path.split("/")
-    var filename = pathparts [ pathparts.length - 1 ]
-    var type = filename.split(".")[1]
+    function getThumbnailFromMxc ( mxc, width, height ) {
+        if ( mxc === undefined ) return ""
 
-    // Send the blob to the server
-    var requestUrl = "https://" + server + "/_matrix/media/r0/upload?filename=" + filename
-    var http = new XMLHttpRequest()
-    http.open( "POST", requestUrl, true)
-    http.setRequestHeader('Content-Type', "image/jpeg")
-    http.timeout = defaultTimeout
-    if ( token ) http.setRequestHeader('Authorization', 'Bearer ' + token);
-    http.onreadystatechange = function() {
-    if ( http.readyState === XMLHttpRequest.DONE ) {
-    console.log("File is sent to the server")
-    callback ( JSON.parse(http.responseText) )
-}
-}
-http.send ( Fluffychat.read ( path ) )
-
-}
-catch ( e ) { error_callback ( e ) }
-}*/
-
-
-function getThumbnailFromMxc ( mxc, width, height ) {
-    if ( mxc === undefined ) return ""
-
-    var mxcID = mxc.replace("mxc://","")
-    return "https://" + settings.server + "/_matrix/media/r0/thumbnail/" + mxcID + "/?width=" + width + "&height=" + height + "&method=crop"
-}
+        var mxcID = mxc.replace("mxc://","")
+        return "https://" + settings.server + "/_matrix/media/r0/thumbnail/" + mxcID + "/?width=" + width + "&height=" + height + "&method=crop"
+    }
 
 
 
-function getImageLinkFromMxc ( mxc ) {
-    if ( mxc === undefined ) return ""
-    var mxcID = mxc.replace("mxc://","")
-    return "https://" + settings.server + "/_matrix/media/r0/download/" + mxcID + "/"
-}
+    function getImageLinkFromMxc ( mxc ) {
+        if ( mxc === undefined ) return ""
+        var mxcID = mxc.replace("mxc://","")
+        return "https://" + settings.server + "/_matrix/media/r0/download/" + mxcID + "/"
+    }
 
 
 

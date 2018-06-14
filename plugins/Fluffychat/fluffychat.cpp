@@ -3,6 +3,12 @@
 #include <QByteArray>
 #include <QBitArray>
 #include <QString>
+#include <QNetworkAccessManager>
+#include <string>
+#include <QNetworkReply>
+#include <QHttpMultiPart>
+#include <QLoggingCategory>
+#include <QTextStream>
 
 #include "fluffychat.h"
 
@@ -14,24 +20,52 @@ void Fluffychat::speak() {
     qDebug() << "hello world!";
 }
 
-QByteArray Fluffychat::read(const QString &filename)
+QString Fluffychat::read(const QString &filename)
 {
     QFile file(filename);
-    char* temp;
-    if (!file.open(QIODevice::ReadOnly)) {
-        QByteArray blob(temp);
-        return blob;
-    }
-    temp = new char [file.size()];
-    file.read(temp,file.size());
+    if (!file.open(QIODevice::ReadOnly))
+    return QByteArray();
 
-    file.close();
-    QByteArray blob(temp);
-
-    return blob;
+    return file.readAll();
 }
 
-QString Fluffychat::toBase64(const QByteArray &file)
+void Fluffychat::upload ( const QString &path, const QString &urlstr, const QString &token ) {
+    QHttpMultiPart *multiPart = new QHttpMultiPart(QHttpMultiPart::FormDataType);
+    // add image
+    QHttpPart imagePart;
+    imagePart.setHeader(QNetworkRequest::ContentDispositionHeader,QVariant("form-data; name=\"image\"; filename=\"upload.jpg\""));
+    imagePart.setHeader(QNetworkRequest::ContentTypeHeader, QVariant("image/jpeg"));
+
+    // open file
+    QFile file(path);
+    if (!file.open(QIODevice::ReadOnly)) {
+        qDebug() << "# Could not upload file, could not open file";
+        return;
+    }
+
+    // read file and set data into object
+    QByteArray fileContent(file.readAll());
+    imagePart.setBody(fileContent);
+    multiPart->append(imagePart);
+
+    // set url
+    QUrl url( urlstr );
+    QNetworkRequest request(url);
+    request.setRawHeader("Authorization", QByteArray(token.toLatin1()));
+
+    QLoggingCategory::setFilterRules("qt.network.ssl.w arning=false");
+
+    // create network manager
+    QNetworkAccessManager * manager;
+    manager = new QNetworkAccessManager();
+    connect(manager, SIGNAL(finished(QNetworkReply*)),this, SLOT(replyFinished(QNetworkReply*)));
+
+    manager->post(request, multiPart);
+
+    qDebug() << "# Done sending upload request";
+}
+
+void Fluffychat::replyFinished()
 {
-    return file.toBase64();
+    qDebug() << "it is working";
 }
