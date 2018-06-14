@@ -32,4 +32,7 @@ Settings {
 
     // This is the version of the database:
     property var dbversion
+
+    // Is the pusher set?
+    property var pusherSet
 }

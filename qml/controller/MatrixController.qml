@@ -28,6 +28,13 @@ Item {
             onlineStatus = true
             usernames.getById(matrix.matrixid, "", function (name) { settings.displayname = name } )
             events.init ()
+            if ( !settings.pusherSet ) {
+                console.log("Try to set pusher")
+                pushclient.setPusher ( true, function () {
+                    settings.pusherSet = true
+                    console.log("pusher is set :-)")
+                } )
+            }
         }
         else {
             mainStack.push(Qt.resolvedUrl("../pages/LoginPage.qml"))
@@ -77,7 +84,7 @@ Item {
     function reset () {
         storage.drop ()
         onlineStatus = false
-        settings.username = settings.server = settings.token = settings.deviceID = settings.deviceName = settings.displayname = settings.avatar_url = settings.since = undefined
+        settings.username = settings.server = settings.token = settings.pusherSet = settings.deviceID = settings.deviceName = settings.displayname = settings.avatar_url = settings.since = undefined
         mainStack.clear ()
         mainStack.push(Qt.resolvedUrl("../pages/LoginPage.qml"))
     }

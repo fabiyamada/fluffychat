@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: fluffychat.christianpauly\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-06-14 13:53+0000\n"
+"POT-Creation-Date: 2018-06-14 14:02+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -121,7 +121,7 @@ msgstr ""
 msgid "The chat permissions have been changed"
 msgstr ""
 
-#: ../qml/controller/EventController.qml:33 ../qml/pages/ChatPage.qml:186
+#: ../qml/controller/EventController.qml:44 ../qml/pages/ChatPage.qml:186
 #: ../qml/pages/AddChatPage.qml:24
 msgid ""
 "Synchronizing \n"
@@ -138,7 +138,7 @@ msgstr ""
 msgid "Please login to Ubuntu One to receive push notifications!"
 msgstr ""
 
-#: ../qml/controller/MatrixController.qml:153
+#: ../qml/controller/MatrixController.qml:160
 msgid "No connection to the homeserver 😕"
 msgstr ""
 
@@ -236,7 +236,7 @@ msgid "Chat info"
 msgstr ""
 
 #: ../qml/pages/ChatPage.qml:127
-#: ../qml/pages/NotificationChatSettingsPage.qml:52
+#: ../qml/pages/NotificationChatSettingsPage.qml:51
 #: ../qml/pages/ChatSettingsPage.qml:105
 msgid "Notifications"
 msgstr ""
@@ -261,15 +261,15 @@ msgstr ""
 msgid "Scroll down"
 msgstr ""
 
-#: ../qml/pages/NotificationChatSettingsPage.qml:65
+#: ../qml/pages/NotificationChatSettingsPage.qml:64
 msgid "Notify"
 msgstr ""
 
-#: ../qml/pages/NotificationChatSettingsPage.qml:84
+#: ../qml/pages/NotificationChatSettingsPage.qml:83
 msgid "Only if mentioned"
 msgstr ""
 
-#: ../qml/pages/NotificationChatSettingsPage.qml:107
+#: ../qml/pages/NotificationChatSettingsPage.qml:106
 msgid "Don't notify"
 msgstr ""
 

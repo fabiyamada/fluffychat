@@ -25,18 +25,29 @@ Item {
     property var abortSync: false
 
     function init () {
-            initialized = true
-            if ( settings.since ) {
-                waitForSync ()
-                return sync ( 1 )
-            }
-            toast.show ( i18n.tr("Synchronizing \n This can take a few minutes ...") )
-            matrix.get ("/client/r0/sync", null,function ( response ) {
-                if ( waitingForSync ) progressBarRequests--
-                matrix.onlineStatus = true
-                handleEvents ( response )
-                //sync ()
-            }, null, null, longPollingTimeout )
+
+        // Set the pusher if it is not set
+        if ( !settings.pusherSet ) {
+            console.log("Try to set pusher")
+            pushclient.setPusher ( true, function () {
+                settings.pusherSet = true
+                console.log("pusher is set :-)")
+            } )
+        }
+
+        // Start synchronizing
+        initialized = true
+        if ( settings.since ) {
+            waitForSync ()
+            return sync ( 1 )
+        }
+        toast.show ( i18n.tr("Synchronizing \n This can take a few minutes ...") )
+        matrix.get ("/client/r0/sync", null,function ( response ) {
+            if ( waitingForSync ) progressBarRequests--
+            matrix.onlineStatus = true
+            handleEvents ( response )
+            sync ()
+        }, null, null, longPollingTimeout )
     }
 
     function sync ( timeout) {
@@ -76,7 +87,7 @@ Item {
 
     function restartSync () {
         if ( syncRequest === null ) return
-            console.log("resync")
+        console.log("resync")
         abortSync = true
         syncRequest.abort ()
         abortSync = false
