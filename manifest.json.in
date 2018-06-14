@@ -11,13 +11,9 @@
         "helloHelper": {
             "apparmor": "helloHelper-apparmor.json",
             "push-helper": "helloHelper.json"
-        },
-        "matrix": {
-            "desktop": "fluffychat.desktop",
-            "urls": "matrix.url-dispatcher"
         }
     },
-    "version": "0.2.2",
+    "version": "0.2.3",
     "maintainer": "Christian Pauly <christian-pauly@posteo.de>",
     "framework" : "ubuntu-sdk-15.04.5"
 }
