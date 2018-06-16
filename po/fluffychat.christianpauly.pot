@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: fluffychat.christianpauly\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-06-14 14:06+0000\n"
+"POT-Creation-Date: 2018-06-16 15:45+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -121,7 +121,7 @@ msgstr ""
 msgid "The chat permissions have been changed"
 msgstr ""
 
-#: ../qml/controller/EventController.qml:44 ../qml/pages/ChatPage.qml:186
+#: ../qml/controller/EventController.qml:44 ../qml/pages/ChatPage.qml:196
 #: ../qml/pages/AddChatPage.qml:24
 msgid ""
 "Synchronizing \n"
@@ -138,7 +138,7 @@ msgstr ""
 msgid "Please login to Ubuntu One to receive push notifications!"
 msgstr ""
 
-#: ../qml/controller/MatrixController.qml:160
+#: ../qml/controller/MatrixController.qml:153
 msgid "No connection to the homeserver 😕"
 msgstr ""
 
@@ -227,37 +227,37 @@ msgstr ""
 msgid "Logout"
 msgstr ""
 
-#: ../qml/pages/ChatPage.qml:115 ../qml/components/ChatListItem.qml:50
+#: ../qml/pages/ChatPage.qml:125 ../qml/components/ChatListItem.qml:50
 msgid "Unknown chat"
 msgstr ""
 
-#: ../qml/pages/ChatPage.qml:122
+#: ../qml/pages/ChatPage.qml:132
 msgid "Chat info"
 msgstr ""
 
-#: ../qml/pages/ChatPage.qml:127
+#: ../qml/pages/ChatPage.qml:137
 #: ../qml/pages/NotificationChatSettingsPage.qml:51
 #: ../qml/pages/ChatSettingsPage.qml:105
 msgid "Notifications"
 msgstr ""
 
-#: ../qml/pages/ChatPage.qml:132 ../qml/components/InviteDialog.qml:11
+#: ../qml/pages/ChatPage.qml:142 ../qml/components/InviteDialog.qml:11
 msgid "Invite a friend"
 msgstr ""
 
-#: ../qml/pages/ChatPage.qml:163
+#: ../qml/pages/ChatPage.qml:173
 msgid "No messages in this chat ..."
 msgstr ""
 
-#: ../qml/pages/ChatPage.qml:181
+#: ../qml/pages/ChatPage.qml:191
 msgid "Accept invatiation"
 msgstr ""
 
-#: ../qml/pages/ChatPage.qml:218
+#: ../qml/pages/ChatPage.qml:228
 msgid "Type something ..."
 msgstr ""
 
-#: ../qml/pages/ChatPage.qml:252
+#: ../qml/pages/ChatPage.qml:262
 msgid "Scroll down"
 msgstr ""
 

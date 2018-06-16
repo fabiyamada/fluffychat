@@ -115,6 +115,7 @@ Item {
     // This function starts handling the events, saving new data in the storage,
     // deleting data, updating data and call signals
     function handleEvents ( response ) {
+        console.log( "===== NEW SYNC:", JSON.stringify( response ) )
         var changed = false
         var timecount = new Date().getTime()
         try {
@@ -127,7 +128,7 @@ Item {
                     settings.since = response.next_batch
                     chatListUpdated ( response )
                     triggerSignals ( response )
-                    console.log("===> SYNCHRONIZATION performance: ", new Date().getTime() - timecount )
+                    //console.log("===> SYNCHRONIZATION performance: ", new Date().getTime() - timecount )
                 }
             )
         }
@@ -150,6 +151,7 @@ Item {
             var room = rooms[id]
 
             if ( membership !== "leave" ) {
+                // Update the
                 transaction.executeSql ("INSERT OR REPLACE INTO Rooms VALUES(?, ?, COALESCE((SELECT topic FROM Rooms WHERE id='" + id + "'), ''), ?, ?, ?, COALESCE((SELECT prev_batch FROM Rooms WHERE id='" + id + "'), ''))",
                 [ id,
                 membership,
@@ -157,9 +159,17 @@ Item {
                 (room.unread_notifications && room.unread_notifications.notification_count || 0),
                 (room.timeline ? (room.timeline.limited ? 1 : 0) : 0) ])
 
+                // Handle now all room events and save them in the database
                 if ( room.state ) handleRoomEvents ( id, room.state.events, "state", room )
                 if ( room.invite_state ) handleRoomEvents ( id, room.invite_state.events, "invite_state", room )
-                if ( room.timeline ) handleRoomEvents ( id, room.timeline.events, "timeline", room )
+                if ( room.timeline ) {
+                    // Is the timeline limited? Then all previous messages should be
+                    // removed from the database!
+                    if ( room.timeline.limited ) {
+                        transaction.executeSql ("DELETE FROM Roomevents WHERE roomsid='" + id + "'")
+                    }
+                    handleRoomEvents ( id, room.timeline.events, "timeline", room )
+                }
             }
             else {
                 transaction.executeSql ( "DELETE FROM Rooms WHERE id='" + id + "'")
