@@ -249,8 +249,13 @@ msgstr ""
 msgid "No messages in this chat ..."
 msgstr ""
 
+<<<<<<< HEAD
 #: ../qml/pages/ChatPage.qml:191
 msgid "Accept invatiation"
+=======
+#: ../qml/pages/ChatPage.qml:181
+msgid "Accept invitation"
+>>>>>>> 2410459203de7c08c71becfec5a36d196650c8f2
 msgstr ""
 
 #: ../qml/pages/ChatPage.qml:228
