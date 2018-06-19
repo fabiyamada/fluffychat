@@ -89,7 +89,7 @@ Item {
         if ( syncRequest === null ) return
         console.log("resync")
         abortSync = true
-        syncRequest.abort ()
+        if ( syncRequest ) syncRequest.abort ()
         abortSync = false
         waitForSync ()
         sync ( 1 )
@@ -115,7 +115,7 @@ Item {
     // This function starts handling the events, saving new data in the storage,
     // deleting data, updating data and call signals
     function handleEvents ( response ) {
-        console.log( "===== NEW SYNC:", JSON.stringify( response ) )
+        //console.log( "===== NEW SYNC:", JSON.stringify( response ) )
         var changed = false
         var timecount = new Date().getTime()
         try {

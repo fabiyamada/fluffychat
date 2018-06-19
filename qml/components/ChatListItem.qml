@@ -65,7 +65,7 @@ ListItem {
         anchors.bottom: parent.bottom
         anchors.margins: units.gu(2)
         text: stamp.getChatTime ( room.origin_server_ts )
-        textSize: Label.Small
+        textSize: Label.XSmall
         visible: text != ""
     }
     Rectangle {

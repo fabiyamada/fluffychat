@@ -12,7 +12,7 @@ Rectangle {
     width: root.width
     height: messageBubble.height + units.gu(1)
     color: "transparent"
-    opacity: sending ? 0.5 : 1
+    opacity: sending ? 0.66 : 1
 
 
     // When the width of the "window" changes (rotation for example) then the maxWidth
@@ -59,7 +59,7 @@ Rectangle {
         color: sent ? "#FFFFFF" : mainColor
         radius: units.gu(2)
         height: messageLabel.height + metaLabel.height + thumbnail.height + units.gu(2)
-        width: Math.max( messageLabel.width + units.gu(2), (metaLabel.width + (event.sending ? units.gu(2) : 0)) + units.gu(2), thumbnail.width )
+        width: Math.max( messageLabel.width + units.gu(2), (metaLabel.width + (event.sending ? units.gu(1.5) : 0)) + units.gu(2), thumbnail.width )
 
         MouseArea {
             width: thumbnail.width
@@ -128,7 +128,7 @@ Rectangle {
             anchors.left: parent.left
             anchors.margins: units.gu(1)
             color: UbuntuColors.silk
-            textSize: Label.Small
+            textSize: Label.XSmall
         }
         // When the message is just sending, then this activity indicator is visible
         ActivityIndicator {
@@ -137,8 +137,8 @@ Rectangle {
             running: visible
             anchors.left: metaLabel.right
             anchors.top: messageLabel.bottom
-            anchors.leftMargin: units.gu(0.5)
-            width: units.gu(1.5)
+            anchors.leftMargin: units.gu(0.25)
+            width: units.gu(1.25)
             height: width
         }
 
