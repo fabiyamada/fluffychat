@@ -10,7 +10,7 @@ Rectangle {
     // rounded corners for img
     width: units.gu(6)
     height: width
-    color: "white"
+    color: settings.darkmode ? UbuntuColors.jet : UbuntuColors.porcelain
     border.width: 1
     border.color: UbuntuColors.silk
     radius: units.gu(1)
@@ -21,6 +21,7 @@ Rectangle {
     property alias source: avatar.source
     property var mxc: null
     property var onClickFunction: null
+    property var name
 
 
     MouseArea {

@@ -7,7 +7,7 @@ PageHeader {
     title: i18n.tr('FluffyChat')
 
     StyleHints {
-        foregroundColor: mainColor
+        foregroundColor: settings.mainColor
     }
 
     extension: ProgressBar {

@@ -33,7 +33,7 @@ ListItem {
         // Update the labels
         stampLabel.text = stamp.getChatTime ( room.origin_server_ts )
         unreadLabel.text = room.notification_count || "0"
-        layout.title.color = room.membership === "invite" ? mainColor : "#000000"
+        layout.title.font.italic = room.membership === "invite"
     }
 
     height: layout.height
@@ -49,11 +49,12 @@ ListItem {
         width: parent.width - stampLabel.width
         title.text: i18n.tr("Unknown chat")
         title.font.bold: true
+        title.font.italic: room.membership === "invite"
         subtitle.text: i18n.tr("No previous messages")
-        title.color: room.membership === "invite" ? mainColor : "#000000"
         Avatar {
             source: "../../assets/background.svg"
             SlotsLayout.position: SlotsLayout.Leading
+            name: room.id
         }
         Component.onCompleted: updateAll()
     }
@@ -74,7 +75,7 @@ ListItem {
         anchors.margins: units.gu(2)
         width: unreadLabel.width + units.gu(1)
         height: units.gu(2)
-        color: UbuntuColors.purple
+        color: settings.mainColor
         radius: 90
         Label {
             id: unreadLabel

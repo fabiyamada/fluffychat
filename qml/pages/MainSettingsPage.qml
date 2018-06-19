@@ -43,6 +43,12 @@ Page {
             }
 
             SettingsListItem {
+                name: i18n.tr("Theme")
+                icon: "image-x-generic-symbolic"
+                onClicked: mainStack.push(Qt.resolvedUrl("../pages/ThemeSettingsPage.qml"))
+            }
+
+            SettingsListItem {
                 name: i18n.tr("About FluffyChat")
                 icon: "info"
                 onClicked: mainStack.push(Qt.resolvedUrl("../pages/InfoPage.qml"))

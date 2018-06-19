@@ -20,30 +20,33 @@ Page {
             width: root.width
 
             SettingsListItem {
-                name: i18n.tr("Change nickname")
+                name: i18n.tr("Change display name")
                 icon: "edit"
-                onClicked: PopupUtils.open(dialog)
+                onClicked: PopupUtils.open(displaynameDialog)
             }
 
             SettingsListItem {
                 name: i18n.tr("Change password")
                 icon: "lock"
-                //onClicked: PopupUtils.open(dialog)
+                onClicked: PopupUtils.open(passwordDialog)
             }
 
             SettingsListItem {
-                name: i18n.tr("Disable Account")
+                name: i18n.tr("Disable account")
                 icon: "edit-delete"
-                //onClicked: PopupUtils.open(dialog)
+                onClicked: PopupUtils.open(accountDialog)
             }
 
             SettingsListItem {
                 name: i18n.tr("Logout")
-                icon: "erase"
-                onClicked: matrix.logout ()
+                icon: "system-shutdown"
+                onClicked: PopupUtils.open(logoutDialog)
             }
         }
     }
 
-    ChangeDisplaynameDialog { id: dialog }
+    ChangeDisplaynameDialog { id: displaynameDialog }
+    ChangePasswordDialog { id: passwordDialog }
+    DisableAccountDialog { id: accountDialog }
+    LogoutDialog { id: logoutDialog }
 }

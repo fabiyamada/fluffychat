@@ -15,6 +15,12 @@ MainView {
 
     width: units.gu(45)
     height: units.gu(75)
+    theme: ThemeSettings {
+        name: settings.darkmode ? "Ubuntu.Components.Themes.SuruDark" : "Ubuntu.Components.Themes.Ambiance"
+    }
+
+    property var borderColor: settings.darkmode ? UbuntuColors.jet : UbuntuColors.silk
+
 
     property var activeChat: null
     property var activeChatDisplayName: null

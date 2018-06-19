@@ -35,4 +35,10 @@ Settings {
 
     // Is the pusher set?
     property var pusherSet
+
+    // The main color of the theme
+    property var mainColor: mainColor
+
+    // Dark mode enabled?
+    property var darkmode: false
 }

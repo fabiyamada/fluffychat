@@ -8,7 +8,12 @@ Component {
 
     Dialog {
         id: dialogue
-        title: i18n.tr("Change nickname")
+        title: i18n.tr("Change your display name")
+        Icon {
+            name: "account"
+            width: parent.width
+            height: width
+        }
         TextField {
             id: displaynameTextField
             placeholderText: i18n.tr("Enter your new nickname")

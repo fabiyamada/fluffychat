@@ -18,8 +18,8 @@ Rectangle {
         z: 2
         anchors.centerIn: parent
         border.width: 1
-        border.color: UbuntuColors.silk
-        color: UbuntuColors.porcelain
+        border.color: theme.palette.normal.position
+        color: theme.palette.normal.background
         radius: units.gu(2)
         height: eventLabel.height + units.gu(2)
         width: eventLabel.width + units.gu(2)

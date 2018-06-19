@@ -5,9 +5,10 @@ import Ubuntu.Components 1.3
 ListItem {
     property var name: ""
     property var icon: "settings"
-    property var isChecked: true
-    property var isEnabled: false
+    property alias isChecked: switcher.checked
+    property alias isEnabled: switcher.enabled
     property var onSwitching
+    property var iconColor: settings.mainColor
     height: layout.height
 
     ListItemLayout {
@@ -15,6 +16,7 @@ ListItem {
         title.text: name
         Icon {
             name: icon
+            color: iconColor
             width: units.gu(4)
             height: units.gu(4)
             SlotsLayout.position: SlotsLayout.Leading
@@ -25,8 +27,6 @@ ListItem {
             anchors.right: parent.right
             anchors.verticalCenter: parent.verticalCenter
             anchors.margins: units.gu(2)
-            checked: isChecked
-            enabled: isEnabled
             onCheckedChanged: onSwitching ()
         }
     }

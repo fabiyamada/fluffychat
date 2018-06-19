@@ -173,7 +173,7 @@ Page {
         contentComponent: Rectangle {
             width: root.width
             height: root.height
-            color: "white"
+            color: theme.palette.normal.background
             AddChatPage { }
         }
     }

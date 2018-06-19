@@ -138,15 +138,8 @@ Page {
 
     Rectangle {
         anchors.fill: parent
-        opacity: 0.15
-        //color: mainColor
-        gradient: Gradient {
-            GradientStop { position: 0.0; color:  "#FFFFFF" }
-            GradientStop { position: 0.2; color:  UbuntuColors.blue }
-            GradientStop { position: 0.5; color:  UbuntuColors.orange }
-            GradientStop { position: 0.8; color:  UbuntuColors.purple }
-            GradientStop { position: 1.0; color:  "#FFFFFF" }
-        }
+        opacity: 0.1
+        color: settings.mainColor
         z: 0
     }
 
@@ -174,6 +167,7 @@ Page {
         width: parent.width
         border.width: 1
         border.color: UbuntuColors.silk
+        color: theme.palette.normal.background
 
         Button {
             id: joinButton
@@ -238,7 +232,7 @@ Page {
 
     Rectangle {
         id: toBottomRectangle
-        color: "#FFFFFF"
+        color: theme.palette.normal.background
         z: 2
         anchors.bottom: parent.bottom
         height: header.height

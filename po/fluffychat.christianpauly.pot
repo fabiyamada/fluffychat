@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: fluffychat.christianpauly\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-06-19 10:37+0000\n"
+"POT-Creation-Date: 2018-06-19 12:39+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -121,7 +121,7 @@ msgstr ""
 msgid "The chat permissions have been changed"
 msgstr ""
 
-#: ../qml/controller/EventController.qml:44 ../qml/pages/ChatPage.qml:186
+#: ../qml/controller/EventController.qml:44 ../qml/pages/ChatPage.qml:180
 #: ../qml/pages/AddChatPage.qml:24
 msgid ""
 "Synchronizing \n"
@@ -213,7 +213,7 @@ msgstr ""
 #: ../qml/pages/MainSettingsPage.qml:34
 #: ../qml/pages/NotificationSettingsPage.qml:67 ../qml/pages/ChatPage.qml:127
 #: ../qml/pages/NotificationChatSettingsPage.qml:51
-#: ../qml/pages/ChatSettingsPage.qml:105
+#: ../qml/pages/ChatSettingsPage.qml:107
 msgid "Notifications"
 msgstr ""
 
@@ -222,13 +222,16 @@ msgstr ""
 msgid "Account"
 msgstr ""
 
-#: ../qml/pages/MainSettingsPage.qml:46
+#: ../qml/pages/MainSettingsPage.qml:46 ../qml/pages/ThemeSettingsPage.qml:11
+msgid "Theme"
+msgstr ""
+
+#: ../qml/pages/MainSettingsPage.qml:52
 msgid "About FluffyChat"
 msgstr ""
 
 #: ../qml/pages/AccountSettingsPage.qml:23
-#: ../qml/components/ChangeDisplaynameDialog.qml:11
-msgid "Change nickname"
+msgid "Change display name"
 msgstr ""
 
 #: ../qml/pages/AccountSettingsPage.qml:29
@@ -236,10 +239,11 @@ msgid "Change password"
 msgstr ""
 
 #: ../qml/pages/AccountSettingsPage.qml:35
-msgid "Disable Account"
+msgid "Disable account"
 msgstr ""
 
 #: ../qml/pages/AccountSettingsPage.qml:41
+#: ../qml/components/LogoutDialog.qml:11 ../qml/components/LogoutDialog.qml:33
 msgid "Logout"
 msgstr ""
 
@@ -291,19 +295,19 @@ msgstr ""
 msgid "Invite a friend"
 msgstr ""
 
-#: ../qml/pages/ChatPage.qml:163
+#: ../qml/pages/ChatPage.qml:156
 msgid "No messages in this chat ..."
 msgstr ""
 
-#: ../qml/pages/ChatPage.qml:181
+#: ../qml/pages/ChatPage.qml:175
 msgid "Accept invatiation"
 msgstr ""
 
-#: ../qml/pages/ChatPage.qml:218
+#: ../qml/pages/ChatPage.qml:212
 msgid "Type something ..."
 msgstr ""
 
-#: ../qml/pages/ChatPage.qml:252
+#: ../qml/pages/ChatPage.qml:246
 msgid "Scroll down"
 msgstr ""
 
@@ -324,23 +328,23 @@ msgstr ""
 msgid "Edit chat name"
 msgstr ""
 
-#: ../qml/pages/ChatSettingsPage.qml:94
+#: ../qml/pages/ChatSettingsPage.qml:96
 msgid "Chat Settings:"
 msgstr ""
 
-#: ../qml/pages/ChatSettingsPage.qml:100
+#: ../qml/pages/ChatSettingsPage.qml:102
 msgid "Invite friend"
 msgstr ""
 
-#: ../qml/pages/ChatSettingsPage.qml:118
+#: ../qml/pages/ChatSettingsPage.qml:120
 msgid "Leave Chat"
 msgstr ""
 
-#: ../qml/pages/ChatSettingsPage.qml:132
+#: ../qml/pages/ChatSettingsPage.qml:135
 msgid "Users in this chat (%1):"
 msgstr ""
 
-#: ../qml/pages/ChatSettingsPage.qml:132
+#: ../qml/pages/ChatSettingsPage.qml:135
 msgid "Loading users ..."
 msgstr ""
 
@@ -364,6 +368,38 @@ msgstr ""
 msgid "Join group"
 msgstr ""
 
+#: ../qml/pages/ThemeSettingsPage.qml:23
+msgid "Dark mode"
+msgstr ""
+
+#: ../qml/pages/ThemeSettingsPage.qml:40
+msgid "Choose a main color:"
+msgstr ""
+
+#: ../qml/pages/ThemeSettingsPage.qml:45
+msgid "Purple"
+msgstr ""
+
+#: ../qml/pages/ThemeSettingsPage.qml:52
+msgid "Blue"
+msgstr ""
+
+#: ../qml/pages/ThemeSettingsPage.qml:59
+msgid "Red"
+msgstr ""
+
+#: ../qml/pages/ThemeSettingsPage.qml:66
+msgid "Orange"
+msgstr ""
+
+#: ../qml/pages/ThemeSettingsPage.qml:73
+msgid "Graphite"
+msgstr ""
+
+#: ../qml/pages/ThemeSettingsPage.qml:80
+msgid "Green"
+msgstr ""
+
 #: ../qml/components/MemberListItem.qml:15
 msgid "Member"
 msgstr ""
@@ -384,22 +420,45 @@ msgstr ""
 msgid "Was banned from the chat"
 msgstr ""
 
+#: ../qml/components/ChangePasswordDialog.qml:11
+msgid "Change your password"
+msgstr ""
+
+#: ../qml/components/ChangePasswordDialog.qml:19
+msgid "Enter your new password"
+msgstr ""
+
+#: ../qml/components/ChangePasswordDialog.qml:23
+msgid "Please repeat"
+msgstr ""
+
+#: ../qml/components/ChangePasswordDialog.qml:30
+#: ../qml/components/LeaveChatDialog.qml:21
+#: ../qml/components/NewGroupDialog.qml:21
+#: ../qml/components/DisableAccountDialog.qml:28
+#: ../qml/components/LogoutDialog.qml:28
+#: ../qml/components/JoinGroupDialog.qml:21
+#: ../qml/components/InviteDialog.qml:21
+#: ../qml/components/NewContactDialog.qml:22
+#: ../qml/components/ChangeDisplaynameDialog.qml:33
+#: ../qml/components/ChangeChatnameDialog.qml:28
+msgid "Cancel"
+msgstr ""
+
+#: ../qml/components/ChangePasswordDialog.qml:35
+msgid "Change"
+msgstr ""
+
+#: ../qml/components/ChangePasswordDialog.qml:39
+msgid "The passwords do not match"
+msgstr ""
+
 #: ../qml/components/LeaveChatDialog.qml:11
 msgid "Leave chat"
 msgstr ""
 
 #: ../qml/components/LeaveChatDialog.qml:14
 msgid "Are you sure you want to leave the chat?"
-msgstr ""
-
-#: ../qml/components/LeaveChatDialog.qml:21
-#: ../qml/components/NewGroupDialog.qml:21
-#: ../qml/components/JoinGroupDialog.qml:21
-#: ../qml/components/InviteDialog.qml:21
-#: ../qml/components/NewContactDialog.qml:22
-#: ../qml/components/ChangeDisplaynameDialog.qml:28
-#: ../qml/components/ChangeChatnameDialog.qml:28
-msgid "Cancel"
 msgstr ""
 
 #: ../qml/components/LeaveChatDialog.qml:26
@@ -424,6 +483,23 @@ msgstr ""
 msgid "FluffyChat"
 msgstr ""
 
+#: ../qml/components/DisableAccountDialog.qml:11
+msgid "Disable your account"
+msgstr ""
+
+#: ../qml/components/DisableAccountDialog.qml:18
+msgid ""
+"Are you sure, that you want to disable your account? This can not be undone!"
+msgstr ""
+
+#: ../qml/components/DisableAccountDialog.qml:33
+msgid "Disable"
+msgstr ""
+
+#: ../qml/components/LogoutDialog.qml:18
+msgid "Are you sure, that you want to logout?"
+msgstr ""
+
 #: ../qml/components/LoadingModal.qml:18
 msgid "Synchronizing ... Please wait!"
 msgstr ""
@@ -436,7 +512,7 @@ msgstr ""
 msgid "You: "
 msgstr ""
 
-#: ../qml/components/ChatListItem.qml:52
+#: ../qml/components/ChatListItem.qml:53
 msgid "No previous messages"
 msgstr ""
 
@@ -464,11 +540,15 @@ msgstr ""
 msgid "@yourfriend:"
 msgstr ""
 
-#: ../qml/components/ChangeDisplaynameDialog.qml:14
+#: ../qml/components/ChangeDisplaynameDialog.qml:11
+msgid "Change your display name"
+msgstr ""
+
+#: ../qml/components/ChangeDisplaynameDialog.qml:19
 msgid "Enter your new nickname"
 msgstr ""
 
-#: ../qml/components/ChangeDisplaynameDialog.qml:33
+#: ../qml/components/ChangeDisplaynameDialog.qml:38
 #: ../qml/components/ChangeChatnameDialog.qml:33
 msgid "Save"
 msgstr ""

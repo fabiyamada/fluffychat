@@ -75,6 +75,7 @@ Page {
             Rectangle {
                 width: parent.width
                 height: units.gu(2)
+                color: theme.palette.normal.background
             }
             Avatar {  // Useravatar
                 id: avatarImage
@@ -86,6 +87,7 @@ Page {
             Rectangle {
                 width: parent.width
                 height: units.gu(2)
+                color: theme.palette.normal.background
             }
             Label {
                 height: units.gu(2)
@@ -123,6 +125,7 @@ Page {
             Rectangle {
                 width: parent.width
                 height: units.gu(2)
+                color: theme.palette.normal.background
             }
             Label {
                 id: userInfo
