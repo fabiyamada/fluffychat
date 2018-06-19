@@ -153,7 +153,7 @@ Item {
                         toast.show (i18n.tr("No connection to the homeserver 😕"))
                     }
                     else if ( error_callback ) error_callback ( error )
-                    else toast.show ( error.errcode + ": " + error.error )
+                    else if ( error.errcode !== undefined && error.error !== undefined ) toast.show ( error.errcode + ": " + error.error )
                 }
             }
         }
