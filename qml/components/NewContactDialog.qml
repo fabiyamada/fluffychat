@@ -9,6 +9,11 @@ Component {
     Dialog {
         id: dialogue
         title: i18n.tr("New single chat")
+        Icon {
+            name: "message-new"
+            width: parent.width
+            height: width
+        }
         TextField {
             id: contactTextField
             text: newContactMatrixID || ""

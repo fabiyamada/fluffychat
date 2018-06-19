@@ -9,6 +9,12 @@ Component {
     Dialog {
         id: dialogue
         title: i18n.tr("Join group")
+
+        Icon {
+            name: "user-admin"
+            width: parent.width
+            height: width
+        }
         TextField {
             id: groupTextField
             placeholderText: i18n.tr("#groupname:" + settings.server)

@@ -9,6 +9,11 @@ Component {
     Dialog {
         id: dialogue
         title: i18n.tr("Leave chat")
+        Icon {
+            name: "edit-delete"
+            width: parent.width
+            height: width
+        }
         Label {
             anchors.horizontalCenter: parent.horizontalCenter
             text: i18n.tr("Are you sure you want to leave the chat?")

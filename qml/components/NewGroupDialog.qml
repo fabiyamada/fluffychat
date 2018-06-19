@@ -9,6 +9,11 @@ Component {
     Dialog {
         id: dialogue
         title: i18n.tr("New group")
+        Icon {
+            name: "contact-group"
+            width: parent.width
+            height: width
+        }
         TextField {
             id: groupTextField
             placeholderText: i18n.tr("Group name")

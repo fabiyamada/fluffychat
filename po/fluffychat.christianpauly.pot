@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: fluffychat.christianpauly\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-06-19 12:39+0000\n"
+"POT-Creation-Date: 2018-06-19 12:53+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -433,13 +433,13 @@ msgid "Please repeat"
 msgstr ""
 
 #: ../qml/components/ChangePasswordDialog.qml:30
-#: ../qml/components/LeaveChatDialog.qml:21
-#: ../qml/components/NewGroupDialog.qml:21
+#: ../qml/components/LeaveChatDialog.qml:26
+#: ../qml/components/NewGroupDialog.qml:26
 #: ../qml/components/DisableAccountDialog.qml:28
 #: ../qml/components/LogoutDialog.qml:28
-#: ../qml/components/JoinGroupDialog.qml:21
-#: ../qml/components/InviteDialog.qml:21
-#: ../qml/components/NewContactDialog.qml:22
+#: ../qml/components/JoinGroupDialog.qml:27
+#: ../qml/components/InviteDialog.qml:26
+#: ../qml/components/NewContactDialog.qml:27
 #: ../qml/components/ChangeDisplaynameDialog.qml:33
 #: ../qml/components/ChangeChatnameDialog.qml:28
 msgid "Cancel"
@@ -457,21 +457,21 @@ msgstr ""
 msgid "Leave chat"
 msgstr ""
 
-#: ../qml/components/LeaveChatDialog.qml:14
+#: ../qml/components/LeaveChatDialog.qml:19
 msgid "Are you sure you want to leave the chat?"
 msgstr ""
 
-#: ../qml/components/LeaveChatDialog.qml:26
+#: ../qml/components/LeaveChatDialog.qml:31
 msgid "Leave"
 msgstr ""
 
-#: ../qml/components/NewGroupDialog.qml:14
+#: ../qml/components/NewGroupDialog.qml:19
 msgid "Group name"
 msgstr ""
 
-#: ../qml/components/NewGroupDialog.qml:26
-#: ../qml/components/JoinGroupDialog.qml:26
-#: ../qml/components/NewContactDialog.qml:27
+#: ../qml/components/NewGroupDialog.qml:31
+#: ../qml/components/JoinGroupDialog.qml:32
+#: ../qml/components/NewContactDialog.qml:32
 msgid "Continue"
 msgstr ""
 
@@ -516,15 +516,15 @@ msgstr ""
 msgid "No previous messages"
 msgstr ""
 
-#: ../qml/components/JoinGroupDialog.qml:14
+#: ../qml/components/JoinGroupDialog.qml:20
 msgid "#groupname:"
 msgstr ""
 
-#: ../qml/components/InviteDialog.qml:14
+#: ../qml/components/InviteDialog.qml:19
 msgid "@yourfriend:%1"
 msgstr ""
 
-#: ../qml/components/InviteDialog.qml:26
+#: ../qml/components/InviteDialog.qml:31
 msgid "Invite"
 msgstr ""
 
@@ -536,7 +536,7 @@ msgstr ""
 msgid "New single chat"
 msgstr ""
 
-#: ../qml/components/NewContactDialog.qml:15
+#: ../qml/components/NewContactDialog.qml:20
 msgid "@yourfriend:"
 msgstr ""
 

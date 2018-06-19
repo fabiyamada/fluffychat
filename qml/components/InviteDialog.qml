@@ -9,6 +9,11 @@ Component {
     Dialog {
         id: dialogue
         title: i18n.tr("Invite a friend")
+        Icon {
+            name: "contact-new"
+            width: parent.width
+            height: width
+        }
         TextField {
             id: matrixidTextField
             placeholderText: i18n.tr("@yourfriend:%1").arg(defaultDomain)
