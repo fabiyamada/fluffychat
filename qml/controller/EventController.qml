@@ -88,9 +88,11 @@ Item {
     function restartSync () {
         if ( syncRequest === null ) return
         console.log("resync")
-        abortSync = true
-        if ( syncRequest ) syncRequest.abort ()
-        abortSync = false
+        if ( syncRequest ) {
+            abortSync = true
+            syncRequest.abort ()
+            abortSync = false
+        }
         waitForSync ()
         sync ( 1 )
     }

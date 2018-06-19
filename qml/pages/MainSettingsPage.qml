@@ -7,22 +7,6 @@ import "../components"
 Page {
     anchors.fill: parent
 
-
-    function getPushers () {
-        matrix.get("/client/r0/pushers", null, function ( res ) {
-            var issettoken = false
-            for( var i = 0; i < res.pushers.length; i++ ) {
-                var pusher = res.pushers[i]
-                if ( pusher.pushkey === pushtoken ) {
-                    issettoken = true
-                    //break
-                }
-            }
-            switchPush.checked = issettoken
-            switchPush.enabled = true
-        },console.warn)
-    }
-
     header: FcPageHeader {
         title: i18n.tr('Settings')
 
@@ -31,7 +15,7 @@ Page {
             Action {
                 iconSource: matrix.onlineStatus ? "../../assets/online.svg" : "../../assets/offline.svg"
                 onTriggered: {
-                    matrix.get("/client/r0/pushrules/", null, function (m) { console.log(JSON.stringify(m))})
+                    matrix.get("/client/r0/presence/list/%1".arg(matrix.matrixid), null, function (m) { console.log(JSON.stringify(m))})
                 }
             }
             ]
@@ -47,35 +31,15 @@ Page {
             width: root.width
 
             SettingsListItem {
-                name: i18n.tr("Notifications (Beta)")
+                name: i18n.tr("Notifications")
                 icon: "notification"
-                Switch {
-                    id: switchPush
-                    anchors.right: parent.right
-                    anchors.verticalCenter: parent.verticalCenter
-                    anchors.margins: units.gu(2)
-                    checked: true
-                    onCheckedChanged: {
-                        if ( enabled ) {
-                            enabled = false
-                            pushclient.setPusher ( checked, getPushers, function ( error ) {
-                                if ( error.errcode === "NO_UBUNTUONE" ) toast.show ( error.error )
-                                else toast.show ( error.errcode + ": " + error.error )
-                                checked = !checked
-                                enabled = true
-                            })
-                        }
-                    }
-                    enabled: false
-                    Component.onCompleted: getPushers ()
-                }
-                onClicked: switchPush.checked ? switchPush.checked = false : switchPush.checked = true
+                onClicked: mainStack.push(Qt.resolvedUrl("../pages/NotificationSettingsPage.qml"))
             }
 
             SettingsListItem {
-                name: i18n.tr("Change nickname")
+                name: i18n.tr("Account")
                 icon: "account"
-                onClicked: PopupUtils.open(dialog)
+                onClicked: mainStack.push(Qt.resolvedUrl("../pages/AccountSettingsPage.qml"))
             }
 
             SettingsListItem {
@@ -84,15 +48,7 @@ Page {
                 onClicked: mainStack.push(Qt.resolvedUrl("../pages/InfoPage.qml"))
             }
 
-            SettingsListItem {
-                name: i18n.tr("Logout")
-                icon: "close"
-                onClicked: matrix.logout ()
-            }
         }
     }
-
-
-    ChangeDisplaynameDialog { id: dialog }
 
 }
