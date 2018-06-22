@@ -12,7 +12,7 @@ Rectangle {
     height: width
     color: settings.darkmode ? UbuntuColors.jet : UbuntuColors.porcelain
     border.width: 1
-    border.color: UbuntuColors.silk
+    border.color: settings.darkmode ? UbuntuColors.slate : UbuntuColors.silk
     radius: units.gu(1)
     z:1
     clip: true

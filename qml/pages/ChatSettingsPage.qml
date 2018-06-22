@@ -79,7 +79,7 @@ Page {
             }
             Avatar {  // Useravatar
                 id: avatarImage
-                source: "../../assets/background.svg"
+                source: "../../assets/chat.svg"
                 width: parent.width / 2
                 radius: 100
                 anchors.horizontalCenter: parent.horizontalCenter

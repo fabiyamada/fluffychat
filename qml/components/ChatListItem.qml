@@ -52,7 +52,7 @@ ListItem {
         title.font.italic: room.membership === "invite"
         subtitle.text: i18n.tr("No previous messages")
         Avatar {
-            source: "../../assets/background.svg"
+            source: "../../assets/chat.svg"
             SlotsLayout.position: SlotsLayout.Leading
             name: room.id
         }

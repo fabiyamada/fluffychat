@@ -54,7 +54,7 @@ Rectangle {
         anchors.leftMargin: units.gu(1)
         anchors.rightMargin: units.gu(1)
         border.width: 1
-        border.color: UbuntuColors.silk
+        border.color: settings.darkmode ? UbuntuColors.slate : UbuntuColors.silk
         anchors.margins: 5
         color: sent ? "#FFFFFF" : settings.mainColor
         radius: units.gu(2)
@@ -127,7 +127,8 @@ Rectangle {
             anchors.bottom: parent.bottom
             anchors.left: parent.left
             anchors.margins: units.gu(1)
-            color: UbuntuColors.silk
+            color: messageLabel.color
+            opacity: 0.75
             textSize: Label.XSmall
         }
         // When the message is just sending, then this activity indicator is visible

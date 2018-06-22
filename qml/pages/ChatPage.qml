@@ -162,12 +162,18 @@ Page {
 
     Rectangle {
         id: chatInput
-        anchors.bottom: parent.bottom
         height: header.height
-        width: parent.width
+        width: parent.width + 2
         border.width: 1
         border.color: UbuntuColors.silk
         color: theme.palette.normal.background
+        anchors {
+            horizontalCenter: parent.horizontalCenter
+            bottom: parent.bottom
+            bottomMargin: -border.width
+            leftMargin: -border.width
+            rightMargin: -border.width
+        }
 
         Button {
             id: joinButton
