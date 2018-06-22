@@ -72,6 +72,7 @@ ScrollView {
 
 
     function requestHistory () {
+        var storageController = storage
         storage.transaction ( "SELECT prev_batch FROM Rooms WHERE id='" + activeChat + "'", function (rs) {
             if ( rs.rows.length === 0 ) return
             var data = {
@@ -81,7 +82,7 @@ ScrollView {
             }
             matrix.get( "/client/r0/rooms/" + activeChat + "/messages", data, function ( result ) {
                 if ( result.chunk.length > 0 ) {
-                    storage.db.transaction(
+                    storageController.db.transaction(
                         function(tx) {
                             events.transaction = tx
                             events.handleRoomEvents ( activeChat, result.chunk, "history" )
@@ -89,7 +90,7 @@ ScrollView {
                             update ()
                         }
                     )
-                    storage.transaction ( "UPDATE Rooms SET prev_batch='" + result.end + "' WHERE id='" + activeChat + "'", function () {
+                    storageController.transaction ( "UPDATE Rooms SET prev_batch='" + result.end + "' WHERE id='" + activeChat + "'", function () {
                     })
                 }
                 else updated = true

@@ -28,12 +28,12 @@ MainView {
     property var defaultDeviceName: "UbuntuPhone"
     property var miniTimeout: 3000
     property var defaultTimeout: 30000
-    property var longPollingTimeout: 30000
+    property var longPollingTimeout: 10000
     property var progressBarRequests: 0
     property var waitingForSync: false
     property var appstatus: 4
     property var pushtoken: pushclient.token
-    property var mainColor: "#5625BA"
+    property var defaultMainColor: "#5625BA"
 
 
     PageStack {
@@ -56,8 +56,7 @@ MainView {
 
     Connections {
         target: Qt.application
-        onStateChanged:
-        if(Qt.application.state === Qt.ApplicationActive) events.restartSync ()
+        //onStateChanged: if(Qt.application.state === Qt.ApplicationActive) events.restartSync ()
     }
 
     onActiveChatChanged: {

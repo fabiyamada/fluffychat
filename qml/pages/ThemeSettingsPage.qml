@@ -26,7 +26,7 @@ Page {
                 isChecked: settings.darkmode
                 isEnabled: true
             }
-            
+
             Rectangle {
                 width: parent.width
                 height: units.gu(2)
@@ -44,7 +44,7 @@ Page {
             SettingsListItem {
                 name: i18n.tr("Purple")
                 icon: "starred"
-                iconColor: mainColor
+                iconColor: defaultMainColor
                 onClicked: settings.mainColor = iconColor
             }
 

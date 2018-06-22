@@ -14,6 +14,7 @@ PageHeader {
         id: requestProgressBar
         indeterminate: true
         width: parent.width
+        anchors.bottom: parent.bottom
         visible: progressBarRequests > 0
     }
 }

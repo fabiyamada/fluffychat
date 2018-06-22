@@ -37,7 +37,7 @@ Settings {
     property var pusherSet
 
     // The main color of the theme
-    property var mainColor: mainColor
+    property var mainColor: defaultMainColor
 
     // Dark mode enabled?
     property var darkmode: false

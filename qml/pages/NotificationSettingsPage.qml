@@ -8,21 +8,26 @@ Page {
     anchors.fill: parent
 
     function changeRule ( rule_id, enabled, type ) {
-        matrix.put ( "/client/r0/pushrules/global/%1/%2/enabled".arg(type).arg(rule_id), {"enabled": !enabled}, getRules )
+        if ( notificationSettingsList.enabled ) {
+            notificationSettingsList.enabled = false
+            matrix.put ( "/client/r0/pushrules/global/%1/%2/enabled".arg(type).arg(rule_id), {"enabled": enabled}, getRules )
+        }
     }
 
     function getRules () {
         matrix.get( "/client/r0/pushrules/", null, function ( response ) {
 
+            notificationSettingsList.enabled = false
+
             for ( var type in response.global ) {
                 for ( var i = 0; i < response.global[type].length; i++ ) {
 
                     if ( response.global[type][i].rule_id === ".m.rule.master" ) {
-                        mrule_master.isChecked = response.global[type][i].enabled
+                        mrule_master.isChecked = !response.global[type][i].enabled
                         mrule_master.isEnabled = true
                     }
                     else if ( response.global[type][i].rule_id === ".m.rule.suppress_notices" ) {
-                        mrule_suppress_notices.isChecked = response.global[type][i].enabled
+                        mrule_suppress_notices.isChecked = !response.global[type][i].enabled
                         mrule_suppress_notices.isEnabled = true
                     }
                     else if ( response.global[type][i].rule_id === ".m.rule.invite_for_me" ) {
@@ -58,7 +63,7 @@ Page {
                 }
             }
 
-
+            notificationSettingsList.enabled = true
 
         } );
     }
@@ -76,14 +81,16 @@ Page {
         contentItem: Column {
             width: root.width
             id: notificationSettingsList
+            property var enabled: false
+            opacity: enabled ? 1 : 0.5
 
             SettingsListSwitch {
-                name: i18n.tr("Mute all notifications")
+                name: i18n.tr("Enable notifications")
                 id: mrule_master
                 icon: "audio-volume-muted"
                 isEnabled: false
                 onSwitching: function () {
-                    if ( isEnabled ) changeRule ( ".m.rule.master", isChecked, "override" )
+                    if ( isEnabled ) changeRule ( ".m.rule.master", !isChecked, "override" )
                 }
             }
 
@@ -163,7 +170,7 @@ Page {
                 icon: "computer-symbolic"
                 isEnabled: false
                 onSwitching: function () {
-                    if ( isEnabled ) changeRule ( ".m.rule.suppress_notices", isChecked, "override" )
+                    if ( isEnabled ) changeRule ( ".m.rule.suppress_notices", !isChecked, "override" )
                 }
             }
 

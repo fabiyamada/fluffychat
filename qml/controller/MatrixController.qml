@@ -69,6 +69,11 @@ Item {
     }
 
     function logout () {
+        if ( events.syncRequest ) {
+            events.abortSync = true
+            events.syncRequest.abort ()
+            events.abortSync = false
+        }
         var callback = function () { post ( "/client/r0/logout", {}, reset, reset ) }
         pushclient.setPusher ( false, callback, callback )
     }
@@ -119,6 +124,11 @@ Item {
         }
         else if ( data != null ) postData = data
 
+        function Timer() {
+            return Qt.createQmlObject("import QtQuick 2.0; Timer {}", root)
+        }
+        var timer = new Timer()
+
         var requestUrl = "https://" + settings.server + "/_matrix" + action + getData
         var longPolling = (data != null && data.timeout)
         http.open( type, requestUrl, true);
@@ -128,6 +138,7 @@ Item {
         http.onreadystatechange = function() {
             if ( status_callback ) status_callback ( http.readyState )
             if (http.readyState === XMLHttpRequest.DONE) {
+                timer.stop ()
                 var index = activeRequests.indexOf(checksum);
                 activeRequests.splice( index, 1 )
                 if ( !longPolling ) progressBarRequests--
@@ -157,21 +168,20 @@ Item {
                 }
             }
         }
-        if ( !longPolling ) progressBarRequests++
-
-        http.send( JSON.stringify( postData ) );
+        if ( !longPolling ) {
+            progressBarRequests++
+        }
 
         // Make timeout working in qml
-        function Timer() {
-            return Qt.createQmlObject("import QtQuick 2.0; Timer {}", root)
-        }
-        var timer = new Timer()
-        timer.interval = longPolling ? data.timeout + defaultTimeout : defaultTimeout
+
+        timer.interval = longPolling ? longPollingTimeout+2000 : defaultTimeout
         timer.repeat = false
         timer.triggered.connect(function () {
-            if (http.readyState !== XMLHttpRequest.DONE) http.abort ()
+            if (http.readyState === XMLHttpRequest.OPENED) http.abort ()
         })
         timer.start();
+
+        http.send( JSON.stringify( postData ) );
 
         return http
     }

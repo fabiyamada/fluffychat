@@ -71,12 +71,13 @@ Page {
                 if ( type === "leave" ) return
 
                 // Add the room to the list, if it does not exist
+                var unread = room.unread_notifications && room.unread_notifications.notification_count || 0
                 if ( !roomExists ) {
                     var roomItem = {
                         "id": id,
                         "topic": "",
                         "membership": type,
-                        "notification_count": room.unread_notifications && room.unread_notifications.notification_count || 0
+                        "notification_count": unread
                     }
                     // Put new invitations to the top
                     if ( type === "invite" ) roomItem.origin_server_ts = new Date().getTime()
@@ -89,8 +90,7 @@ Page {
                 items[j].room.membership = type
 
                 // Update the notification count
-                items[j].room.notification_count = room.unread_notifications && room.unread_notifications.notification_count || 0
-                if ( items[j].room.id === activeChat && items[j].room.notification_count > 0 ) matrix.post( "/client/r0/rooms/" + activeChat + "/receipt/m.read/" + room.eventsid, null )
+                items[j].room.notification_count = unread
 
                 // Check the timeline events and add the latest event to the chat list
                 // as the latest message of the chat
@@ -118,7 +118,10 @@ Page {
                 items[j].updateAll()
 
                 // Send message receipt
-                if ( activeChat === room.id && room.notification_count > 0 ) matrix.post( "/client/r0/rooms/" + activeChat + "/receipt/m.read/" + room.eventsid, null )
+                if ( newTimelineEvents && activeChat === id && unread > 0 ){
+                    console.log ( "/client/r0/rooms/" + activeChat + "/receipt/m.read/" + lastEvent.event_id )
+                    matrix.post( "/client/r0/rooms/" + activeChat + "/receipt/m.read/" + lastEvent.event_id, null )
+                }
             }
         }
 

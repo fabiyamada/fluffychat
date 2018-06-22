@@ -15,7 +15,8 @@ Page {
             Action {
                 iconSource: matrix.onlineStatus ? "../../assets/online.svg" : "../../assets/offline.svg"
                 onTriggered: {
-                    matrix.get("/client/r0/presence/list/%1".arg(matrix.matrixid), null, function (m) { console.log(JSON.stringify(m))})
+                    //matrix.get("/client/r0/pushers", null, function (m) { console.log(JSON.stringify(m))})
+                    matrix.get("/client/r0/pushrules/", null, function (m) { console.log(JSON.stringify(m))})
                 }
             }
             ]

@@ -10,6 +10,8 @@ with the matrix homeserver via a long polling http request
 */
 Item {
 
+    property var statusMap: ["Offline", "Connecting", "Online"]
+
     Connections {
         target: Connectivity
         // full status can be retrieved from the base C++ class
@@ -51,10 +53,15 @@ Item {
     }
 
     function sync ( timeout) {
-        if (settings.token === null || settings.token === undefined) return
+
+        if ( settings.token === null || settings.token === undefined ) return
+
         if ( !timeout ) timeout = longPollingTimeout
+
         var data = { "since": settings.since, "timeout": timeout }
+
         syncRequest = matrix.get ("/client/r0/sync", data, function ( response ) {
+
             if ( waitingForSync ) progressBarRequests--
             waitingForSync = false
             if ( settings.token ) {
@@ -65,23 +72,16 @@ Item {
         }, function ( error ) {
             if ( !abortSync && settings.token !== undefined ) {
                 matrix.onlineStatus = false
-                console.log ( "Synchronization timeout!" )
                 if ( error.errcode === "M_INVALID" ) {
                     mainStack.clear ()
                     mainStack.push(Qt.resolvedUrl("../pages/LoginPage.qml"))
                 }
                 else {
-                    function Timer() {
-                        return Qt.createQmlObject("import QtQuick 2.0; Timer {}", root);
-                    }
-                    var timer = new Timer();
-                    timer.interval = miniTimeout;
-                    timer.repeat = false;
-                    timer.triggered.connect(sync)
-                    timer.start();
+                    restartSync ()
+                    console.log ( "Synchronization error! Try to restart ..." )
                 }
             }
-        });
+        } );
     }
 
 
@@ -89,6 +89,7 @@ Item {
         if ( syncRequest === null ) return
         console.log("resync")
         if ( syncRequest ) {
+            console.log( "Stopping latest sync" )
             abortSync = true
             syncRequest.abort ()
             abortSync = false
@@ -117,7 +118,7 @@ Item {
     // This function starts handling the events, saving new data in the storage,
     // deleting data, updating data and call signals
     function handleEvents ( response ) {
-        //console.log( "===== NEW SYNC:", JSON.stringify( response ) )
+        //console.log( "===== NEWset_presence SYNC:", JSON.stringify( response ) )
         var changed = false
         var timecount = new Date().getTime()
         try {
@@ -130,7 +131,7 @@ Item {
                     settings.since = response.next_batch
                     chatListUpdated ( response )
                     triggerSignals ( response )
-                    //console.log("===> SYNCHRONIZATION performance: ", new Date().getTime() - timecount )
+                    //console.log("===> RECEIVED RESPONSE! SYNCHRONIZATION performance: ", new Date().getTime() - timecount )
                 }
             )
         }
