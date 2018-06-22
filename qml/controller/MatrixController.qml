@@ -174,7 +174,7 @@ Item {
 
         // Make timeout working in qml
 
-        timer.interval = longPolling ? longPollingTimeout+2000 : defaultTimeout
+        timer.interval = (longPolling || action == "/client/r0/sync") ? longPollingTimeout+2000 : defaultTimeout
         timer.repeat = false
         timer.triggered.connect(function () {
             if (http.readyState === XMLHttpRequest.OPENED) http.abort ()

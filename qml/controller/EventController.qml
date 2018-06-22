@@ -52,13 +52,13 @@ Item {
         }, null, null, longPollingTimeout )
     }
 
-    function sync ( timeout) {
+    function sync ( timeout ) {
 
         if ( settings.token === null || settings.token === undefined ) return
 
-        if ( !timeout ) timeout = longPollingTimeout
+        var data = { "since": settings.since }
 
-        var data = { "since": settings.since, "timeout": timeout }
+        if ( !timeout ) data.timeout = longPollingTimeout
 
         syncRequest = matrix.get ("/client/r0/sync", data, function ( response ) {
 
@@ -77,7 +77,8 @@ Item {
                     mainStack.push(Qt.resolvedUrl("../pages/LoginPage.qml"))
                 }
                 else {
-                    restartSync ()
+                    if ( Connectivity.online ) restartSync ()
+                    else toast.show ( i18n.tr("You are offline 😕") )
                     console.log ( "Synchronization error! Try to restart ..." )
                 }
             }
@@ -94,8 +95,7 @@ Item {
             syncRequest.abort ()
             abortSync = false
         }
-        waitForSync ()
-        sync ( 1 )
+        sync ( true )
     }
 
 

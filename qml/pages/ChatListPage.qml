@@ -118,7 +118,7 @@ Page {
                 items[j].updateAll()
 
                 // Send message receipt
-                if ( newTimelineEvents && activeChat === id && unread > 0 ){
+                if ( newTimelineEvents && activeChat === id && unread > 0 && lastEvent.event_id !== undefined ){
                     console.log ( "/client/r0/rooms/" + activeChat + "/receipt/m.read/" + lastEvent.event_id )
                     matrix.post( "/client/r0/rooms/" + activeChat + "/receipt/m.read/" + lastEvent.event_id, null )
                 }
