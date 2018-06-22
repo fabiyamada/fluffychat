@@ -63,7 +63,6 @@ add_custom_target(${DESKTOP_FILE_NAME} ALL
 install(FILES ${CMAKE_CURRENT_BINARY_DIR}/${DESKTOP_FILE_NAME} DESTINATION ${DATA_DIR})
 
 add_subdirectory(po)
-add_subdirectory(plugins)
 
 # Make source files visible in qtcreator
 # We don't need to add plugin sources here as they get exposed

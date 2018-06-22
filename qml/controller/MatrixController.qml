@@ -1,6 +1,5 @@
 import QtQuick 2.4
 import Ubuntu.Components 1.3
-import Fluffychat 1.0
 
 /* =============================== MATRIX CONTROLLER ===============================
 
@@ -195,7 +194,7 @@ Item {
 
         // Send the blob to the server
         var requestUrl = "https://" + settings.server + "/_matrix/media/r0/upload?filename=" + filename
-        Fluffychat.upload ( path, requestUrl, 'Bearer ' + settings.token )
+        //Fluffychat.upload ( path, requestUrl, 'Bearer ' + settings.token )
         callback ( "Ready ..." )
     }
 

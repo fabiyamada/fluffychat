@@ -128,7 +128,7 @@ Rectangle {
             anchors.left: parent.left
             anchors.margins: units.gu(1)
             color: messageLabel.color
-            opacity: 0.75
+            opacity: 0.66
             textSize: Label.XSmall
         }
         // When the message is just sending, then this activity indicator is visible
