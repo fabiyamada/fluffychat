@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: fluffychat.christianpauly\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-06-22 17:15+0000\n"
+"POT-Creation-Date: 2018-06-22 17:19+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -215,7 +215,7 @@ msgid "Settings"
 msgstr ""
 
 #: ../qml/pages/MainSettingsPage.qml:35
-#: ../qml/pages/NotificationSettingsPage.qml:72 ../qml/pages/ChatPage.qml:127
+#: ../qml/pages/NotificationSettingsPage.qml:64 ../qml/pages/ChatPage.qml:127
 #: ../qml/pages/NotificationChatSettingsPage.qml:51
 #: ../qml/pages/ChatSettingsPage.qml:107
 msgid "Notifications"
@@ -251,39 +251,39 @@ msgstr ""
 msgid "Logout"
 msgstr ""
 
-#: ../qml/pages/NotificationSettingsPage.qml:88
+#: ../qml/pages/NotificationSettingsPage.qml:80
 msgid "Enable notifications"
 msgstr ""
 
-#: ../qml/pages/NotificationSettingsPage.qml:98
+#: ../qml/pages/NotificationSettingsPage.qml:90
 msgid "Common messages"
 msgstr ""
 
-#: ../qml/pages/NotificationSettingsPage.qml:108
+#: ../qml/pages/NotificationSettingsPage.qml:100
 msgid "Messages from single chats"
 msgstr ""
 
-#: ../qml/pages/NotificationSettingsPage.qml:118
+#: ../qml/pages/NotificationSettingsPage.qml:110
 msgid "Contains my display name"
 msgstr ""
 
-#: ../qml/pages/NotificationSettingsPage.qml:128
+#: ../qml/pages/NotificationSettingsPage.qml:120
 msgid "Contains my user name"
 msgstr ""
 
-#: ../qml/pages/NotificationSettingsPage.qml:138
+#: ../qml/pages/NotificationSettingsPage.qml:130
 msgid "Invitiations for me"
 msgstr ""
 
-#: ../qml/pages/NotificationSettingsPage.qml:148
+#: ../qml/pages/NotificationSettingsPage.qml:140
 msgid "Chat members change"
 msgstr ""
 
-#: ../qml/pages/NotificationSettingsPage.qml:158
+#: ../qml/pages/NotificationSettingsPage.qml:150
 msgid "Incoming VOIP calls"
 msgstr ""
 
-#: ../qml/pages/NotificationSettingsPage.qml:168
+#: ../qml/pages/NotificationSettingsPage.qml:160
 msgid "Messages from bots"
 msgstr ""
 

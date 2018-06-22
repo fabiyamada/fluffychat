@@ -8,6 +8,7 @@ Page {
     anchors.fill: parent
 
     function changeRule ( rule_id, enabled, type ) {
+        console.log( notificationSettingsList.enabled )
         if ( notificationSettingsList.enabled ) {
             notificationSettingsList.enabled = false
             matrix.put ( "/client/r0/pushrules/global/%1/%2/enabled".arg(type).arg(rule_id), {"enabled": enabled}, getRules )
@@ -24,39 +25,30 @@ Page {
 
                     if ( response.global[type][i].rule_id === ".m.rule.master" ) {
                         mrule_master.isChecked = !response.global[type][i].enabled
-                        mrule_master.isEnabled = true
                     }
                     else if ( response.global[type][i].rule_id === ".m.rule.suppress_notices" ) {
                         mrule_suppress_notices.isChecked = !response.global[type][i].enabled
-                        mrule_suppress_notices.isEnabled = true
                     }
                     else if ( response.global[type][i].rule_id === ".m.rule.invite_for_me" ) {
                         mrule_invite_for_me.isChecked = response.global[type][i].enabled
-                        mrule_invite_for_me.isEnabled = true
                     }
                     else if ( response.global[type][i].rule_id === ".m.rule.member_event" ) {
                         mrule_member_event.isChecked = response.global[type][i].enabled
-                        mrule_member_event.isEnabled = true
                     }
                     else if ( response.global[type][i].rule_id === ".m.rule.contains_display_name" ) {
                         mrule_contains_display_name.isChecked = response.global[type][i].enabled
-                        mrule_contains_display_name.isEnabled = true
                     }
                     else if ( response.global[type][i].rule_id === ".m.rule.contains_user_name" ) {
                         mrule_contains_user_name.isChecked = response.global[type][i].enabled
-                        mrule_contains_user_name.isEnabled = true
                     }
                     else if ( response.global[type][i].rule_id === ".m.rule.call" ) {
                         mrule_call.isChecked = response.global[type][i].enabled
-                        mrule_call.isEnabled = true
                     }
                     else if ( response.global[type][i].rule_id === ".m.rule.room_one_to_one" ) {
                         mrule_room_one_to_one.isChecked = response.global[type][i].enabled
-                        mrule_room_one_to_one.isEnabled = true
                     }
                     else if ( response.global[type][i].rule_id === ".m.rule.message" ) {
                         mrule_message.isChecked = response.global[type][i].enabled
-                        mrule_message.isEnabled = true
                     }
 
 
@@ -88,7 +80,7 @@ Page {
                 name: i18n.tr("Enable notifications")
                 id: mrule_master
                 icon: "audio-volume-muted"
-                isEnabled: false
+                isEnabled: notificationSettingsList.enabled
                 onSwitching: function () {
                     if ( isEnabled ) changeRule ( ".m.rule.master", !isChecked, "override" )
                 }
@@ -98,7 +90,7 @@ Page {
                 name: i18n.tr("Common messages")
                 id: mrule_message
                 icon: "message"
-                isEnabled: false
+                isEnabled: notificationSettingsList.enabled
                 onSwitching: function () {
                     if ( isEnabled ) changeRule ( ".m.rule.message", isChecked, "underride" )
                 }
@@ -108,7 +100,7 @@ Page {
                 name: i18n.tr("Messages from single chats")
                 id: mrule_room_one_to_one
                 icon: "contact"
-                isEnabled: false
+                isEnabled: notificationSettingsList.enabled
                 onSwitching: function () {
                     if ( isEnabled ) changeRule ( ".m.rule.room_one_to_one", isChecked, "underride" )
                 }
@@ -118,7 +110,7 @@ Page {
                 name: i18n.tr("Contains my display name")
                 id: mrule_contains_display_name
                 icon: "crop"
-                isEnabled: false
+                isEnabled: notificationSettingsList.enabled
                 onSwitching: function () {
                     if ( isEnabled ) changeRule ( ".m.rule.contains_display_name", isChecked, "override" )
                 }
@@ -128,7 +120,7 @@ Page {
                 name: i18n.tr("Contains my user name")
                 id: mrule_contains_user_name
                 icon: "account"
-                isEnabled: false
+                isEnabled: notificationSettingsList.enabled
                 onSwitching: function () {
                     if ( isEnabled ) changeRule ( ".m.rule.contains_user_name", isChecked, "default" )
                 }
@@ -138,7 +130,7 @@ Page {
                 name: i18n.tr("Invitiations for me")
                 id: mrule_invite_for_me
                 icon: "contact-new"
-                isEnabled: false
+                isEnabled: notificationSettingsList.enabled
                 onSwitching: function () {
                     if ( isEnabled ) changeRule ( ".m.rule.invite_for_me", isChecked, "override" )
                 }
@@ -148,7 +140,7 @@ Page {
                 name: i18n.tr("Chat members change")
                 id: mrule_member_event
                 icon: "contact-group"
-                isEnabled: false
+                isEnabled: notificationSettingsList.enabled
                 onSwitching: function () {
                     if ( isEnabled ) changeRule ( ".m.rule.member_event", isChecked, "override" )
                 }
@@ -158,7 +150,7 @@ Page {
                 name: i18n.tr("Incoming VOIP calls")
                 id: mrule_call
                 icon: "incoming-call"
-                isEnabled: false
+                isEnabled: notificationSettingsList.enabled
                 onSwitching: function () {
                     if ( isEnabled ) changeRule ( ".m.rule.call", isChecked, "underride" )
                 }
@@ -168,7 +160,7 @@ Page {
                 name: i18n.tr("Messages from bots")
                 id: mrule_suppress_notices
                 icon: "computer-symbolic"
-                isEnabled: false
+                isEnabled: notificationSettingsList.enabled
                 onSwitching: function () {
                     if ( isEnabled ) changeRule ( ".m.rule.suppress_notices", !isChecked, "override" )
                 }
