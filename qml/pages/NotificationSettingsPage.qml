@@ -127,7 +127,7 @@ Page {
             }
 
             SettingsListSwitch {
-                name: i18n.tr("Invitiations for me")
+                name: i18n.tr("Invitations for me")
                 id: mrule_invite_for_me
                 icon: "contact-new"
                 isEnabled: notificationSettingsList.enabled

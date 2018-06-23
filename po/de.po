@@ -274,7 +274,7 @@ msgid "Contains my user name"
 msgstr "Enthalten meinen Benutzernamen"
 
 #: ../qml/pages/NotificationSettingsPage.qml:138
-msgid "Invitiations for me"
+msgid "Invitations for me"
 msgstr "Einladungen für mich"
 
 #: ../qml/pages/NotificationSettingsPage.qml:148
