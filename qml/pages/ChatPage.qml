@@ -144,7 +144,7 @@ Page {
     }
 
     Icon {
-        source: "../../assets/background.svg"
+        source: "../../assets/chat.svg"
         anchors.centerIn: parent
         width: parent.width / 1.25
         height: width
