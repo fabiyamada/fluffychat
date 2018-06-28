@@ -31,28 +31,28 @@ Page {
         contentItem: Column {
             width: root.width
 
-            SettingsListItem {
+            SettingsListLink {
                 name: i18n.tr("Notifications")
                 icon: "notification"
-                onClicked: mainStack.push(Qt.resolvedUrl("../pages/NotificationSettingsPage.qml"))
+                page: "NotificationSettingsPage"
             }
 
-            SettingsListItem {
+            SettingsListLink {
                 name: i18n.tr("Account")
                 icon: "account"
-                onClicked: mainStack.push(Qt.resolvedUrl("../pages/AccountSettingsPage.qml"))
+                page: "AccountSettingsPage"
             }
 
-            SettingsListItem {
+            SettingsListLink {
                 name: i18n.tr("Theme")
                 icon: "image-x-generic-symbolic"
-                onClicked: mainStack.push(Qt.resolvedUrl("../pages/ThemeSettingsPage.qml"))
+                page: "ThemeSettingsPage"
             }
 
-            SettingsListItem {
+            SettingsListLink {
                 name: i18n.tr("About FluffyChat")
                 icon: "info"
-                onClicked: mainStack.push(Qt.resolvedUrl("../pages/InfoPage.qml"))
+                page: "InfoPage"
             }
 
         }

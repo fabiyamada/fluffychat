@@ -103,18 +103,10 @@ Page {
                     icon: "contact-new"
                     onClicked: PopupUtils.open(inviteDialog)
                 }
-                SettingsListItem {
+                SettingsListLink {
                     name: i18n.tr("Notifications")
                     icon: "notification"
-                    Icon {
-                        name: "toolkit_chevron-ltr_1gu"
-                        width: units.gu(3)
-                        height: width
-                        anchors.right: parent.right
-                        anchors.verticalCenter: parent.verticalCenter
-                        anchors.margins: units.gu(2)
-                    }
-                    onClicked: mainStack.push(Qt.resolvedUrl("./NotificationChatSettingsPage.qml"))
+                    page: "NotificationChatSettingsPage"
                 }
                 SettingsListItem {
                     name: i18n.tr("Leave Chat")

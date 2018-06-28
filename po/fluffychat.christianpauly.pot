@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: fluffychat.christianpauly\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-06-23 07:13+0000\n"
+"POT-Creation-Date: 2018-06-28 09:36+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -340,15 +340,15 @@ msgstr ""
 msgid "Invite friend"
 msgstr ""
 
-#: ../qml/pages/ChatSettingsPage.qml:120
+#: ../qml/pages/ChatSettingsPage.qml:112
 msgid "Leave Chat"
 msgstr ""
 
-#: ../qml/pages/ChatSettingsPage.qml:135
+#: ../qml/pages/ChatSettingsPage.qml:127
 msgid "Users in this chat (%1):"
 msgstr ""
 
-#: ../qml/pages/ChatSettingsPage.qml:135
+#: ../qml/pages/ChatSettingsPage.qml:127
 msgid "Loading users ..."
 msgstr ""
 

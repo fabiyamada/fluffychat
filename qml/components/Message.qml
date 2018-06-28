@@ -111,10 +111,14 @@ Rectangle {
                 if ( !event.content_body ) event.content_body = event.content.body
                 var maxWidth = message.width - avatar.width - units.gu(5)
                 if ( width > maxWidth ) width = maxWidth
-                var urlRegex = /(https?:\/\/[^\s]+)/g;
-                text = text.replace(urlRegex, function(url) {
+                var urlRegex = /(https?:\/\/[^\s]+)/g
+                var tempText = text
+                tempText = text.replace ( "&#60;", "<" )
+                tempText = text.replace ( "&#62;", "<" )
+                tempText = text.replace(urlRegex, function(url) {
                     return '<a href="%1"><font color="%2">%1</font></a>'.arg(url).arg(messageLabel.color)
                 })
+                text = tempText
             }
         }
 
