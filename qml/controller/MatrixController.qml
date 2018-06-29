@@ -179,8 +179,8 @@ Item {
             if (http.readyState === XMLHttpRequest.OPENED) http.abort ()
         })
         timer.start();
-
         http.send( JSON.stringify( postData ) );
+        console.log( type, requestUrl,JSON.stringify( postData )  )
 
         return http
     }

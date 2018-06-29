@@ -50,6 +50,12 @@ Page {
             }
 
             SettingsListLink {
+                name: i18n.tr("Devices")
+                icon: "phone-smartphone-symbolic"
+                page: "DevicesSettingsPage"
+            }
+
+            SettingsListLink {
                 name: i18n.tr("About FluffyChat")
                 icon: "info"
                 page: "InfoPage"

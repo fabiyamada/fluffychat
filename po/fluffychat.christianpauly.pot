@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: fluffychat.christianpauly\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-06-28 09:53+0000\n"
+"POT-Creation-Date: 2018-06-29 13:24+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -231,6 +231,11 @@ msgid "Theme"
 msgstr ""
 
 #: ../qml/pages/MainSettingsPage.qml:53
+#: ../qml/pages/DevicesSettingsPage.qml:24
+msgid "Devices"
+msgstr ""
+
+#: ../qml/pages/MainSettingsPage.qml:59
 msgid "About FluffyChat"
 msgstr ""
 
@@ -429,16 +434,21 @@ msgid "Change your password"
 msgstr ""
 
 #: ../qml/components/ChangePasswordDialog.qml:19
+msgid "Enter your old password"
+msgstr ""
+
+#: ../qml/components/ChangePasswordDialog.qml:24
 msgid "Enter your new password"
 msgstr ""
 
-#: ../qml/components/ChangePasswordDialog.qml:23
+#: ../qml/components/ChangePasswordDialog.qml:29
 msgid "Please repeat"
 msgstr ""
 
-#: ../qml/components/ChangePasswordDialog.qml:30
+#: ../qml/components/ChangePasswordDialog.qml:37
 #: ../qml/components/LeaveChatDialog.qml:26
 #: ../qml/components/NewGroupDialog.qml:26
+#: ../qml/components/RemoveDeviceDialog.qml:47
 #: ../qml/components/DisableAccountDialog.qml:28
 #: ../qml/components/LogoutDialog.qml:28
 #: ../qml/components/JoinGroupDialog.qml:27
@@ -449,11 +459,11 @@ msgstr ""
 msgid "Cancel"
 msgstr ""
 
-#: ../qml/components/ChangePasswordDialog.qml:35
+#: ../qml/components/ChangePasswordDialog.qml:42
 msgid "Change"
 msgstr ""
 
-#: ../qml/components/ChangePasswordDialog.qml:39
+#: ../qml/components/ChangePasswordDialog.qml:46
 msgid "The passwords do not match"
 msgstr ""
 
@@ -481,6 +491,38 @@ msgstr ""
 
 #: ../qml/components/Message.qml:87
 msgid "Download"
+msgstr ""
+
+#: ../qml/components/RemoveDeviceDialog.qml:11
+msgid "Remove the device"
+msgstr ""
+
+#: ../qml/components/RemoveDeviceDialog.qml:19
+msgid "Are you sure, that you want to remove this device?"
+msgstr ""
+
+#: ../qml/components/RemoveDeviceDialog.qml:23
+msgid "<b>Device ID</b>: %1"
+msgstr ""
+
+#: ../qml/components/RemoveDeviceDialog.qml:27
+msgid "<b>Device name</b>: %2"
+msgstr ""
+
+#: ../qml/components/RemoveDeviceDialog.qml:31
+msgid "<b>Last seen</b>: %3"
+msgstr ""
+
+#: ../qml/components/RemoveDeviceDialog.qml:35
+msgid "<b>Last IP</b>: %4"
+msgstr ""
+
+#: ../qml/components/RemoveDeviceDialog.qml:39
+msgid "Please enter your password"
+msgstr ""
+
+#: ../qml/components/RemoveDeviceDialog.qml:52
+msgid "Remove"
 msgstr ""
 
 #: ../qml/components/FcPageHeader.qml:7 fluffychat.desktop.in.h:1
@@ -559,4 +601,8 @@ msgstr ""
 
 #: ../qml/components/ChangeChatnameDialog.qml:14
 msgid "Enter a name for the chat"
+msgstr ""
+
+#: ../qml/components/DeviceListItem.qml:22
+msgid "Last seen: "
 msgstr ""
