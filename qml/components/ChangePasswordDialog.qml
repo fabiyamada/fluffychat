@@ -15,12 +15,19 @@ Component {
             height: width
         }
         TextField {
+            id: oldPass
+            placeholderText: i18n.tr("Enter your old password")
+            echoMode: TextInput.Password
+        }
+        TextField {
             id: newPass
             placeholderText: i18n.tr("Enter your new password")
+            echoMode: TextInput.Password
         }
         TextField {
             id: newPass2
             placeholderText: i18n.tr("Please repeat")
+            echoMode: TextInput.Password
         }
         Row {
             width: parent.width
@@ -39,8 +46,14 @@ Component {
                         toast.show ( i18n.tr("The passwords do not match") )
                     }
                     else {
-                        matrix.post ( "/client/r0/account/password",
-                        { new_password: newPass.displayText} )
+                        matrix.post ( "/client/r0/account/password",{
+                            "auth": {
+                                "password": oldPass.displayText,
+                                "type": "m.login.password",
+                                "user": matrix.matrixid
+                            },
+                            "new_password": newPass.displayText
+                        } )
                         PopupUtils.close(dialogue)
                     }
                 }
