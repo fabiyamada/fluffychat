@@ -55,6 +55,16 @@ MainView {
 
     The main page stack is the current layout of the app.
     */
+
+    ProgressBar {
+        id: requestProgressBar
+        indeterminate: true
+        width: parent.width
+        anchors.top: parent.top
+        visible: progressBarRequests > 0
+        z: 10
+    }
+
     PageStack {
         id: mainStack
         function toStart () { while (depth > 1) pop() }
