@@ -17,6 +17,7 @@ Component {
         Label {
             anchors.horizontalCenter: parent.horizontalCenter
             text: i18n.tr("Are you sure you want to leave the chat?")
+            wrapMode: Text.Wrap
         }
         Row {
             width: parent.width

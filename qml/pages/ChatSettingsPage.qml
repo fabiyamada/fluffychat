@@ -38,6 +38,13 @@ Page {
         })
     }
 
+    function startChat_callback ( response ) {
+        activeChat = response.room_id
+        if ( mainStack.depth === 1 ) bottomEdge.collapse()
+        else mainStack.pop ()
+        mainStack.push (Qt.resolvedUrl("./ChatPage.qml"))
+    }
+
 
     Component.onCompleted: init ()
 

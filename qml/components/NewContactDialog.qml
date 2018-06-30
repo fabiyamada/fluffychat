@@ -40,6 +40,7 @@ Component {
                         "is_direct": true,
                         "preset": "private_chat"
                     }
+                    if ( success_callback === undefined ) var success_callback = startChat_callback || null
                     matrix.post( "/client/r0/createRoom", data, success_callback )
 
                     PopupUtils.close(dialogue)
