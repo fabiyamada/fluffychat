@@ -166,6 +166,12 @@ Page {
                 }
             }
 
+            SettingsListLink {
+                name: i18n.tr("Targets")
+                icon: "phone-smartphone-symbolic"
+                page: "NotificationTargetSettingsPage"
+            }
+
             Component.onCompleted: getRules ()
 
         }

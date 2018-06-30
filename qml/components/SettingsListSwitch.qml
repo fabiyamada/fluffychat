@@ -24,9 +24,7 @@ ListItem {
 
         Switch {
             id: switcher
-            anchors.right: parent.right
-            anchors.verticalCenter: parent.verticalCenter
-            anchors.margins: units.gu(2)
+            SlotsLayout.position: SlotsLayout.Trailing
             onCheckedChanged: onSwitching ()
         }
     }

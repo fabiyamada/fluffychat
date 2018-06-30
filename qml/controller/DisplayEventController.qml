@@ -13,12 +13,14 @@ Item {
         var body = i18n.tr("Unknown Event: ") + event.type
         var sendername = (event.displayname || usernames.transformFromId(event.sender))
         var displayname = event.content.displayname || event.displayname || usernames.transformFromId(event.sender) || i18n.tr("Someone")
+        var target = event.content.displayname || i18n.tr("Someone")
         if ( event.type === "m.room.member" ) {
             if ( event.content.membership === "join" ) {
                 body = i18n.tr("%1 is now participating the chat as <b>%2</b>").arg(event.sender).arg(displayname)
             }
             else if ( event.content.membership === "invite" ) {
-                body = i18n.tr("%1 has invited %2").arg(sendername).arg(event.content.displayname)
+                body = i18n.tr("%1 has invited %2").arg(sendername).arg( target )
+                console.log(JSON.stringify(event))
             }
             else if ( event.content.membership === "leave" ) {
                 body = i18n.tr("%1 has left the chat").arg(displayname)

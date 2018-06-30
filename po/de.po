@@ -35,7 +35,7 @@ msgstr "%1 nimmt jetzt am Chat teil als <b>%2</b>"
 
 #: ../qml/controller/DisplayEventController.qml:21
 msgid "%1 has invited %2"
-msgstr "%1 hat %1 eingeladen"
+msgstr "%1 hat %2 eingeladen"
 
 #: ../qml/controller/DisplayEventController.qml:24
 msgid "%1 has left the chat"

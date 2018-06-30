@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: fluffychat.christianpauly\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-06-30 15:28+0000\n"
+"POT-Creation-Date: 2018-06-30 16:02+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -26,98 +26,99 @@ msgid "Unknown Event: "
 msgstr ""
 
 #: ../qml/controller/DisplayEventController.qml:15
+#: ../qml/controller/DisplayEventController.qml:16
 msgid "Someone"
 msgstr ""
 
-#: ../qml/controller/DisplayEventController.qml:18
+#: ../qml/controller/DisplayEventController.qml:19
 msgid "%1 is now participating the chat as <b>%2</b>"
 msgstr ""
 
-#: ../qml/controller/DisplayEventController.qml:21
+#: ../qml/controller/DisplayEventController.qml:22
 msgid "%1 has invited %2"
 msgstr ""
 
-#: ../qml/controller/DisplayEventController.qml:24
+#: ../qml/controller/DisplayEventController.qml:26
 msgid "%1 has left the chat"
 msgstr ""
 
-#: ../qml/controller/DisplayEventController.qml:27
+#: ../qml/controller/DisplayEventController.qml:29
 msgid "%1 has been banned from the chat"
 msgstr ""
 
-#: ../qml/controller/DisplayEventController.qml:31
+#: ../qml/controller/DisplayEventController.qml:33
 msgid "The chat has been created"
 msgstr ""
 
-#: ../qml/controller/DisplayEventController.qml:34
+#: ../qml/controller/DisplayEventController.qml:36
 msgid "%1 has changed the chat name"
 msgstr ""
 
-#: ../qml/controller/DisplayEventController.qml:37
+#: ../qml/controller/DisplayEventController.qml:39
 msgid "%1 has changed the chat topic"
 msgstr ""
 
-#: ../qml/controller/DisplayEventController.qml:40
+#: ../qml/controller/DisplayEventController.qml:42
 msgid "%1 has set the chat history visible to: "
 msgstr ""
 
-#: ../qml/controller/DisplayEventController.qml:42
+#: ../qml/controller/DisplayEventController.qml:44
 msgid "All chat participants"
 msgstr ""
 
-#: ../qml/controller/DisplayEventController.qml:45
+#: ../qml/controller/DisplayEventController.qml:47
 msgid "All joined chat participants"
 msgstr ""
 
-#: ../qml/controller/DisplayEventController.qml:48
+#: ../qml/controller/DisplayEventController.qml:50
 msgid "All invited chat participants"
 msgstr ""
 
-#: ../qml/controller/DisplayEventController.qml:51
+#: ../qml/controller/DisplayEventController.qml:53
 msgid "Everyone"
 msgstr ""
 
-#: ../qml/controller/DisplayEventController.qml:55
+#: ../qml/controller/DisplayEventController.qml:57
 msgid "%1 has set the join rules to: "
 msgstr ""
 
-#: ../qml/controller/DisplayEventController.qml:57
+#: ../qml/controller/DisplayEventController.qml:59
 msgid "Only invited users"
 msgstr ""
 
-#: ../qml/controller/DisplayEventController.qml:60
+#: ../qml/controller/DisplayEventController.qml:62
 msgid "Public"
 msgstr ""
 
-#: ../qml/controller/DisplayEventController.qml:63
+#: ../qml/controller/DisplayEventController.qml:65
 msgid "Private"
 msgstr ""
 
-#: ../qml/controller/DisplayEventController.qml:66
+#: ../qml/controller/DisplayEventController.qml:68
 msgid "Knock"
 msgstr ""
 
-#: ../qml/controller/DisplayEventController.qml:70
+#: ../qml/controller/DisplayEventController.qml:72
 msgid "%1 has set the guest access to: "
 msgstr ""
 
-#: ../qml/controller/DisplayEventController.qml:72
+#: ../qml/controller/DisplayEventController.qml:74
 msgid "Can join"
 msgstr ""
 
-#: ../qml/controller/DisplayEventController.qml:75
+#: ../qml/controller/DisplayEventController.qml:77
 msgid "Forbidden"
 msgstr ""
 
-#: ../qml/controller/DisplayEventController.qml:79
+#: ../qml/controller/DisplayEventController.qml:81
 msgid "The chat aliases have been changed."
 msgstr ""
 
-#: ../qml/controller/DisplayEventController.qml:85
+#: ../qml/controller/DisplayEventController.qml:87
 msgid "The canonical chat alias has been changed to: "
 msgstr ""
 
-#: ../qml/controller/DisplayEventController.qml:88
+#: ../qml/controller/DisplayEventController.qml:90
 msgid "The chat permissions have been changed"
 msgstr ""
 
@@ -292,6 +293,10 @@ msgstr ""
 msgid "Messages from bots"
 msgstr ""
 
+#: ../qml/pages/NotificationSettingsPage.qml:170
+msgid "Targets"
+msgstr ""
+
 #: ../qml/pages/ChatPage.qml:115 ../qml/components/ChatListItem.qml:50
 msgid "Unknown chat"
 msgstr ""
@@ -409,6 +414,10 @@ msgstr ""
 msgid "Green"
 msgstr ""
 
+#: ../qml/pages/NotificationTargetSettingsPage.qml:24
+msgid "Notification targets"
+msgstr ""
+
 #: ../qml/components/MemberListItem.qml:15
 msgid "Member"
 msgstr ""
@@ -446,7 +455,7 @@ msgid "Please repeat"
 msgstr ""
 
 #: ../qml/components/ChangePasswordDialog.qml:37
-#: ../qml/components/LeaveChatDialog.qml:26
+#: ../qml/components/LeaveChatDialog.qml:27
 #: ../qml/components/NewGroupDialog.qml:26
 #: ../qml/components/RemoveDeviceDialog.qml:47
 #: ../qml/components/DisableAccountDialog.qml:28
@@ -467,6 +476,35 @@ msgstr ""
 msgid "The passwords do not match"
 msgstr ""
 
+#: ../qml/components/TargetInfoDialog.qml:11
+msgid "Target details"
+msgstr ""
+
+#: ../qml/components/TargetInfoDialog.qml:19
+#: ../qml/components/RemoveDeviceDialog.qml:27
+msgid "<b>Device name</b>: %2"
+msgstr ""
+
+#: ../qml/components/TargetInfoDialog.qml:23
+msgid "<b>App</b>: %2"
+msgstr ""
+
+#: ../qml/components/TargetInfoDialog.qml:27
+msgid "<b>Kind</b>: %2"
+msgstr ""
+
+#: ../qml/components/TargetInfoDialog.qml:31
+msgid "<b>Language</b>: %2"
+msgstr ""
+
+#: ../qml/components/TargetInfoDialog.qml:35
+msgid "<b>Gateway</b>: %2"
+msgstr ""
+
+#: ../qml/components/TargetInfoDialog.qml:42
+msgid "Close"
+msgstr ""
+
 #: ../qml/components/LeaveChatDialog.qml:11
 msgid "Leave chat"
 msgstr ""
@@ -475,7 +513,7 @@ msgstr ""
 msgid "Are you sure you want to leave the chat?"
 msgstr ""
 
-#: ../qml/components/LeaveChatDialog.qml:31
+#: ../qml/components/LeaveChatDialog.qml:32
 msgid "Leave"
 msgstr ""
 
@@ -503,10 +541,6 @@ msgstr ""
 
 #: ../qml/components/RemoveDeviceDialog.qml:23
 msgid "<b>Device ID</b>: %1"
-msgstr ""
-
-#: ../qml/components/RemoveDeviceDialog.qml:27
-msgid "<b>Device name</b>: %2"
 msgstr ""
 
 #: ../qml/components/RemoveDeviceDialog.qml:31
