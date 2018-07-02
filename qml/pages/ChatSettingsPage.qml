@@ -77,9 +77,7 @@ Page {
         }
     }
 
-    ListModel {
-        id: model
-    }
+
 
     ScrollView {
         id: scrollView
@@ -161,11 +159,9 @@ Page {
                 width: parent.width
                 height: root.height / 2
                 delegate: MemberListItem { }
-                model: model
+                model: ListModel { id: model }
                 z: -1
             }
-
-
         }
     }
 

@@ -12,9 +12,6 @@ Page {
     // on the informations in the sqlite database!
     Component.onCompleted: {
 
-        // First step is obviously clearing the column
-        chatListColumn.children = ""
-
         // On the top are the rooms, which the user is invited to
         storage.transaction ("SELECT rooms.id, rooms.topic, rooms.membership, rooms.notification_count, " +
         " events.id AS eventsid, ifnull(events.origin_server_ts, DateTime('now')) AS origin_server_ts, events.content_body, events.sender, events.content_json, events.type " +
@@ -30,8 +27,7 @@ Page {
             for ( var i = 0; i < res.rows.length; i++ ) {
                 var room = res.rows.item(i)
                 // We request the room name, before we continue
-                var newChatListItem = Qt.createComponent("../components/ChatListItem.qml")
-                newChatListItem.createObject(chatListColumn,{ "room": room,})
+                model.append ( { "room": room } )
             }
         })
     }
@@ -47,7 +43,6 @@ Page {
      * - Update the counter of unseen messages
     */
     function update ( sync ) {
-        var items = chatListColumn.children
 
         // This helper function helps us to reduce code. Rooms with the type
         // "join" and "invite" are just handled the same, and "leave" is very
@@ -59,10 +54,10 @@ Page {
                 // Check if the user is already in this chat
                 var roomExists = false
                 var j = 0
-                for ( j = 0; j < items.length; j++ ) {
-                    if ( items[j].room.id === id ) {
+                for ( j = 0; j < model.count; j++ ) {
+                    if ( model.get(j).room.id === id ) {
                         roomExists = true
-                        if ( type === "leave" ) items[j].destroy ()
+                        if ( type === "leave" ) model.remove( j )
                         break
                     }
                 }
@@ -73,59 +68,58 @@ Page {
                 // Add the room to the list, if it does not exist
                 var unread = room.unread_notifications && room.unread_notifications.notification_count || 0
                 if ( !roomExists ) {
-                    var roomItem = {
+                    var room = {
                         "id": id,
                         "topic": "",
                         "membership": type,
                         "notification_count": unread
                     }
                     // Put new invitations to the top
-                    if ( type === "invite" ) roomItem.origin_server_ts = new Date().getTime()
-                    var newChatListItem = Qt.createComponent("../components/ChatListItem.qml")
-                    newChatListItem.createObject(chatListColumn,{ "room": roomItem,})
-                    j = items.length - 1
+                    if ( type === "invite" ) room.origin_server_ts = new Date().getTime()
+                    model.append ( { "room": room } )
+                    j = model.count - 1
                 }
 
+                var tempRoom = model.get(j).room
+
                 // Update the type
-                items[j].room.membership = type
+                tempRoom.membership = type
 
                 // Update the notification count
-                items[j].room.notification_count = unread
+                tempRoom.notification_count = unread
 
                 // Check the timeline events and add the latest event to the chat list
                 // as the latest message of the chat
                 var newTimelineEvents = room.timeline && room.timeline.events.length > 0
                 if ( newTimelineEvents ) {
                     var lastEvent = room.timeline.events[ room.timeline.events.length - 1 ]
-                    items[j].room.eventsid = lastEvent.event_id
-                    items[j].room.origin_server_ts = lastEvent.origin_server_ts
-                    items[j].room.content_body = lastEvent.content.body || ""
-                    items[j].room.sender = lastEvent.sender
-                    items[j].room.content_json = JSON.stringify( lastEvent.content )
-                    items[j].room.type = lastEvent.type
+                    tempRoom.eventsid = lastEvent.event_id
+                    tempRoom.origin_server_ts = lastEvent.origin_server_ts
+                    tempRoom.content_body = lastEvent.content.body || ""
+                    tempRoom.sender = lastEvent.sender
+                    tempRoom.content_json = JSON.stringify( lastEvent.content )
+                    tempRoom.type = lastEvent.type
+                    model.set ( j, { "room": tempRoom } )
                 }
 
                 // Now reorder this item
                 if ( newTimelineEvents || !roomExists ) {
-                    while ( j > 0 && items[j].room.origin_server_ts > items[j-1].room.origin_server_ts ) {
-                        var tempRoom = JSON.parse(JSON.stringify(items[j-1].room))
-                        items[j-1].room = JSON.parse(JSON.stringify(items[j].room))
-                        items[j].room = tempRoom
-                        items[j].updateAll()
+                    while ( j > 0 && tempRoom.origin_server_ts > model.get(j-1).room.origin_server_ts ) {
+                        model.remove ( j )
+                        model.insert ( j-1, { "room": tempRoom } )
                         j--
                     }
                 }
-                items[j].updateAll()
+
+                model.remove ( j )
+                model.insert ( j, { "room": tempRoom } )
 
                 // Send message receipt
                 if ( newTimelineEvents && activeChat === id && unread > 0 && lastEvent.event_id !== undefined ){
-                    console.log ( "/client/r0/rooms/" + activeChat + "/receipt/m.read/" + lastEvent.event_id )
                     matrix.post( "/client/r0/rooms/" + activeChat + "/receipt/m.read/" + lastEvent.event_id, null )
                 }
             }
         }
-
-        // Now we call the helper function with three different types:
     }
 
 
@@ -136,6 +130,7 @@ Page {
 
 
     header: FcPageHeader {
+        id: header
         trailingActionBar {
             actions: [
             Action {
@@ -150,22 +145,19 @@ Page {
         }
     }
 
-
-    ScrollView {
-        id: scrollView
+    ListView {
+        id: chatListView
         width: parent.width
         height: parent.height - header.height
         anchors.top: header.bottom
-        contentItem: Column {
-            id: chatListColumn
-            width: root.width
-        }
+        delegate: ChatListItem {}
+        model: ListModel { id: model }
     }
 
     Label {
         text: i18n.tr('Swipe from the bottom to start a new chat')
         anchors.centerIn: parent
-        visible: chatListColumn.children.length === 0
+        visible: model.count === 0
     }
 
     // ============================== BOTTOM EDGE ==============================
