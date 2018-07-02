@@ -70,6 +70,7 @@ MainView {
         function toStart () { while (depth > 1) pop() }
     }
 
+
     /* =============================== CONTROLLER ===============================
 
     All controller should be defined here. They are accessable everywhere by the

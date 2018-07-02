@@ -11,6 +11,18 @@ Page {
         title: i18n.tr('Theme')
     }
 
+    MediaImport { id: backgroundImport }
+
+    Connections {
+        target: backgroundImport
+        onMediaReceived: changeBackground ( mediaUrl )
+    }
+
+    function changeBackground ( mediaUrl ) {
+        console.log( mediaUrl )
+        settings.chatBackground = mediaUrl
+    }
+
     ScrollView {
         id: scrollView
         width: parent.width
@@ -25,6 +37,33 @@ Page {
                 onSwitching: function () { settings.darkmode = isChecked }
                 isChecked: settings.darkmode
                 isEnabled: true
+            }
+
+            ListItem {
+                property var name: ""
+                property var icon: "settings"
+                onClicked: settings.chatBackground === undefined ? backgroundImport.requestMedia () : settings.chatBackground = undefined
+                height: layout.height
+
+                ListItemLayout {
+                    id: layout
+                    title.text: settings.chatBackground === undefined ? i18n.tr("Set chat background") : i18n.tr("Remove chat background")
+                    Icon {
+                        name: "image-x-generic-symbolic"
+                        color: defaultMainColor
+                        width: units.gu(4)
+                        height: units.gu(4)
+                        SlotsLayout.position: SlotsLayout.Leading
+                    }
+                    Icon {
+                        width: units.gu(2)
+                        height: units.gu(2)
+                        SlotsLayout.position: SlotsLayout.Trailing
+                        name: "edit-delete"
+                        color: UbuntuColors.red
+                        visible: settings.chatBackground !== undefined
+                    }
+                }
             }
 
             Rectangle {

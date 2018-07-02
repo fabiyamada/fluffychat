@@ -137,6 +137,7 @@ Page {
     }
 
     Rectangle {
+        visible: settings.chatBackground === undefined
         anchors.fill: parent
         opacity: 0.1
         color: settings.mainColor
@@ -144,11 +145,21 @@ Page {
     }
 
     Icon {
+        visible: settings.chatBackground === undefined
         source: "../../assets/chat.svg"
         anchors.centerIn: parent
         width: parent.width / 1.25
         height: width
         opacity: 0.15
+        z: 0
+    }
+
+    Image {
+        visible: settings.chatBackground !== undefined
+        anchors.fill: parent
+        source: settings.chatBackground
+        cache: true
+        fillMode: Image.PreserveAspectCrop
         z: 0
     }
 

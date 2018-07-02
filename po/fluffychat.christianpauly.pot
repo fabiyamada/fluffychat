@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: fluffychat.christianpauly\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-06-30 16:02+0000\n"
+"POT-Creation-Date: 2018-07-02 15:41+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -122,7 +122,7 @@ msgstr ""
 msgid "The chat permissions have been changed"
 msgstr ""
 
-#: ../qml/controller/EventController.qml:46 ../qml/pages/ChatPage.qml:186
+#: ../qml/controller/EventController.qml:46 ../qml/pages/ChatPage.qml:197
 #: ../qml/pages/AddChatPage.qml:24
 msgid ""
 "Synchronizing \n"
@@ -218,7 +218,7 @@ msgstr ""
 #: ../qml/pages/MainSettingsPage.qml:35
 #: ../qml/pages/NotificationSettingsPage.qml:64 ../qml/pages/ChatPage.qml:127
 #: ../qml/pages/NotificationChatSettingsPage.qml:51
-#: ../qml/pages/ChatSettingsPage.qml:114
+#: ../qml/pages/ChatSettingsPage.qml:128
 msgid "Notifications"
 msgstr ""
 
@@ -309,19 +309,19 @@ msgstr ""
 msgid "Invite a friend"
 msgstr ""
 
-#: ../qml/pages/ChatPage.qml:156
+#: ../qml/pages/ChatPage.qml:167
 msgid "No messages in this chat ..."
 msgstr ""
 
-#: ../qml/pages/ChatPage.qml:181
+#: ../qml/pages/ChatPage.qml:192
 msgid "Accept invatiation"
 msgstr ""
 
-#: ../qml/pages/ChatPage.qml:218
+#: ../qml/pages/ChatPage.qml:229
 msgid "Type something ..."
 msgstr ""
 
-#: ../qml/pages/ChatPage.qml:252
+#: ../qml/pages/ChatPage.qml:263
 msgid "Scroll down"
 msgstr ""
 
@@ -337,28 +337,52 @@ msgstr ""
 msgid "Don't notify"
 msgstr ""
 
-#: ../qml/pages/ChatSettingsPage.qml:68
+#: ../qml/pages/ChatSettingsPage.qml:38
+msgid "Member"
+msgstr ""
+
+#: ../qml/pages/ChatSettingsPage.qml:39
+msgid "Was invited"
+msgstr ""
+
+#: ../qml/pages/ChatSettingsPage.qml:40
+msgid "Has left the chat"
+msgstr ""
+
+#: ../qml/pages/ChatSettingsPage.qml:41
+msgid "Has knocked"
+msgstr ""
+
+#: ../qml/pages/ChatSettingsPage.qml:42
+msgid "Was banned from the chat"
+msgstr ""
+
+#: ../qml/pages/ChatSettingsPage.qml:43
+msgid "Unknown"
+msgstr ""
+
+#: ../qml/pages/ChatSettingsPage.qml:73
 #: ../qml/components/ChangeChatnameDialog.qml:11
 msgid "Edit chat name"
 msgstr ""
 
-#: ../qml/pages/ChatSettingsPage.qml:103
+#: ../qml/pages/ChatSettingsPage.qml:112
 msgid "Chat Settings:"
 msgstr ""
 
-#: ../qml/pages/ChatSettingsPage.qml:109
+#: ../qml/pages/ChatSettingsPage.qml:123
 msgid "Invite friend"
 msgstr ""
 
-#: ../qml/pages/ChatSettingsPage.qml:119
+#: ../qml/pages/ChatSettingsPage.qml:133
 msgid "Leave Chat"
 msgstr ""
 
-#: ../qml/pages/ChatSettingsPage.qml:134
+#: ../qml/pages/ChatSettingsPage.qml:154
 msgid "Users in this chat (%1):"
 msgstr ""
 
-#: ../qml/pages/ChatSettingsPage.qml:134
+#: ../qml/pages/ChatSettingsPage.qml:154
 msgid "Loading users ..."
 msgstr ""
 
@@ -382,60 +406,48 @@ msgstr ""
 msgid "Join group"
 msgstr ""
 
-#: ../qml/pages/ThemeSettingsPage.qml:23
+#: ../qml/pages/ThemeSettingsPage.qml:35
 msgid "Dark mode"
 msgstr ""
 
-#: ../qml/pages/ThemeSettingsPage.qml:40
+#: ../qml/pages/ThemeSettingsPage.qml:50
+msgid "Set chat background"
+msgstr ""
+
+#: ../qml/pages/ThemeSettingsPage.qml:50
+msgid "Remove chat background"
+msgstr ""
+
+#: ../qml/pages/ThemeSettingsPage.qml:79
 msgid "Choose a main color:"
 msgstr ""
 
-#: ../qml/pages/ThemeSettingsPage.qml:45
+#: ../qml/pages/ThemeSettingsPage.qml:84
 msgid "Purple"
 msgstr ""
 
-#: ../qml/pages/ThemeSettingsPage.qml:52
+#: ../qml/pages/ThemeSettingsPage.qml:91
 msgid "Blue"
 msgstr ""
 
-#: ../qml/pages/ThemeSettingsPage.qml:59
+#: ../qml/pages/ThemeSettingsPage.qml:98
 msgid "Red"
 msgstr ""
 
-#: ../qml/pages/ThemeSettingsPage.qml:66
+#: ../qml/pages/ThemeSettingsPage.qml:105
 msgid "Orange"
 msgstr ""
 
-#: ../qml/pages/ThemeSettingsPage.qml:73
+#: ../qml/pages/ThemeSettingsPage.qml:112
 msgid "Graphite"
 msgstr ""
 
-#: ../qml/pages/ThemeSettingsPage.qml:80
+#: ../qml/pages/ThemeSettingsPage.qml:119
 msgid "Green"
 msgstr ""
 
 #: ../qml/pages/NotificationTargetSettingsPage.qml:24
 msgid "Notification targets"
-msgstr ""
-
-#: ../qml/components/MemberListItem.qml:15
-msgid "Member"
-msgstr ""
-
-#: ../qml/components/MemberListItem.qml:16
-msgid "Was invited"
-msgstr ""
-
-#: ../qml/components/MemberListItem.qml:17
-msgid "Has left the chat"
-msgstr ""
-
-#: ../qml/components/MemberListItem.qml:18
-msgid "Has knocked"
-msgstr ""
-
-#: ../qml/components/MemberListItem.qml:19
-msgid "Was banned from the chat"
 msgstr ""
 
 #: ../qml/components/ChangePasswordDialog.qml:11

@@ -10,7 +10,6 @@ Page {
     property var membership: "unknown"
     property var max: 20
     property var position: 0
-    property var memberlist
     property var blocked: false
     property var newContactMatrixID
 
@@ -23,19 +22,25 @@ Page {
 
         // Request the full memberlist, from the server
         matrix.get ( "/client/r0/rooms/%1/members".arg(activeChat), null, function (response) {
-            memberlist = response.chunk
-            //for ( i = 0; i < memberlist.length; i++ ) memberlist[i].content.displayname = "User " + (i+1)
-            for ( var i = 0; i < Math.min(memberlist.length, max); i++ ) {
-                var member =memberlist[i]
-                var newMemberListItem = Qt.createComponent("../components/MemberListItem.qml")
-                newMemberListItem.createObject(memberList, {
+            for ( var i = 0; i < response.chunk.length; i++ ) {
+                var member = response.chunk[ i ]
+                model.append({
                     name: member.content.displayname || usernames.transformFromId( member.state_key ),
-                    id: member.state_key,
-                    membership: member.content.membership,
+                    matrixid: member.state_key,
+                    membership: getDisplayMemberStatus ( member.membership ),
                     avatar_url: member.content.avatar_url
-                } )
+                })
             }
         })
+    }
+
+    function getDisplayMemberStatus ( membership ) {
+        if ( membership === "join" ) return i18n.tr("Member")
+        else if ( membership === "invite" ) return i18n.tr("Was invited")
+        else if ( membership === "leave" ) return i18n.tr("Has left the chat")
+        else if ( membership === "knock" ) return i18n.tr("Has knocked")
+        else if ( membership === "ban" ) return i18n.tr("Was banned from the chat")
+        else return i18n.tr("Unknown")
     }
 
     function startChat_callback ( response ) {
@@ -72,6 +77,10 @@ Page {
         }
     }
 
+    ListModel {
+        id: model
+    }
+
     ScrollView {
         id: scrollView
         width: parent.width
@@ -103,62 +112,61 @@ Page {
                 text: i18n.tr("Chat Settings:")
                 font.bold: true
             }
-            Column {
+            Rectangle {
                 width: parent.width
-                SettingsListItem {
-                    name: i18n.tr("Invite friend")
-                    icon: "contact-new"
-                    onClicked: PopupUtils.open(inviteDialog)
-                }
-                SettingsListLink {
-                    name: i18n.tr("Notifications")
-                    icon: "notification"
-                    page: "NotificationChatSettingsPage"
-                }
-                SettingsListItem {
-                    name: i18n.tr("Leave Chat")
-                    icon: "delete"
-                    onClicked: PopupUtils.open(leaveChatDialog)
+                height: settingsColumn.height
+                color: theme.palette.normal.background
+                Column {
+                    id: settingsColumn
+                    width: parent.width
+                    SettingsListItem {
+                        name: i18n.tr("Invite friend")
+                        icon: "contact-new"
+                        onClicked: PopupUtils.open(inviteDialog)
+                    }
+                    SettingsListLink {
+                        name: i18n.tr("Notifications")
+                        icon: "notification"
+                        page: "NotificationChatSettingsPage"
+                    }
+                    SettingsListItem {
+                        name: i18n.tr("Leave Chat")
+                        icon: "delete"
+                        onClicked: PopupUtils.open(leaveChatDialog)
+                    }
                 }
             }
+
             Rectangle {
                 width: parent.width
                 height: units.gu(2)
                 color: theme.palette.normal.background
             }
-            Label {
-                id: userInfo
-                height: units.gu(2)
-                anchors.left: parent.left
-                anchors.leftMargin: units.gu(2)
-                text: memberList.children.length > 0 ? i18n.tr("Users in this chat (%1):").arg(memberlist.length) : i18n.tr("Loading users ...")
-                font.bold: true
-            }
-
-            Column {
-                id: memberList
+            Rectangle {
                 width: parent.width
-            }
-        }
-
-        // On scrolling, the view should display another part of the list
-        flickableItem {
-            onContentYChanged: {
-                // User has scrolled to the bottom
-                if ( flickableItem.contentY > flickableItem.contentHeight - height*2 ) {
-                    if ( position+1+max < memberlist.length ) {
-                        // Put one more item at the end of the list
-                        var member = memberlist[ position++ + max ]
-                        var newMemberListItem = Qt.createComponent("../components/MemberListItem.qml")
-                        newMemberListItem.createObject(memberList, {
-                            name: member.content.displayname || usernames.transformFromId( member.state_key ),
-                            id: member.state_key,
-                            membership: member.content.membership,
-                            avatar_url: member.content.avatar_url
-                        } )
-                    }
+                height: units.gu(2)
+                color: theme.palette.normal.background
+                Label {
+                    id: userInfo
+                    height: units.gu(2)
+                    anchors.left: parent.left
+                    anchors.leftMargin: units.gu(2)
+                    text: memberList.count > 0 ? i18n.tr("Users in this chat (%1):").arg(memberList.count) : i18n.tr("Loading users ...")
+                    font.bold: true
                 }
             }
+
+            ListView {
+                id: memberList
+                width: parent.width
+                height: root.height / 2
+                delegate: MemberListItem { }
+                model: model
+                z: -1
+            }
+
+
         }
     }
+
 }

@@ -41,4 +41,7 @@ Settings {
 
     // Dark mode enabled?
     property var darkmode: false
+
+    // The path to the chat background
+    property var chatBackground
 }

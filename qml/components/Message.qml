@@ -53,7 +53,7 @@ Rectangle {
         anchors.top: parent.top
         anchors.leftMargin: units.gu(1)
         anchors.rightMargin: units.gu(1)
-        border.width: 1
+        border.width: 0
         border.color: settings.darkmode ? UbuntuColors.slate : UbuntuColors.silk
         anchors.margins: 5
         color: sent ? "#FFFFFF" : settings.mainColor
